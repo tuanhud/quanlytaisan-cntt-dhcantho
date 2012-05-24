@@ -51,7 +51,7 @@
          <table width="100%" border="0" cellspacing="0" cellpadding="0">
          <tbody>
            <tr>            
-             <td class="tittle_header">&nbsp;</td>             
+             <td class="tittle_header"><img src="../images/ctulogo1.gif"></td>             
            </tr>
          </tbody>
          </table>
