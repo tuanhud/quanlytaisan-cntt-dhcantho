@@ -4,18 +4,48 @@
 <div id="admin" class="yui3-menu yui3-menu-horizontal yui3-menubuttonnav">
             <div class="yui3-menu-content">
                 <ul class="first-of-type">                    
-                    <li>
+					 <li>
                         <a class="yui3-menu-label" href="#"><em>Mua sắm</em></a>
-                        <div id="caphoi" class="yui3-menu">
+                        <div id="#timkiem" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatbomon.php">Văn phòng phẩm</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnguoidung.php">Tài sản cố định</a></li>
-                                   
+									<li>
+                                        <a class="yui3-menu-label" href="#vanphongpham">Văn phòng phẩm</a>
+                                        <div id="hv" class="yui3-menu">
+                                            <div class="yui3-menu-content">
+                                                <ul>                                                                          
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật nhà xuất</a></li>
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật nhà cung ứng</a></li>
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật loại văn phòng phẩm</a></li>  
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật văn phòng phẩm được cung cấp</a></li>  
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật văn phòng phẩm</a></li>  
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật đơn vị tính</a></li>  
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật đặc điểm</a></li>  
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật đặc điểm của văn phòng phẩm</a></li>  
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Duyệt phiếu dự toán văn phòng phẩm</a></li>  
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+									
+									<li>
+                                        <a class="yui3-menu-label" href="#vanphongpham">Tài sản cố định</a>
+                                        <div id="hv" class="yui3-menu">
+                                            <div class="yui3-menu-content">
+                                                <ul>                                                                          
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật số tiền cấp</a></li>
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật kế hoạch mua sắm</a></li>
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Duyệt kế hoạch mua sắm</a></li>  
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </li>
+					
+					
                     <li>
                         <a class="yui3-menu-label" href="#ban_chucvu"><em>Kiểm kê</em></a>
                         <div id="ban_chucvu" class="yui3-menu">
