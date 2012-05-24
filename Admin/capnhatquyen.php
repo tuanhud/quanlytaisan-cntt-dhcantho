@@ -144,7 +144,7 @@ $(document).ready(function() {
        		<tbody>
 					<tr class="main_1">
 					  <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-					  <td width="419" align="center">Thêm cán bộ</td>
+					  <td width="419" align="center">Thêm quyền </td>
 					  <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
 					</tr>
         <tr>
@@ -156,68 +156,14 @@ $(document).ready(function() {
               		<td height="22" class="level_1_1"></td>
                     <td class="level_1_1"></td>
               </tr>
-             
               <tr>
-					<td height="22" align="right" class="level_1_2">Chọn đơn vị </td>
-					<td width="50%" align="left" class="level_1_2"><select class="cbo" name="chonbomon" style="width:100%">
-					  </select>					</td>
+					<td height="22" align="right" class="level_1_2">Tên quyền</td>
+					<td width="50%" align="left" class="level_1_2"><input name="txt_tenquyen" class="txtbox" style="width:100%" value="" maxlength="7" onKeyPress="return keypress(event)" onBlur=''></td>
+			  </tr>
+              <tr>
+					<td height="22" align="right" class="level_1_1">Diển giải</td>
+					<td width="50%" align="left" class="level_1_1"><textarea name="txt_diengiai" rows="3" style="width:100%"></textarea></td>
               </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn quyền</td>
-					<td width="50%" align="left" class="level_1_1"><select class="cbo" name="chonquyen" style="width:100%"></select></td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_2">Mã số cán bộ</td>
-					<td width="50%" align="left" class="level_1_2"><input name="masocanbo" class="txtbox" style="width:100%" value="" maxlength="7" onKeyPress="return keypress(event)" onBlur='isExist("isExistMSCB.php",this.value,this)'></td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_1">Tên cán bộ</td>
-					<td width="50%" align="left" class="level_1_1"><input name="tencanbo" class="txtbox" style="width:100%" value=""></td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_2">Giới tính</td>
-					<td width="50%" align="left" class="level_1_2">
-					 Nam<input name="gioitinh" class="txtbox" type="radio"  value="1"> Nữ
-					<input name="gioitinh" class="txtbox" type="radio"  value="0">					
-					</td>
-			  </tr>
-			  <tr>
-					<td height="22" align="right" class="level_1_1">Ngày sinh</td>
-					<td width="50%" align="left" class="level_1_1">
-					<input name="ngaysinh" class="txtbox" type="text" style="width:100%" value="">					</td>
-			  </tr>
-               <tr>
-					<td height="22" align="right" class="level_1_2">Email</td>
-					<td width="50%" align="left" class="level_1_2">
-					<input name="email" class="txtbox" type="text" style="width:100%" value="">					</td>
-			  </tr>
-			   <tr>
-					<td height="22" align="right" class="level_1_1">Địa chỉ</td>
-					<td width="50%" align="left" class="level_1_1">
-					<input name="diachi" class="txtbox" type="text" style="width:100%" value="">					</td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_2">Số điện thoại</td>
-					<td width="50%" align="left" class="level_1_2">
-					<input name="sodienthoai" class="txtbox"  type="text" style="width:100%" value="" maxlength="12" onKeyPress="return keypress(event)">					
-					</td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_1">Mật khẩu</td>
-					<td width="50%" align="left" class="level_1_1">
-					<input name="matkhau" class="txtbox" type="password" style="width:100%" value="">					</td>
-			  </tr>
-			  <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="themcanbo" class="button_1" value="Thêm"></td>
-              </tr>
-			  
-			  <tr>
-			  		<td height="44" class="level_1_1" colspan="2"></td>
-			  </tr>  
-			  <tr>
-					<td height="22" align="right" class="level_1_2">Nhập file Excel</td>
-					<td width="50%" align="left" class="level_1_2"><input name="nhapfile" type="file" style="width:100%"></td>
-			  </tr>
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="themcanbo2" class="button_1" value="Thêm"></td>
               </tr>
@@ -233,7 +179,7 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa thông tin cán bộ</td>
+          <td width="419" align="center">Sửa quyền </td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -246,57 +192,21 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
               <tr>
-              		<td height="22" align="right" class="level_1_1">Chọn đơn vị </td>
+              		<td height="22" align="right" class="level_1_1">Chọn tên quyền </td>
                     <td width="50%" align="left" class="level_1_1"><select class="cbo" name="chonbomon" style="width:100%">
                     </select></td>
               </tr>
               <tr>
-					<td height="22" align="right" class="level_1_2">Chọn tên cán bộ </td>
-					<td width="50%" align="left" class="level_1_2"><select class="cbo" name="choncanbo" style="width:100%"></select></td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn quyền </td>
-					<td width="50%" align="left" class="level_1_1"><select class="cbo" name="chonquyen" style="width:100%"></select></td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_2">Mã số cán bộ</td>
+					<td height="22" align="right" class="level_1_2">Tên mới </td>
 					<td width="50%" align="left" class="level_1_2"><input name="macanbo" class="txtbox" style="width:100%" value="" maxlength="7" onKeyPress="return keypress(event)" onBlur='isExist("isExistMSCB.php",this.value,this)'></td>
 			  </tr>
+              
+           
+			
               <tr>
-					<td height="22" align="right" class="level_1_1">Tên cán bộ</td>
-					<td width="50%" align="left" class="level_1_1"><input name="tencanbo" class="txtbox" style="width:100%" value=""></td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_2">Giới tính</td>
-					<td width="50%" align="left" class="level_1_2">
-					Nam<input name="gioitinh" class="txtbox" type="radio"  value="1">
-					Nữ<input name="gioitinh" class="txtbox" type="radio"  value="0">					</td>
-			  </tr>
-			  <tr>
-					<td height="22" align="right" class="level_1_1">Ngày sinh</td>
+					<td height="22" align="right" class="level_1_1">Diễn giải </td>
 					<td width="50%" align="left" class="level_1_1">
-					<input name="ngaysinh" class="txtbox" type="text" style="width:100%" value="">					</td>
-			  </tr>
-               <tr>
-					<td height="22" align="right" class="level_1_2">Email</td>
-					<td width="50%" align="left" class="level_1_2">
-					<input name="email2" class="txtbox" type="text" style="width:100%" value="">
-					</td>
-			  </tr>
-			   <tr>
-					<td height="22" align="right" class="level_1_1">Địa chỉ</td>
-					<td width="50%" align="left" class="level_1_1">
-					<input name="diachi" class="txtbox" type="text" style="width:100%" value="">					</td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_2">Số điện thoại</td>
-					<td width="50%" align="left" class="level_1_2">
-					<input name="sodienthoai" class="txtbox"  type="text" style="width:100%" value="" maxlength="12" onKeyPress="return keypress(event)">					</td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_1">Mật khẩu</td>
-					<td width="50%" align="left" class="level_1_1">
-					<input name="matkhau" class="txtbox" type="password" style="width:100%" value="">					</td>
+					<textarea name="txt_diengiai" rows="3" style="width:100%"></textarea>					</td>
 			  </tr>
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Sửa" ></td>
@@ -313,7 +223,7 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa cán bộ</td>
+          <td width="419" align="center">Xóa quyền </td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -327,14 +237,9 @@ $(document).ready(function() {
               </tr>
               
               <tr>
-					<td height="22" align="right" class="level_1_2">Chọn đơn vị </td>
+					<td height="22" align="right" class="level_1_2">Chọn quyền</td>
 					<td width="50%" align="left" class="level_1_2"><select class="cbo" name="chonbomon" style="width:100%"></select></td>
 			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên cán bộ</td>
-					<td width="50%" align="left" class="level_1_1"><select class="cbo" name="choncanbo" style="width:100%"></select></td>
-			  </tr>
-              
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Xóa"></td>
               </tr>

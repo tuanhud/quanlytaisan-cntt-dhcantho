@@ -98,9 +98,9 @@
                         <div id="#" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật đơn vị</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật người dùng</a></li>                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật quyền</a></li>
-									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật quyền của người dùng</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatdonvi.php">Cập nhật đơn vị</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnguoidung.php">Cập nhật người dùng</a></li>                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatquyen.php">Cập nhật quyền</a></li>
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatquyennguoidung.php">Cập nhật quyền của người dùng</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -110,10 +110,11 @@
                         <div id="#" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật loại tài sản - thiết bị</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật tài sản - thiết bị</a></li>
-									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật tài sản - thiết bị thuộc đơn vị</a></li>                                    
-									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật thuộc tính tài sản - thiết bị</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatloaitaisan.php">Cập nhật loại tài sản - thiết bị</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhattaisan.php">Cập nhật tài sản - thiết bị</a></li>
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatthietbithuocdonvi.php">Cập nhật tài sản - thiết bị thuộc đơn vị</a></li>                                    
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatthuoctinhtaisan.php">Cập nhật thuộc tính tài sản - thiết bị</a></li>
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatthuoctinhcuataisan.php">Cập nhật thuộc tính của tài sản - thiết bị</a></li>
                                 </ul>
                             </div>
                         </div>
