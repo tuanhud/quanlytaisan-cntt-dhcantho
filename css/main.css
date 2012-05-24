@@ -1,0 +1,92 @@
+@charset "utf-8";
+/* 
+
+	CSS cho giao diện chính
+
+ */
+
+.main_3_1 { BORDER-TOP-WIDTH: 1px; BORDER-RIGHT: #80b5d7 0px solid; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #80b5d7 0px solid; FONT-FAMILY: Tahoma; BACKGROUND-COLOR: #dae9f3 }
+.main_3_2 { BORDER-TOP-WIDTH: 1px; BORDER-RIGHT: #80b5d7 1px solid; PADDING-RIGHT: 0px; PADDING-LEFT: 1px; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 12pt; PADDING-BOTTOM: 2px; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #80b5d7 1px solid; FONT-FAMILY: Tahoma; BACKGROUND-COLOR: #dae9f3 }
+
+A:visited {	COLOR: #008000; TEXT-DECORATION: none}
+A:link {	COLOR: #008000; TEXT-DECORATION: none}
+A:hover {	COLOR: #ff0000}
+a:visited.white { COLOR: #ffffff; TEXT-DECORATION: none}
+a:link.white {COLOR: #ffffff; TEXT-DECORATION: none}
+a:hover.white {	COLOR: #ffff00; TEXT-DECORATION: underline}
+
+.bg_footer {BACKGROUND: url(../images/bg_footer.gif) repeat-x left top; HEIGHT: 35px}
+#footer {	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #ffffff; PADDING-TOP: 5px}
+#footer A {	FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: none}
+#footer A:hover {	COLOR: #ffffff; TEXT-DECORATION: underline}
+.tl_login {	BACKGROUND: url(../images/tl_login.gif) no-repeat left top; WIDTH: 20px; HEIGHT: 30px}
+.tc_login {	BACKGROUND: url(../images/tc_login.gif) repeat-x center}
+.tr_login {	BACKGROUND: url(../images/tr_login.gif) no-repeat right top; WIDTH: 20px}
+.ml_login {	BACKGROUND: url(../images/ml_login.gif) repeat-y left 50%; WIDTH: 20px}
+.mr_login {	BACKGROUND: url(../images/mr_login.gif) repeat-y right 50%; WIDTH: 20px}
+.style1 {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.style3 {BORDER-TOP-WIDTH: 1px; BORDER-RIGHT: #80b5d7 1px solid; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; COLOR: #FF0000; PADDING-TOP: 2px; BORDER-BOTTOM: #80b5d7 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #dae9f3; }
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.style4 {font-family: Arial, Helvetica, sans-serif}
+.style22 {PADDING-LEFT: 0px; FONT-SIZE: 10pt; PADDING-BOTTOM: 2px; COLOR: #0e4a92; PADDING-TOP: 2px; FONT-FAMILY: Arial; padding-right: 0px;}
+.style5 {font-size: 12px}
+.style6 {
+	color: #FF0000;
+	FONT-SIZE: 11pt;
+	FONT-FAMILY: Arial;
+	font-weight: bold;
+}
+.style23 {color: #FF0000}
+.textheader {
+	PADDING: 10px 0px 10px 0px;		
+	FONT-SIZE: 14pt;
+	COLOR: #fff;	
+	FONT-FAMILY: Arial;	
+}
+.textbold {
+	PADDING: 10px 0px 10px 0px;	
+	FONT-WEIGHT: bold;	
+	FONT-SIZE: 10pt;
+	COLOR: #006407;	
+	FONT-FAMILY: Arial;	
+}
+.textdonvi {
+	PADDING: 10px 0px 5px 10px;		
+	FONT-SIZE: 10pt;
+	COLOR: #fff;	
+	FONT-FAMILY: Tahoma;
+	background-color: #006600;
+}
+.navText {
+	font: 11px Arial, Helvetica, sans-serif;
+	color: #003366;
+	line-height:16px;	
+	text-decoration: none;
+	padding:10px;
+	}
+.table_main {background:#FFFFFF; border:1px solid #006407;}
+#navigation td {	
+	padding:5px;
+	}
+	
+#navigation a {
+	font: bold 11px Arial, Helvetica, sans-serif;
+	color: #D5EDB3;
+	line-height:16px;
+	/*letter-spacing:.1em;*/
+	text-decoration: none;
+	display:block;
+	border:1px solid #fff;
+	padding:20px;
+	}
+	
+#navigation a:hover {
+	background:#ddeedd;
+	color:#993300;
+	border:1px solid #006407;
+	}
