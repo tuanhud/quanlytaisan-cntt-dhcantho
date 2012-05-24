@@ -3,7 +3,7 @@
         private $hostname = "localhost";
         private $username = "root";
         private $password = "vertrigo";
-        private $dbname = "lv";
+        private $dbname = "QuanLyTaiSan";
         private $connection;                         
         private $flagconn = false;
         private $query;
