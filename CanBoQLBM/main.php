@@ -30,7 +30,7 @@
 	<!--Thẻ hiển thị thông tin khi đăng nhập-->
 	<div style="Z-INDEX: 1; LEFT: 557px; WIDTH: 200px; POSITION: absolute; TOP: 55px; HEIGHT: 30px" align="center">
 		<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-			<a class="white" href="doimatkhauUI.php">Đổi mật khẩu</a> | <a class="white" href="javascript:thoat();">Thoát</a>
+			<a class="white" href="doimatkhauUI.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
     		<br>
     		Xin chào, <?=$_SESSION['hoten']?>
     		<br>(<?=$_SESSION['mschsv']?>)    
@@ -119,6 +119,14 @@
 				?>
                   <td class="bordersv"><div class="bg" align="right">Họ tên</div></td>
                   <td class="bordersv"><div class="bold" align="left"><?=$row['HOIVIEN_HOTEN']?></div></td>
+                </tr>
+                 <tr>
+                  <td class="bordersv"><div class="bg" align="right">Ngày sinh</div></td>
+                  <td class="bordersv"><div class="bold" align="left"><?=$row['HOIVIEN_EMAIL']?></div></td>
+                </tr>
+                 <tr>
+                  <td class="bordersv"><div class="bg" align="right">Giới tính</div></td>
+                  <td class="bordersv"><div class="bold" align="left"><?=$row['HOIVIEN_EMAIL']?></div></td>
                 </tr>
                 <tr>
                   <td class="bordersv"><div class="bg" align="right">Email</div></td>
