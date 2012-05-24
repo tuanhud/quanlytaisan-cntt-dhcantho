@@ -5,44 +5,44 @@
             <div class="yui3-menu-content">
                 <ul class="first-of-type">                    
                     <li>
-                        <a class="yui3-menu-label" href="#"><em>Bộ môn - Người dùng - Niên khóa</em></a>
+                        <a class="yui3-menu-label" href="#"><em>Mua sắm</em></a>
                         <div id="caphoi" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatbomon.php">Cập nhật bộ môn</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnguoidung.php">Cập nhật người dùng</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnienkhoa.php">Cập nhật niên khóa</a> </li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatbomon.php">Văn phòng phẩm</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnguoidung.php">Tài sản cố định</a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <a class="yui3-menu-label" href="#ban_chucvu"><em>Tài sản - Thiết bị</em></a>
+                        <a class="yui3-menu-label" href="#ban_chucvu"><em>Kiểm kê</em></a>
                         <div id="ban_chucvu" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatloaithietbi.php">Cập nhật loại thiết bị</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatthietbi.php">Cập nhật thiết bị</a></li>                                  
-									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhattaisanhienco.php">Cập nhật tài sản hiện có</a></li>                     
-									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="duyetyeucaumuatb.php">Duyệt yêu cầu thiết bị</a></li>                     
-									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatyeucaumuatb.php">Yêu cầu mua thiết bị mới</a></li>                                                    
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatloaithietbi.php">Cập nhật loại kiểm kê</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatthietbi.php">Cập nhật phiếu kiểm kê</a></li>                                  
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhattaisanhienco.php">Cập nhật nội dung kiểm kê</a></li>                     
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="duyetyeucaumuatb.php">Cập nhật nội dung con</a></li>                     
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatyeucaumuatb.php">Cập nhật phiếu mẩu</a></li>                                                    
                                 </ul>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <a class="yui3-menu-label" href="#"><em>Đợt mua sắm - kiểm kê</em></a>
+                        <a class="yui3-menu-label" href="#"><em>Thanh lý</em></a>
                         <div id="#" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật đợt mua sắm</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật đợt kiểm kê</a></li>                                    
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật tài sản thanh lý</a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
                     </li>
 					 <li>
-                        <a class="yui3-menu-label" href="#"><em>Báo cáo</em></a>
+                        <a class="yui3-menu-label" href="#"><em>Report</em></a>
                         <div id="#" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
@@ -52,7 +52,43 @@
                             </div>
                         </div>
                     </li>
-                	<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Thông tin cá nhân</a></li>
-                </ul>
+					<li>
+                        <a class="yui3-menu-label" href="#"><em>Quý - Năm</em></a>
+                        <div id="#" class="yui3-menu">
+                            <div class="yui3-menu-content">
+                                <ul>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật quý</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật năm</a></li>                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+					<li>
+                        <a class="yui3-menu-label" href="#"><em>Đơn vị - Người dùng - Quyền</em></a>
+                        <div id="#" class="yui3-menu">
+                            <div class="yui3-menu-content">
+                                <ul>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật đơn vị</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật người dùng</a></li>                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật quyền</a></li>
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật quyền của người dùng</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                	<li>
+                        <a class="yui3-menu-label" href="#"><em>Tài sản</em></a>
+                        <div id="#" class="yui3-menu">
+                            <div class="yui3-menu-content">
+                                <ul>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật loại tài sản - thiết bị</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật tài sản - thiết bị</a></li>
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật tài sản - thiết bị thuộc đơn vị</a></li>                                    
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật thuộc tính tài sản - thiết bị</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+					
+					</ul>
             </div>
 </div>
