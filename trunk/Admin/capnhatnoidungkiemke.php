@@ -102,7 +102,7 @@ $(document).ready(function() {
          <td class="cm_header"><table width="100%" border="0" cellspacing="0" cellpadding="0">
            <tbody><tr>
              
-             <td class="tittle_header">&nbsp;</td>
+             <td class="tittle_header"><img src="../images/ctulogo1.gif" alt=""></td>
              
            </tr>
          </tbody></table></td>
@@ -143,7 +143,7 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm thiết bị hiện có </td>
+          <td width="419" align="center">Thêm nội dung kiểm kê</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -152,90 +152,29 @@ $(document).ready(function() {
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-              		<td height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
+                <td height="22" class="level_1_1"></td>
+                <td width="50%" class="level_1_1"></td>
               </tr>
-			  <tr>
-					<td height="22" align="right" class="level_1_2">Chọn loại thiết bị</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select></td>
-               <tr>
-					<td height="22" align="right" class="level_1_2">Tên thiết bị</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			 <tr>
-					<td height="22" align="right" class="level_1_1">Đơn vị tính</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_donvitinh" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
-			<tr>
-					<td height="22" align="right" class="level_1_1">Nhãn hiệu</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_nhanhieu" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Model</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Năm đưa vào sử dụng</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Số seri</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Công suất thiết bị</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_congsuatthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>   
-			<tr>
-					<td height="22" align="right" class="level_1_1">Công suất tiêu thụ</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_congsuattieuthu" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>  
-			<tr>
-					<td height="22" align="right" class="level_1_1">Điện thế cung cấp</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_dienthecungcap" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
-			<tr>
-					<td height="22" align="right" class="level_1_1">Nguyên giá</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_nguyengia" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Tình trạng</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tinhtrang" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
-			<tr>
-					<td height="22" align="right" class="level_1_1">Diễn giải</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_diengiai" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+                <td height="22" align="right" class="level_1_2">Tên nội dung kiểm kê: </td>
+                <td width="50%" align="center" class="level_1_2"><label for="txttennd"></label>
+                  <input type="text" name="txttennd" id="txttennd" style="width:100%"></td>
               </tr>
-			  
-			  <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_1">
-					</td>
+              <tr>
+                <td height="22" align="right" class="level_1_1">Tên đơn vị tính:</td>
+                <td width="50%" align="center" class="level_1_1"><label for="txttendvt"></label>
+                  <input type="text" name="txttendvt" id="txttendvt" style="width:100%"></td>
               </tr>
-			  
-			   <tr>
-					<td height="22" align="right" class="level_1_2">Thêm bằng file Excel</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="file_ecxel" maxlength="31" type="file" style="width:100%"></td>
-				</tr>
-				<tr>
-              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
+              <tr>
+                <td height="22" align="right" class="level_1_2">Ghi chú nội dung:</td>
+                <td width="50%" align="center" class="level_1_2"><label for="txtghichund"></label>
+                  <textarea name="txtghichund" id="txtghichund" style="width:100%"></textarea></td>
+              </tr>
+              <tr>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
+              </tr>
+              <tr>
+                <td colspan="2" height="22" align="center" class="level_1_1">&nbsp;</td>
               </tr>  
               </tbody>
            </table>
@@ -249,7 +188,7 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa thiết bị hiện có</td>
+          <td width="419" align="center">Sửa nội dung kiểm kê</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -257,81 +196,34 @@ $(document).ready(function() {
           	<form name="frm_suaban">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
-              <tr>
-              		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
+              <tr class="level_1_1">
+              		<td height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_2">Chọn loại thiết bị</td>
+					<td height="22" align="right" class="level_1_2">Chọn nội dung kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_2">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select></td>
                <tr>
-					<td height="22" align="right" class="level_1_2">Tên thiết bị</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select></td>
+					<td height="22" align="right" class="level_1_1">Tên nội dung kiểm kê mới:</td>
+					<td width="50%" align="left" class="level_1_2"><label for="txttenndmoi"></label>
+					  <input type="text" name="txttenndmoi" id="txttenndmoi" style="width:100%"></td>
 			</tr>
 			 <tr>
-					<td height="22" align="right" class="level_1_1">Đơn vị tính</td>
-					<td width="50%" align="left" class="level_1_1">
+					<td height="22" align="right" class="level_1_2">Tên đơn vị tính:</td>
+					<td width="50%" align="left" class="level_1_2">
                     	<input name="txt_donvitinh" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
 			</tr> 
 			<tr>
-					<td height="22" align="right" class="level_1_1">Nhãn hiệu</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_nhanhieu" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Model</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Năm đưa vào sử dụng</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Số seri</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Công suất thiết bị</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_congsuatthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>   
-			<tr>
-					<td height="22" align="right" class="level_1_1">Công suất tiêu thụ</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_congsuattieuthu" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>  
-			<tr>
-					<td height="22" align="right" class="level_1_1">Điện thế cung cấp</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_dienthecungcap" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
-			<tr>
-					<td height="22" align="right" class="level_1_1">Nguyên giá</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_nguyengia" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Tình trạng</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tinhtrang" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
-			<tr>
-					<td height="22" align="right" class="level_1_1">Diễn giải</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_diengiai" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+					<td height="22" align="right" class="level_1_1">Ghi chú nội dung:</td>
+					<td width="50%" align="left" class="level_1_1"><textarea name="txt_nhanhieu" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
 			</tr> 
             <tr>
-						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" class="button_1" value="Lưu">
-                        </td>
-			</tr>
+              <td colspan="2" height="22" align="center" class="level_1_2">
+                <input type="button" class="button_1" value="Lưu">
+                </td>
+            </tr>
 				  						  
             </tbody>
         </table>
@@ -345,7 +237,7 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa  thiết bị hiện có </td>
+          <td width="419" align="center">Xóa nội dung kiểm kê</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -358,7 +250,7 @@ $(document).ready(function() {
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên loại thiết bị </td>
+					<td height="22" align="right" class="level_1_1">Chọn nội dung kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_1">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select>                       
@@ -366,14 +258,22 @@ $(document).ready(function() {
 					
 			</tr>              
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên thiết bị </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenthietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
+					<td height="22" align="right" class="level_1_1">Mã nội dung kiểm kê:</td>
+					<td width="50%" align="left" class="level_1_1"><label for="txtmand"></label>
+					  <input type="text" name="txtmand" id="txtmand" style="width:100%"></td>
 					
 			</tr>    
-            <tr>
+             <tr>
+               <td height="22" align="right" class="level_1_2">Tên đơn vị tính:</td>
+               <td height="22" align="center" class="level_1_2"><label for="txtxoatendvt"></label>
+                 <input type="text" name="txtxoatendvt" id="txtxoatendvt" style="width:100%"></td>
+             </tr>
+             <tr>
+               <td height="22" align="right" class="level_1_1">Ghi chú nội dung kiểm kê:</td>
+               <td height="22" align="center" class="level_1_1"><label for="txtxoaghichundkk"></label>
+                 <input type="text" name="txtxoaghichundkk" id="txtxoaghichundkk" style="width:100%"></td>
+             </tr>
+             <tr>
 						<td colspan="2" height="22" align="center" class="level_1_2">
                         <input type="button" class="button_1" value="Xóa">
                         </td>
