@@ -19,7 +19,6 @@
 <script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
 <script type="text/javascript" src="../js/ajax.js"></script>
 <script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -63,10 +62,11 @@ if (keypressed >= 48 && keypressed <= 57)
 </script>	 
 
 <!--Thẻ hiển thị thông tin khi đăng nhập-->
-<div style="Z-INDEX: 1; LEFT: 575px; WIDTH: 200px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
+<div style="Z-INDEX: 1; LEFT: 559px; WIDTH: 200px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
 <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-	<a class="white" href="javascript:thoat();">Thoát</a>
-    <br>Xin chào, <?=$_SESSION['hoten']?>
+	<a class="white" href="../doimatkhauUI.php">Đổi thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
+    <br>
+    Xin chào, <?=$_SESSION['hoten']?>
     <br>
 	(<?=$_SESSION['msad']?>)
     </font>
@@ -98,6 +98,7 @@ if (keypressed >= 48 && keypressed <= 57)
     
   </tr>	
   <!--Kết thúc của HEADER-->
+  
   <!--Bắt đàu của MAINPAGE-->
 
   <tr>
@@ -161,7 +162,7 @@ if (keypressed >= 48 && keypressed <= 57)
 						<td  align="left" class="level_1_2"></td>
 				  </tr>
 				   <tr>
-						<td colspan="4" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Sửa" ></td>
+						<td colspan="4" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Cập nhật" ></td>
 				  </tr>
 				  </tbody>
 			   </table>

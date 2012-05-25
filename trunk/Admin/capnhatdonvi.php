@@ -20,9 +20,11 @@
 <script type="text/javascript" src="../js/ajax.js"></script>
 <script type="text/javascript" src="../js/fill.js"></script>
 <script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/capnhatdonvi.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
-function keypress(e){
+function keypress(e)
+{
 var keypressed = null;
 if (window.event)
 	keypressed = window.event.keyCode; //IE
@@ -40,26 +42,7 @@ if (keypressed >= 48 && keypressed <= 57)
 	}
 	return false;
 }
-}
-$(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
-	});
-	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
-	});
-}); 
+} 
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
@@ -148,7 +131,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
+          	<form name="frm_themdonvi" id="frm_themdonvi">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -158,10 +141,10 @@ $(document).ready(function() {
                <tr>
 					<td height="22" align="right" class="level_1_1">Nhập tên đơn vị </td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tenban" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+                    	<input id="txt_tendonvithem" name="txt_tendonvithem" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
 			</tr>              
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themdonvi" id="btn_themdonvi" class="button_1" value="Thêm"></td>
               </tr>
               </tbody>
            </table>
