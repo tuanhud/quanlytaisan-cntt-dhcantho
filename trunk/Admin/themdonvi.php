@@ -12,8 +12,8 @@
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			$row = mysql_fetch_array($result,MYSQL_NUM);
-			$madonvi = $row[0]+1;
-			$sql = "insert into donvi values('".$madonvi."', '".$_POST['txt_tendonvithem']."')";
+			$ma = $row[0]+1;
+			$sql = "insert into donvi values('".$ma."', '".$_POST['txt_tendonvithem']."')";
 			$db->setQuery($sql);
 			//echo $maloaisach;
 					if($db->executeQuery()!=1)
