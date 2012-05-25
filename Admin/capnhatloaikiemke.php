@@ -102,7 +102,7 @@ $(document).ready(function() {
          <td class="cm_header"><table width="100%" border="0" cellspacing="0" cellpadding="0">
            <tbody><tr>
              
-             <td class="tittle_header">&nbsp;</td>
+             <td class="tittle_header"><img src="../images/ctulogo1.gif" alt=""></td>
              
            </tr>
          </tbody></table></td>
@@ -139,12 +139,12 @@ $(document).ready(function() {
         <!--KET THUC MENU-->
         <tr>
     <td height="100%" align="center" valign="middle">   
-		 <table width="500" border="0" cellpadding="0" cellspacing="0">
+		 <table width="521" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm loại thiết bị </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+          <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="275" align="center">Thêm loại kiểm kê</td>
+          <td width="141" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
@@ -156,33 +156,19 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
                <tr>
-					<td height="22" align="right" class="level_1_2">Tên loại thiết bị</td>
+					<td height="22" align="right" class="level_1_2">Tên loại kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_2">
                     	<input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			 <tr>
-					<td height="22" align="right" class="level_1_1">Diễn giải</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_diengiai" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
 			</tr>                
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
               </tr>
 			  
 			  <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_1">
-					</td>
-              </tr>
-			  
-			   <tr>
-					<td height="22" align="right" class="level_1_2">Thêm bằng file Excel</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="file_ecxel" maxlength="31" type="file" style="width:100%"></td>
-				</tr>
-				<tr>
-              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
-              </tr>  
-              </tbody>
+			    <td colspan="2" height="22" align="center" class="level_1_1">
+			      </td>
+			    </tr>
+				</tbody>
            </table>
            </form>
           </td>
@@ -190,12 +176,12 @@ $(document).ready(function() {
         </tbody>
         </table>
 
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <table width="519" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa loại thiết bị </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+          <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="275" align="center">Sửa loại kiểm kê</td>
+          <td width="139" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
@@ -207,29 +193,23 @@ $(document).ready(function() {
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên loại thiết bị </td>
+					<td height="22" align="right" class="level_1_1">Chọn tên loại kiểm kê: </td>
 					<td width="50%" align="left" class="level_1_1">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>
             <tr>
-					<td height="22" align="right" class="level_1_1">Tên mới </td>
+					<td height="22" align="right" class="level_1_1">Tên mới: </td>
 					<td width="50%" align="left" class="level_1_1">
                     	<input name="txt_tenloaithietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)">
 					</td>
-			</tr>              
-             <tr>
-					<td height="22" align="right" class="level_1_2">Diễn giải</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_diengiai" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)">
-					</td>
 			</tr> 
             <tr>
-						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" class="button_1" value="Lưu">
-                        </td>
-			</tr>
+              <td colspan="2" height="22" align="center" class="level_1_2">
+                <input type="button" class="button_1" value="Lưu">
+                </td>
+            </tr>
 				  						  
             </tbody>
         </table>
@@ -239,12 +219,12 @@ $(document).ready(function() {
       </tbody>
       </table>
 
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <table width="518" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa loại thiết bị</td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+          <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="275" align="center">Xóa loại kiểm kê</td>
+          <td width="138" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
@@ -256,14 +236,19 @@ $(document).ready(function() {
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên loại thiết bị </td>
+					<td height="22" align="right" class="level_1_1">Chọn loại kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_1">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>              
               <tr>
-            <tr>
+              <tr>
+                <td height="22" align="right" class="level_1_2">Mã loại kiểm kê:</td>
+                <td height="22" align="center" class="level_1_2"><label for="txtmakk"></label>
+                  <input name="txtmakk" type="text" disabled id="txtmakk" style="width:100%" readonly="readonly"></td>
+              </tr>
+              <tr>
 						<td colspan="2" height="22" align="center" class="level_1_2">
                         <input type="button" class="button_1" value="Xóa">
                         </td>
