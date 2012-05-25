@@ -168,11 +168,11 @@ $(document).ready(function() {
                     	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
 			</tr> 
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã đặc điểm văn phòng phẩm</td>
+					<td height="30" align="right" class="level_1_1">Chọn mã đặc điểm văn phòng phẩm</td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:85%;">
+                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:75%;">
                         </select>
-                    	<img src="../images/add.png" width="23" height="23"></td>
+                    	<input type="button" class="button_1" value="Thêm"></td>
 			</tr> 
                  <tr>
 					<td height="22" align="right" class="level_1_2">Tên đặc điểm văn phòng phẩm</td>
