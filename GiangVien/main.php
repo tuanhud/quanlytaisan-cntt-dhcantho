@@ -122,6 +122,14 @@
                   <td class="bordersv"><div class="bold" align="left"><?=$row['HOIVIEN_HOTEN']?></div></td>
                 </tr>
                 <tr>
+                  <td class="bordersv"><div class="bg" align="right">Ngày sinh</div></td>
+                  <td class="bordersv"><div class="bold" align="left"><?=$row['HOIVIEN_EMAIL']?></div></td>
+                </tr>
+                 <tr>
+                  <td class="bordersv"><div class="bg" align="right">Giới tính</div></td>
+                  <td class="bordersv"><div class="bold" align="left"><?=$row['HOIVIEN_EMAIL']?></div></td>
+                </tr>
+                <tr>
                   <td class="bordersv"><div class="bg" align="right">Email</div></td>
                   <td class="bordersv"><div class="bold" align="left"><?=$row['HOIVIEN_EMAIL']?></div></td>
                 </tr>
