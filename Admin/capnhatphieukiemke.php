@@ -161,12 +161,12 @@ $(document).ready(function() {
 			      <select name="loaikk" id="loaikk" style="width:100%">
 			        </select></td>
 			    <tr>
-					<td height="22" align="right" class="level_1_2">Tên phiếu kiểm kê: </td>
-					<td width="50%" align="left" class="level_1_2"><label for="txttenpkk"></label>
+					<td height="22" align="right" class="level_1_1">Tên phiếu kiểm kê: </td>
+					<td width="50%" align="left" class="level_1_1"><label for="txttenpkk"></label>
 					  <input type="text" name="txttenpkk" id="txttenpkk" style="width:100%"></td>
                <tr>
-                 <td height="22" align="right" class="level_1_1">Ngày kiểm kê:</td>
-                 <td align="left" class="level_1_1"><label for="ngktkk4">Ngày</label>
+                 <td height="22" align="right" class="level_1_2">Ngày kiểm kê:</td>
+                 <td align="left" class="level_1_2"><label for="ngktkk4">Ngày</label>
                    <select name="ng" id="ng5" style="width:40">
                      <option value="1" selected>1</option>
                      <option value="2">2</option>
@@ -305,11 +305,11 @@ $(document).ready(function() {
 					<td width="50%" align="left" class="level_1_2"><textarea name="txt_tenthietbi" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
 			</tr>         
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
               </tr>
 			  
 			  <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_1">
+              		<td colspan="2" height="22" align="center" class="level_1_2">
 					</td>
               </tr>  
               </tbody>
@@ -333,8 +333,8 @@ $(document).ready(function() {
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-                <td height="22" class="level_1_2"></td>
-                <td class="level_1_2"></td>
+                <td height="22" class="level_1_1"></td>
+                <td class="level_1_1"></td>
               </tr>
               <tr>
               		<td height="22" class="level_1_2" align="right">Chọn phiếu kiểm kê: </td>
@@ -342,8 +342,8 @@ $(document).ready(function() {
                     </select></td>
               </tr>   
               <tr>
-                <td height="22" align="right" class="level_1_2">Chọn loại kiểm kê:</td>
-                <td height="22" align="center" class="level_1_2"><label for="select2"></label>
+                <td height="22" align="right" class="level_1_1">Chọn loại kiểm kê:</td>
+                <td height="22" align="center" class="level_1_1"><label for="select2"></label>
                   <select name="select2" id="select2" style="width:100%">
                   </select></td>
               </tr>
@@ -421,8 +421,8 @@ $(document).ready(function() {
                   </select></td>
               </tr>
               <tr>
-                <td height="22" align="right" class="level_1_1">Ngày kết thúc kiểm kê:</td>
-                <td align="left" class="level_1_1"><label for="ngktkk2">Ngày</label>
+                <td height="22" align="right" class="level_1_2">Ngày kết thúc kiểm kê:</td>
+                <td align="left" class="level_1_2"><label for="ngktkk2">Ngày</label>
                   <select name="ng3" id="ng3" style="width:40">
                     <option value="1" selected>1</option>
                     <option value="2">2</option>
@@ -489,8 +489,8 @@ $(document).ready(function() {
                   </select></td>
               </tr>
               <tr>
-                <td height="22" align="right" class="level_1_2">Diễn giải:</td>
-                <td height="22" align="center" class="level_1_2"><textarea name="txt_tenthietbi2" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+                <td height="22" align="right" class="level_1_1">Diễn giải:</td>
+                <td height="22" align="center" class="level_1_1"><textarea name="txt_tenthietbi2" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
               </tr>
               <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
@@ -498,7 +498,7 @@ $(document).ready(function() {
                 </td>
             </tr>
             <tr>
-              <td colspan="2" height="22" align="center" class="level_1_2">&nbsp;</td>
+              <td colspan="2" height="22" align="center" class="level_1_1">&nbsp;</td>
             </tr>
 				  						  
               </tbody>
@@ -522,24 +522,24 @@ $(document).ready(function() {
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-              		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
+              		<td height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn phiếu kiểm kê: </td>
-					<td width="50%" align="left" class="level_1_1">
+					<td height="22" align="right" class="level_1_2">Chọn phiếu kiểm kê: </td>
+					<td width="50%" align="left" class="level_1_2">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 					
 			</tr>
              <tr >
-               <td height="22" align="right" class="level_1_2">Tên phiếu kiểm kê: </td>
-               <td align="left" class="level_1_2"><label for="txttenpkk"></label>
+               <td height="22" align="right" class="level_1_1">Tên phiếu kiểm kê: </td>
+               <td align="left" class="level_1_1"><label for="txttenpkk"></label>
                  <input type="text" name="txttenpkk2" id="txttenpkk" style="width:100%"></td>
              <tr>
-               <td height="22" align="right" class="level_1_1">Ngày kiểm kê:</td>
-               <td align="left" class="level_1_1"><label for="ngktkk7">Ngày</label>
+               <td height="22" align="right" class="level_1_2">Ngày kiểm kê:</td>
+               <td align="left" class="level_1_2"><label for="ngktkk7">Ngày</label>
                  <select name="ng6" id="ng" style="width:40">
                    <option value="1" selected>1</option>
                    <option value="2">2</option>
@@ -678,7 +678,7 @@ $(document).ready(function() {
                <td align="left" class="level_1_2"><textarea name="txt_tenthietbi2" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
              </tr>
              <tr>
-               <td colspan="2" height="22" align="center" class="level_1_2">
+               <td colspan="2" height="22" align="center" class="level_1_1">
                  <input type="button" class="button_1" value="Xóa">
                  </td>
              </tr>

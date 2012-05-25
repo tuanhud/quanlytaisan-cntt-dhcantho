@@ -161,11 +161,11 @@ $(document).ready(function() {
                     	<input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
 			</tr>                
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
               </tr>
 			  
 			  <tr>
-			    <td colspan="2" height="22" align="center" class="level_1_1">
+			    <td colspan="2" height="22" align="center" class="level_1_2">
 			      </td>
 			    </tr>
 				</tbody>
@@ -189,12 +189,12 @@ $(document).ready(function() {
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-              		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
+              		<td height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên loại kiểm kê: </td>
-					<td width="50%" align="left" class="level_1_1">
+					<td height="22" align="right" class="level_1_2">Chọn tên loại kiểm kê: </td>
+					<td width="50%" align="left" class="level_1_2">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
@@ -210,8 +210,11 @@ $(document).ready(function() {
                 <input type="button" class="button_1" value="Lưu">
                 </td>
             </tr>
+            <tr>
+              <td colspan="2" height="22" align="center" class="level_1_1">&nbsp;</td>
+            </tr>
 				  						  
-            </tbody>
+              </tbody>
         </table>
         	</form>
        </td>
@@ -232,20 +235,20 @@ $(document).ready(function() {
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-              		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
+              		<td height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn loại kiểm kê:</td>
-					<td width="50%" align="left" class="level_1_1">
+					<td height="22" align="right" class="level_1_2">Chọn loại kiểm kê:</td>
+					<td width="50%" align="left" class="level_1_2">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>              
               <tr>
               <tr>
-                <td height="22" align="right" class="level_1_2">Mã loại kiểm kê:</td>
-                <td height="22" align="center" class="level_1_2"><label for="txtmakk"></label>
+                <td height="22" align="right" class="level_1_1">Mã loại kiểm kê:</td>
+                <td height="22" align="center" class="level_1_1"><label for="txtmakk"></label>
                   <input name="txtmakk" type="text" disabled id="txtmakk" style="width:100%" readonly="readonly"></td>
               </tr>
               <tr>
@@ -253,8 +256,11 @@ $(document).ready(function() {
                         <input type="button" class="button_1" value="Xóa">
                         </td>
 			</tr>
+              <tr>
+                <td colspan="2" height="22" align="center" class="level_1_1">&nbsp;</td>
+              </tr>
 				  						  
-            </tbody>
+              </tbody>
         </table>
         	</form>
        </td>
