@@ -199,9 +199,131 @@ $(document).ready(function() {
         </tr>		
         </tbody>
         </table>
+        <br>
+<table width="500" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr class="main_1">
+          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="419" align="center">Sửa nhà cung cấp cho văn phòng phẩm</td>
+          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+        </tr>
+        <tr>
+          <td colspan="3" align="left">
+          	<form name="frm_themban">
+            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+              <tbody>
+              <tr>
+              		<td height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
+              </tr>
+              <td height="22" align="right" class="level_1_2">Chọn mã  văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_2">
+                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                        </select>                       
+                    </td>
+ 
+               <tr>
+					<td height="22" align="right" class="level_1_1">Tên văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+			</tr>     
+            <tr>
+					<td height="22" align="right" class="level_1_2">Chọn mã nhà cung cấp văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_2">
+					  <select name="cbo_tenloaithietbi2" class="cbo" style="width:100%;">
+					    </select>
+				</td>
+			</tr> 
+            <tr>
+					<td height="22" align="right" class="level_1_1">Tên nhà cung cấp văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+			</tr> 
+            <tr>
+					<td height="22" align="right" class="level_1_2">Địa chỉ nhà cung cấp văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_2">
+                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+			</tr> 
+            <tr>
+					<td height="22" align="right" class="level_1_1">SĐT nhà cung cấp văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+			</tr>               
+              <tr>
+                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Lưu"></td>
+              </tr>
+			  
 
+           </table>
+           </form>
+          </td>
+        </tr>		
+        </tbody>
+        </table>
+        <br/>
+        <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr class="main_1">
+          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="419" align="center">Xóa nhà cung cấp cho văn phòng phẩm</td>
+          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+        </tr>
+        <tr>
+          <td colspan="3" align="left">
+          	<form name="frm_themban">
+            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+              <tbody>
+              <tr>
+              		<td height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
+              </tr>
+              <td height="22" align="right" class="level_1_2">Chọn mã  văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_2">
+                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                        </select>                       
+                    </td>
+ 
+               <tr>
+					<td height="22" align="right" class="level_1_1">Tên văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+			</tr>     
+            <tr>
+					<td height="22" align="right" class="level_1_2">Chọn mã nhà cung cấp văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_2">
+					  <select name="cbo_tenloaithietbi2" class="cbo" style="width:100%;">
+					    </select>
+				</td>
+			</tr> 
+            <tr>
+					<td height="22" align="right" class="level_1_1">Tên nhà cung cấp văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+			</tr> 
+            <tr>
+					<td height="22" align="right" class="level_1_2">Địa chỉ nhà cung cấp văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_2">
+                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+			</tr> 
+            <tr>
+					<td height="22" align="right" class="level_1_1">SĐT nhà cung cấp văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+			</tr>               
+              <tr>
+                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Xóa"></td>
+              </tr>
+			  
+
+           </table>
+           </form>
+          </td>
+        </tr>		
+        </tbody>
+        </table>
         </td>
 </tr>
+
 </table>
 
 		
