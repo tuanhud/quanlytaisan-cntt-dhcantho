@@ -14,14 +14,13 @@
                                         <div id="hv" class="yui3-menu">
                                             <div class="yui3-menu-content">
                                                 <ul>                                                                          
-                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật nhà xuất</a></li>
-                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật nhà cung ứng</a></li>
-													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật loại văn phòng phẩm</a></li>  
-                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật văn phòng phẩm được cung cấp</a></li>  
-													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật văn phòng phẩm</a></li>  
-													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật đơn vị tính</a></li>  
-													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật đặc điểm</a></li>  
-													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật đặc điểm của văn phòng phẩm</a></li>  
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnhasanxuat.php">Cập nhật nhà xuất</a></li>
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnhacungcap.php">Cập nhật nhà cung ứng</a></li>
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatloaivanphongpham.php">Cập nhật loại văn phòng phẩm</a></li>  
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatvppduoccungcap.php">Cập nhật văn phòng phẩm được cung cấp</a></li>  
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatvanphongpham.php">Cập nhật văn phòng phẩm</a></li>  
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatdonvitinh.php">Cập nhật đơn vị tính</a></li>   
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatdacdiemvpp.php">Cập nhật đặc điểm của văn phòng phẩm</a></li>  
 													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Duyệt phiếu dự toán văn phòng phẩm</a></li>  
                                                 </ul>
                                             </div>
