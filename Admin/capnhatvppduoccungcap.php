@@ -63,7 +63,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
-  
 <table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tbody>
   
