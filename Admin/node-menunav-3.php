@@ -21,7 +21,7 @@
 													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatvanphongpham.php">Cập nhật văn phòng phẩm</a></li>  
 													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatdonvitinh.php">Cập nhật đơn vị tính</a></li>   
 													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatdacdiemvpp.php">Cập nhật đặc điểm của văn phòng phẩm</a></li>  
-													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Duyệt phiếu dự toán văn phòng phẩm</a></li>  
+													<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="duyetphieudutruvpp.php">Duyệt phiếu dự toán văn phòng phẩm</a></li>  
                                                 </ul>
                                             </div>
                                         </div>
