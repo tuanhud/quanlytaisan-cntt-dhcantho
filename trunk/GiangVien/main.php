@@ -30,10 +30,10 @@
   <tr> 
     <td height="26" valign="middle">       	 
 	<!--Thẻ hiển thị thông tin khi đăng nhập-->
-	<div style="Z-INDEX: 1; LEFT: 575px; WIDTH: 200px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
+	<div style="Z-INDEX: 1; LEFT: 554px; WIDTH: 200px; POSITION: absolute; TOP: 52px; HEIGHT: 30px" align="center">
 		<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-			<a class="white" href="doimatkhauUI.php">Đổi mật khẩu</a> | <a class="white" href="javascript:thoat();">Thoát</a>
-    		<br>Xin chào, <?=$_SESSION['hoten']?>
+			<a class="white" href="doimatkhauUI.php">Cập nhật thông tin cá nhân| <a class="white" href="javascript:thoat();">Thoát</a>
+<br>Xin chào, <?=$_SESSION['hoten']?>
     		<br>(<?=$_SESSION['msclb']?>)    
     	</font>
     </div>

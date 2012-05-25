@@ -50,11 +50,11 @@
                         <div id="ban_chucvu" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatloaithietbi.php">Cập nhật loại kiểm kê</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatthietbi.php">Cập nhật phiếu kiểm kê</a></li>                                  
-									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhattaisanhienco.php">Cập nhật nội dung kiểm kê</a></li>                     
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatloaikiemke.php">Cập nhật loại kiểm kê</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatphieukiemke.php">Cập nhật phiếu kiểm kê</a></li>                                  
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnoidungkiemke.php">Cập nhật nội dung kiểm kê</a></li>                     
 									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="duyetyeucaumuatb.php">Cập nhật nội dung con</a></li>                     
-									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatyeucaumuatb.php">Cập nhật phiếu mẩu</a></li>                                                    
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatphieumau.php">Cập nhật phiếu mẩu</a></li>                                                    
                                 </ul>
                             </div>
                         </div>
@@ -64,23 +64,13 @@
                         <div id="#" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật tài sản thanh lý</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatthanhly.php">Cập nhật tài sản thanh lý</a></li>
                                    
                                 </ul>
                             </div>
                         </div>
                     </li>
-					 <li>
-                        <a class="yui3-menu-label" href="#"><em>Report</em></a>
-                        <div id="#" class="yui3-menu">
-                            <div class="yui3-menu-content">
-                                <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">In danh sách yêu cầu thiết bị</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">In danh sách thiết bị hiện có</a></li>                                    
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
+		
 					<li>
                         <a class="yui3-menu-label" href="#"><em>Quý - Năm</em></a>
                         <div id="#" class="yui3-menu">
@@ -118,7 +108,17 @@
                             </div>
                         </div>
                     </li>
-					
+					 <li>
+                        <a class="yui3-menu-label" href="#"><em>Report</em></a>
+                        <div id="#" class="yui3-menu">
+                            <div class="yui3-menu-content">
+                                <ul>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">In danh sách yêu cầu thiết bị</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">In danh sách thiết bị hiện có</a></li>                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
 					</ul>
             </div>
 </div>
