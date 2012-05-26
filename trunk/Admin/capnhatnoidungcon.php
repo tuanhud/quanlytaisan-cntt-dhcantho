@@ -89,7 +89,7 @@
         <tbody>
           <tr class="main_1">
             <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-            <td width="419" align="center">Thêm thiết bị hiện có </td>
+            <td width="419" align="center">Thêm nội dung con</td>
             <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
           </tr>
           <tr>
@@ -101,56 +101,19 @@
                     <td class="level_1_1"></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_2">Chọn loại thiết bị</td>
-                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    <td height="22" align="right" class="level_1_2">Chọn nội dung lớn:</td>
+                    <td width="50%" align="left" class="level_1_2"><select name="cbotenndl" class="cbo" style="width:100%;">
                     </select></td>
+                  
                   <tr>
-                    <td height="22" align="right" class="level_1_2">Tên thiết bị</td>
-                    <td width="50%" align="left" class="level_1_2"><input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+                    <td height="22" align="right" class="level_1_1">Mã nội dung lớn:</td>
+                    <td height="22" align="center" class="level_1_1"><label for="txtmndl"></label>
+                      <input name="txtmndl" type="text" disabled id="txtmndl" style="width:100%" readonly="readonly"></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_1">Đơn vị tính</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_donvitinh" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Nhãn hiệu</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_nhanhieu" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Model</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Năm đưa vào sử dụng</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Số seri</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Công suất thiết bị</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_congsuatthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Công suất tiêu thụ</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_congsuattieuthu" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Điện thế cung cấp</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_dienthecungcap" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Nguyên giá</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_nguyengia" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Tình trạng</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_tinhtrang" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Diễn giải</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_diengiai" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+                    <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
+                    <td height="22" align="center" class="level_1_1"><label for="txttendc"></label>
+                      <input type="text" name="txttendc" id="txttenndc" style="width:100%"></td>
                   </tr>
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
@@ -158,19 +121,108 @@
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_1"></td>
                   </tr>
+                </tbody>
+              </table>
+              
+            </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr class="main_1">
+            <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+            <td width="419" align="center">Sửa nội dung con</td>
+            <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left"><form name="frm_themban">
+              <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
+                <tbody>
                   <tr>
-                    <td height="22" align="right" class="level_1_2">Thêm bằng file Excel</td>
-                    <td width="50%" align="left" class="level_1_2"><input name="file_ecxel" maxlength="31" type="file" style="width:100%"></td>
+                    <td height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
                   </tr>
                   <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
+                    <td height="22" align="right" class="level_1_2">Chọn nội dung lớn:</td>
+                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    </select></td>
+                  
+                  <tr>
+                    <td height="22" align="right" class="level_1_1">Mã nội dung lớn:</td>
+                    <td height="22" align="center" class="level_1_1"><label for="txtmndl"></label>
+                      <input name="txtmndls" type="text" disabled id="txtmndl" style="width:100%" readonly="readonly"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
+                    <td height="22" align="center" class="level_1_1"><label for="txttendc"></label>
+                      <input name="txttendcs" type="text" disabled id="txttendc" style="width:100%" readonly="readonly"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_2">Tên nội dung con mới:</td>
+                    <td height="22" align="center" class="level_1_2"><label for="txttenndcsl"></label>
+                      <input type="text" name="txttenndcsl" id="txttenndcsl" style="width:100%"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Lưu"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" height="22" align="center" class="level_1_1"></td>
                   </tr>
                 </tbody>
               </table>
-            </form></td>
+              
+            </form>
+            </td>
           </tr>
         </tbody>
-      </table></td>
+      </table>
+      <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr class="main_1">
+            <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+            <td width="419" align="center">Xóa nội dung con</td>
+            <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left"><form name="frm_themban">
+              <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
+                <tbody>
+                  <tr>
+                    <td height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_2">Chọn nội dung con:</td>
+                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    </select></td>
+                  
+                  <tr>
+                    <td height="22" align="right" class="level_1_1"> Mã nội dung con:</td>
+                    <td height="22" align="center" class="level_1_1"><label for="txttendc2"></label>
+                      <input name="txtmandcx" type="text" disabled id="txtmandcx" style="width:100%" readonly="readonly"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_1">Tên nội dung lớn:</td>
+                    <td height="22" align="center" class="level_1_1"><label for="txtmndl"></label>
+                      <input name="txttenndl" type="text" disabled id="txttenndl" style="width:100%" readonly="readonly"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Xóa"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" height="22" align="center" class="level_1_1"></td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
       <!--KẾT THÚC LEFT MAIN INFO-->            
       </tr>   
     </tbody></table>    </td>
@@ -180,11 +232,7 @@
   <tr>
     <td valign="bottom">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tbody><tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
+  <tbody>
   <tr>
     <td class="cl_footer">&nbsp;</td>
     <td class="cm_footer"><div align="right" class="copy"><!--Copyright © 2008 by <a href="http://www.cuscsoft.com" target="_blank" class="white"><strong>CUSC</strong></a>--></div></td>
