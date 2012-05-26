@@ -53,7 +53,7 @@
                                     <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatloaikiemke.php">Cập nhật loại kiểm kê</a></li>
                                     <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatphieukiemke.php">Cập nhật phiếu kiểm kê</a></li>                                  
 									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnoidungkiemke.php">Cập nhật nội dung kiểm kê</a></li>                     
-									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="duyetyeucaumuatb.php">Cập nhật nội dung con</a></li>                     
+									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnoidungcon.php">Cập nhật nội dung con</a></li>                     
 									<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatphieumau.php">Cập nhật phiếu mẩu</a></li>                                                    
                                 </ul>
                             </div>
