@@ -167,8 +167,7 @@ $(document).ready(function() {
               </tr>
               <tr>
                 <td height="22" align="center" class="level_1_2">Ghi chú nội dung:</td>
-                <td height="22" align="center" class="level_1_2"><label for="txteraghichund"></label>
-                  <textarea name="txteraghichund" id="txteraghichund" cols="45" rows="5"></textarea></td>
+                <td height="22" align="center" class="level_1_2"><label for="txteraghichund"></label></td>
               </tr>
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
