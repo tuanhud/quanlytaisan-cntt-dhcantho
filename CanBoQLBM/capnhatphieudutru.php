@@ -1,93 +1,40 @@
-<?php
+-<?php	
 	//khoi dong session
-	/*session_start();
-	
+	session_start();	
 	//kiem tra quyen truoc khi hien thi trang
-	if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
-	{
-	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
-	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
-	exit;
-	}*/
+	//if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="BCHCHSV")
+	//{
+	////echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
+	
 ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Duyệt phiếu dự trù văn phòng phẩm</title>
+<title>Cán bộ quản lý bộ môn</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
-<script type="text/javascript" >
-//Không cho nhập ký tự
-function keypress(e){
-var keypressed = null;
-if (window.event)
-	keypressed = window.event.keyCode; //IE
-else 
-	keypressed = e.which; //NON-IE, Standard
-
-if (keypressed >= 48 && keypressed <= 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed == 8 || keypressed == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
-	}
-	return false;
-}
-}
-$(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
-	});
-	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
-	});
-}); 
-</script>
-</head>
-<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
-  
-<table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
-  <tbody>
-  
-  <!--Bắt đầu của HEADER-->
-  <tr> 
-    <td height="26" valign="top"> 
-      <script>
-	
+<script>	
 	function thoat() {
 		if (confirm('Ban co chac chan muon thoat khong ?' )) {
 			document.location = '../logout.php';
 			return;
 		}
 	}
-</script>	 
-
-<!--Thẻ hiển thị thông tin khi đăng nhập-->
-<div style="Z-INDEX: 1; LEFT: 575px; WIDTH: 200px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
-<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-	<a class="white" href="javascript:thoat();">Thoát</a>
-    <br>Xin chào, <?=$_SESSION['hoten']?>
-    <br>
-	(<?=$_SESSION['msad']?>)
-    </font>
+</script>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" ondragstart="return false" onselectstart="return false" class="yui3-skin-sam">  
+<table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>  
+  <!--Bắt đầu của HEADER-->
+  <tr> 
+    <td height="26" valign="middle">       	 
+	<!--Thẻ hiển thị thông tin khi đăng nhập-->
+	<div style="Z-INDEX: 1; LEFT: 557px; WIDTH: 200px; POSITION: absolute; TOP: 55px; HEIGHT: 30px" align="center">
+		<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
+			<a class="white" href="doimatkhauUI.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
+    		<br>
+    		Xin chào, <?=$_SESSION['hoten']?>
+    		<br>(<?=$_SESSION['mschsv']?>)    
+    	</font>
     </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
    <tbody><tr>
@@ -99,47 +46,47 @@ $(document).ready(function() {
        </tr>
        <tr>
          <td class="cl_header">&nbsp;</td>
-         <td class="cm_header"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-           <tbody><tr>
-             
-             <td class="tittle_header"><img src="../images/ctulogo1.gif"></td>
-             
+         <td class="cm_header">
+         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+         <tbody>
+           <tr>            
+             <td class="tittle_header"><img src="../images/ctulogo1.gif"></td>             
            </tr>
-         </tbody></table></td>
+         </tbody>
+         </table>
+         </td>
          <td class="cr_header">&nbsp;</td>
-       </tr>
-       
+       </tr>       
      </tbody></table></td>
    </tr>
  </tbody></table>
-    </td>
-    
-  </tr>	
-  <!--Kết thúc của HEADER-->
+    </td>    
+  </tr>
+  <!--Kết thúc của HEADER--> 
   <!--Bắt đàu của MAINPAGE-->
-
   <tr>
-    <td valign="middle" height="54%">
-    
-        <table width="752" align="center" border="0" cellpadding="0" cellspacing="0">
-        <!--MENU-->
+	<td height="50%" valign="middle">
+    	<table align="center" border="0" cellpadding="0" cellspacing="0" width="752">      
+	    <tbody>
         <tr height="10">        
-			<td align="center" colspan="3">
-			<?php
-			include_once('node-menunav-3.php');
-			?> 
-			</td>    
-        </tr>
-        
-		<tr>
-        <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
-        </tr>                    
-        <!--KET THUC MENU-->
+	   	<td align="center" colspan="3">
+        <?php
+		include_once('node-menunav-3.php');
+		?> 
+        </td>
+	    <!--<td align="center" >&nbsp;</td>
+	    <td align="center">&nbsp;</td>-->
+	    </tr>
         <tr>
-    <td height="100%" align="center" valign="middle">   
-		 <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <td align="center" >&nbsp;</td>
+        <td align="center" >&nbsp;</td>
+        <td align="center" >&nbsp;</td>
+        </tr>                        
+      <tr>
+      <!--BẮT ĐẦU LEFT MAIN INFO-->
+      <td align="center" width="100%">
+      
+      <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -294,20 +241,23 @@ $(document).ready(function() {
        </td>
       </tr>		
       </tbody>
-      </table>     
-	</td>
-</tr>
-</table>
-
-		
-	</td>
+      </table>
+        
+        </td>
+      <!--KẾT THÚC LEFT MAIN INFO-->            
+      </tr>   
+    </tbody></table></td>
   </tr>
   <!--Kết thúc của MAINPAGE-->
   <!--Bắt đàu của FOOTER-->
   <tr>
     <td valign="bottom">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tbody>
+  <tbody><tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
   <tr>
     <td class="cl_footer">&nbsp;</td>
     <td class="cm_footer"><div align="right" class="copy"><!--Copyright © 2008 by <a href="http://www.cuscsoft.com" target="_blank" class="white"><strong>CUSC</strong></a>--></div></td>
@@ -332,11 +282,10 @@ $(document).ready(function() {
         //  Retrieve the Node instance representing the root menu
         //  (<div id="productsandservices">) and call the "plug" method
         //  passing in a reference to the MenuNav Node Plugin.
-        var menu = Y.one("#admin");
+        var menu = Y.one("#chsv");
         menu.plug(Y.Plugin.NodeMenuNav);
         //  Show the menu now that it is ready
         menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
     });
 </script>
 </html>
-
