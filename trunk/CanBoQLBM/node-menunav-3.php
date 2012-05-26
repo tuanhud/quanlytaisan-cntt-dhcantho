@@ -10,7 +10,7 @@
                             <div class="yui3-menu-content">
                                 <ul>
                                     <li class="yui3-menuitem">
-                                        <a class="yui3-menuitem-content" href="#">Cập nhật phiếu dự trù TB</a>  
+                                        <a class="yui3-menuitem-content" href="capnhatphieudutru.php">Cập nhật phiếu dự trù TB</a>  
                                     </li>
                                 </ul>
                             </div>

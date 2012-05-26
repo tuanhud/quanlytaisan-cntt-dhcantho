@@ -1,4 +1,4 @@
-<?php	
+-<?php	
 	//khoi dong session
 	session_start();	
 	//kiem tra quyen truoc khi hien thi trang
