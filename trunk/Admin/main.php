@@ -6,7 +6,7 @@
 	{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
-	exit;
+	hello exit;
 	}*/
 ?>
 <html>
