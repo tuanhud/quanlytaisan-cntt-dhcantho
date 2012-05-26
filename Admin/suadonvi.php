@@ -3,41 +3,40 @@
     session_start();
 	//dinh dang file thanh file xml
 	header( "content-type: text/xml" );
-	
-	if(strlen($_POST['tendonvi'])=='')
+	//kiem tra đã đăng nhập	
+	if(strlen($_POST['tendonvisua'])=='')
 	{
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
-								$xml.="Bạn chưa nhập Tên khoa.";
+								$xml.="Bạn chưa nhập tên Khoa";
 						$xml.="</RESULT>";
 						$xml.="</INFO>";
 						echo $xml;
 						exit;
 		
 	}
-	//kiem tra đã đăng nhập
 	//if (session_is_registered('maquyen') && $_SESSION['maquyen']=="AD")
 	{
-			$isExist = 0;
+		if($_POST['madonvisua']!=-1)
+		{
 			include_once('../database.php');
-			$db=new database();
-			$sql = "Select * from donvi";			
+			$db=new database();	
+			$isExist = 0;
+			
+			$sql = "Select * from donvi";
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			while($row = mysql_fetch_array($result))
 			{
-			if($row[1]==$_POST['tendonvi'])	$isExist = 1;
-			}
-			if($isExist==0)
+				if($row[1]==$_POST['tendonvisua']) $isExist = 1;
+			}		
+			
+			if($isExist == 0)
 			{
-					$sql = "Select max(MSDV) from donvi";
-					$db->setQuery($sql);
-					$result = $db->fetchAll();
-					$row = mysql_fetch_array($result,MYSQL_NUM);
-					$ma = $row[0]+1;
-					
-					$sql = "insert into donvi values('".$ma."', '".$_POST['tendonvi']."')";
+					$sql="update donvi ";
+					$sql.="set `TenDV` = '".$_POST['tendonvisua']."' ";
+					$sql.="where `MSDV` = '".$_POST['madonvisua']."'";
 					$db->setQuery($sql);
 					if($db->executeQuery()!=1)
 					{
@@ -73,5 +72,17 @@
 						echo $xml;
 						exit;
 				}
+			}
+	    else
+	    {
+				$xml="";
+				$xml.="<INFO>";
+				$xml.="<RESULT>";
+						$xml.="Bạn chưa chọn Khoa.";
+				$xml.="</RESULT>";
+				$xml.="</INFO>";
+				echo $xml;
+				exit;
+		}
 	}
 ?>

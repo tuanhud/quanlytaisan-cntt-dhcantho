@@ -13,13 +13,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật Ban</title>
+<title>Cập nhật đơn vị</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhatdonvi.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
@@ -43,6 +42,33 @@ if (keypressed >= 48 && keypressed <= 57)
 	return false;
 }
 } 
+
+$(document).ready(function() { 
+	document.frm_themdonvi.txt_tendonvithem.focus();
+	fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
+	fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
+
+	//su kien click button Them
+	$('form[name="frm_themdonvi"] input[type="button"]').click(function(){
+		themdonvi('themdonvi.php',document.frm_themdonvi);				
+	});
+		
+	$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(function(){
+		get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
+	});
+	
+	//Su kien click button Luu
+	$('form[name="frm_suadonvi"] input[type="button"]').click(function(){
+		suadonvi('suadonvi.php',document.frm_suadonvi);
+	});
+	
+	//su kien click button Xoa
+	$('form[name="frm_xoadonvi"] input[type="button"]').click(function(){
+		if (confirm('Ban có chắc chắn muốn xóa không ?' )) {
+			xoadonvi('xoadonvi.php',document.frm_xoadonvi);			
+		}		
+	});
+}); 
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
@@ -67,9 +93,9 @@ if (keypressed >= 48 && keypressed <= 57)
 <div style="Z-INDEX: 1; LEFT: 575px; WIDTH: 200px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
 <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
 	<a class="white" href="javascript:thoat();">Thoát</a>
-    <br>Xin chào, <?=$_SESSION['hoten']?>
+    <br>Xin chào, <?=$_SESSION['hotencanbo']?>
     <br>
-	(<?=$_SESSION['msad']?>)
+	(<?=$_SESSION['masocanbo']?>)
     </font>
     </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -141,7 +167,7 @@ if (keypressed >= 48 && keypressed <= 57)
                <tr>
 					<td height="22" align="right" class="level_1_1">Nhập tên đơn vị </td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<input id="txt_tendonvithem" name="txt_tendonvithem" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+                    	<input id="txt_tendonvithem" name="txt_tendonvithem" type="text" class="txtbox" style="width:100%" value=""></td>
 			</tr>              
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themdonvi" id="btn_themdonvi" class="button_1" value="Thêm"></td>
@@ -163,7 +189,7 @@ if (keypressed >= 48 && keypressed <= 57)
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_suadonvi" id="frm_suadonvi">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -173,19 +199,19 @@ if (keypressed >= 48 && keypressed <= 57)
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn đơn vị </td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenban" class="cbo" style="width:100%;">
+                    	<select id="cbo_tendonvisua" name="cbo_tendonvisua" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>
             <tr>
 					<td height="22" align="right" class="level_1_2">Nhập tên mới</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenban" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+                    	<input id="txt_tendonvisua" name="txt_tendonvisua" align="left" type="text" class="txtbox" style="width:100%"></td>
 			</tr>              
               <tr>
             <tr>
 						<td colspan="2" height="22" align="center" class="level_1_1">
-                        <input type="button" class="button_1" value="Lưu">
+                        <input type="button" name="btn_suadonvi" id="btn_suadonvi" class="button_1" value="Lưu">
                         </td>
 			</tr>
 				  						  
@@ -206,7 +232,7 @@ if (keypressed >= 48 && keypressed <= 57)
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoaban">
+          	<form name="frm_xoadonvi">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -216,7 +242,7 @@ if (keypressed >= 48 && keypressed <= 57)
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn đơn vị </td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenban" class="cbo" style="width:100%;">
+                    	<select name="cbo_tendonvixoa" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>              
