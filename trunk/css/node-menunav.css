@@ -5,7 +5,7 @@ Licensed under the BSD License.
 http://yuilibrary.com/license/
 */
 .yui3-menu .yui3-menu{
-	position:absolute;z-index:1
+	position:absolute;z-index:2
 	}
 .yui3-menu .yui3-shim{
 	position:absolute;

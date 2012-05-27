@@ -76,8 +76,8 @@
                         <div id="#" class="yui3-menu">
                             <div class="yui3-menu-content">
                                 <ul>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật quý</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">Cập nhật năm</a></li>                                    
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatquy.php">Cập nhật quý</a></li>
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatnam.php">Cập nhật năm</a></li>                                    
                                 </ul>
                             </div>
                         </div>
