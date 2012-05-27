@@ -21,27 +21,6 @@
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhatdonvi.js"></script>
 <script type="text/javascript" >
-//Không cho nhập ký tự
-function keypress(e)
-{
-var keypressed = null;
-if (window.event)
-	keypressed = window.event.keyCode; //IE
-else 
-	keypressed = e.which; //NON-IE, Standard
-
-if (keypressed >= 48 && keypressed <= 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed == 8 || keypressed == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
-	}
-	return false;
-}
-} 
 
 $(document).ready(function() { 
 	document.frm_themdonvi.txt_tendonvithem.focus();

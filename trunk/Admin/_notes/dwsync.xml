@@ -6,6 +6,7 @@
 <file name="main.php" server="C:/Users/LamTay/Desktop/Nien luan 4/QLDRL/" local="129633760603253718" remote="129633760600000000" />
 <file name="login.php" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="129665886755916257" remote="129665886750000000" />
 <file name="quanlisinhvien.php" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="129667312011456627" remote="129667312010000000" />
+<file name="quanlicanbo.php" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="129667311176158851" remote="129667311170000000" />
 <file name="main.php" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="129668133104596257" remote="129668133100000000" />
 <file name="quanlithoigian.php" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="129667312188846773" remote="129667312180000000" />
 <file name="loginUI.php" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="129665825845369673" remote="129665825840000000" />
@@ -13,7 +14,18 @@
 <file name="login.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129727760239988590" remote="129727760230000000" />
 <file name="main.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129764423493874226" remote="129764423490000000" />
 <file name="node-menunav-3.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129764423069893323" remote="129764423060000000" />
+<file name="quanlicanbo.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129730679620623748" remote="129730679620000000" />
 <file name="quanlisinhvien.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129730679627984169" remote="129730679620000000" />
 <file name="quanlithoigian.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129730679624273956" remote="129730679620000000" />
+<file name="capnhatchsv.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129759158822595776" remote="129759158820000000" />
+<file name="capnhatlchsv.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129764422158484936" remote="129764422150000000" />
+<file name="capnhatkhoa.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129743290768901649" remote="129743290760000000" />
+<file name="capnhatkhenthuong.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129743302780214232" remote="129743302780000000" />
+<file name="capnhatkyluat.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129743304714704879" remote="129743304710000000" />
+<file name="capnhatnamhochocki.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129743294955626691" remote="129743294950000000" />
+<file name="capnhatclb.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129743290258953422" remote="129743290250000000" />
+<file name="capnhatchuyennganh.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129743291055772381" remote="129743291050000000" />
 <file name="index.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129734129929392877" remote="129734129920000000" />
+<file name="capnhatban.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129759142153182340" remote="129759142150000000" />
+<file name="capnhatchucvu.php" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129759578299306711" remote="129759578290000000" />
 </dwsync>
