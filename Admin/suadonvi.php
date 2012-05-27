@@ -66,7 +66,7 @@
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
-								$xml.="Thất bại. Khoa này đã tồn tại.";
+								$xml.="Thất bại. đơn vị này đã tồn tại.";
 						$xml.="</RESULT>";
 						$xml.="</INFO>";
 						echo $xml;

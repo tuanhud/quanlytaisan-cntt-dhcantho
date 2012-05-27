@@ -148,7 +148,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themdvt">
+          	<form name="frm_themban">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -158,7 +158,7 @@ $(document).ready(function() {
                <tr>
 					<td height="22" align="right" class="level_1_2">Đơn vị tính</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tendonvitinh" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+                    	<input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
 			</tr>                
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>

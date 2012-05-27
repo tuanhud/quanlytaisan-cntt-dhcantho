@@ -30,26 +30,35 @@ function themdonvi(filephp,frm)
 }
 
 
-function get_info_donvi(filephp, frm){
-	var madonvisua = frm.cbo_tendonvisua.value;
-	http=GetXmlHttpObject();
-	var params = "madonvisua="+madonvisua;
-	//mo ket noi bang phuong thuc post
-	http.open("POST", filephp, false);
-	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.setRequestHeader("Content-length", params.length);
-	http.setRequestHeader("Connection", "close");
-	//ham xu li du lieu tra ve cua ajax send thanh cong
-	http.onreadystatechange = function()
+function get_info_donvi(filephp, frm)
+{
+	if(frm.cbo_tendonvisua.value==-1)
 	{
-		if(http.readyState == 4 && http.status == 200) 
-		{
-			var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-			frm.txt_tendonvisua.value = result;
-		}
+		frm.txt_tendonvisua.value='';
 	}
-	http.send(params);
+	else
+	{
+		var madonvisua = frm.cbo_tendonvisua.value;
+		http=GetXmlHttpObject();
+		var params = "madonvisua="+madonvisua;
+		//mo ket noi bang phuong thuc post
+		http.open("POST", filephp, false);
+		//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		//http.setRequestHeader("Content-length", params.length);
+		http.setRequestHeader("Connection", "close");
+		//ham xu li du lieu tra ve cua ajax send thanh cong
+		http.onreadystatechange = function()
+		{
+			if(http.readyState == 4 && http.status == 200) 
+			{
+				var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+				frm.txt_tendonvisua.value = result;
+			}
+		}
+		http.send(params);
+		
+		}
 	}
 	
 	
