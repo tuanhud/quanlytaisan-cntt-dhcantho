@@ -25,27 +25,9 @@
 $(document).ready(function() { 
 	document.frm_themdonvi.txt_tendonvithem.focus();
 	fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
-	fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
-
-	//su kien click button Them
-	$('form[name="frm_themdonvi"] input[type="button"]').click(function(){
-		themdonvi('themdonvi.php',document.frm_themdonvi);				
-	});
-		
+	fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);	
 	$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(function(){
 		get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
-	});
-	
-	//Su kien click button Luu
-	$('form[name="frm_suadonvi"] input[type="button"]').click(function(){
-		suadonvi('suadonvi.php',document.frm_suadonvi);
-	});
-	
-	//su kien click button Xoa
-	$('form[name="frm_xoadonvi"] input[type="button"]').click(function(){
-		if (confirm('Ban có chắc chắn muốn xóa không ?' )) {
-			xoadonvi('xoadonvi.php',document.frm_xoadonvi);			
-		}		
 	});
 }); 
 </script>
@@ -211,7 +193,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoadonvi">
+          	<form name="frm_xoadonvi" id="frm_xoadonvi">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -221,14 +203,14 @@ $(document).ready(function() {
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn đơn vị </td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tendonvixoa" class="cbo" style="width:100%;">
+                    	<select name="cbo_tendonvixoa" id="cbo_tendonvixoa" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>              
               <tr>
             <tr>
 						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" class="button_1" value="Xóa">
+                        <input id="btn_xoadonvi" name="btn_xoadonvi" type="button" class="button_1" value="Xóa">
                         </td>
 			</tr>
 				  						  

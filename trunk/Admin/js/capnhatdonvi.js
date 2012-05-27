@@ -1,33 +1,145 @@
 ﻿// JavaScript Document
-function themdonvi(filephp,frm)
+function FocusAndSelect(n)
 {
-	http=GetXmlHttpObject();
-	var tendonvi =frm.txt_tendonvithem.value;
-	var params = "tendonvi="+tendonvi;
-
-	//mo ket noi bang phuong thuc post
-	http.open("POST", filephp, false);
-	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.setRequestHeader("Content-length", params.length);
-	http.setRequestHeader("Connection", "close");
-	//ham xu li du lieu tra ve cua ajax send thanh cong
-	http.onreadystatechange = function() 
-	{
-		if(http.readyState == 4 && http.status == 200) 
-		{
-			var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-			alert(result);
-			if(result=='Thành công.'){
-				frm.reset();
-				fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
-				fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
-				}
-			else frm.txt_tendonvithem.focus();
-		}
-	}
-	http.send(params);
+	$(n).focus(),$(n).select()
 }
+function ClearInputValue(n){$(n).val("")}
+function CheckEmptyInput(n)
+{
+	return $(n).val()==""?($(n).focus(),$(n).select(),!1):!0
+}
+
+var _admin;
+		$(function()
+		{
+			_admin.themdonvi(),
+			_admin.suadonvi(),
+			_admin.xoadonvi()
+		}),
+		_admin=
+			{
+			
+			themdonvi:function()
+			{
+				$("#btn_themdonvi").unbind("click").click(function()
+				{
+					if(CheckEmptyInput($("#txt_tendonvithem")))
+					{	
+						return $.ajax
+						({
+							url:"./themdonvi.php",
+							type:"POST",
+							//dataType:"html",
+							data:$("#frm_themdonvi").serialize(),
+							beforeSend:function(){},
+							success:function(n)
+							{
+								if(n==0)
+									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
+								else if(n==1) 
+								{
+									alert("Thành công !"),
+									fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
+									fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
+									ClearInputValue("#txt_tendonvithem"),
+									FocusAndSelect("#txt_tendonvithem")
+								}
+								else
+								{
+									alert("Đơn vị này đã tồn tại.")
+								}
+								
+							},
+							error:function(){},
+							complete:function(){}
+						}),!1
+					}
+					
+				})
+			},
+			
+			suadonvi:function()
+			{
+				$("#btn_suadonvi").unbind("click").click(function()
+				{
+					if(CheckEmptyInput($("#txt_tendonvisua")))
+					{	
+						return $.ajax
+						({
+							url:"./suadonvi.php",
+							type:"POST",
+							//dataType:"html",
+							data:$("#frm_suadonvi").serialize(),
+							beforeSend:function(){},
+							success:function(n)
+							{
+								if(n==0)
+									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại."),
+									FocusAndSelect("#cbo_tendonvisua")
+								else if(n==1) 
+								{
+									alert("Thành công !"),
+									fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
+									fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
+									ClearInputValue("#txt_tendonvisua"),
+									FocusAndSelect("#cbo_tendonvisua")
+								}
+								else if(n==2)
+								{
+									alert("Tên đơn vị này đã tồn tại."),
+									FocusAndSelect("#txt_tendonvisua")	
+								}
+							},
+							error:function(){},
+							complete:function(){}
+						}),!1
+					}
+					
+				})
+			},
+			
+			xoadonvi:function()
+			{
+			 $("#btn_xoadonvi").unbind("click").click(function()
+			 {   
+			 	if (confirm('Ban có chắc chắn muốn xóa không ?' ))
+				{	
+					if(CheckEmptyInput($("#cbo_tendonvixoa")))
+					{	
+						return $.ajax
+						({
+							url:"./xoadonvi.php",
+							type:"POST",
+							//dataType:"html",
+							data:$("#frm_xoadonvi").serialize(),
+							beforeSend:function(){},
+							success:function(n)
+							{
+								if(n==0)
+									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
+								else if(n==1)
+								{
+									alert("Thành công !"),
+									fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua),
+									fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa),
+									FocusAndSelect("#cbo_tendonvixoa")
+								}
+								else if(n==2)
+								{
+									alert("Bạn chưa chọn tên đơn vị.")	
+								}
+							},
+							error:function(){},
+							complete:function(){}
+						}),!1
+					  }
+					}
+					
+				})
+			  
+			},
+		
+		}
 
 
 function get_info_donvi(filephp, frm)
@@ -60,69 +172,3 @@ function get_info_donvi(filephp, frm)
 		
 		}
 	}
-	
-	
-function suadonvi(filephp, frm){
-	var madonvisua = frm.cbo_tendonvisua.value;
-	var tendonvisua = frm.txt_tendonvisua.value;
-	http=GetXmlHttpObject();
-	var params = "madonvisua="+madonvisua;
-	params += "&tendonvisua="+tendonvisua;
-	//mo ket noi bang phuong thuc post
-	http.open("POST", filephp, false);
-	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.setRequestHeader("Content-length", params.length);
-	http.setRequestHeader("Connection", "close");
-	//ham xu li du lieu tra ve cua ajax send thanh cong
-	http.onreadystatechange = function()
-	{
-		if(http.readyState == 4 && http.status == 200) 
-		{
-			var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-			alert(result);			
-			if(result=='Bạn chưa chọn Khoa.')
-			{
-				frm.cbo_tenkhoa.focus();
-			}
-			else if(result=='Thành công.'){
-				frm.reset();
-				fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
-				fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
-				}
-			else frm.txt_tenkhoa_moi.focus();
-		}
-	}
-	http.send(params);
-	}
-	
-	
-function xoadonvi(filephp,frm)
-{
-	var madonvixoa = document.frm_xoadonvi.cbo_tendonvixoa.value;
-	http=GetXmlHttpObject();
-	var params = "madonvixoa="+madonvixoa;
-	//mo ket noi bang phuong thuc post
-	http.open("POST", filephp, false);
-	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.setRequestHeader("Content-length", params.length);
-	http.setRequestHeader("Connection", "close");
-	//ham xu li du lieu tra ve cua ajax send thanh cong
-	http.onreadystatechange = function()
-	{
-		if(http.readyState == 4 && http.status == 200) 
-		{
-			var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-			alert(result);
-			if(result=='Thành công')
-			{
-				frm.reset();
-				fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
-				fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
-			}
-			else frm.cbo_tenkhoa.focus();
-		}
-	}
-	http.send(params);
-}
