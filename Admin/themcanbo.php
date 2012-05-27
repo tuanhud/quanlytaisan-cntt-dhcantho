@@ -4,7 +4,7 @@
 	//dinh dang file thanh file xml
 	header( "content-type: text/xml" );
 	
-	if(strlen($_POST['madonvi'])==-1)
+	/*if(strlen($_POST['madonvi'])==-1)
 	{
 						$xml="";
 						$xml.="<INFO>";
@@ -16,8 +16,7 @@
 						exit;
 		
 	}
-	
-	if(strlen($_POST['macanbo'])=='')
+	else if(strlen($_POST['macanbo'])=='')
 	{
 						$xml="";
 						$xml.="<INFO>";
@@ -29,8 +28,7 @@
 						exit;
 		
 	}
-	
-	if(strlen($_POST['tencanbo'])=='')
+	else if(strlen($_POST['tencanbo'])=='')
 	{
 						$xml="";
 						$xml.="<INFO>";
@@ -42,7 +40,7 @@
 						exit;
 		
 	}
-	
+	else
 	if(strlen($_POST['gioitinh'])=='')
 	{
 						$xml="";
@@ -55,6 +53,7 @@
 						exit;
 		
 	}
+	else
 	if(strlen($_POST['ngaysinh'])=='')
 	{
 						$xml="";
@@ -67,6 +66,7 @@
 						exit;
 		
 	}
+	else
 	if(strlen($_POST['email'])=='')
 	{
 						$xml="";
@@ -79,6 +79,7 @@
 						exit;
 		
 	}
+	else
 	if(strlen($_POST['diachi'])=='')
 	{
 						$xml="";
@@ -91,6 +92,7 @@
 						exit;
 		
 	}
+	else
 	if(strlen($_POST['sodienthoai'])=='')
 	{
 						$xml="";
@@ -103,6 +105,7 @@
 						exit;
 		
 	}
+	else
 	if(strlen($_POST['matkhau'])=='')
 	{
 						$xml="";
@@ -114,7 +117,7 @@
 						echo $xml;
 						exit;
 		
-	}
+	}*/
 	//kiem tra đã đăng nhập
 	//if (session_is_registered('maquyen') && $_SESSION['maquyen']=="AD")
 	{
