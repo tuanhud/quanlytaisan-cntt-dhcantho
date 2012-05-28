@@ -7,7 +7,7 @@
 			$isExist = 0;
 			include_once('../database.php');
 			$db=new database();
-			$sql = "Select * from donvi";			
+			$sql = "Select * from donvi";
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			while($row = mysql_fetch_array($result))
