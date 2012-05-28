@@ -101,7 +101,7 @@
                     <td class="level_1_1"></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_2">Chọn nội dung lớn:</td>
+                    <td height="22" align="right" class="level_1_2">Chọn tên nội dung lớn:</td>
                     <td width="50%" align="left" class="level_1_2"><select name="cbotenndl" class="cbo" style="width:100%;">
                     </select></td>
                   
@@ -145,7 +145,7 @@
                     <td class="level_1_1"></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_2">Chọn nội dung lớn:</td>
+                    <td height="22" align="right" class="level_1_2">Chọn tên nội dung lớn:</td>
                     <td width="50%" align="left" class="level_1_2"><select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                     </select></td>
                   
@@ -194,7 +194,7 @@
                     <td class="level_1_1"></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_2">Chọn nội dung con:</td>
+                    <td height="22" align="right" class="level_1_2">Chọn tên nội dung con:</td>
                     <td width="50%" align="left" class="level_1_2"><select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                     </select></td>
                   
