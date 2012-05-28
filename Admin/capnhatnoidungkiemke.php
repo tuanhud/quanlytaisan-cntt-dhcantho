@@ -201,7 +201,7 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_2">Chọn nội dung kiểm kê:</td>
+					<td height="22" align="right" class="level_1_2">Chọn tên nội dung kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_2">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select></td>
@@ -250,7 +250,7 @@ $(document).ready(function() {
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn nội dung kiểm kê:</td>
+					<td height="22" align="right" class="level_1_1">Chọn tên nội dung kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_1">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select>                       
@@ -260,18 +260,18 @@ $(document).ready(function() {
              <tr>
 					<td height="22" align="right" class="level_1_1">Mã nội dung kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_1"><label for="txtmand"></label>
-					  <input type="text" name="txtmand" id="txtmand" style="width:100%"></td>
+					  <input name="txtmand" type="text" disabled id="txtmand" readonly="readonly" "></td>
 					
 			</tr>    
              <tr>
                <td height="22" align="right" class="level_1_2">Tên đơn vị tính:</td>
                <td height="22" align="center" class="level_1_2"><label for="txtxoatendvt"></label>
-                 <input type="text" name="txtxoatendvt" id="txtxoatendvt" style="width:100%"></td>
+                 <input name="txtxoatendvt" type="text" disabled id="txtxoatendvt" style="width:100%" readonly="readonly"></td>
              </tr>
              <tr>
                <td height="22" align="right" class="level_1_1">Ghi chú nội dung kiểm kê:</td>
                <td height="22" align="center" class="level_1_1"><label for="txtxoaghichundkk"></label>
-                 <input type="text" name="txtxoaghichundkk" id="txtxoaghichundkk" style="width:100%"></td>
+                 <textarea name="txtxoaghichundkk" disabled readonly="readonly" id="txtxoaghichundkk" style="width:100%"></textarea></td>
              </tr>
              <tr>
 						<td colspan="2" height="22" align="center" class="level_1_2">

@@ -188,6 +188,11 @@ $(document).ready(function() {
                   <textarea name="txtghind" rows="5" id="txtghind" style="width:100%"></textarea></td>
               </tr>
               <tr>
+                <td colspan="2" height="22" align="center" class="level_1_1"><fieldset>
+                  <legend>Nội dung của phiếu mẫu:                </legend>
+                </fieldset></td>
+              </tr>
+              <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
               </tr>
 				<tr>

@@ -303,10 +303,16 @@ $(document).ready(function() {
                <tr>
 					<td height="22" align="right" class="level_1_2">Diễn giải:</td>
 					<td width="50%" align="left" class="level_1_2"><textarea name="txt_tenthietbi" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
-			</tr>         
-              <tr>
-                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
-              </tr>
+			</tr>
+               <tr>
+                 <td height="22" align="right" class="level_1_2">Chọn phiếu mẫu có sẵng:</td>
+                 <td height="22" align="left" class="level_1_2"><select name="select4" id="select3" style="width:75%">
+                 </select>
+                   <input type="button" class="button_1" value="Thêm"></td>
+               </tr>
+               <tr>
+                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
+               </tr>
 			  
 			  <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2">
@@ -491,6 +497,12 @@ $(document).ready(function() {
               <tr>
                 <td height="22" align="right" class="level_1_1">Diễn giải:</td>
                 <td height="22" align="center" class="level_1_1"><textarea name="txt_tenthietbi2" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+              </tr>
+              <tr>
+                <td height="22" align="right" class="level_1_2">Chọn phiếu mẫu có sẵng:</td>
+                <td height="22" align="left" class="level_1_2"><select name="select3" id="cbochonmau" style="width:75%">
+                </select>
+                  <input type="button" class="button_1" value="Thêm"></td>
               </tr>
               <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
