@@ -8,6 +8,8 @@ function CheckEmptyInput(n)
 {
 	return $(n).val()==""?($(n).focus(),$(n).select(),!1):!0
 }
+
+//kiem tra dia chi email co hop le hay khong
 function checkEmail(n)
 {
 	return n.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)!=-1?!0:!1
@@ -32,6 +34,8 @@ function checkEmail(n)
 			
 	
 }*/
+
+//kiem tra ngay sinh co hop le hay khong
 function check_date_ngaysinh(day,month,year)
 {
 		var ngay = parseInt(day, 10) ;
@@ -68,65 +72,110 @@ function check_date_ngaysinh(day,month,year)
 					return true;
         }
 }
+
+//lay thong tin can bo load len form sua khi chon combo ma so can bo
+function get_info_canbo(filephp,frm)
+{
+	macanbo=frm.cbo_macanbosua.value;
+	madonvi=frm.cbo_tendonvisua;
+	tencanbo=frm.txt_tencanbo;
+	gioitinh=frm.cbo_gioitinh;
+	ngaysinh=frm.cbo_ngaysinh;
+	thangsinh=frm.cbo_thangsinh;
+	namsinh=frm.cbo_namsinh;
+	email=frm.txt_email;
+	diachi=frm.txt_diachi;
+	sodienthoai=frm.txt_sodienthoai;
+	matkhau=frm.txt_matkhau;
+	
+	http=GetXmlHttpObject();
+	var params = "macanbo="+macanbo;
+	//mo ket noi bang phuong thuc post
+	http.open("POST", filephp, false);
+	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.setRequestHeader("Content-length", params.length);
+	http.setRequestHeader("Connection", "close");
+	//ham xu li du lieu tra ve cua ajax send thanh cong
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) 
+		{				
+				var x=http.responseXML.getElementsByTagName('row');								
+				madonvi.value=x[0].getElementsByTagName('column')[0].firstChild.nodeValue;
+				tencanbo.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
+				gioitinh.value=x[0].getElementsByTagName('column')[2].firstChild.nodeValue;
+				ngaysinh.value=x[0].getElementsByTagName('column')[3].firstChild.nodeValue;
+				thangsinh.value=x[0].getElementsByTagName('column')[4].firstChild.nodeValue;
+				namsinh.value=x[0].getElementsByTagName('column')[5].firstChild.nodeValue;
+				email.value=x[0].getElementsByTagName('column')[6].firstChild.nodeValue;
+				diachi.value=x[0].getElementsByTagName('column')[7].firstChild.nodeValue;
+				sodienthoai.value=x[0].getElementsByTagName('column')[8].firstChild.nodeValue;
+				matkhau.value=x[0].getElementsByTagName('column')[9].firstChild.nodeValue;
+		}
+	}
+	http.send(params);
+}
 var _admin;
 		$(function()
 		{
 			_admin.themcanbo()
 		}),
+		
 		_admin=
-			{
-			themcanbo:function()
-			{
-				$("#btn_themcanbo").unbind("click").click(function()
+		{
+				themcanbo:function()
 				{
-					if($("#cbo_tendonvithem").val()==-1) FocusAndSelect("#cbo_tendonvithem");
-						else if($("#txt_masocanbo").val()=="") FocusAndSelect("#txt_masocanbo");
-							else if($("#txt_tencanbo").val()=="") FocusAndSelect("#txt_tencanbo");
-								else if($("#cbo_gioitinh option:selected").val()==-1) FocusAndSelect("#cbo_gioitinh");
-										else if($("#cbo_ngaysinh option:selected").val()==-1)FocusAndSelect("#cbo_ngaysinh");
-											else if($("#cbo_thangsinh option:selected").val()==-1)FocusAndSelect("#cbo_thangsinh");
-												else if($("#cbo_namsinh option:selected").val()==-1)FocusAndSelect("#cbo_namsinh");
-													else if(check_date_ngaysinh($("#cbo_ngaysinh option:selected").val(),$("#cbo_thangsinh option:selected").val(),$("#cbo_namsinh option:selected").val())){alert("Ngày tháng năm sinh không hợp lệ.");FocusAndSelect("#cbo_ngaysinh");}
-														else if($("#txt_email").val()=="")FocusAndSelect("#txt_email");
-															else if(checkEmail($("#txt_email").val())!=1) {alert("Địa chỉ email không hợp lệ"); FocusAndSelect("#txt_email");}
-																else if($("#txt_diachi").val()=="")FocusAndSelect("#txt_diachi");
-																	else if($("#txt_sodienthoai").val()=="")FocusAndSelect("#txt_sodienthoai");
-																		else if($("#txt_matkhau").val()=="")FocusAndSelect("#txt_matkhau");
-					else
-					{	
-						return $.ajax
-						({
-							url:"./themcanbo.php",
-							type:"POST",
-							//dataType:"html",
-							data:$("#frm_themcanbo").serialize(),
-							beforeSend:function(){},
-							success:function(n)
-							{
-								if(n==0)
-									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
-								else if(n==1) 
+					$("#btn_themcanbo").unbind("click").click(function()
+					{
+						if($("#cbo_tendonvithem").val()==-1) FocusAndSelect("#cbo_tendonvithem");
+							else if($("#txt_masocanbo").val()=="") FocusAndSelect("#txt_masocanbo");
+								else if($("#txt_tencanbo").val()=="") FocusAndSelect("#txt_tencanbo");
+									else if($("#cbo_gioitinh option:selected").val()==-1) FocusAndSelect("#cbo_gioitinh");
+											else if($("#cbo_ngaysinh option:selected").val()==-1)FocusAndSelect("#cbo_ngaysinh");
+												else if($("#cbo_thangsinh option:selected").val()==-1)FocusAndSelect("#cbo_thangsinh");
+													else if($("#cbo_namsinh option:selected").val()==-1)FocusAndSelect("#cbo_namsinh");
+														else if(check_date_ngaysinh($("#cbo_ngaysinh option:selected").val(),$("#cbo_thangsinh option:selected").val(),$("#cbo_namsinh option:selected").val())){alert("Ngày tháng năm sinh không hợp lệ.");FocusAndSelect("#cbo_ngaysinh");}
+															else if($("#txt_email").val()=="")FocusAndSelect("#txt_email");
+																else if(checkEmail($("#txt_email").val())!=1) {alert("Địa chỉ email không hợp lệ"); FocusAndSelect("#txt_email");}
+																	else if($("#txt_diachi").val()=="")FocusAndSelect("#txt_diachi");
+																		else if($("#txt_sodienthoai").val()=="")FocusAndSelect("#txt_sodienthoai");
+																			else if($("#txt_matkhau").val()=="")FocusAndSelect("#txt_matkhau");
+						else
+						{	
+							return $.ajax
+							({
+								url:"./themcanbo.php",
+								type:"POST",
+								//dataType:"html",
+								data:$("#frm_themcanbo").serialize(),
+								beforeSend:function(){},
+								success:function(n)
 								{
-									alert("Thành công !")
-									//fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
-									//fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
-									//ClearInputValue("#txt_tendonvithem"),
-									//FocusAndSelect("#txt_tendonvithem")
-								}
-								else if(n==2)
-								{
-									alert("Đơn vị này đã tồn tại.")
-								}
-								
-							},
-							error:function(){},
-							complete:function(){}
-						}),!1
-					}
-					
-				})
-			},
-}
+									if(n==0)
+										alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
+									else if(n==1) 
+									{
+										alert("Thành công !"),
+										$("#frm_themcanbo").reset()
+										//fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
+										//fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
+										//ClearInputValue("#txt_tendonvithem"),
+										//FocusAndSelect("#txt_tendonvithem")
+									}
+									else if(n==2)
+									{
+										alert("Đơn vị này đã tồn tại.")
+									}
+									
+								},
+								error:function(){},
+								complete:function(){}
+							}),!1
+						}
+						
+					})
+				},
+		}
 
 function xoacanbo(filephp,frm)
 {

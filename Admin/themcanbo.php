@@ -18,8 +18,7 @@
 					exit;	
 				}
 			}
-			$ngaysinh=$_POST['cbo_ngaysinh']."/".$_POST['cbo_thangsinh']."/".$_POST['cbo_namsinh'];
-			$sql = "insert into nguoidung values('".$_POST['txt_masocanbo']."', '".$_POST['cbo_tendonvithem']."', '".$_POST['txt_tencanbo']."', '".$_POST['cbo_gioitinh']."', '".$ngaysinh."', '".$_POST['txt_email']."', '".$_POST['txt_diachi']."', '".$_POST['txt_sodienthoai']."', '".$_POST['txt_matkhau']."')";
+			$sql = "insert into nguoidung values('".$_POST['txt_masocanbo']."', '".$_POST['cbo_tendonvithem']."', '".$_POST['txt_tencanbo']."', '".$_POST['cbo_gioitinh']."', '".$_POST['cbo_ngaysinh']."', '".$_POST['cbo_thangsinh']."', '".$_POST['cbo_namsinh']."','".$_POST['txt_email']."', '".$_POST['txt_diachi']."', '".$_POST['txt_sodienthoai']."', '".$_POST['txt_matkhau']."')";
 					$db->setQuery($sql);
 					if($db->executeQuery()!=1)
 					{
