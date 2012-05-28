@@ -63,66 +63,32 @@ function keypress2(e)
 		return false;
 	}
 }
-$(document).ready(function() { 
+$(document).ready(function() 
+{ 
 	document.frm_themcanbo.cbo_tendonvithem.focus();
 	//load combo don vi
 	fillcombo('get_list_donvi.php',document.frm_themcanbo.cbo_tendonvithem);
 	fillcombo('get_list_donvi.php',document.frm_themcanbo.cbo_tendonvithem2);
 	fillcombo('get_list_donvi.php',document.frm_xoacanbo.cbo_tendonvixoa);
 	fillcombo('get_list_donvi.php',document.frm_suacanbo.cbo_tendonvisua);
+	
 	fillcombo2('get_list_canbo.php',document.frm_suacanbo.cbo_macanbosua);
+	fillcombo2('get_list_canbo.php',document.frm_xoacanbo.cbo_macanboxoa);
 	
 	//load combo ngay, thang, nam cho nguoi dung chon
 	init_date_input(document.frm_themcanbo.cbo_ngaysinh,document.frm_themcanbo.cbo_thangsinh,document.frm_themcanbo.cbo_namsinh);	
-	init_date_input(document.frm_suacanbo.cbo_ngaysinh,document.frm_suacanbo.cbo_thangsinh,document.frm_suacanbo.cbo_namsinh);
+	init_date_input(document.frm_suacanbo.cbo_ngaysinhsua,document.frm_suacanbo.cbo_thangsinhsua,document.frm_suacanbo.cbo_namsinhsua);
 	
 	//su kien change combo ma can bo
 	$('form[name="frm_suacanbo"] select[name="cbo_macanbosua"]').change(function(){
 		get_info_canbo('get_info_canbo.php',document.frm_suacanbo);
 	});
-$('form[name="frm_suacanbo"] select[name="choncanbo"]').change(function(){
-		get_info_canbo('../get_info_canbo.php',document.frm_suacanbo);
+	//su kien change combo ma can bo trong form xoa can bo
+	$('form[name="frm_xoacanbo"] select[name="cbo_macanboxoa"]').change(function(){
+		get_info_canbo2('get_info_canbo.php',document.frm_xoacanbo);
 	});
-	//su kien click button Them
-	/*$('form[name="frm_themcanbo"] input[name="btn_themcanbo"]').click(function(){
-		themcanbo('themcanbo.php',document.frm_themcanbo);				
-	});*/
-		
-	/*$('form[name="frm_themcanbo"] select[name="cbo_tendonvi"]').change(function(){
-		get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
-	});*/
-	
-	//Su kien click button Luu
-	/*$('form[name="frm_suadonvi"] input[type="button"]').click(function(){
-		suadonvi('suadonvi.php',document.frm_suadonvi);
-	});
-	
-	//su kien click button Xoa
-	$('form[name="frm_xoadonvi"] input[type="button"]').click(function(){
-		if (confirm('Ban có chắc chắn muốn xóa không ?' )) {
-			xoadonvi('xoadonvi.php',document.frm_xoadonvi);			
-		}		
-	});*/
 }); 
 
-/*function isValid(){
-	madonvi = frm_themcanbo.cbo_tendonvithem;
-	macanbo = frm_themcanbo.txt_masocanbo.value;
-	tencanbo = frm_themcanbo.txt_tencanbo.value;
-	gioitinh = frm_themcanbo.ra_gioitinh.value;
-	ngaysinh = frm_themcanbo.txt_ngaysinh.value;
-	email = frm_themcanbo.txt_email.value;
-	diachi = frm_themcanbo.txt_diachi.value;
-	dienthoai = frm_themcanbo.txt_sodienthoai.value;
-	matkhau = frm_themcanbo.txt_matkhau.value;
-	
-	if(madonvi.value==-1){
-		alert('Bạn chưa chọn đơn vị.');
-		madonvi.focus();
-		return false;
-		}
-	
-	}*/
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
@@ -346,7 +312,7 @@ $('form[name="frm_suacanbo"] select[name="choncanbo"]').change(function(){
               </tr>
               <tr>
               		<td height="22" align="right" class="level_1_1">Chọn mã số cán bộ</td>
-                    <td width="70%" align="left" class="level_1_1"><select class="cbo" name="cbo_macanbosua" style="width:100%">
+                    <td width="70%" align="left" class="level_1_1"><select class="cbo" name="cbo_macanbosua" id="cbo_macanbosua" style="width:100%">
                     </select></td>
               </tr>
               <tr>
@@ -356,12 +322,12 @@ $('form[name="frm_suacanbo"] select[name="choncanbo"]').change(function(){
             
               <tr>
 					<td height="22" align="right" class="level_1_1">Tên cán bộ</td>
-					<td width="50%" align="left" class="level_1_1"><input name="txt_tencanbo" class="txtbox" style="width:85%" value=""><input type="button" class="button_1" value="Tìm" ></td>
+					<td width="50%" align="left" class="level_1_1"><input name="txt_tencanbosua" id="txt_tencanbosua" class="txtbox" style="width:85%" value=""><input type="button" class="button_1" value="Tìm" ></td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_2">Giới tính</td>
 					<td width="50%" align="left" class="level_1_2">
-					<select name="cbo_gioitinh" id="cbo_gioitinh">
+					<select name="cbo_gioitinhsua" id="cbo_gioitinhsua">
                      	<option value="-1">Giới tính</option>
                      	<option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
@@ -371,15 +337,15 @@ $('form[name="frm_suacanbo"] select[name="choncanbo"]').change(function(){
 			  <tr>
 					<td height="22" align="right" class="level_1_1">Ngày sinh</td>
 					<td width="50%" align="left" class="level_1_1">
-                   		<select name="cbo_ngaysinh" id="cbo_ngaysinh" style="width:60">
+                   		<select name="cbo_ngaysinhsua" id="cbo_ngaysinhsua" style="width:60">
                       
                    </select>
                    		/
-						<select title="- Chọn Tháng -" name="cbo_thangsinh" id="cbo_thangsinh" class="" aria-required="true" tabindex="1">
+						<select title="- Chọn Tháng -" name="cbo_thangsinhsua" id="cbo_thangsinhsua" class="" aria-required="true" tabindex="1">
                    
                               </select>
 						/
-						<select title="- Chọn Tháng -" name="cbo_namsinh" id="cbo_namsinh" class="" aria-required="true" tabindex="1">
+						<select title="- Chọn Tháng -" name="cbo_namsinhsua" id="cbo_namsinhsua" class="" aria-required="true" tabindex="1">
                         		
                               </select>
 					</td>
@@ -387,26 +353,26 @@ $('form[name="frm_suacanbo"] select[name="choncanbo"]').change(function(){
                <tr>
 					<td height="22" align="right" class="level_1_2">Email</td>
 					<td width="50%" align="left" class="level_1_2">
-					<input name="txt_email" id="txt_email" class="txtbox" type="text" style="width:100%">
+					<input name="txt_emailsua" id="txt_emailsua" class="txtbox" type="text" style="width:100%">
 					</td>
 			  </tr>
 			   <tr>
 					<td height="22" align="right" class="level_1_1">Địa chỉ</td>
 					<td width="50%" align="left" class="level_1_1">
-					<input name="txt_diachi" id="txt_diachi" class="txtbox" type="text" style="width:100%" value="">					</td>
+					<input name="txt_diachisua" id="txt_diachisua" class="txtbox" type="text" style="width:100%" value="">					</td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_2">Số điện thoại</td>
 					<td width="50%" align="left" class="level_1_2">
-					<input name="txt_sodienthoai" id="txt_sodienthoai" class="txtbox"  type="text" style="width:100%" value="" maxlength="12" onKeyPress="return keypress(event)">					</td>
+					<input name="txt_sodienthoaisua" id="txt_sodienthoaisua" class="txtbox"  type="text" style="width:100%" value="" maxlength="12" onKeyPress="return keypress(event)">					</td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_1">Mật khẩu</td>
 					<td width="50%" align="left" class="level_1_1">
-					<input name="txt_matkhau" id="matkhau" class="txtbox" type="password" style="width:100%" value="">					</td>
+					<input name="txt_matkhausua" id="matkhausua" class="txtbox" type="password" style="width:100%" value="">					</td>
 			  </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Lưu" ></td>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input id="btn_suacanbo" name="btn_suacanbo" type="button" class="button_1" value="Lưu" ></td>
               </tr>
               </tbody>
            </table>
@@ -425,7 +391,7 @@ $('form[name="frm_suacanbo"] select[name="choncanbo"]').change(function(){
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoacanbo">
+          	<form name="frm_xoacanbo" id="frm_xoacanbo">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -434,19 +400,15 @@ $('form[name="frm_suacanbo"] select[name="choncanbo"]').change(function(){
               </tr>
               
               <tr>
-					<td height="22" align="right" class="level_1_2">Chọn đơn vị </td>
-					<td width="70%" align="left" class="level_1_2"><select class="cbo" name="cbo_tendonvixoa" style="width:100%"></select></td>
-			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên cán bộ</td>
-					<td width="50%" align="left" class="level_1_1"><select class="cbo" name="choncanbo" style="width:100%"></select></td>
+					<td height="22" align="right" class="level_1_2">Chọn mã số cán bộ</td>
+					<td width="70%" align="left" class="level_1_2"><select class="cbo" name="cbo_macanboxoa" id="cbo_macanboxoa" style="width:100%"></select></td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_1">Tên cán bộ</td>
-					<td width="50%" align="left" class="level_1_1"><input name="tencanbo" class="txtbox" style="width:85%" value=""><input type="button" class="button_1" value="Tìm" ></td>
+					<td width="50%" align="left" class="level_1_1"><input name="txt_tencanboxoa" id="txt_tencanboxoa" class="txtbox" style="width:85%" value=""><input type="button" class="button_1" value="Tìm" ></td>
 			  </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Xóa"></td>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input id="btn_xoacanbo" name="btn_xoacanbo" type="button" class="button_1" value="Xóa"></td>
               </tr>
               </tbody>
            </table>
