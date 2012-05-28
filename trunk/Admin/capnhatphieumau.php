@@ -166,9 +166,10 @@ $(document).ready(function() {
                   <input type="text" name="txttendvt" id="txttendvt" style="width:100%"></td>
               </tr>
               <tr>
-                <td height="22" align="center" class="level_1_2">Ghi chú nội dung:</td>
+                <td height="22" align="right" class="level_1_2">Ghi chú nội dung:</td>
                 <td height="22" align="center" class="level_1_2"><label for="txteraghichund"></label>
-                  <textarea name="txteraghichund" id="txteraghichund" cols="45" rows="5"></textarea></td>
+                  <label for="txtghind"></label>
+                  <input type="text" name="txtghind" id="txtghind" style="width:100%"></td>
               </tr>
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
