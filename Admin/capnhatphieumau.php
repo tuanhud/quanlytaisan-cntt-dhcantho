@@ -143,7 +143,7 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm nội dung kiểm kê</td>
+          <td width="419" align="center">Thêm phiếu mẫu</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -156,20 +156,36 @@ $(document).ready(function() {
                     <td width="50%" class="level_1_1"></td>
               </tr>
               <tr>
-                <td height="22" align="right" class="level_1_2">Tên nội dung: </td>
+                <td height="22" align="right" class="level_1_2">Tên phiếu: </td>
                 <td height="22" align="center" class="level_1_2"><label for="txttennd"></label>
                   <input type="text" name="txttennd" id="txttennd" style="width:100%"></td>
               </tr>
               <tr>
-                <td height="22" align="right" class="level_1_1">Tên đơn vị tính:</td>
+                <td height="22" align="right" class="level_1_1">Loại kiểm kê:                  </td>
+                <td height="22" align="center" class="level_1_1"><label for="cbolkk"></label>
+                  <select name="cbolkk" id="cbolkk" style="width:100%">
+                  </select></td>
+              </tr>
+              <tr>
+                <td height="22" align="right" class="level_1_1">Ngày lập phiếu:</td>
                 <td height="22" align="center" class="level_1_1"><label for="txttendvt"></label>
-                  <input type="text" name="txttendvt" id="txttendvt" style="width:100%"></td>
+                  Ngày 
+                  <select name="ng" id="ng">
+                  </select>
+                  <label for="ng"></label>
+                  Tháng 
+                  <select name="th" id="th">
+                  </select>
+                  <label for="th">Năm 
+                    <select name="nam" id="nam">
+                    </select>
+                  </label></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Ghi chú nội dung:</td>
                 <td height="22" align="center" class="level_1_2"><label for="txteraghichund"></label>
                   <label for="txtghind"></label>
-                  <input type="text" name="txtghind" id="txtghind" style="width:100%"></td>
+                  <textarea name="txtghind" rows="5" id="txtghind" style="width:100%"></textarea></td>
               </tr>
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
