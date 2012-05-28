@@ -20,6 +20,7 @@
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhatnguoidung.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -63,10 +64,14 @@ if (keypressed2 > 48 && keypressed2 < 57)
 }
 $(document).ready(function() { 
 	document.frm_themcanbo.cbo_tendonvithem.focus();
+	//load combo don vi
 	fillcombo('get_list_donvi.php',document.frm_themcanbo.cbo_tendonvithem);
 	fillcombo('get_list_donvi.php',document.frm_themcanbo.cbo_tendonvithem2);
 	fillcombo('get_list_donvi.php',document.frm_suacanbo.cbo_tendonvisua);
 	fillcombo('get_list_donvi.php',document.frm_xoacanbo.cbo_tendonvixoa);
+	
+	//load combo ngay, thang, nam cho nguoi dung chon
+	init_date_input(document.frm_themcanbo.cbo_ngaysinh,document.frm_themcanbo.cbo_thangsinh,document.frm_themcanbo.cbo_namsinh);	
 
 	//su kien click button Them
 	/*$('form[name="frm_themcanbo"] input[name="btn_themcanbo"]').click(function(){
@@ -232,7 +237,7 @@ $(document).ready(function() {
               </tr>
               <tr>
 					<td height="22" align="right" class="level_1_2">Mã số cán bộ</td>
-					<td width="50%" align="left" class="level_1_2"><input name="txt_masocanbo" id="txt_masocanbo" class="txtbox" style="width:100%" value="" maxlength="7" onKeyPress="return keypress(event)"></td>
+					<td width="50%" align="left" class="level_1_2"><input name="txt_masocanbo" id="txt_masocanbo" class="txtbox" style="width:100%" value="" maxlength="6" onKeyPress="return keypress(event)"></td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_1">Tên cán bộ</td>
@@ -241,7 +246,8 @@ $(document).ready(function() {
               <tr>
 					<td height="22" align="right" class="level_1_2">Giới tính</td>
 					<td width="50%" align="left" class="level_1_2">
-					 <select name="sl_gioitinh" id="sl_gioitinh">
+					 <select name="cbo_gioitinh" id="cbo_gioitinh">
+                     	<option value="-1">Chọn giới tính</option>
                      	<option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
                      </select>					
@@ -251,77 +257,38 @@ $(document).ready(function() {
 					<td height="22" align="right" class="level_1_1">Ngày sinh</td>
 					<td width="50%" align="left" class="level_1_1">
                    		<select name="cbo_ngaysinh" id="cbo_ngaysinh" style="width:60">
-                     <option value="1" selected>1</option>
-                     <option value="2">2</option>
-                     <option value="3">3</option>
-                     <option value="4">4</option>
-                     <option value="5">5</option>
-                     <option value="6">6</option>
-                     <option value="7">7</option>
-                     <option value="8">8</option>
-                     <option value="9">9</option>
-                     <option value="10">10</option>
-                     <option value="11">11</option>
-                     <option value="12">12</option>
-                     <option value="13">13</option>
-                     <option value="14">14</option>
-                     <option value="15">15</option>
-                     <option value="16">16</option>
-                     <option value="17">17</option>
-                     <option value="18">18</option>
-                     <option value="19">19</option>
-                     <option value="20">20</option>
-                     <option value="21">21</option>
-                     <option value="22">22</option>
-                     <option value="23">23</option>
-                     <option value="24">24</option>
-                     <option value="25">25</option>
-                     <option value="26">26</option>
-                     <option value="27">27</option>
-                     <option value="28">28</option>
-                     <option value="29">29</option>
-                     <option value="30">30</option>
-                     <option value="31">31</option>
+                      
                    </select>
                    		/
 						<select title="- Chọn Tháng -" name="cbo_thangsinh" id="cbo_thangsinh" class="" aria-required="true" tabindex="1">
-                              <option selected title="Tháng 1" value="1">Tháng 1</option>
-                              <option title="Tháng 2" value="2">Tháng 2</option>
-                              <option title="Tháng 3" value="3">Tháng 3</option>
-                              <option title="Tháng 4" value="4">Tháng 4</option>
-                              <option title="Tháng 5" value="5">Tháng 5</option>
-                              <option title="Tháng 6" value="6">Tháng 6</option>
-                              <option title="Tháng 7" value="7">Tháng 7</option>
-                              <option title="Tháng 8" value="8">Tháng 8</option>
-                              <option title="Tháng 9" value="9">Tháng 9</option>
-                              <option title="Tháng 10" value="10">Tháng 10</option>
-                              <option title="Tháng 11" value="11">Tháng 11</option>
-                              <option title="Tháng 12" value="12">Tháng 12</option>
+                   
                               </select>
 						/
-						<input type="text" id="txt_namsinh" name="txt_namsinh" onblur="javascript:if(this.value == '')this.value='-Năm-';" onfocus="javascript:if(this.value == '-Năm-') this.value='';" value="-Năm-" style="width:20%">
+						<select title="- Chọn Tháng -" name="cbo_namsinh" id="cbo_namsinh" class="" aria-required="true" tabindex="1">
+                        		
+                              </select>
 					</td>
 			  </tr>
                <tr>
 					<td height="22" align="right" class="level_1_2">Email</td>
 					<td width="50%" align="left" class="level_1_2">
-					<input name="txt_email" class="txtbox" type="text" style="width:100%" value="">					</td>
+					<input name="txt_email" id="txt_email" class="txtbox" type="text" style="width:100%">					</td>
 			  </tr>
 			   <tr>
 					<td height="22" align="right" class="level_1_1">Địa chỉ</td>
 					<td width="50%" align="left" class="level_1_1">
-					<input name="txt_diachi" class="txtbox" type="text" style="width:100%" value="">					</td>
+					<input name="txt_diachi" id="txt_diachi" class="txtbox" type="text" style="width:100%" value="">					</td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_2">Số điện thoại</td>
 					<td width="50%" align="left" class="level_1_2">
-					<input name="txt_sodienthoai" class="txtbox"  type="text" style="width:100%" value="" maxlength="12" onKeyPress="return keypress(event)">					
+					<input name="txt_sodienthoai" id="txt_sodienthoai" class="txtbox"  type="text" style="width:100%" value="" maxlength="12" onKeyPress="return keypress(event)">					
 					</td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_1">Mật khẩu</td>
 					<td width="50%" align="left" class="level_1_1">
-					<input name="txt_matkhau" class="txtbox" type="password" style="width:100%" value="">					</td>
+					<input name="txt_matkhau" id="matkhau" class="txtbox" type="password" style="width:100%" value="">					</td>
 			  </tr>
 			  <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themcanbo" id="btn_themcanbo" class="button_1" value="Thêm"></td>
@@ -396,7 +363,7 @@ $(document).ready(function() {
 			  <tr>
 					<td height="22" align="right" class="level_1_1">Ngày sinh</td>
 					<td width="50%" align="left" class="level_1_1">
-                   		<input type="text" id="ngaysinh" name="ngaysinh" onblur="javascript:if(this.value == '')this.value='-Ngày-';" onfocus="javascript:if(this.value == '-Ngày-') this.value='';" value="-Ngày-" style="width:15%">
+                   		<input type="text" id="ngaysinh" name="ngaysinh" onBlur="javascript:if(this.value == '')this.value='-Ngày-';" onFocus="javascript:if(this.value == '-Ngày-') this.value='';" value="-Ngày-" style="width:15%">
                    		/
 						<select title="- Chọn Tháng -" name="mm" id="mm" class="" aria-required="true" tabindex="1">
                               <option title="- Chọn Tháng -" value="" selected="">- Chọn Tháng -</option>
@@ -414,7 +381,7 @@ $(document).ready(function() {
                               <option title="Tháng 12" value="12">Tháng 12</option>
                               </select>
 						/
-						<input type="text" id="ngaysinh" name="ngaysinh" onblur="javascript:if(this.value == '')this.value='-Năm-';" onfocus="javascript:if(this.value == '-Năm-') this.value='';" value="-Năm-" style="width:15%">
+						<input type="text" id="ngaysinh" name="ngaysinh" onBlur="javascript:if(this.value == '')this.value='-Năm-';" onFocus="javascript:if(this.value == '-Năm-') this.value='';" value="-Năm-" style="width:15%">
 					</td>
 			  </tr>
                <tr>
