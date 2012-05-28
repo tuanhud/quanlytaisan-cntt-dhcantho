@@ -137,7 +137,7 @@ $(document).ready(function()
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themnamhoc" action="../themnam.php">
+          	<form name="frm_themnamhoc" action="themnam.php">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -169,7 +169,7 @@ $(document).ready(function()
 		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
 		       </tr>
 		     <tr>
-		       <td colspan="3" align="left"><form name="frm_themnamhoc" action="../themnam.php">
+		       <td colspan="3" align="left"><form name="frm_themnamhoc" action="themnam.php">
 		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
 		           <tbody>
 		             <tr>
@@ -203,7 +203,7 @@ $(document).ready(function()
 		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
 		       </tr>
 		     <tr>
-		       <td colspan="3" align="left"><form name="frm_themnamhoc" action="../themnam.php">
+		       <td colspan="3" align="left"><form name="frm_themnamhoc" action="themnam.php">
 		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
 		           <tbody>
 		             <tr>
