@@ -76,17 +76,32 @@ function check_date_ngaysinh(day,month,year)
 //lay thong tin can bo load len form sua khi chon combo ma so can bo
 function get_info_canbo(filephp,frm)
 {
+	if(frm.cbo_macanbosua.value=='Chọn mã số cán bộ')
+	{
+		frm.cbo_tendonvisua.value=-1;
+		frm.txt_tencanbosua.value='';
+		frm.cbo_gioitinhsua.value=-1;
+		frm.cbo_ngaysinhsua.value=-1;
+		frm.cbo_thangsinhsua.value=-1;
+		frm.cbo_namsinhsua.value=-1;
+		frm.txt_emailsua.value='';
+		frm.txt_diachisua.value='';
+		frm.txt_sodienthoaisua.value='';
+		frm.txt_matkhausua.value='';
+	}
+	else
+	{
 	macanbo=frm.cbo_macanbosua.value;
 	madonvi=frm.cbo_tendonvisua;
-	tencanbo=frm.txt_tencanbo;
-	gioitinh=frm.cbo_gioitinh;
-	ngaysinh=frm.cbo_ngaysinh;
-	thangsinh=frm.cbo_thangsinh;
-	namsinh=frm.cbo_namsinh;
-	email=frm.txt_email;
-	diachi=frm.txt_diachi;
-	sodienthoai=frm.txt_sodienthoai;
-	matkhau=frm.txt_matkhau;
+	tencanbo=frm.txt_tencanbosua;
+	gioitinh=frm.cbo_gioitinhsua;
+	ngaysinh=frm.cbo_ngaysinhsua;
+	thangsinh=frm.cbo_thangsinhsua;
+	namsinh=frm.cbo_namsinhsua;
+	email=frm.txt_emailsua;
+	diachi=frm.txt_diachisua;
+	sodienthoai=frm.txt_sodienthoaisua;
+	matkhau=frm.txt_matkhausua;
 	
 	http=GetXmlHttpObject();
 	var params = "macanbo="+macanbo;
@@ -94,8 +109,8 @@ function get_info_canbo(filephp,frm)
 	http.open("POST", filephp, false);
 	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.setRequestHeader("Content-length", params.length);
-	http.setRequestHeader("Connection", "close");
+	//http.setRequestHeader("Content-length", params.length);
+	//http.setRequestHeader("Connection", "close");
 	//ham xu li du lieu tra ve cua ajax send thanh cong
 	http.onreadystatechange = function() {
 		if(http.readyState == 4 && http.status == 200) 
@@ -114,11 +129,46 @@ function get_info_canbo(filephp,frm)
 		}
 	}
 	http.send(params);
+	}
 }
+function get_info_canbo2(filephp,frm)
+{
+	if(frm.cbo_macanboxoa.value=='Chọn mã số cán bộ')
+	{
+		frm.txt_tencanboxoa.value='';
+	}
+	else
+	{
+	macanbo=frm.cbo_macanboxoa.value;
+	tencanbo=frm.txt_tencanboxoa;
+	
+	http=GetXmlHttpObject();
+	var params = "macanbo="+macanbo;
+	//mo ket noi bang phuong thuc post
+	http.open("POST", filephp, false);
+	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//http.setRequestHeader("Content-length", params.length);
+	//http.setRequestHeader("Connection", "close");
+	//ham xu li du lieu tra ve cua ajax send thanh cong
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) 
+		{				
+				var x=http.responseXML.getElementsByTagName('row');								
+				tencanbo.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
+		}
+	}
+	http.send(params);
+	}
+}
+
+
 var _admin;
 		$(function()
 		{
-			_admin.themcanbo()
+			_admin.themcanbo(),
+			_admin.suacanbo(),
+			_admin.xoacanbo()
 		}),
 		
 		_admin=
@@ -155,12 +205,20 @@ var _admin;
 										alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
 									else if(n==1) 
 									{
-										alert("Thành công !"),
-										$("#frm_themcanbo").reset()
-										//fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
-										//fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
-										//ClearInputValue("#txt_tendonvithem"),
-										//FocusAndSelect("#txt_tendonvithem")
+										alert("Thành công."),
+										fillcombo2('get_list_canbo.php',document.frm_suacanbo.cbo_macanbosua);
+										fillcombo2('get_list_canbo.php',document.frm_xoacanbo.cbo_macanboxoa);
+										document.frm_themcanbo.cbo_tendonvithem.value=-1,
+										document.frm_themcanbo.txt_masocanbo.value='',
+										document.frm_themcanbo.txt_tencanbo.value='',
+										document.frm_themcanbo.cbo_gioitinh.value=-1,
+										document.frm_themcanbo.cbo_ngaysinh.value=-1,
+										document.frm_themcanbo.cbo_thangsinh.value=-1,
+										document.frm_themcanbo.cbo_namsinh.value=-1,
+										document.frm_themcanbo.txt_email.value='',
+										document.frm_themcanbo.txt_diachi.value='',
+										document.frm_themcanbo.txt_sodienthoai.value='',
+										document.frm_themcanbo.txt_matkhau.value=''
 									}
 									else if(n==2)
 									{
@@ -175,63 +233,102 @@ var _admin;
 						
 					})
 				},
-		}
-
-function xoacanbo(filephp,frm)
-{
-	var ban_id = frm.cbo_tenban.value;
-	http=GetXmlHttpObject();
-	var params = "ban_id="+ban_id;
-	//mo ket noi bang phuong thuc post
-	http.open("POST", filephp, false);
-	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.setRequestHeader("Content-length", params.length);
-	http.setRequestHeader("Connection", "close");
-	//ham xu li du lieu tra ve cua ajax send thanh cong
-	http.onreadystatechange = function() {
-		if(http.readyState == 4 && http.status == 200) 
-		{
-			var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-			alert(result);
-			if(result=='Thành công.'){
-			fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-			fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);			
-			}
-			else frm.cbo_tenban.focus();
-		}
-	}
-	http.send(params);
-}
-
-function suacanbo(filephp,frm)
-{
-	var ban_id = frm.cbo_tenban.value;
-	var ban_ten = frm.txt_tenban.value;
-	http=GetXmlHttpObject();
-	var params="ban_id="+ban_id;
-	params+="&ban_ten="+ban_ten;
-	//mo ket noi bang phuong thuc post
-	http.open("POST", filephp, false);
-	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.setRequestHeader("Content-length", params.length);
-	http.setRequestHeader("Connection", "close");
-	//ham xu li du lieu tra ve cua ajax send thanh cong
-	http.onreadystatechange = function() {
-		if(http.readyState == 4 && http.status == 200) 
-		{			
-			var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-			alert(result);
-			if(result=='Thành công.')
+		  suacanbo:function()
+		  {
+			  $("#btn_suacanbo").unbind("click").click(function()
+			  {
+						if($("#cbo_macanbosua").val()=='') FocusAndSelect("#cbo_macanbosua");
+							else if($("#cbo_tendonvisua").val()==-1) FocusAndSelect("#cbo_tendonvisua");
+								else if($("#txt_tencanbosua").val()=="") FocusAndSelect("#txt_tencanbosua");
+									else if($("#cbo_gioitinhsua option:selected").val()==-1) FocusAndSelect("#cbo_gioitinhsua");
+											else if($("#cbo_ngaysinhsua option:selected").val()==-1)FocusAndSelect("#cbo_ngaysinhsua");
+												else if($("#cbo_thangsinhsua option:selected").val()==-1)FocusAndSelect("#cbo_thangsinhsua");
+													else if($("#cbo_namsinhsua option:selected").val()==-1)FocusAndSelect("#cbo_namsinhsua");
+														else if(check_date_ngaysinh($("#cbo_ngaysinhsua option:selected").val(),$("#cbo_thangsinhsua option:selected").val(),$("#cbo_namsinhsua option:selected").val())){alert("Ngày tháng năm sinh không hợp lệ.");FocusAndSelect("#cbo_ngaysinhsua");}
+															else if($("#txt_emailsua").val()=="")FocusAndSelect("#txt_emailsua");
+																else if(checkEmail($("#txt_emailsua").val())!=1) {alert("Địa chỉ email không hợp lệ"); FocusAndSelect("#txt_emailsua");}
+																	else if($("#txt_diachisua").val()=="")FocusAndSelect("#txt_diachisua");
+																		else if($("#txt_sodienthoaisua").val()=="")FocusAndSelect("#txt_sodienthoaisua");
+																			else if($("#txt_matkhausua").val()=="")FocusAndSelect("#txt_matkhausua");
+						else
+						{	
+							return $.ajax
+							({
+								url:"./suacanbo.php",
+								type:"POST",
+								//dataType:"html",
+								data:$("#frm_suacanbo").serialize(),
+								beforeSend:function(){},
+								success:function(n)
+								{
+									if(n==0)
+										alert("Bạn chưa thay đổi thông tin nào.")
+									else 
+									{
+										alert("Thành công !"),
+										fillcombo2('get_list_canbo.php',document.frm_suacanbo.cbo_macanbosua);
+										fillcombo2('get_list_canbo.php',document.frm_xoacanbo.cbo_macanboxoa);
+										document.frm_suacanbo.cbo_tendonvisua.value=-1,
+										document.frm_suacanbo.txt_tencanbosua.value='',
+										document.frm_suacanbo.cbo_gioitinhsua.value=-1,
+										document.frm_suacanbo.cbo_ngaysinhsua.value=-1,
+										document.frm_suacanbo.cbo_thangsinhsua.value=-1,
+										document.frm_suacanbo.cbo_namsinhsua.value=-1,
+										document.frm_suacanbo.txt_emailsua.value='',
+										document.frm_suacanbo.txt_diachisua.value='',
+										document.frm_suacanbo.txt_sodienthoaisua.value='',
+										document.frm_suacanbo.txt_matkhausua.value=''
+									}
+								},
+								error:function(){},
+								complete:function(){}
+							}),!1
+						}
+			   })
+		  },
+		  
+		  xoacanbo:function()
 			{
-			frm.reset();
-			fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);		
-			fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);	
+			 $("#btn_xoacanbo").unbind("click").click(function()
+			 {   
+			 	if ($("#cbo_macanboxoa").val()!='Chọn mã số cán bộ')
+				{	
+					if(confirm('Ban có chắc chắn muốn xóa không ?' ))
+					{	
+						return $.ajax
+						({
+							url:"./xoacanbo.php",
+							type:"POST",
+							//dataType:"html",
+							data:$("#frm_xoacanbo").serialize(),
+							beforeSend:function(){},
+							success:function(n)
+							{
+								if(n==0)
+									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
+								else if(n==1)
+								{
+									alert("Thành công !"),
+									fillcombo2('get_list_canbo.php',document.frm_suacanbo.cbo_macanbosua);
+									fillcombo2('get_list_canbo.php',document.frm_xoacanbo.cbo_macanboxoa);
+									document.frm_xoacanbo.txt_tencanboxoa.value='',
+									FocusAndSelect("#cbo_macanboxoa")
+								}
+							},
+							error:function(){},
+							complete:function(){}
+						}),!1
+					  }
+				}
+				else
+				{
+					alert("Bạn chưa chọn mã cán bộ.");	
+				}
+					
+				})
+			  
 			}
-			else if(result=='Bạn chưa chọn Ban.') frm.cbo_tenban.focus();
-			else frm.txt_tenban.focus();
+		
+				
 		}
-	}
-	http.send(params);
-}
+	
