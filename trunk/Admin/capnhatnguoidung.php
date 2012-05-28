@@ -43,36 +43,46 @@ if (keypressed < 48 || keypressed > 57)
 }
 }
 //khong cho nhap so
-function keypress2(e){
-var keypressed2 = null;
-if (window.event)
-	keypressed2 = window.event.keyCode; //IE
-else 
-	keypressed2 = e.which; //NON-IE, Standard
-
-if (keypressed2 > 48 && keypressed2 < 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed2 == 8 || keypressed2 == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
+function keypress2(e)
+{
+	var keypressed2 = null;
+	if (window.event)
+		keypressed2 = window.event.keyCode; //IE
+	else 
+		keypressed2 = e.which; //NON-IE, Standard
+	
+	if (keypressed2 > 48 && keypressed2 < 57)
+	{ 
+		//CharCode của 0 là 48 (Theo bảng mã ASCII)
+		//CharCode của 9 là 57 (Theo bảng mã ASCII)
+		if (keypressed2 == 8 || keypressed2 == 127)
+		{
+		//Phím Delete và Phím Back
+		return;
+		}
+		return false;
 	}
-	return false;
-}
 }
 $(document).ready(function() { 
 	document.frm_themcanbo.cbo_tendonvithem.focus();
 	//load combo don vi
 	fillcombo('get_list_donvi.php',document.frm_themcanbo.cbo_tendonvithem);
 	fillcombo('get_list_donvi.php',document.frm_themcanbo.cbo_tendonvithem2);
-	fillcombo('get_list_donvi.php',document.frm_suacanbo.cbo_tendonvisua);
 	fillcombo('get_list_donvi.php',document.frm_xoacanbo.cbo_tendonvixoa);
+	fillcombo('get_list_donvi.php',document.frm_suacanbo.cbo_tendonvisua);
+	fillcombo2('get_list_canbo.php',document.frm_suacanbo.cbo_macanbosua);
 	
 	//load combo ngay, thang, nam cho nguoi dung chon
 	init_date_input(document.frm_themcanbo.cbo_ngaysinh,document.frm_themcanbo.cbo_thangsinh,document.frm_themcanbo.cbo_namsinh);	
-
+	init_date_input(document.frm_suacanbo.cbo_ngaysinh,document.frm_suacanbo.cbo_thangsinh,document.frm_suacanbo.cbo_namsinh);
+	
+	//su kien change combo ma can bo
+	$('form[name="frm_suacanbo"] select[name="cbo_macanbosua"]').change(function(){
+		get_info_canbo('get_info_canbo.php',document.frm_suacanbo);
+	});
+$('form[name="frm_suacanbo"] select[name="choncanbo"]').change(function(){
+		get_info_canbo('../get_info_canbo.php',document.frm_suacanbo);
+	});
 	//su kien click button Them
 	/*$('form[name="frm_themcanbo"] input[name="btn_themcanbo"]').click(function(){
 		themcanbo('themcanbo.php',document.frm_themcanbo);				
@@ -247,7 +257,7 @@ $(document).ready(function() {
 					<td height="22" align="right" class="level_1_2">Giới tính</td>
 					<td width="50%" align="left" class="level_1_2">
 					 <select name="cbo_gioitinh" id="cbo_gioitinh">
-                     	<option value="-1">Chọn giới tính</option>
+                     	<option value="-1">Giới tính</option>
                      	<option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
                      </select>					
@@ -260,11 +270,11 @@ $(document).ready(function() {
                       
                    </select>
                    		/
-						<select title="- Chọn Tháng -" name="cbo_thangsinh" id="cbo_thangsinh" class="" aria-required="true" tabindex="1">
+						<select title="- Chọn Tháng -" name="cbo_thangsinh" id="cbo_thangsinh" class="" aria-required="true" tabindex="1" style="width:70">
                    
                               </select>
 						/
-						<select title="- Chọn Tháng -" name="cbo_namsinh" id="cbo_namsinh" class="" aria-required="true" tabindex="1">
+						<select title="- Chọn Tháng -" name="cbo_namsinh" id="cbo_namsinh" class="" aria-required="true" tabindex="1" style="width:70">
                         		
                               </select>
 					</td>
@@ -327,7 +337,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suacanbo">
+          	<form name="frm_suacanbo" id="frm_suacanbo">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -336,74 +346,64 @@ $(document).ready(function() {
               </tr>
               <tr>
               		<td height="22" align="right" class="level_1_1">Chọn mã số cán bộ</td>
-                    <td width="70%" align="left" class="level_1_1"><select class="cbo" name="cbo_tendonvisua" style="width:100%">
+                    <td width="70%" align="left" class="level_1_1"><select class="cbo" name="cbo_macanbosua" style="width:100%">
                     </select></td>
               </tr>
               <tr>
 					<td height="22" align="right" class="level_1_2">Chọn đơn vị</td>
-					<td width="50%" align="left" class="level_1_2"><select class="cbo" name="choncanbo" style="width:100%"></select></td>
+					<td width="50%" align="left" class="level_1_2"><select class="cbo" id="cbo_tendonvisua" name="cbo_tendonvisua" style="width:85%"></select><input type="button" class="button_1" value="Thêm" ></td>
 			  </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn quyền </td>
-					<td width="50%" align="left" class="level_1_1"><select class="cbo" name="chonquyen" style="width:100%"></select></td>
-			  </tr>
+            
               <tr>
 					<td height="22" align="right" class="level_1_1">Tên cán bộ</td>
-					<td width="50%" align="left" class="level_1_1"><input name="tencanbo" class="txtbox" style="width:85%" value=""><input type="button" class="button_1" value="Tìm" ></td>
+					<td width="50%" align="left" class="level_1_1"><input name="txt_tencanbo" class="txtbox" style="width:85%" value=""><input type="button" class="button_1" value="Tìm" ></td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_2">Giới tính</td>
 					<td width="50%" align="left" class="level_1_2">
-					<select name="sl_gioitinh">
-                        <option value="Nam" selected>Nam</option>
+					<select name="cbo_gioitinh" id="cbo_gioitinh">
+                     	<option value="-1">Giới tính</option>
+                     	<option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
-                    </select>				
+                     </select>				
                     </td>
 			  </tr>
 			  <tr>
 					<td height="22" align="right" class="level_1_1">Ngày sinh</td>
 					<td width="50%" align="left" class="level_1_1">
-                   		<input type="text" id="ngaysinh" name="ngaysinh" onBlur="javascript:if(this.value == '')this.value='-Ngày-';" onFocus="javascript:if(this.value == '-Ngày-') this.value='';" value="-Ngày-" style="width:15%">
+                   		<select name="cbo_ngaysinh" id="cbo_ngaysinh" style="width:60">
+                      
+                   </select>
                    		/
-						<select title="- Chọn Tháng -" name="mm" id="mm" class="" aria-required="true" tabindex="1">
-                              <option title="- Chọn Tháng -" value="" selected="">- Chọn Tháng -</option>
-                              <option title="Tháng 1" value="1">Tháng 1</option>
-                              <option title="Tháng 2" value="2">Tháng 2</option>
-                              <option title="Tháng 3" value="3">Tháng 3</option>
-                              <option title="Tháng 4" value="4">Tháng 4</option>
-                              <option title="Tháng 5" value="5">Tháng 5</option>
-                              <option title="Tháng 6" value="6">Tháng 6</option>
-                              <option title="Tháng 7" value="7">Tháng 7</option>
-                              <option title="Tháng 8" value="8">Tháng 8</option>
-                              <option title="Tháng 9" value="9">Tháng 9</option>
-                              <option title="Tháng 10" value="10">Tháng 10</option>
-                              <option title="Tháng 11" value="11">Tháng 11</option>
-                              <option title="Tháng 12" value="12">Tháng 12</option>
+						<select title="- Chọn Tháng -" name="cbo_thangsinh" id="cbo_thangsinh" class="" aria-required="true" tabindex="1">
+                   
                               </select>
 						/
-						<input type="text" id="ngaysinh" name="ngaysinh" onBlur="javascript:if(this.value == '')this.value='-Năm-';" onFocus="javascript:if(this.value == '-Năm-') this.value='';" value="-Năm-" style="width:15%">
+						<select title="- Chọn Tháng -" name="cbo_namsinh" id="cbo_namsinh" class="" aria-required="true" tabindex="1">
+                        		
+                              </select>
 					</td>
 			  </tr>
                <tr>
 					<td height="22" align="right" class="level_1_2">Email</td>
 					<td width="50%" align="left" class="level_1_2">
-					<input name="email2" class="txtbox" type="text" style="width:100%" value="">
+					<input name="txt_email" id="txt_email" class="txtbox" type="text" style="width:100%">
 					</td>
 			  </tr>
 			   <tr>
 					<td height="22" align="right" class="level_1_1">Địa chỉ</td>
 					<td width="50%" align="left" class="level_1_1">
-					<input name="diachi" class="txtbox" type="text" style="width:100%" value="">					</td>
+					<input name="txt_diachi" id="txt_diachi" class="txtbox" type="text" style="width:100%" value="">					</td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_2">Số điện thoại</td>
 					<td width="50%" align="left" class="level_1_2">
-					<input name="sodienthoai" class="txtbox"  type="text" style="width:100%" value="" maxlength="11" onKeyPress="return keypress(event)">					</td>
+					<input name="txt_sodienthoai" id="txt_sodienthoai" class="txtbox"  type="text" style="width:100%" value="" maxlength="12" onKeyPress="return keypress(event)">					</td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_1">Mật khẩu</td>
 					<td width="50%" align="left" class="level_1_1">
-					<input name="matkhau" class="txtbox" type="password" style="width:100%" value="">					</td>
+					<input name="txt_matkhau" id="matkhau" class="txtbox" type="password" style="width:100%" value="">					</td>
 			  </tr>
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Lưu" ></td>

@@ -129,7 +129,7 @@ $(document).ready(function() {
 					<td height="22" align="right" class="level_1_1">Nhập tên đơn vị </td>
 					<td width="50%" align="left" class="level_1_1">
                     	<input id="txt_tendonvithem" name="txt_tendonvithem" type="text" class="txtbox" style="width:100%" value=""></td>
-			</tr>              
+			</tr>               
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themdonvi" id="btn_themdonvi" class="button_1" value="Thêm"></td>
               </tr>
@@ -166,8 +166,7 @@ $(document).ready(function() {
 			</tr>
             <tr>
 					<td height="22" align="right" class="level_1_2">Nhập tên mới</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input id="txt_tendonvisua" name="txt_tendonvisua" align="left" type="text" class="txtbox" style="width:100%"></td>
+					<td width="50%" align="left" class="level_1_2"><input id="txt_tendonvisua" name="txt_tendonvisua" align="left" type="text" class="txtbox" style="width:100%"></td>
 			</tr>              
               <tr>
             <tr>
@@ -178,6 +177,7 @@ $(document).ready(function() {
 				  						  
             </tbody>
         </table>
+           
         	</form>
        </td>
       </tr>		
