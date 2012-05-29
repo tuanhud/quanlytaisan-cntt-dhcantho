@@ -20,6 +20,9 @@
 <script type="text/javascript" src="../js/ajax.js"></script>
 <script type="text/javascript" src="../js/fill.js"></script>
 <script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/table-noidung.js"></script>
+<script type="text/javascript" src="js/table-noidungsua.js"></script>
+<script type="text/javascript" src="js/yui/yui-min.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -44,6 +47,8 @@ if (keypressed >= 48 && keypressed <= 57)
 $(document).ready(function() { 
 	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
 	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
+	createTable();
+	createTable1();
 	//su kien nhan button them
 	$('form[name="frm_themban"] input[type="button"]').click(function(){
 		themban('../themban.php',document.frm_themban);	
@@ -139,12 +144,12 @@ $(document).ready(function() {
         <!--KET THUC MENU-->
         <tr>
     <td height="100%" align="center" valign="middle">   
-		 <table width="500" border="0" cellpadding="0" cellspacing="0">
+		 <table width="529" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm phiếu mẫu</td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+          <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="275" align="center">Thêm phiếu mẫu</td>
+          <td width="149" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
@@ -182,16 +187,19 @@ $(document).ready(function() {
                   </label></td>
               </tr>
               <tr>
-                <td height="22" align="right" class="level_1_2">Ghi chú nội dung:</td>
+                <td height="22" align="right" class="level_1_2">Ghi chú: </td>
                 <td height="22" align="center" class="level_1_2"><label for="txteraghichund"></label>
                   <label for="txtghind"></label>
                   <textarea name="txtghind" rows="5" id="txtghind" style="width:100%"></textarea></td>
               </tr>
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_1"><fieldset>
-                  <legend>Nội dung của phiếu mẫu:                </legend>
-                </fieldset></td>
+                <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
+                    <div class="yui3-skin-sam">                    
+                    <div id="mytable"></div>                    
+                    </div>
+                    </td>
               </tr>
+              
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
               </tr>
@@ -206,12 +214,12 @@ $(document).ready(function() {
         </tbody>
         </table>
 
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <table width="529" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa yêu cầu mua thiết bị </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+          <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="275" align="center">Sửa phiếu mẫu</td>
+          <td width="149" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
@@ -220,81 +228,61 @@ $(document).ready(function() {
               <tbody>
               <tr>
               		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
+                    <td width="50%" class="level_1_2"></td>
               </tr>
+              <tr>
+                <td height="22" align="right" class="level_1_2">Chọn phiếu mẫu cần sửa:</td>
+                <td align="left" class="level_1_2"><select name="cbotenpms" class="cbo" id="cbotenpms" style="width:100%;">
+                </select></td>
+                <tr>
+                  <td height="22" align="right" class="level_1_2">Tên phiếu mẫu: 
+                    <label for="txttenphieumau"></label></td>
+                  <td align="left" class="level_1_2"><input name="txttenphieumau" type="text" disabled id="txttenphieumau" readonly="readonly" style="width:100%"></td>
+                <tr>
+                  <td height="22" align="right" class="level_1_2">Tên phiếu mẫu mới</td>
+                  <td align="left" class="level_1_2"><label for="txttenphieumaumoi"></label>
+                    <input type="text" name="txttenphieumaumoi" id="txttenphieumaumoi" style="width:100%"></td>
+                <tr>
+                  <td height="22" align="right" class="level_1_2">Loại kiểm kê: </td>
+                  <td align="left" class="level_1_2"><label for="cbo_loaikiemke"></label>
+                    <select name="cbo_loaikiemke" id="cbo_loaikiemke" style="width:100%">
+                    </select></td>
+                <tr>
+                  <td height="22" align="right" class="level_1_2">Ngày lập phiếu: </td>
+                  <td align="left" class="level_1_2"><label for="ng2"></label>
+                    Ngày
+                    <select name="ng2" id="ng2">
+                    </select>
+                    Tháng
+  <label for="th2"></label>
+  <select name="th2" id="th2">
+  </select>
+                    Năm
+  <label for="nam"></label>
+  <select name="nam2" id="nam">
+</select></td>
+                  <tr>
+                <td height="22" align="right" class="level_1_2">Ghi chú:: </td>
+                <td align="left" class="level_1_2"><label for="ng2"></label>
+                  <label for="txtghichu"></label>
+                  <textarea name="txtghichu" rows="5" id="txtghichu" style="width:100%"></textarea></td>
+              <tr>
+                <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
+                    <div class="yui3-skin-sam">                    
+                    <div id="mytable1"></div>                    
+                    </div>
+                    </td>
+             </tr>
              <tr>
-					<td height="22" align="right" class="level_1_2">Chọn loại thiết bị</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select></td>
-               <tr>
-					<td height="22" align="right" class="level_1_2">Tên thiết bị</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select></td>
-			</tr>
-			 <tr>
-					<td height="22" align="right" class="level_1_1">Đơn vị tính</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_donvitinh" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
-			<tr>
-					<td height="22" align="right" class="level_1_1">Nhãn hiệu</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_nhanhieu" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Model</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Năm đưa vào sử dụng</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Số seri</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_model" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Công suất thiết bị</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_congsuatthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>   
-			<tr>
-					<td height="22" align="right" class="level_1_1">Công suất tiêu thụ</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_congsuattieuthu" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>  
-			<tr>
-					<td height="22" align="right" class="level_1_1">Điện thế cung cấp</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_dienthecungcap" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
-			<tr>
-					<td height="22" align="right" class="level_1_1">Nguyên giá</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_nguyengia" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Tình trạng</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tinhtrang" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
-			<tr>
-					<td height="22" align="right" class="level_1_1">Diễn giải</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_diengiai" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr> 
-            <tr>
-						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" class="button_1" value="Lưu">
-                        </td>
-			</tr>
+              <td colspan="2" height="22" align="center" class="level_1_2">
+                <input type="button" class="button_1" value="Lưu">
+                </td>
+            </tr>
+             <tr>
+               <td colspan="2" height="22" align="center" class="level_1_2">&nbsp;</td>
+             </tr>
 				  						  
-            </tbody>
+              </tbody>
         </table>
         	</form>
        </td>
@@ -302,12 +290,12 @@ $(document).ready(function() {
       </tbody>
       </table>
 
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <table width="530" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa  thiết bị hiện có </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+          <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="275" align="center">Xóa phiếu mẫu</td>
+          <td width="150" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
@@ -316,31 +304,52 @@ $(document).ready(function() {
               <tbody>
               <tr>
               		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
+                    <td width="50%" class="level_1_2"></td>
               </tr>
-             <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên loại thiết bị </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-					
-			</tr>              
-             <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên thiết bị </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenthietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-					
-			</tr>    
+              <tr>
+                <td height="22" align="right" class="level_1_1">Chọn phiếu mẫu: </td>
+                <td align="left" class="level_1_1"><select name="cbo_phieumau" class="cbo" id="cbo_phieumau" style="width:100%;">
+                </select></td>
+              </tr>
+              <tr>
+                <td height="22" align="right" class="level_1_2">Mã phiếu: </td>
+                <td align="left" class="level_1_2"><label for="txt_maphieu"></label>
+                  <input name="txt_maphieu" type="text" disabled id="txt_maphieu" readonly="readonly"></td>
+              <tr>
+                <td height="22" align="right" class="level_1_2">Loại kiểm kê: </td>
+                <td align="left" class="level_1_2"><label for="cbo_loaikiemke"></label>
+                  <select name="cbo_loaikiemke2" id="cbo_loaikiemke" style="width:100%">
+                  </select></td>
+              <tr>
+                <td height="22" align="right" class="level_1_2">Ngày lập phiếu: </td>
+                <td align="left" class="level_1_2"><label for="ng3"></label>
+                  Ngày
+                  <select name="ng3" id="ng3">
+                  </select>
+                  Tháng
+                  <label for="th3"></label>
+                  <select name="th3" id="th3">
+                  </select>
+                  Năm
+                  <label for="nam"></label>
+                  <select name="nam3" id="nam">
+                  </select></td>
+              <tr>
+                <td height="22" align="right" class="level_1_2">Ghi chú:: </td>
+                <td align="left" class="level_1_2"><label for="ng4"></label>
+                  <label for="txtghichu"></label>
+                  <textarea name="txtghichu" rows="5" disabled readonly="readonly" id="txtghichu" style="width:100%"></textarea></td>
+                  
             <tr>
-						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" class="button_1" value="Xóa">
-                        </td>
-			</tr>
+              <td colspan="2" height="22" align="center" class="level_1_2">
+                <input type="button" class="button_1" value="Xóa">
+                </td>
+            </tr>
+            <tr>
+              <td colspan="2" height="22" align="center" class="level_1_2">&nbsp;</td>
+            </tr>
 				  						  
-            </tbody>
+              </tbody>
         </table>
         	</form>
        </td>
