@@ -13,53 +13,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật Ban</title>
+<title>Cập nhật quyền</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 <script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/capnhatquyen.js"></script>
 <script type="text/javascript" >
-//Không cho nhập ký tự
-function keypress(e){
-var keypressed = null;
-if (window.event)
-	keypressed = window.event.keyCode; //IE
-else 
-	keypressed = e.which; //NON-IE, Standard
 
-if (keypressed >= 48 && keypressed <= 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed == 8 || keypressed == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
-	}
-	return false;
-}
-}
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
+	document.frm_themquyen.txt_tenquyen.focus();
+	fillcombo('get_list_quyen.php',document.frm_suaquyen.cbo_tenquyensua);
+	fillcombo('get_list_quyen.php',document.frm_xoaquyen.cbo_tenquyenxoa);	
+	$('form[name="frm_suaquyen"] select[name="cbo_tenquyensua"]').change(function()
+	{
+		get_info_quyen('get_info_quyen.php',document.frm_suaquyen);
 	});
-	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
+	$('form[name="frm_xoaquyen"] select[name="cbo_tenquyenxoa"]').change(function()
+	{
+		get_info_quyen2('get_info_quyen.php',document.frm_xoaquyen);
 	});
-}); 
+});
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
@@ -149,7 +124,7 @@ $(document).ready(function() {
 					</tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themcanbo">
+          	<form name="frm_themquyen" id="frm_themquyen">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -158,14 +133,14 @@ $(document).ready(function() {
               </tr>
               <tr>
 					<td height="22" align="right" class="level_1_2">Tên quyền</td>
-					<td width="50%" align="left" class="level_1_2"><input name="txt_tenquyen" class="txtbox" style="width:100%" value="" maxlength="7" onKeyPress="return keypress(event)" onBlur=''></td>
+					<td width="70%" align="left" class="level_1_2"><input name="txt_tenquyen" id="txt_tenquyen" class="txtbox" style="width:100%"></td>
 			  </tr>
               <tr>
 					<td height="22" align="right" class="level_1_1">Diển giải</td>
-					<td width="50%" align="left" class="level_1_1"><textarea name="txt_diengiai" rows="3" style="width:100%"></textarea></td>
+					<td width="50%" align="left" class="level_1_1"><textarea name="txt_diengiai" id="txt_diengiai" rows="5" style="width:100%"></textarea></td>
               </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="themcanbo2" class="button_1" value="Thêm"></td>
+              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="btn_themquyen" id="btn_themquyen" class="button_1" value="Thêm"></td>
               </tr>
               </tbody>
            </table>
@@ -184,7 +159,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suacanbo">
+          	<form name="frm_suaquyen" id="frm_suaquyen">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -193,12 +168,12 @@ $(document).ready(function() {
               </tr>
               <tr>
               		<td height="22" align="right" class="level_1_1">Chọn tên quyền </td>
-                    <td width="50%" align="left" class="level_1_1"><select class="cbo" name="chonbomon" style="width:100%">
+                    <td width="70%" align="left" class="level_1_1"><select class="cbo" name="cbo_tenquyensua" id="cbo_tenquyensua" style="width:100%">
                     </select></td>
               </tr>
               <tr>
 					<td height="22" align="right" class="level_1_2">Tên mới </td>
-					<td width="50%" align="left" class="level_1_2"><input name="macanbo" class="txtbox" style="width:100%" value="" maxlength="7" onKeyPress="return keypress(event)" onBlur='isExist("isExistMSCB.php",this.value,this)'></td>
+					<td width="50%" align="left" class="level_1_2"><input name="txt_tenquyensua" id="txt_tenquyensua" class="txtbox" style="width:100%"></td>
 			  </tr>
               
            
@@ -206,10 +181,10 @@ $(document).ready(function() {
               <tr>
 					<td height="22" align="right" class="level_1_1">Diễn giải </td>
 					<td width="50%" align="left" class="level_1_1">
-					<textarea name="txt_diengiai" rows="3" style="width:100%"></textarea>					</td>
+					<textarea name="txt_diengiaisua" id="txt_diengiaisua" rows="5" style="width:100%"></textarea>					</td>
 			  </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Sửa" ></td>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" name="btn_suaquyen" id="btn_suaquyen" value="Sửa" ></td>
               </tr>
               </tbody>
            </table>
@@ -228,7 +203,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoacanbo">
+          	<form name="frm_xoaquyen" id="frm_xoaquyen">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -237,11 +212,15 @@ $(document).ready(function() {
               </tr>
               
               <tr>
-					<td height="22" align="right" class="level_1_2">Chọn quyền</td>
-					<td width="50%" align="left" class="level_1_2"><select class="cbo" name="chonbomon" style="width:100%"></select></td>
+					<td height="22" align="right" class="level_1_2">Chọn tên quyền</td>
+					<td width="70%" align="left" class="level_1_2"><select class="cbo" name="cbo_tenquyenxoa" id="cbo_tenquyenxoa" style="width:100%"></select></td>
 			  </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Xóa"></td>
+					<td height="22" align="right" class="level_1_2">Diễn giải</td>
+					<td width="70%" align="left" class="level_1_2"><textarea name="txt_diengiaixoa" id="txt_diengiaixoa" rows="5" style="width:100%"></textarea></td>
+			  </tr>
+              <tr>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_xoaquyen" id="btn_xoaquyen" class="button_1" value="Xóa"></td>
               </tr>
               </tbody>
            </table>
