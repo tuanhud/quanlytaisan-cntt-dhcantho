@@ -55,8 +55,34 @@ function fillcombo2(filephp,combo)
 	}
 	http.send();
 }
-
-function _fillcombo(filephp, par_combo, chil_combo)
+function fillcombo3(filephp,combo)
+{	
+	http=GetXmlHttpObject();
+	//var params = "";
+	//mo ket noi bang phuong thuc post
+	http.open("POST", filephp, false);
+	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//http.setRequestHeader("Content-length", params.length);
+	//http.setRequestHeader("Connection", "close");
+	//ham xu li du lieu tra ve cua ajax send thanh cong
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) 
+		{
+				var x=http.responseXML.getElementsByTagName('row');
+				combo.options.length=0;
+				for(var i=0;i<x.length;i++)
+				{	
+					 var oOption = document.createElement("OPTION");
+					   oOption.text=x[i].getElementsByTagName('column')[0].firstChild.nodeValue;
+					   oOption.value=x[i].getElementsByTagName('column')[0].firstChild.nodeValue;
+					   combo.add(oOption);
+				}
+		}
+	}
+	http.send();
+}
+/*function _fillcombo(filephp, par_combo, chil_combo)
 {	
 	var id = par_combo.value;
 	http=GetXmlHttpObject();
@@ -83,7 +109,7 @@ function _fillcombo(filephp, par_combo, chil_combo)
 		}
 	}
 	http.send(params);
-}
+}*/
 
 function onlyNumbers(evt)
 {
