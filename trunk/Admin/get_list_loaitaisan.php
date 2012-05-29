@@ -17,7 +17,7 @@
 							$xml.=-1;							
 							$xml.="</column>";
 							$xml.="<column>";
-							$xml.='-Chọn tên loại tài sản-';							
+							$xml.='-Chọn tên loại tài sản, thiết bị-';							
 							$xml.="</column>";
 							$xml.="<column>";
 							$xml.='-Diễn giải loại tài sản-';							
