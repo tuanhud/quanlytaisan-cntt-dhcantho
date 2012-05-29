@@ -32,9 +32,9 @@
                                         <div id="hv" class="yui3-menu">
                                             <div class="yui3-menu-content">
                                                 <ul>                                                                          
-                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật số tiền cấp</a></li>
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="capnhatsotiencap.php">Cập nhật số tiền cấp</a></li>
                                                     <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Cập nhật kế hoạch mua sắm</a></li>
-                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="">Duyệt kế hoạch mua sắm</a></li>  
+                                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="duyetkehoachmuasam.php">Duyệt kế hoạch mua sắm</a></li>  
                                                 </ul>
                                             </div>
                                         </div>
