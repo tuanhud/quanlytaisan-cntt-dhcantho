@@ -1,3 +1,46 @@
+var col=new Array();
+var dong=new Array();
+getRecord('get_list_thuoctinh.php');
+	
+function getRecord(phpfile)
+{
+	http=GetXmlHttpObject();
+	var params ="";
+	//mo ket noi bang phuong thuc post
+	http.open("POST", phpfile, false);
+	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//http.setRequestHeader("Content-length", params.length);
+	//http.setRequestHeader("Connection", "close");
+	//ham xu li du lieu tra ve cua ajax send thanh cong
+	http.onreadystatechange = function() {
+	if(http.readyState == 4 && http.status == 200) 
+	   { 
+				
+				var x=http.responseXML.getElementsByTagName('RESULT');
+				for(var i=0;i<x.length;i++)
+			   { 	
+			   	  
+				dong[i]=[
+									{stt:i+1},
+			   						{id:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue}, 
+									{name:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue},   
+									{ghichu:x[i].getElementsByTagName('GHICHU')[0].firstChild.nodeValue}
+							
+							]
+	
+				}
+				
+	   }
+	}
+	http.send(params);
+}
+
+
+
+
+
+
 var dt, datasource;
 // -------------------------
 //  Create Table 
@@ -28,15 +71,15 @@ function createTable(){
 	var cols = [
 				{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
 				{name:'delete', label:'Xóa', formatter: fmtBlank, className:'align-center cell-delete'},
-				{key: "sothutu",label:"STT", sortable: true},
-				{key: "mathuoctinh",label:"Mã thuộc tính", sortable: true},
-				{key: "tenthuoctinh",label:"Tên thuộc tính", sortable: true},
+				{key: "stt",label:"STT", sortable: true},
+				{key: "id",label:"Mã thuộc tính", sortable: true},
+				{key: "name",label:"Tên thuộc tính", sortable: true},
 				{key: "ghichu",label:"Ghi chú", sortable: false},
 		];
 	
     dt = new Y.DataTable({
         columns: cols,
-        data   : datasource,
+        data   : dong,
         summary: 'Danh sách thuộc tính',
         caption: 'Danh sách thuộc tính',
         render : '#mytable'

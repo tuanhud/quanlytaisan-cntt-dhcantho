@@ -225,9 +225,11 @@ $(document).ready(function() {
                     	<input name="txt_dongia" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
 			</tr>    
 			<tr>
-					<td height="22" align="right" class="level_1_2">Thuộc tính tài sản</td>
-					<td width="57%" align="left" class="level_1_2"><a href="capnhatthuoctinhtaisan.php">
-					  <input type="button" class="button_1" value="Sửa thuộc tính"></a></td>
+					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
+                    <div class="yui3-skin-sam">                    
+                    <div id="mytable"></div>                    
+                    </div>
+                    </td>
 			</tr>        
             <tr>
 						<td colspan="2" height="22" align="center" class="level_1_1">
