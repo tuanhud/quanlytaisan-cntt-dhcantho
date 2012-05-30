@@ -15,12 +15,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật năm học - học kì</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/namhochocki.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/namhochocki.js"></script>
 <script type="text/javascript" >
-$(document).ready(function()
+$(document).ready(function() 
+{ 
+	//document.frm_suanam.combonam.focus();
+	//load combo nam
+	//fillcombo2('get_list_nam.php',document.frm_suanam.combonam);
+	fillcombo2('get_list_nam.php',document.frm_xoanam.combonam2);
+	
+	//su kien change combo ma can bo
+	
+}); 
+/*$(document).ready(function()
 { 	
 	get_new_namhoc('../get_new_namhoc.php', document.frm_themnamhoc);
 	fillcombo('../get_list_namhoc.php',document.frm_themhocki.cbo_tennamhoc);
@@ -52,7 +62,7 @@ $(document).ready(function()
 	});	
 });
 
-</script>
+*/</script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
   
@@ -137,7 +147,7 @@ $(document).ready(function()
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themnamhoc" action="themnam.php">
+          	<form name="frm_themnam" id="frm_themnam">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -150,7 +160,7 @@ $(document).ready(function()
                    
 			  </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input name="Submit" type="submit" class="button_1" value="Thêm">
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_themnam" type="button" class="button_1" id="btn_themnam" value="Thêm">
                     
                     </td>
               </tr>
@@ -161,40 +171,7 @@ $(document).ready(function()
         </tr>		
         </tbody>
         </table>
-		 <table width="500" border="0" cellpadding="0" cellspacing="0">
-		   <tbody>
-		     <tr class="main_1">
-		       <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-		       <td width="419" align="center">Sửa năm</td>
-		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-		       </tr>
-		     <tr>
-		       <td colspan="3" align="left"><form name="frm_themnamhoc" action="themnam.php">
-		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
-		           <tbody>
-		             <tr>
-		               <td height="22" class="level_1_2"></td>
-		               <td class="level_1_2"></td>
-		               </tr>
-		             <tr>
-		               <td height="22" align="right" class="level_1_1">Chọn năm:</td>
-		               <td width="50%" align="left" class="level_1_1"><label for="select2"></label>
-		                 <select name="select2" id="select2">
-		                   <option>2009</option>
-		                   <option>2010</option>
-		                   <option>2011</option>
-		                   <option>2012</option>
-		                   </select></td>
-		               </tr>
-		             <tr>
-		               <td colspan="2" height="22" align="center" class="level_1_2"><input name="Submit2" type="submit" class="button_1" value="Sửa"></td>
-		               </tr>
-		             </tbody>
-		           </table>
-		         </form></td>
-		       </tr>
-		     </tbody>
-		   </table>
+		 <p>&nbsp;</p>
 		 <table width="500" border="0" cellpadding="0" cellspacing="0">
 		   <tbody>
 		     <tr class="main_1">
@@ -203,7 +180,7 @@ $(document).ready(function()
 		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
 		       </tr>
 		     <tr>
-		       <td colspan="3" align="left"><form name="frm_themnamhoc" action="themnam.php">
+		       <td colspan="3" align="left"><form name="frm_xoanam" id="frm_xoanam">
 		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
 		           <tbody>
 		             <tr>
@@ -212,16 +189,12 @@ $(document).ready(function()
 		               </tr>
 		             <tr>
 		               <td height="22" align="right" class="level_1_1">Chọn năm:</td>
-		               <td width="50%" align="left" class="level_1_1"><label for="select"></label>
-		                 <select name="select" id="select">
-		                   <option>2009</option>
-		                   <option>2010</option>
-		                   <option>2011</option>
-		                   <option>2012</option>
-		                   </select></td>
+		               <td width="50%" align="left" class="level_1_1"><label for="combonam2"></label>
+		                 <select name="combonam2" id="combonam2">
+</select></td>
 		               </tr>
 		             <tr>
-		               <td colspan="2" height="22" align="center" class="level_1_2"><input name="Submit3" type="submit" class="button_1" value="Thêm"></td>
+		               <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_xoanam" type="button" class="button_1" id="btn_xoanam" value="Xóa"></td>
 		               </tr>
 		             </tbody>
 		           </table>

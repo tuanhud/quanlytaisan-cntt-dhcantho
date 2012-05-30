@@ -202,8 +202,8 @@ var _admin;
 		$(function()
 		{
 			_admin.themnam()
-			/*_admin.suanam(),
-			_admin.xoanam()*/
+			//_admin.suanam(),
+			_admin.xoanam()
 		}),
 		
 		_admin=
@@ -237,6 +237,7 @@ var _admin;
 										document.frm_themnam.tennam.value=-1,
 										document.frm_themnam.tennam.value=''
 										FocusAndSelect("#tennam");
+										fillcombo2('get_list_nam.php',document.frm_xoanam.combonam2);
 									}
 									else if(n==2)
 									{
@@ -251,7 +252,49 @@ var _admin;
 						}
 						
 					})
+				},
+			xoanam:function()
+			{
+			 $("#btn_xoanam").unbind("click").click(function()
+			 {   
+			 	if ($("#combonam2").val()!='Chọn mã số cán bộ')
+				{	
+					if(confirm('Ban có chắc chắn muốn xóa không ?' ))
+					{	
+						return $.ajax
+						({
+							url:"./xoanam.php",
+							type:"POST",
+							//dataType:"html",
+							data:$("#frm_xoanam").serialize(),
+							beforeSend:function(){},
+							success:function(n)
+							{
+								if(n==0)
+									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
+								else if(n==1)
+								{
+									alert("Thành công !"),
+									fillcombo2('get_list_nam.php',document.frm_xoanam.combonam2);
+									
+									//document.frm_xoanam.txt_tencanboxoa.value='',
+									FocusAndSelect("#combonam2")
+								}
+							},
+							error:function(){},
+							complete:function(){}
+						}),!1
+					  }
 				}
+				else
+				{
+					alert("Bạn chưa chọn mã năm.");	
+				}
+					
+				})
+			  
+			}
+				
 		  /*suacanbo:function()
 		  {
 			  $("#btn_suacanbo").unbind("click").click(function()
