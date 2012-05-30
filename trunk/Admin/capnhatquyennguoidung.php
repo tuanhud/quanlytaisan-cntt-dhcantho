@@ -137,30 +137,26 @@ if (keypressed >= 48 && keypressed <= 57)
 				<table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
 				  <tbody>
 				  <tr>
-						<td height="22" width="15%" class="level_1_1"></td>
-						<td class="level_1_1" width="15%"></td>
-						<td class="level_1_1" width="15%"></td>
-						<td class="level_1_1" width="15%"></td>
+						<td height="22" width="24%" class="level_1_1"></td>
+						<td class="level_1_1" width="80%"></td>
+						
 				  </tr>
 				  <tr>
-						<td height="22" align="right" class="level_1_2">Chọn tên người dùng </td>
+						<td height="22" align="right" class="level_1_2">Chọn đơn vị</td>
 						<td align="left" class="level_1_2" colspan="3">
 						<select class="cbo" name="chonbomon" style="width:100%"></select>
 						</td>
 						
 				  </tr>
-				   <tr>
-						<td height="22" align="right" class="level_1_1">Tên quyền</td>
-						<td align="center" class="level_1_1"></td>
-						<td align="center" class="level_1_1">Quyền</td>
-						<td align="center" class="level_1_1">Quyền duyệt </td>
-				  </tr>
-				  <tr>
-						<td height="22" align="right" class="level_1_2">Tùy chọn</td>
-						<td  align="left" class="level_1_2"></td>
-						<td  align="left" class="level_1_2"></td>
-						<td  align="left" class="level_1_2"></td>
-				  </tr>
+				   
+				<!--bang thuoc tinh dat o day-->
+             <tr>
+					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
+                    <div class="yui3-skin-sam">                    
+                    <div id="mytable"></div>                    
+                    </div>
+                    </td>
+			</tr>   
 				   <tr>
 						<td colspan="4" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Cập nhật" ></td>
 				  </tr>

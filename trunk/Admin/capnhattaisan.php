@@ -20,19 +20,13 @@
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhattaisan.js"></script>
-<script type="text/javascript" src="js/table-hoivien.js"></script>
-<script type="text/javascript" src="js/khenthuong-hoivien.js"></script>
-<script type="text/javascript" src="js/yui/yui-min.js"></script>
-<script type="text/javascript" src="js/autocomplete.js"></script>
+
+
 <script type="text/javascript" >
 $(document).ready(function() { 
 	document.frm_themtaisan.cbo_tenloaitaisanthem.focus();
 	fillcombo('get_list_loaitaisan.php',document.frm_themtaisan.cbo_tenloaitaisanthem);
 	fillcombo3('get_list_donvitinh.php',document.frm_themtaisan.cbo_donvitinhthem);
-	createTable();
-	$('form[name="frm_themtaisan"] select[name="cbo_tenthuoctinh"]').change(function(){		
-		 ('get_list_hoivien_chsv.php', this.value);
-	});
 	
 }); 
 </script>
@@ -115,7 +109,7 @@ $(document).ready(function() {
         <!--KET THUC MENU-->
         <tr>
     <td height="100%" align="center" valign="middle">   
-		 <table width="600" border="0" cellpadding="0" cellspacing="0">
+		 <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -151,15 +145,14 @@ $(document).ready(function() {
 					<td height="22" align="right" class="level_1_1">Tình trạng</td>
 					<td width="50%" align="left" class="level_1_1">
                     	<input name="txt_tinhtrangthem" type="text" class="txtbox" style="width:100%"></td>
-			</tr> 
-           <!--bang thuoc tinh dat o day-->
-             <tr>
-					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
-                    <div class="yui3-skin-sam">                    
-                    <div id="mytable"></div>                    
-                    </div>
-                    </td>
-			</tr>             
+			</tr>
+              <tr>
+					<td height="22" align="right" class="level_1_1">Thêm bằng file Excel</td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<input name="file_ecxel" maxlength="31" type="file" style="width:80%">
+                        <input name="btn_submit" id="btn_submit" type="button" class="button_1" value="Import">
+                        </td>
+				</tr>         
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_themtaisan" id="btn_themtaisan" type="button" class="button_1" value="Thêm"></td>
               </tr>
@@ -169,14 +162,8 @@ $(document).ready(function() {
 					</td>
               </tr>
 			  
-			   <tr>
-					<td height="22" align="right" class="level_1_1">Thêm bằng file Excel</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="file_ecxel" maxlength="31" type="file" style="width:100%"></td>
-				</tr>
-				<tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themtaisan2" id="btn_themtaisan2" class="button_1" value="Thêm"></td>
-              </tr>  
+			 
+				 
               </tbody>
            </table>
            </form>
@@ -223,14 +210,7 @@ $(document).ready(function() {
 					<td height="22" align="right" class="level_1_1">Tình trạng</td>
 					<td width="57%" align="left" class="level_1_1">
                     	<input name="txt_dongia" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>    
-			<tr>
-					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
-                    <div class="yui3-skin-sam">                    
-                    <div id="mytable"></div>                    
-                    </div>
-                    </td>
-			</tr>        
+			</tr>           
             <tr>
 						<td colspan="2" height="22" align="center" class="level_1_1">
                         <input type="button" class="button_1" value="Lưu">
@@ -263,7 +243,7 @@ $(document).ready(function() {
               </tr>
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn tên loại thiết bị </td>
-					<td width="50%" align="left" class="level_1_1">
+					<td width="70%" align="left" class="level_1_1">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select>                       
                     </td>

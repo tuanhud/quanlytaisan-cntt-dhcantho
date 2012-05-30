@@ -1,6 +1,6 @@
 /*
-YUI 3.5.0pr2 (build 4560)
-Copyright 2011 Yahoo! Inc. All rights reserved.
+YUI 3.6.0pr1 (build 5195)
+Copyright 2012 Yahoo! Inc. All rights reserved.
 Licensed under the BSD License.
 http://yuilibrary.com/license/
 */
@@ -189,4 +189,4 @@ var LANG = Y.Lang,
 Y.DataSchema.Array = Y.mix(SchemaArray, Y.DataSchema.Base);
 
 
-}, '3.5.0pr2' ,{requires:['dataschema-base']});
+}, '3.6.0pr1' ,{requires:['dataschema-base']});
