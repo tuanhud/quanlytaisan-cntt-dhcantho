@@ -13,13 +13,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật thuộc tính của tài sản - thiết bị</title>
+<title>Cập nhật thuộc tính tài sản - thiết bị</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/yui/yui-min.js"></script>
+
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/thuoctinh-taisan.js"></script>
+<script type="text/javascript" src="js/table-thuoctinh.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -42,23 +45,7 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 }
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
-	});
-	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
-	});
+		createTable();
 }); 
 </script>
 </head>
@@ -132,12 +119,11 @@ $(document).ready(function() {
 			</td>    
         </tr>
         
-		<tr height="44" >
+		<tr>
         <td align="center" >&nbsp;</td>
         <td align="center" >&nbsp;</td>
         <td align="center" >&nbsp;</td>
-        </tr>  
-		<tr>               
+        </tr>                    
         <!--KET THUC MENU-->
         <tr>
     <td height="100%" align="center" valign="middle">   
@@ -145,7 +131,7 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm thuộc tính của tài sản - thiết bị </td>
+          <td width="419" align="center">Thêm thuộc tính tài sản - thiết bị </td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -158,14 +144,15 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
 			  <tr>
-					<td height="22" align="right" class="level_1_2">Chọn tên tài sản - thiết bị </td>
-					<td width="60%" align="left" class="level_1_2"><select name="cbo_tenloaithietbi" class="cbo" style="width:80%;"> </select></td>
-               <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên thuộc tính </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:80%;"> </select>
-						<a href="capnhatthuoctinhtaisan.php" style="width:20%"><input type="button" class="button_1" value="Thêm"></a>	
-					</td>
+					<td height="22" align="right" class="level_1_2">Tên thuộc tính </td>
+					<td width="70%" align="left" class="level_1_2"><input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+			</tr> 
+            <tr>
+					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
+                    <div class="yui3-skin-sam">                    
+                    <div id="mytable"></div>                    
+                    </div>
+                    </td>
 			</tr>       
 				<tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
@@ -182,7 +169,49 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa thuộc tính của tài sản - thiết bị</td>
+          <td width="419" align="center">Sửa thuộc tính tài sản - thiết bị </td>
+          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+        </tr>
+        <tr>
+          <td colspan="3" align="left">
+          	<form name="frm_suaban">
+            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+              <tbody>
+              <tr>
+              		<td width="43%" height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
+              </tr>
+             <tr>
+					<td height="22" align="right" class="level_1_2">Chọn tên thuộc tính</td>
+					<td width="57%" align="left" class="level_1_2">
+                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;"> </select>
+					</td>
+			</tr>
+			<tr>
+					<td height="22" align="right" class="level_1_1">Tên mới</td>
+					<td width="57%" align="left" class="level_1_1">
+                    	<input name="txt_dongia" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+			</tr>    
+			    
+            <tr>
+						<td colspan="2" height="22" align="center" class="level_1_1">
+                        <input type="button" class="button_1" value="Lưu">
+                        </td>
+			</tr>
+				  						  
+            </tbody>
+        </table>
+        	</form>
+       </td>
+      </tr>		
+      </tbody>
+      </table>
+		<br>
+        <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr class="main_1">
+          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="419" align="center">Xóa thuộc tính tài sản - thiết bị</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -195,20 +224,13 @@ $(document).ready(function() {
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên tài sản - thiết bị </td>
-					<td width="60%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:80%;">
+					<td height="22" align="right" class="level_1_1">Chọn tên thuộc tính </td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 					
 			</tr>              
-             <tr>
-					<td height="22" align="right" class="level_1_2">Chọn tên thuộc tính </td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:80%;"> </select>                       
-                    </td>
-					
-			</tr>    
             <tr>
 						<td colspan="2" height="22" align="center" class="level_1_1">
                         <input type="button" class="button_1" value="Xóa">
