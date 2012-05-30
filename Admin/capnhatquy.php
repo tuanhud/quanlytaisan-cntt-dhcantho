@@ -13,14 +13,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật năm học - học kì</title>
+<title>Cập nhật quý</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/namhochocki.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/quy.js"></script>
 <script type="text/javascript" >
-$(document).ready(function()
+$(document).ready(function() 
+{ 
+	//document.frm_suanam.combonam.focus();
+	//load combo nam
+	//fillcombo2('get_list_nam.php',document.frm_suanam.combonam);
+	fillcombo2('get_list_quy.php',document.frm_xoaquy.comboquy);
+	
+	//su kien change combo ma can bo
+	
+}); 
+/*$(document).ready(function()
 { 	
 	get_new_namhoc('../get_new_namhoc.php', document.frm_themnamhoc);
 	fillcombo('../get_list_namhoc.php',document.frm_themhocki.cbo_tennamhoc);
@@ -51,7 +61,7 @@ $(document).ready(function()
 		chonhockihientai("../chonhockihientai.php",document.frm_chonhockihientai);			
 	});	
 });
-
+*/
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
@@ -137,7 +147,7 @@ $(document).ready(function()
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themnamhoc">
+          	<form name="frm_themquy" id="frm_themquy">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -146,10 +156,10 @@ $(document).ready(function()
               </tr>              
               <tr>
 					<td height="22" align="right" class="level_1_1">Quý:</td>
-					<td width="50%" align="left" class="level_1_1"><input name="txt_tennamhoc" class="txtbox" style="width:70%" value=""></td>
+					<td width="50%" align="left" class="level_1_1"><input name="txt_tenquy" class="txtbox" id="txt_tenquy" style="width:70%" value=""></td>
 			  </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_themquy" type="button" class="button_1" id="btn_themquy" value="Thêm"></td>
               </tr>
               </tbody>
            </table>
@@ -158,40 +168,7 @@ $(document).ready(function()
         </tr>		
         </tbody>
         </table>
-		 <table width="500" border="0" cellpadding="0" cellspacing="0">
-		   <tbody>
-		     <tr class="main_1">
-		       <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-		       <td width="419" align="center">Sửa quý</td>
-		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-		       </tr>
-		     <tr>
-		       <td colspan="3" align="left"><form name="frm_themnamhoc">
-		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
-		           <tbody>
-		             <tr>
-		               <td height="22" class="level_1_2"></td>
-		               <td class="level_1_2"></td>
-		               </tr>
-		             <tr>
-		               <td height="22" align="right" class="level_1_1">Chọn quý:</td>
-		               <td width="50%" align="left" class="level_1_1"><label for="select2"></label>
-		                 <select name="select2" id="select2">
-		                   <option>1</option>
-		                   <option>2</option>
-		                   <option>3</option>
-		                   <option>4</option>
-		                   </select></td>
-		               </tr>
-		             <tr>
-		               <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Sửa"></td>
-		               </tr>
-		             </tbody>
-		           </table>
-		         </form></td>
-		       </tr>
-		     </tbody>
-		   </table>
+		 <p>&nbsp;</p>
 		 <table width="500" border="0" cellpadding="0" cellspacing="0">
 		   <tbody>
 		     <tr class="main_1">
@@ -200,7 +177,7 @@ $(document).ready(function()
 		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
 		       </tr>
 		     <tr>
-		       <td colspan="3" align="left"><form name="frm_themnamhoc">
+		       <td colspan="3" align="left"><form name="frm_xoaquy" id="frm_xoaquy">
 		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
 		           <tbody>
 		             <tr>
@@ -209,16 +186,12 @@ $(document).ready(function()
 		               </tr>
 		             <tr>
 		               <td height="22" align="right" class="level_1_1">Chọn quý:</td>
-		               <td width="50%" align="left" class="level_1_1"><label for="select"></label>
-		                 <select name="select" id="select">
-		                   <option>1</option>
-		                   <option>2</option>
-		                   <option>3</option>
-		                   <option>4</option>
-		                   </select></td>
+		               <td width="50%" align="left" class="level_1_1"><label for="comboquy"></label>
+		                 <select name="comboquy" id="comboquy">
+                         </select></td>
 		               </tr>
 		             <tr>
-		               <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Xóa"></td>
+		               <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_xoaquy" type="button" class="button_1" id="btn_xoaquy" value="Xóa"></td>
 		               </tr>
 		             </tbody>
 		           </table>

@@ -18,7 +18,7 @@
 <script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
-<script type="text/javascript" src="js/namhochocki.js"></script>
+<script type="text/javascript" src="js/nam.js"></script>
 <script type="text/javascript" >
 $(document).ready(function() 
 { 
