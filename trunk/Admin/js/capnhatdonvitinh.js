@@ -120,8 +120,8 @@ var _admin;
 								else if(n==1)
 								{
 									alert("Thành công !"),
-									fillcombo('get_list_donvitinh.php',document.frm_suadonvitinh.cbo_tendonvitinhsua),
-									fillcombo('get_list_donvitinh.php',document.frm_xoadonvitinh.cbo_tendonvitinhxoa),
+									fillcombo2('get_list_donvitinh.php',document.frm_suadonvitinh.cbo_tendonvitinhsua),
+									fillcombo2('get_list_donvitinh.php',document.frm_xoadonvitinh.cbo_tendonvitinhxoa),
 									FocusAndSelect("#cbo_tendonvitinhxoa")
 								}
 								else if(n==2)
