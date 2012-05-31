@@ -146,9 +146,9 @@ function getRecord(phpfile,id)
 	if(http.readyState == 4 && http.status == 200) 
 	   {
 		var x = http.responseXML.getElementsByTagName('RESULT');		
-				_id    		 = x[0].getElementsByTagName('MA')[0].childNodes[0].nodeValue;
-				_ten 		 = x[0].getElementsByTagName('TEN')[0].childNodes[0].nodeValue;
-				_ghichu 		 = x[0].getElementsByTagName('GHICHU')[0].childNodes[0].nodeValue;	   }
+				_idgh   		 = x[0].getElementsByTagName('MA')[0].childNodes[0].nodeValue;
+				_tenj 		 = x[0].getElementsByTagName('TEN')[0].childNodes[0].nodeValue;
+				_ghichujj		 = x[0].getElementsByTagName('GHICHU')[0].childNodes[0].nodeValue;	   }
 	}
 	http.send(params);
 }

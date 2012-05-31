@@ -13,34 +13,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật Ban</title>
+<title>Cập nhật đơn vị</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<script type="text/javascript" src="js/yui/yui.js"></script>
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/capnhatdonvi.js"></script>
+<script type="text/javascript" src="js/table.js"></script>
+<script type="text/javascript" src="js/quyen-nguoidung.js"></script>
 <script type="text/javascript" >
-//Không cho nhập ký tự
-function keypress(e){
-var keypressed = null;
-if (window.event)
-	keypressed = window.event.keyCode; //IE
-else 
-	keypressed = e.which; //NON-IE, Standard
 
-if (keypressed >= 48 && keypressed <= 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed == 8 || keypressed == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
-	}
-	return false;
-}
-}
-
+$(document).ready(function() { 
+	/*document.frm_themdonvi.txt_tendonvithem.focus();
+	
+	fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);	
+	$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(function(){
+		get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
+	});*/
+	createTable();
+	fillcombo('get_list_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
+	//Create table after loading page
+$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
+		getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value)
+	});
+	
+}); 
+//addRow_('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung);
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
@@ -62,13 +62,12 @@ if (keypressed >= 48 && keypressed <= 57)
 </script>	 
 
 <!--Thẻ hiển thị thông tin khi đăng nhập-->
-<div style="Z-INDEX: 1; LEFT: 559px; WIDTH: 200px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
+<div style="Z-INDEX: 1; LEFT: 575px; WIDTH: 200px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
 <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-	<a class="white" href="../doimatkhauUI.php">Đổi thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
+	<a class="white" href="javascript:thoat();">Thoát</a>
+    <br>Xin chào, <?=$_SESSION['hotencanbo']?>
     <br>
-    Xin chào, <?=$_SESSION['hoten']?>
-    <br>
-	(<?=$_SESSION['msad']?>)
+	(<?=$_SESSION['masocanbo']?>)
     </font>
     </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -98,7 +97,6 @@ if (keypressed >= 48 && keypressed <= 57)
     
   </tr>	
   <!--Kết thúc của HEADER-->
-  
   <!--Bắt đàu của MAINPAGE-->
 
   <tr>
@@ -118,109 +116,56 @@ if (keypressed >= 48 && keypressed <= 57)
         <td align="center" >&nbsp;</td>
         <td align="center" >&nbsp;</td>
         <td align="center" >&nbsp;</td>
-        </tr>              
-		     
+        </tr>                    
         <!--KET THUC MENU-->
         <tr>
-			<td align="center"></td>
-    		<td height="100%" align="center" valign="top">   
-				<table width="700" border="0" cellpadding="0" cellspacing="0">
-					<tbody>
-						<tr class="main_1">
-					  <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-					  <td width="419" align="center">Quyền của người dùng </td>
-					  <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-					</tr>
-       					 <tr>
-			  <td colspan="3" align="left">
-				<form name="frm_suacanbo">
-				<table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-				  <tbody>
-				  <tr>
-						<td height="22" width="24%" class="level_1_1"></td>
-						<td class="level_1_1" width="80%"></td>
-						
-				  </tr>
-				  <tr>
-						<td height="22" align="right" class="level_1_2">Chọn đơn vị</td>
-						<td align="left" class="level_1_2" colspan="3">
-						<select class="cbo" name="chonbomon" style="width:100%"></select>
-						</td>
-						
-				  </tr>
-				   
-				<!--bang thuoc tinh dat o day-->
-             <tr>
-					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
-                    <div class="yui3-skin-sam">                    
-                    <div id="mytable"></div>                    
-                    </div>
-                    </td>
-			</tr>   
-				   <tr>
-						<td colspan="4" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Cập nhật" ></td>
-				  </tr>
-				  </tbody>
-			   </table>
-			   </form>
-			  </td>
+    <td height="100%" align="center" valign="middle">   
+		 <table width="700" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr class="main_1">
+          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="419" align="center">Cập nhật quyền người dùng</td>
+          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+        </tr>
+        <tr>
+          <td colspan="3" align="left">
+          	<form name="frm_capnhatquyen_nguoidung" id="frm_capnhatquyen_nguoidung">
+            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+              <tbody>
+              <tr>
+              		<td height="22" class="level_1_2"></td>
+                    <td class="level_1_2"></td>
+              </tr>
+               <tr>
+					<td height="22" align="right" class="level_1_1">Chọn đơn vị</td>
+					<td width="80%" align="left" class="level_1_1">
+                    	<select id="cbo_tendonvi" name="cbo_tendonvi" class="cbo" style="width:100%;">
+                        </select></td>
+			</tr>
+              <!--bang thuoc tinh dat o day-->
+               
+                    <tr>
+                        <td align="center" height="500" class="level_1_1" colspan="4" valign="top">
+                        <div class="yui3-skin-sam">                    
+                        <div id="mytable"></div>                    
+                        </div>
+                        </td>
+                </tr>              
+              <tr>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_capnhat" id="btn_capnhat" class="button_1" value="Lưu"></td>
+              </tr>
+              </tbody>
+           </table>
+           </form>
+          </td>
         </tr>		
-        			</tbody>
-        		</table>
-	       </td>
-		</tr>
-		<tr>
-			<td align="center"></td>
-    		<td height="100%" align="center" valign="top">   
-				<table width="700" border="0" cellpadding="0" cellspacing="0">
-					<tbody>
-						<tr class="main_1">
-					  <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-					  <td width="419" align="center">Quyền của người dùng </td>
-					  <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-					</tr>
-       					 <tr>
-			  <td colspan="3" align="left">
-				<form name="frm_suacanbo">
-				<table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-				  <tbody>
-				  <tr>
-						<td height="22" width="15%" class="level_1_1"></td>
-						<td class="level_1_1" width="15%"></td>
-						<td class="level_1_1" width="15%"></td>
-						<td class="level_1_1" width="15%"></td>
-				  </tr>
-				  <tr>
-						<td height="22" align="right" class="level_1_2">Chọn tên người dùng </td>
-						<td align="left" class="level_1_2" colspan="3">
-						<select class="cbo" name="chonbomon" style="width:100%"></select>
-						</td>
-						
-				  </tr>
-				   <tr>
-						<td height="22" align="right" class="level_1_1">Tên quyền</td>
-						<td align="center" class="level_1_1"></td>
-						<td align="center" class="level_1_1">Quyền</td>
-						<td align="center" class="level_1_1">Quyền duyệt </td>
-				  </tr>
-				  <tr>
-						<td height="22" align="right" class="level_1_2">Tùy chọn</td>
-						<td  align="left" class="level_1_2"></td>
-						<td  align="left" class="level_1_2"></td>
-						<td  align="left" class="level_1_2"></td>
-				  </tr>
-				   <tr>
-						<td colspan="4" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Sửa" ></td>
-				  </tr>
-				  </tbody>
-			   </table>
-			   </form>
-			  </td>
-        </tr>		
-        			</tbody>
-        		</table>
-	       </td>
-		</tr>
+        </tbody>
+        </table>
+
+
+        
+	</td>
+</tr>
 </table>
 
 		
