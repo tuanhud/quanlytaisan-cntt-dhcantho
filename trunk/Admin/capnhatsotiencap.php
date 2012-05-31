@@ -16,10 +16,10 @@
 <title>Cập nhật Ban</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/capnhatsotiencap.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -42,22 +42,26 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 }
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
+	fillcombo2('get_list_nam.php',document.frm_themsotiencap.cbo_chonnam);
+	fillcombo('get_list_donvi.php',document.frm_themsotiencap.cbo_chondonvi);
+	fillcombo2('get_list_nam.php',document.frm_suasotiencap.cbo_chonnamsua);
+	fillcombo('get_list_donvi.php',document.frm_suasotiencap.cbo_chondonvisua);
+	fillcombo2('get_list_nam.php',document.frm_xoasotiencap.cbo_chonnamxoa);
+	fillcombo('get_list_donvi.php',document.frm_xoasotiencap.cbo_chondonvixoa);
+	
+    $('form[name="frm_suasotiencap"] select[name="cbo_chonnamsua"]').change(function(){
+		$('form[name="frm_suasotiencap"] select[name="cbo_chondonvisua"]').change(function(){
+			
+			get_info_sotiencap('get_info_sotiencap.php',document.frm_suasotiencap);
+		});
 	});
 	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
+	//su kien change combo ma can bo trong form xoa can bo
+	$('form[name="frm_xoasotiencap"] select[name="cbo_chonnamxoa"]').change(function(){
+		$('form[name="frm_xoasotiencap"] select[name="cbo_chondonvixoa"]').change(function(){
+			
+			get_info_sotiencap2('get_info_sotiencap.php',document.frm_xoasotiencap);
+		});
 	});
 }); 
 </script>
@@ -148,7 +152,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
+          	<form name="frm_themsotiencap" id="frm_themsotiencap">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -157,25 +161,25 @@ $(document).ready(function() {
               </tr>
                <tr>
                  <td height="22" align="right" class="level_1_1">Chọn năm:</td>
-                 <td align="left" class="level_1_1"><label for="select"></label>
-                   <select name="select" id="select">
+                 <td align="left" class="level_1_1"><label for="cbo_chonnam"></label>
+                   <select name="cbo_chonnam" id="cbo_chonnam">
                    </select></td>
                </tr>
                <tr>
                  <td height="22" align="right" class="level_1_1">Chọn đơn vị:</td>
-                 <td align="left" class="level_1_1"><label for="select2"></label>
-                   <select name="select2" id="select2">
+                 <td align="left" class="level_1_1"><label for="cbo_chondonvi"></label>
+                   <select name="cbo_chondonvi" id="cbo_chondonvi">
                      <option>Bộ môn công nghệ phần mềm</option>
                    </select></td>
                </tr>
                <tr>
 					<td height="22" align="right" class="level_1_1">Số tiền cấp:</td>
-					<td width="50%" align="left" class="level_1_1"><label for="textfield"></label>
-					  <input type="text" name="textfield" id="textfield"> 
+					<td width="50%" align="left" class="level_1_1"><label for="txt_sotiencap"></label>
+					  <input type="text" name="txt_sotiencap" id="txt_sotiencap"> 
 					  (triệu đồng)</td>
 			</tr>              
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_them" type="button" class="button_1" id="btn_them" value="Thêm"></td>
               </tr>
               </tbody>
            </table>
@@ -192,7 +196,7 @@ $(document).ready(function() {
 		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
 		       </tr>
 		     <tr>
-		       <td colspan="3" align="left"><form name="frm_themban">
+		       <td colspan="3" align="left"><form name="frm_suasotiencap" id="frm_suasotiencap">
 		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
 		           <tbody>
 		             <tr>
@@ -202,24 +206,24 @@ $(document).ready(function() {
 		             <tr>
 		               <td height="22" align="right" class="level_1_1">Chọn năm:</td>
 		               <td align="left" class="level_1_1"><label for="select2"></label>
-		                 <select name="select3" id="select2">
+		                 <select name="cbo_chonnamsua" id="select2">
 		                   </select></td>
 		               </tr>
 		             <tr>
 		               <td height="22" align="right" class="level_1_1">Chọn đơn vị:</td>
-		               <td align="left" class="level_1_1"><label for="select3"></label>
-		                 <select name="select3" id="select3">
+		               <td align="left" class="level_1_1"><label for="cbo_chonnamsua"></label>
+		                 <select name="cbo_chondonvisua" id="cbo_chondonvisua">
 		                   <option>Bộ môn công nghệ phần mềm</option>
 		                   </select></td>
 		               </tr>
 		             <tr>
 		               <td height="22" align="right" class="level_1_1">Số tiền cấp:</td>
 		               <td width="50%" align="left" class="level_1_1"><label for="textfield"></label>
-		                 <input type="text" name="textfield2" id="textfield">
+		                 <input type="text" name="txt_sotiencap" id="textfield">
 		                 (triệu đồng)</td>
 		               </tr>
 		             <tr>
-		               <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Sửa"></td>
+		               <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_sua" type="button" class="button_1" id="btn_sua" value="Sửa"></td>
 		               </tr>
 		             </tbody>
 		           </table>
@@ -235,7 +239,7 @@ $(document).ready(function() {
 		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
 		       </tr>
 		     <tr>
-		       <td colspan="3" align="left"><form name="frm_themban">
+		       <td colspan="3" align="left"><form name="frm_xoasotiencap" id="frm_xoasotiencap">
 		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
 		           <tbody>
 		             <tr>
@@ -244,25 +248,25 @@ $(document).ready(function() {
 		               </tr>
 		             <tr>
 		               <td height="22" align="right" class="level_1_1">Chọn năm:</td>
-		               <td align="left" class="level_1_1"><label for="select4"></label>
-		                 <select name="select4" id="select4">
+		               <td align="left" class="level_1_1"><label for="cbo_chonnamxoa"></label>
+		                 <select name="cbo_chonnamxoa" id="cbo_chonnamxoa">
 		                   </select></td>
 		               </tr>
 		             <tr>
 		               <td height="22" align="right" class="level_1_1">Chọn đơn vị:</td>
 		               <td align="left" class="level_1_1"><label for="select5"></label>
-		                 <select name="select4" id="select5">
+		                 <select name="cbo_chondonvixoa" id="select5">
 		                   <option>Bộ môn công nghệ phần mềm</option>
 		                   </select></td>
 		               </tr>
 		             <tr>
 		               <td height="22" align="right" class="level_1_1">Số tiền cấp:</td>
 		               <td width="50%" align="left" class="level_1_1"><label for="textfield"></label>
-		                 <input name="textfield3" type="text" id="textfield" readonly="readonly">
+		                 <input name="txt_sotiencapxoa" type="text" id="textfield" readonly="readonly">
 		                 (triệu đồng)</td>
 		               </tr>
 		             <tr>
-		               <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Xóa"></td>
+		               <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_xoa" type="button" class="button_1" id="btn_xoa" value="Xóa"></td>
 		               </tr>
 		             </tbody>
 		           </table>
