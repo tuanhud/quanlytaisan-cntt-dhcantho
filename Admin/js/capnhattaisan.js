@@ -16,38 +16,21 @@ function checkEmail(n)
 	
 }
 
-//lay thong tin can bo load len form sua khi chon combo ma so can bo
-/*function get_info_canbo(filephp,frm)
+function get_info_taisan(filephp,frm)
 {
-	if(frm.cbo_macanbosua.value=='Chọn mã số cán bộ')
+	if(frm.cbo_tentaisansua.value==-1)
 	{
-		frm.cbo_tendonvisua.value=-1;
-		frm.txt_tencanbosua.value='';
-		frm.cbo_gioitinhsua.value=-1;
-		frm.cbo_ngaysinhsua.value=-1;
-		frm.cbo_thangsinhsua.value=-1;
-		frm.cbo_namsinhsua.value=-1;
-		frm.txt_emailsua.value='';
-		frm.txt_diachisua.value='';
-		frm.txt_sodienthoaisua.value='';
-		frm.txt_matkhausua.value='';
+		frm.cbo_tendonvitinhsua.value='';
+		frm.txt_tinhtrangsua.value=-1;
 	}
 	else
 	{
-	macanbo=frm.cbo_macanbosua.value;
-	madonvi=frm.cbo_tendonvisua;
-	tencanbo=frm.txt_tencanbosua;
-	gioitinh=frm.cbo_gioitinhsua;
-	ngaysinh=frm.cbo_ngaysinhsua;
-	thangsinh=frm.cbo_thangsinhsua;
-	namsinh=frm.cbo_namsinhsua;
-	email=frm.txt_emailsua;
-	diachi=frm.txt_diachisua;
-	sodienthoai=frm.txt_sodienthoaisua;
-	matkhau=frm.txt_matkhausua;
+	mataisan=frm.cbo_tentaisansua.value;
+	donvitinh=frm.cbo_tendonvitinhsua;
+	tinhtrang=frm.txt_tinhtrangsua;
 	
 	http=GetXmlHttpObject();
-	var params = "macanbo="+macanbo;
+	var params = "mataisan="+mataisan;
 	//mo ket noi bang phuong thuc post
 	http.open("POST", filephp, false);
 	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
@@ -59,21 +42,13 @@ function checkEmail(n)
 		if(http.readyState == 4 && http.status == 200) 
 		{				
 				var x=http.responseXML.getElementsByTagName('row');								
-				madonvi.value=x[0].getElementsByTagName('column')[0].firstChild.nodeValue;
-				tencanbo.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
-				gioitinh.value=x[0].getElementsByTagName('column')[2].firstChild.nodeValue;
-				ngaysinh.value=x[0].getElementsByTagName('column')[3].firstChild.nodeValue;
-				thangsinh.value=x[0].getElementsByTagName('column')[4].firstChild.nodeValue;
-				namsinh.value=x[0].getElementsByTagName('column')[5].firstChild.nodeValue;
-				email.value=x[0].getElementsByTagName('column')[6].firstChild.nodeValue;
-				diachi.value=x[0].getElementsByTagName('column')[7].firstChild.nodeValue;
-				sodienthoai.value=x[0].getElementsByTagName('column')[8].firstChild.nodeValue;
-				matkhau.value=x[0].getElementsByTagName('column')[9].firstChild.nodeValue;
+				donvitinh.value=x[0].getElementsByTagName('column')[0].firstChild.nodeValue;
+				tinhtrang.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
 		}
 	}
 	http.send(params);
 	}
-}*/
+}
 /*function get_info_canbo2(filephp,frm)
 {
 	if(frm.cbo_macanboxoa.value=='Chọn mã số cán bộ')

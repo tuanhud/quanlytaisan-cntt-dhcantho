@@ -22,16 +22,30 @@ function createTable(){
 	{
     	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
         	o.value = cell;
-	        o.className += ' align-center';
+	        o.className += 'align-center';
     }
-	
+/*	var fmttextbox = function(o)
+	{
+    	var cell = '<input type="text" class="textbox" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }*/
 	//Cac Column cua Bang
 	var cols = [
-				{name:'selectBox', label:'Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
+				{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
+				{name:'delete', label:'Xóa', formatter: fmtBlank, className:'align-center cell-delete'},
 				{key: "stt",label:"STT", sortable: true},
-				{key: "ma",label:"Mã thuộc tính", sortable: true},
-				{key: "ten",label:"Tên thuộc tính", sortable: true},
-				{key: "ghichu",label:"Ghi chú", sortable: true},
+				{key: "id",label:"Mã số", sortable: true},
+				{key: "ten",label:"Họ tên", sortable: true,
+				
+						//formatter: fmttextbox, allowHTML:true
+				},
+				{key: "giatri",label:"Chuyên ngành", sortable: false,
+						//formatter: fmttextbox, allowHTML:true
+				
+				},
+				{key: "ghichu",label:"Khóa học", sortable: true}
+		
 		];
 	dt = new Y.DataTable({
     columns: cols,
@@ -41,9 +55,9 @@ function createTable(){
     render : '#mytable'
 });	
 	
-getRecord('get_info_thuoctinh.php');
+getRecord2('get_info_thuoctinh.php');
 	
-function getRecord(phpfile)
+function getRecord2(phpfile)
 {
 	http=GetXmlHttpObject();
 	var params ="";
@@ -62,10 +76,10 @@ function getRecord(phpfile)
 				for(var i=0;i<x.length;i++)
 			   { 
 					dt.data.add({ 
-							stt: i+1, 
-							ma:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue, 
-							ten:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue,
-							ghichu:x[i].getElementsByTagName('GHICHU')[0].firstChild.nodeValue 
+							id:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue, 
+							ten:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue, 
+							giatri:'',
+							ghichu:'',
 							});
 							
 	
