@@ -15,7 +15,7 @@
 					$xml.="<row>";
 					
 							$xml.="<column>";
-							$xml.='-Chọn năm-';							
+							$xml.="Chọn năm";							
 							$xml.="</column>";
 					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
