@@ -48,7 +48,7 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 $(document).ready(function() { 
 		createAutoComplete();
-		//createTable();
+		createTable();
 		fillcombo('get_list_taisan.php',document.frm_themthuoctinh.cbo_tenthietbi);
 		$('form[name="frm_themthuoctinh"] input[name="btn_themthuoctinh"]').click(function(){		
 		themlistthuoctinhtaisan('themthuoctinh_taisan.php',document.frm_themthuoctinh);

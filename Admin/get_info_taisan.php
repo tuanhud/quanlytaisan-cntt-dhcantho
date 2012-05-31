@@ -8,7 +8,7 @@
 	{
 			include_once('../database.php');
 			$db=new database();	
-			$db->setQuery('SELECT * FROM taisan where MaTaiSan =\''.$_POST['mataisan'].'\'');					
+			$db->setQuery('SELECT TenTaiSan, TenDonViTinh, TinhTrang FROM taisan where MaTaiSan =\''.$_POST['mataisan'].'\'');					
 			$result=$db->fetchAll();					
 			$xml="";
 			$xml.="<table>";

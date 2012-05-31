@@ -7,12 +7,12 @@
 			$isExist = 0;
 			include_once('../database.php');
 			$db=new database();
-			$sql = "Select * from taisan";			
+			$sql = "Select TenTaiSan from taisan";			
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			while($row = mysql_fetch_array($result))
 			{
-				if($row[3]==$_POST['txt_tentaisanthem'])
+				if($row[0]==$_POST['txt_tentaisanthem'])
 				{
 					echo 2;
 					exit;	
