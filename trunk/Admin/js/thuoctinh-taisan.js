@@ -1,16 +1,12 @@
 var numofSus = numofFai = 0;
 
 //Them hoi vien duoc khen thuong
-function themthuoctinhtaisan(filephp,frm, mathuoctinh)
+function themthuoctinhtaisan(filephp,frm,mathuoctinh, giatrithuoctinh,ghichu)
 {
-	var khenthuong_id 	= frm.cbo_tenkhenthuong.value;
-	var quyetdinh 		= frm.txt_quyetdinh.value;
-	var ngay 			= frm.cbo_ngay.value;
-	var thang 			= frm.cbo_thang.value;
-	var nam 			= frm.cbo_nam.value;
-	var hocki_id 		= frm.cbo_tenhocki.value;	
-	
-	http=GetXmlHttpObject();
+	var ac 	= frm.cbo_tenthietbi.value;
+	alert()
+
+/*	http=GetXmlHttpObject();
 	
 	var params = "hocki_id="+hocki_id;
 	params+="&khenthuong_id="+khenthuong_id;
@@ -39,7 +35,7 @@ function themthuoctinhtaisan(filephp,frm, mathuoctinh)
 			}
 		}
 	}
-	http.send(params);
+	http.send(params);*/
 }
 
 //Them danh sach hoi vien duoc khen thuong
@@ -49,7 +45,7 @@ function themlistthuoctinhtaisan(phpfile, frm){
 		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr");
 		chks.each( function(item){
 			var rec = dt.getRecord( item.ancestor().ancestor() );
-			themthuoctinhtaisan(phpfile, frm,rec.get('id'));
+			themthuoctinhtaisan(phpfile, frm,rec.get('ma'),rec('giatri'),rec('ghichu'));
 		   	});
 		alert("Thành công : " + numofSus + "\nThất bại: " + numofFai);
 		khenthuong_id.value = -1;

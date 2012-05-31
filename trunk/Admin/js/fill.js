@@ -82,7 +82,7 @@ function fillcombo3(filephp,combo)
 	}
 	http.send();
 }
-/*function _fillcombo(filephp, par_combo, chil_combo)
+function _fillcombo(filephp, par_combo, chil_combo)
 {	
 	var id = par_combo.value;
 	http=GetXmlHttpObject();
@@ -109,7 +109,7 @@ function fillcombo3(filephp,combo)
 		}
 	}
 	http.send(params);
-}*/
+}
 
 function onlyNumbers(evt)
 {
