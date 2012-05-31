@@ -218,7 +218,7 @@ $(document).ready(function() {
 			</tr>   
             <tr>
 					<td height="22" align="right" class="level_1_1">Tên nhà sản xuất cần xóa</td>
-					<td width="50%" align="left" class="level_1_1"><input name="txt_tennsxxoa" id="txt_tennsxxoa" type="text" class="txtbox"style="width:100%"></td>
+					<td width="50%" align="left" class="level_1_1"><input name="txt_tennsxxoa" type="text" disabled class="txtbox" id="txt_tennsxxoa"style="width:100%"></td>
 			</tr>             
               <tr>
             <tr>
