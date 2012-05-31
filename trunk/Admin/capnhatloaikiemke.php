@@ -16,13 +16,13 @@
 <title>Cập nhật loại kiểm kê</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/capnhatloaikiemke.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
-function keypress(e){
+/*function keypress(e){
 var keypressed = null;
 if (window.event)
 	keypressed = window.event.keyCode; //IE
@@ -40,13 +40,22 @@ if (keypressed >= 48 && keypressed <= 57)
 	}
 	return false;
 }
-}
+}*/
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
+	document.frm_themloaikiemke.txt_tenloaikiemke.focus();
+	fillcombo('get_list_loaikiemke.php',document.frm_sualoaikiemke.cbo_tenloaikiemkesua);
+	fillcombo('get_list_loaikiemke.php',document.frm_xoaloaikiemke.cbo_tenloaikiemkexoa);
+	
+	$('form[name="frm_sualoaikiemke"] select[name="cbo_tenloaikiemkesua"]').change(function(){
+		get_info_loaikiemkesua('get_info_loaikiemke.php',document.frm_sualoaikiemke);
+	});
+	
+	$('form[name="frm_xoaloaikiemke"] select[name="cbo_tenloaikiemkexoa"]').change(function(){
+		get_info_loaikiemkexoa('get_info_loaikiemke.php',document.frm_xoaloaikiemke);
+	});
 	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
+	/*$('form[name="frm_themloaikiemke"] input[type="button"]').click(function(){
+		themban('../themloaikiemke.php',document.frm_themloaikiemke);	
 	});
 	
 	//su kien nhan button sua
@@ -58,8 +67,8 @@ $(document).ready(function() {
 		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
 			xoaban('../xoaban.php',document.frm_xoaban);	
 		}		
-	});
-}); 
+	});*/
+});
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
@@ -148,7 +157,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
+          	<form name="frm_themloaikiemke" id="frm_themloaikiemke">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -158,10 +167,10 @@ $(document).ready(function() {
                <tr>
 					<td height="22" align="right" class="level_1_2">Tên loại kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+                    	<input name="txt_tenloaikiemke" type="text" class="txtbox" id="txt_tenloaikiemke" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
 			</tr>                
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_themloaikiemke" type="button" class="button_1" id="btn_themloaikiemke" value="Thêm"></td>
               </tr>
 			  
 			  <tr>
@@ -185,7 +194,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_sualoaikiemke" id="frm_sualoaikiemke">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -195,19 +204,24 @@ $(document).ready(function() {
              <tr>
 					<td height="22" align="right" class="level_1_2">Chọn tên loại kiểm kê: </td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenloaikiemkesua" class="cbo" id="cbo_tenloaikiemkesua" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>
-            <tr>
-					<td height="22" align="right" class="level_1_1">Tên mới: </td>
+             <tr>
+               <td height="22" align="right" class="level_1_1">Mã loại kiểm kê: </td>
+               <td align="left" class="level_1_1"><label for="txt_maloaikiemke"></label>
+                 <input name="txt_maloaikiemke" type="text" disabled id="txt_maloaikiemke" readonly="readonly"></td>
+             </tr>
+             <tr>
+					<td height="22" align="right" class="level_1_1">Tên kiểm kê mới: </td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tenloaithietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)">
+                    	<input name="txt_tenloaikiemkemoi" type="text" class="txtbox" id="txt_tenloaikiemkemoi" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31">
 					</td>
 			</tr> 
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
-                <input type="button" class="button_1" value="Lưu">
+                <input name="btn_luuloaikiemke" type="button" class="button_1" id="btn_luuloaikiemke" value="Lưu">
                 </td>
             </tr>
             <tr>
@@ -231,7 +245,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoaban">
+          	<form name="frm_xoaloaikiemke" id="frm_xoaloaikiemke">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -241,19 +255,19 @@ $(document).ready(function() {
              <tr>
 					<td height="22" align="right" class="level_1_2">Chọn loại kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenloaikiemkexoa" class="cbo" id="cbo_tenloaikiemkexoa" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>              
               <tr>
               <tr>
                 <td height="22" align="right" class="level_1_1">Mã loại kiểm kê:</td>
-                <td height="22" align="center" class="level_1_1"><label for="txtmakk"></label>
-                  <input name="txtmakk" type="text" disabled id="txtmakk" style="width:100%" readonly="readonly"></td>
+                <td height="22" align="left" class="level_1_1"><label for="txtmakk"></label>
+                  <input name="txtmakk" type="text" disabled id="txt_maloaikiemkexoa" readonly="readonly"></td>
               </tr>
               <tr>
 						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" class="button_1" value="Xóa">
+                        <input name="btn_xoaloaikiemke" type="button" class="button_1" id="btn_xoaloaikiemke" value="Xóa">
                         </td>
 			</tr>
               <tr>
