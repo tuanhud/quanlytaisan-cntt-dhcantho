@@ -20,13 +20,15 @@ function get_info_taisan(filephp,frm)
 {
 	if(frm.cbo_tentaisansua.value==-1)
 	{
-		frm.cbo_tendonvitinhsua.value='';
-		frm.txt_tinhtrangsua.value=-1;
+		frm.txt_tentaisansua.value='';
+		frm.cbo_donvitinhsua.value=-1;
+		frm.txt_tinhtrangsua.value='';
 	}
 	else
 	{
 	mataisan=frm.cbo_tentaisansua.value;
-	donvitinh=frm.cbo_tendonvitinhsua;
+	tenmoi=frm.txt_tentaisansua;
+	donvitinh=frm.cbo_donvitinhsua;
 	tinhtrang=frm.txt_tinhtrangsua;
 	
 	http=GetXmlHttpObject();
@@ -41,9 +43,10 @@ function get_info_taisan(filephp,frm)
 	http.onreadystatechange = function() {
 		if(http.readyState == 4 && http.status == 200) 
 		{				
-				var x=http.responseXML.getElementsByTagName('row');								
-				donvitinh.value=x[0].getElementsByTagName('column')[0].firstChild.nodeValue;
-				tinhtrang.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
+				var x=http.responseXML.getElementsByTagName('row');
+				tenmoi.value=x[0].getElementsByTagName('column')[0].firstChild.nodeValue;					
+				donvitinh.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
+				tinhtrang.value=x[0].getElementsByTagName('column')[2].firstChild.nodeValue;
 		}
 	}
 	http.send(params);
@@ -85,8 +88,8 @@ var _admin;
 		$(function()
 		{
 			_admin.themtaisan(),
-			_admin.suacanbo(),
-			_admin.xoacanbo()
+			_admin.suataisan(),
+			_admin.xoataisan()
 		}),
 		
 		_admin=
@@ -96,9 +99,9 @@ var _admin;
 					$("#btn_themtaisan").unbind("click").click(function()
 					{
 						if($("#cbo_tenloaitaisanthem").val()==-1) FocusAndSelect("#cbo_tenloaitaisanthem");
-							else if($("#txt_tentaisanthem").val()=="") FocusAndSelect("#txt_tentaisanthem");
+							else if($("#txt_tentaisanthem").val()=='') FocusAndSelect("#txt_tentaisanthem");
 								else if($("#cbo_donvitinhthem option:selected").val()==-1) FocusAndSelect("#cbo_donvitinhthem");
-									else if($("#txt_tinhtrangthem").val()==-1) FocusAndSelect("#txt_tinhtrangthem");
+									else if($("#txt_tinhtrangthem").val()=='') FocusAndSelect("#txt_tinhtrangthem");
 												
 						else
 						{	
@@ -116,8 +119,6 @@ var _admin;
 									else if(n==1) 
 									{
 										alert("Thành công."),
-										//fillcombo2('get_list_canbo.php',document.frm_suacanbo.cbo_macanbosua);
-										//fillcombo2('get_list_canbo.php',document.frm_xoacanbo.cbo_macanboxoa);
 										document.frm_themtaisan.cbo_tenloaitaisanthem.value=-1,
 										document.frm_themtaisan.txt_tentaisanthem.value='',
 										document.frm_themtaisan.cbo_donvitinhthem.value=-1,
@@ -125,7 +126,8 @@ var _admin;
 									}
 									else if(n==2)
 									{
-										alert("Đơn vị này đã tồn tại.")
+										alert("Tài sản này đã tồn tại."),
+										document.frm_themtaisan.txt_tentaisanthem.focus()
 									}
 									
 								},
@@ -136,51 +138,43 @@ var _admin;
 						
 					})
 				},
-		  suacanbo:function()
+		  suataisan:function()
 		  {
-			  $("#btn_suacanbo").unbind("click").click(function()
+			  $("#btn_suataisan").unbind("click").click(function()
 			  {
-						if($("#cbo_macanbosua").val()=='') FocusAndSelect("#cbo_macanbosua");
-							else if($("#cbo_tendonvisua").val()==-1) FocusAndSelect("#cbo_tendonvisua");
-								else if($("#txt_tencanbosua").val()=="") FocusAndSelect("#txt_tencanbosua");
-									else if($("#cbo_gioitinhsua option:selected").val()==-1) FocusAndSelect("#cbo_gioitinhsua");
-											else if($("#cbo_ngaysinhsua option:selected").val()==-1)FocusAndSelect("#cbo_ngaysinhsua");
-												else if($("#cbo_thangsinhsua option:selected").val()==-1)FocusAndSelect("#cbo_thangsinhsua");
-													else if($("#cbo_namsinhsua option:selected").val()==-1)FocusAndSelect("#cbo_namsinhsua");
-														else if(check_date_ngaysinh($("#cbo_ngaysinhsua option:selected").val(),$("#cbo_thangsinhsua option:selected").val(),$("#cbo_namsinhsua option:selected").val())){alert("Ngày tháng năm sinh không hợp lệ.");FocusAndSelect("#cbo_ngaysinhsua");}
-															else if($("#txt_emailsua").val()=="")FocusAndSelect("#txt_emailsua");
-																else if(checkEmail($("#txt_emailsua").val())!=1) {alert("Địa chỉ email không hợp lệ"); FocusAndSelect("#txt_emailsua");}
-																	else if($("#txt_diachisua").val()=="")FocusAndSelect("#txt_diachisua");
-																		else if($("#txt_sodienthoaisua").val()=="")FocusAndSelect("#txt_sodienthoaisua");
-																			else if($("#txt_matkhausua").val()=="")FocusAndSelect("#txt_matkhausua");
+						if($("#cbo_tenloaitaisansua option:selected").val()==-1) FocusAndSelect("#cbo_tenloaitaisansua");
+							else if($("#cbo_tentaisansua option:selected").val()==-1) FocusAndSelect("#cbo_tentaisansua");
+								else if($("#txt_tentaisansua ").val()=='') FocusAndSelect("#txt_tentaisansua");
+									else if($("#cbo_donvitinhsua option:selected").val()==-1) FocusAndSelect("#cbo_donvitinhsua");
+										else if($("#txt_tinhtrangsua ").val()=='') FocusAndSelect("#txt_tinhtrangsua");
+									
 						else
 						{	
 							return $.ajax
 							({
-								url:"./suacanbo.php",
+								url:"./suataisan.php",
 								type:"POST",
 								//dataType:"html",
-								data:$("#frm_suacanbo").serialize(),
+								data:$("#frm_suataisan").serialize(),
 								beforeSend:function(){},
 								success:function(n)
 								{
 									if(n==0)
-										alert("Bạn chưa thay đổi thông tin nào.")
-									else 
+										alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
+									else if(n==1)
 									{
-										alert("Thành công !"),
-										fillcombo2('get_list_canbo.php',document.frm_suacanbo.cbo_macanbosua);
-										fillcombo2('get_list_canbo.php',document.frm_xoacanbo.cbo_macanboxoa);
-										document.frm_suacanbo.cbo_tendonvisua.value=-1,
-										document.frm_suacanbo.txt_tencanbosua.value='',
-										document.frm_suacanbo.cbo_gioitinhsua.value=-1,
-										document.frm_suacanbo.cbo_ngaysinhsua.value=-1,
-										document.frm_suacanbo.cbo_thangsinhsua.value=-1,
-										document.frm_suacanbo.cbo_namsinhsua.value=-1,
-										document.frm_suacanbo.txt_emailsua.value='',
-										document.frm_suacanbo.txt_diachisua.value='',
-										document.frm_suacanbo.txt_sodienthoaisua.value='',
-										document.frm_suacanbo.txt_matkhausua.value=''
+										alert("Thành công !")
+										//fillcombo2('get_list_canbo.php',document.frm_suacanbo.cbo_macanbosua);
+										//fillcombo2('get_list_canbo.php',document.frm_xoacanbo.cbo_macanboxoa);
+										document.frm_suataisan.cbo_tenloaitaisansua.value=-1,
+										_fillcombo('get_list_taisan2.php',document.frm_suataisan.cbo_tenloaitaisansua, document.frm_suataisan.cbo_tentaisansua),
+										document.frm_suataisan.txt_tentaisansua.value='',
+										document.frm_suataisan.cbo_donvitinhsua.value=-1,
+										document.frm_suataisan.txt_tinhtrangsua.value=''
+									}
+									else if(n==2)
+									{
+										alert("Bạn chưa thay đổi gì cả.");	
 									}
 								},
 								error:function(){},
@@ -190,47 +184,41 @@ var _admin;
 			   })
 		  },
 		  
-		  xoacanbo:function()
+		  xoataisan:function()
 			{
-			 $("#btn_xoacanbo").unbind("click").click(function()
+			 $("#btn_xoataisan").unbind("click").click(function()
 			 {   
-			 	if ($("#cbo_macanboxoa").val()!='Chọn mã số cán bộ')
-				{	
-					if(confirm('Ban có chắc chắn muốn xóa không ?' ))
+			 	if($("#cbo_tenloaitaisanxoa option:selected").val()==-1){ alert("Bạn chưa chọn loại tài sản."); FocusAndSelect("#cbo_tenloaitaisanxoa");}
+					else if($("#cbo_tentaisanxoa option:selected").val()==-1){ alert("Bạn chưa chọn tài sản."); FocusAndSelect("#cbo_tentaisanxoa");}	
+				  else	if(confirm('Ban có chắc chắn muốn xóa không ?' ))
 					{	
 						return $.ajax
 						({
-							url:"./xoacanbo.php",
+							url:"./xoataisan.php",
 							type:"POST",
 							//dataType:"html",
-							data:$("#frm_xoacanbo").serialize(),
+							data:$("#frm_xoataisan").serialize(),
 							beforeSend:function(){},
 							success:function(n)
 							{
 								if(n==0)
-									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
+									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại."),
+									document.frm_xoataisan.cbo_tenloaitaisanxoa.focus()
 								else if(n==1)
 								{
-									alert("Thành công !"),
-									fillcombo2('get_list_canbo.php',document.frm_suacanbo.cbo_macanbosua);
-									fillcombo2('get_list_canbo.php',document.frm_xoacanbo.cbo_macanboxoa);
-									document.frm_xoacanbo.txt_tencanboxoa.value='',
-									FocusAndSelect("#cbo_macanboxoa")
+									alert("Thành công."),
+									document.frm_xoataisan.cbo_tenloaitaisanxoa.value=-1,
+									_fillcombo('get_list_taisan2.php',document.frm_xoataisan.cbo_tenloaitaisanxoa, document.frm_xoataisan.cbo_tentaisanxoa),
+									FocusAndSelect("#cbo_tenloaitaisanxoa")
 								}
 							},
 							error:function(){},
 							complete:function(){}
 						}),!1
 					  }
-				}
-				else
-				{
-					alert("Bạn chưa chọn mã cán bộ.");	
-				}
-					
-				})
+					})
 			  
-			}
+				}
 		
 				
 		}
