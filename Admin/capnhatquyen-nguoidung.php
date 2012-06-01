@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật Ban</title>
+<title>Cập nhật quyền người dùng</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 <script type="text/javascript" src="js/yui/yui-min.js"></script>
@@ -24,30 +24,11 @@
 <script type="text/javascript" src="js/table.js"></script>
 <script type="text/javascript" src="js/quyen-nguoidung.js"></script>
 <script type="text/javascript" >
-//Không cho nhập ký tự
-function keypress(e){
-var keypressed = null;
-if (window.event)
-	keypressed = window.event.keyCode; //IE
-else 
-	keypressed = e.which; //NON-IE, Standard
 
-if (keypressed >= 48 && keypressed <= 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed == 8 || keypressed == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
-	}
-	return false;
-}
-}
 //createTable();//Create table after loading page
-$('form[name="frm_capnhatkhenthuong_chsv"] select[name="cbo_tenchsv"]').change(function(){		
+/*$('form[name="frm_capnhatkhenthuong_chsv"] select[name="cbo_tenchsv"]').change(function(){		
 		addRow_(document.frm_capnhatkhenthuong_chsv.cbo_tenchsv);
-	});
+	});*/
 
 </script>
 </head>

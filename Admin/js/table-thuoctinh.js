@@ -24,6 +24,18 @@ function createTable(){
         	o.value = cell;
 	        o.className += 'align-center';
     }
+	var fmtChkBox2 = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
+	var fmtChkBox2 = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr2" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
 /*	var fmttextbox = function(o)
 	{
     	var cell = '<input type="text" class="textbox" />';
@@ -32,8 +44,9 @@ function createTable(){
     }*/
 	//Cac Column cua Bang
 	var cols = [
-				{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
-				{name:'delete', label:'Xóa', formatter: fmtBlank, className:'align-center cell-delete'},
+				{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox2, allowHTML:true },
+				{key:'them', label:'them', formatter: fmtChkBox2, className:'align-center',allowHTML:true},
+				{key:'sua', label:'sua', formatter: fmtChkBox, className:'align-center', allowHTML:true},
 				{key: "stt",label:"STT", sortable: true},
 				{key: "id",label:"Mã số", sortable: true},
 				{key: "ten",label:"Họ tên", sortable: true,
@@ -76,10 +89,12 @@ function getRecord2(phpfile)
 				for(var i=0;i<x.length;i++)
 			   { 
 					dt.data.add({ 
+							chon:'abc',
+							stt:i+1,
 							id:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue, 
 							ten:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue, 
 							giatri:'mm',
-							ghichu:'mmm',
+							ghichu:x[i].getElementsByTagName('GHICHU')[0].firstChild.nodeValue,
 							});
 							
 	

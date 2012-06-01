@@ -17,11 +17,8 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <script type="text/javascript" src="../js/yui.js"></script>
 <script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
-
-
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
-<script type="text/javascript" src="js/autocomplete.js"></script>
 <script type="text/javascript" src="js/table-thuoctinh.js">
 </script>
 <script type="text/javascript" src="js/thuoctinh-taisan.js"></script>
@@ -47,7 +44,7 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 }
 $(document).ready(function() { 
-		createAutoComplete();
+		//createAutoComplete();
 		createTable();
 		fillcombo('get_list_taisan.php',document.frm_themthuoctinh.cbo_tenthietbi);
 		$('form[name="frm_themthuoctinh"] input[name="btn_themthuoctinh"]').click(function(){		
