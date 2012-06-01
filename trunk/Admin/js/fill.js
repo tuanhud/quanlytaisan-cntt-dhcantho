@@ -87,6 +87,7 @@ function _fillcombo(filephp, par_combo, chil_combo)
 	var id = par_combo.value;
 	http=GetXmlHttpObject();
 	var params = "id="+id;
+	
 	//mo ket noi bang phuong thuc post
 	http.open("POST", filephp, false);
 	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
