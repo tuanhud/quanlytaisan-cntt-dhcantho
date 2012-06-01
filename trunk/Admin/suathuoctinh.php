@@ -1,26 +1,25 @@
 <?php
 	//khoi dong sesion
     session_start();
-	//dinh dang file thanh file xml
 	//kiem tra đã đăng nhập	
 	//if (session_is_registered('maquyen') && $_SESSION['maquyen']=="AD")
 	{
 			include_once('../database.php');
-			$db=new database();	
-			$sql = "Select * from `loaitaisan_thietbi`";
+			$db=new database();
+			$sql="select TenThuocTinh, GhiChu from thuoctinh";
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			while($row = mysql_fetch_array($result))
 			{
-				if($row['TenLoai']==$_POST['txt_tenloaitaisansua']&&$row['DienGiaiTB']==$_POST['txt_diengiaisua'])
+				if($row['TenThuocTinh']==$_POST['txt_tenthuoctinhsua']&&$row['GhiChu']==$_POST['txt_ghichusua'])
 				{
 					echo 2;//chua thay doi gi ca
 					exit;
 				}
 			}
-			$sql="update `loaitaisan_thietbi`";
-			$sql.="set `TenLoai` = '".$_POST['txt_tenloaitaisansua']."',`DienGiaiTB` = '".$_POST['txt_diengiaisua']."'";
-			$sql.="where `MaLoai` = '".$_POST['cbo_tenloaitaisansua']."'";
+			$sql="update `thuoctinh`";
+			$sql.="set `TenThuocTinh` = '".$_POST['txt_tenthuoctinhsua']."',`GhiChu` = '".$_POST['txt_ghichusua']."'";
+			$sql.="where `MaThuocTinh` = '".$_POST['cbo_tenthuoctinhsua']."'";
 			$db->setQuery($sql);
 			if($db->executeQuery()!=1)
 			{

@@ -195,7 +195,9 @@
     <td class="bc_footer">&nbsp;</td>
     <td class="br_footer">&nbsp;</td>
   </tr>
-</tbody></table>
+</tbody>
+
+</table>
 </td>
   </tr>
   <!--Kết thúc của FOOTER-->

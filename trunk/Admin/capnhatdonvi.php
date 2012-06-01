@@ -26,8 +26,8 @@ $(document).ready(function() {
 	document.frm_themdonvi.txt_tendonvithem.focus();
 	fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
 	fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);	
-	$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(function(){
-		get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
+	$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(
+		function(){get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
 	});
 }); 
 </script>

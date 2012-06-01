@@ -7,7 +7,7 @@
 			include_once('../database.php');
 			$db=new database();			
 			
-					$db->setQuery("delete from `donvi` where MSDV='".$_POST['cbo_tendonvixoa']."'");
+					$db->setQuery("delete from `thuoctinh` where MaThuocTinh='".$_POST['cbo_tenthuoctinhxoa']."'");
 					if($db->executeQuery()!=1)
 					{
 						echo 0;

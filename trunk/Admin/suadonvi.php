@@ -12,7 +12,7 @@
 			$result = $db->fetchAll();
 			while($row = mysql_fetch_array($result))
 			{
-				if($row[1]==$_POST['txt_tendonvisua'])
+				if($row[0]==$_POST['txt_tendonvisua'])
 				{
 					echo 2;//ten don vi da ton tai
 					exit;

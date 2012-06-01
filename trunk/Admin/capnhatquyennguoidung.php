@@ -35,9 +35,9 @@ $(document).ready(function() {
 	createTable();
 	fillcombo('get_list_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
 	//Create table after loading page
-$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
-		getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value)
-	});
+	$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
+			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value)
+		});
 	
 }); 
 //addRow_('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung);
