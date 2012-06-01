@@ -28,16 +28,16 @@ function createTable(){
 	var cols = [
 				{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
 				{key: "sothutu",label:"STT", sortable: true},
-				{key: "mathuoctinh",label:"Mã thuộc tính", sortable: true},
-				{key: "tenthuoctinh",label:"Tên thuộc tính", sortable: true},
+				{key: "manoidung",label:"Mã nội dung", sortable: true},
+				{key: "tennoidung",label:"Tên nội dung", sortable: true},
 				{key: "ghichu",label:"Ghi chú", sortable: false},
 		];
 	
     dt = new Y.DataTable({
         columns: cols,
         data   : datasource,
-        summary: 'Danh sách thuộc tính',
-        caption: 'Danh sách thuộc tính',
+        summary: 'Danh sách nội dung',
+        caption: 'Danh sách nội dung',
         render : '#mytable'
     });		
 	
