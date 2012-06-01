@@ -1,4 +1,4 @@
-var hv_ten 	= new Array();
+/*var hv_ten 	= new Array();
 var _id, _ten, _ghichu;
 var _stt 	= 0,
 	numRow  = 0 ;
@@ -33,7 +33,7 @@ YUI({ filter: 'raw' }).use('datatable','autocomplete', 'autocomplete-filters', '
     });			
 });
 }
-/*function get_list_taisan(phpfile){
+/*fun*//*ction get_list_taisan(phpfile){
 	http=GetXmlHttpObject();
 	//mo ket noi bang phuong thuc post
 	http.open("POST", phpfile, false);
@@ -54,8 +54,8 @@ YUI({ filter: 'raw' }).use('datatable','autocomplete', 'autocomplete-filters', '
 					   }
 	   }
 	}
-	http.send();
-	}*/
+	http.send();*/
+	//}
 /*function get_list_hoivien_chsv (phpfile, chsv_id){
 	var params ="chsv_id="+chsv_id;
 	http=GetXmlHttpObject();
@@ -131,7 +131,7 @@ YUI({ filter: 'raw' }).use('datatable','autocomplete', 'autocomplete-filters', '
 	http.send(params);
 }			*/   
 
-function getRecord(phpfile,id)
+/*function getRecord(phpfile,id)
 {
 	http=GetXmlHttpObject();
 	var params ="";
@@ -146,9 +146,10 @@ function getRecord(phpfile,id)
 	if(http.readyState == 4 && http.status == 200) 
 	   {
 		var x = http.responseXML.getElementsByTagName('RESULT');		
-				_idgh   		 = x[0].getElementsByTagName('MA')[0].childNodes[0].nodeValue;
-				_tenj 		 = x[0].getElementsByTagName('TEN')[0].childNodes[0].nodeValue;
-				_ghichujj		 = x[0].getElementsByTagName('GHICHU')[0].childNodes[0].nodeValue;	   }
+				_id   		 = x[0].getElementsByTagName('MA')[0].childNodes[0].nodeValue;
+				_ten 		 = x[0].getElementsByTagName('TEN')[0].childNodes[0].nodeValue;
+				_ghichu	 = x[0].getElementsByTagName('GHICHU')[0].childNodes[0].nodeValue;	   }
 	}
 	http.send(params);
 }
+*/

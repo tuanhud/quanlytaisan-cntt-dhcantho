@@ -1,11 +1,10 @@
 var numofSus = numofFai = 0;
 
 //Them hoi vien duoc khen thuong
-function themthuoctinhtaisan(filephp,frm,mathuoctinh, giatrithuoctinh,ghichu)
+function themthuoctinhtaisan(filephp,frm,mathuoctinh,tenquyen)
 {
 	var ac 	= frm.cbo_tenthietbi.value;
-	alert()
-
+	alert(mathuoctinh+tenquyen);
 /*	http=GetXmlHttpObject();
 	
 	var params = "hocki_id="+hocki_id;
@@ -44,18 +43,39 @@ function themlistthuoctinhtaisan(phpfile, frm){
 	try{
 		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr");
 		chks.each( function(item){
-			var rec = dt.getRecord( item.ancestor().ancestor() );
-			themthuoctinhtaisan(phpfile, frm,rec.get('ma'),rec('giatri'),rec('ghichu'));
+			if ( !item.get('checked') ) return;
+			var rec = dt.getRecord( item.ancestor() );
+			themthuoctinhtaisan(phpfile, frm,rec.get('id'),'quyensua');
 		   	});
-		alert("Thành công : " + numofSus + "\nThất bại: " + numofFai);
-		khenthuong_id.value = -1;
+		//alert("Thành công : " + numofSus + "\nThất bại: " + numofFai);
+		/*khenthuong_id.value = -1;
 		quyetdinh.value="";
 		ngay.value=0;
 		thang.value=0;
-		nam.value=0;
-		document.getElementById('mytable').innerHTML = "";
+		nam.value=0;*/
+		/*document.getElementById('mytable').innerHTML = "";
 		createTable();
-		numofSus = numofFai = 0;
+		numofSus = numofFai = 0;*/
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	try{
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr2");
+		chks.each( function(item){
+			if ( !item.get('checked') ) return;
+			var rec = dt.getRecord( item.ancestor() );
+			themthuoctinhtaisan(phpfile, frm,rec.get('id'),'quyenthem');
+		   	});
+		//alert("Thành công : " + numofSus + "\nThất bại: " + numofFai);
+		/*khenthuong_id.value = -1;
+		quyetdinh.value="";
+		ngay.value=0;
+		thang.value=0;
+		nam.value=0;*/
+		/*document.getElementById('mytable').innerHTML = "";
+		createTable();
+		numofSus = numofFai = 0;*/
 	}
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);

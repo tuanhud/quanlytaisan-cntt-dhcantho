@@ -13,15 +13,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật đơn vị</title>
+<title>Cập nhật quyền - người dùng</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<script type="text/javascript" src="js/yui/yui.js"></script>
-
+<script type="text/javascript" src="../js/yui.js"></script>
 <script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhatdonvi.js"></script>
-<script type="text/javascript" src="js/table.js"></script>
+<script type="text/javascript" src="js/table-quyen-nguoidung.js"></script>
 <script type="text/javascript" src="js/quyen-nguoidung.js"></script>
 <script type="text/javascript" >
 
@@ -32,12 +31,16 @@ $(document).ready(function() {
 	$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(function(){
 		get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
 	});*/
-	createTable();
+	createTable_nguoidung();
 	fillcombo('get_list_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
 	//Create table after loading page
 	$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
-			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value)
+			
+			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
 		});
+	$('form[name="frm_capnhatquyen_nguoidung"] input[name="btn_capnhat"]').click(function(){		
+		themlistquyen_nguoidung('themquyen_nguoidung.php',document.frm_capnhatquyen_nguoidung);
+	});
 	
 }); 
 //addRow_('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung);
@@ -139,18 +142,19 @@ $(document).ready(function() {
                <tr>
 					<td height="22" align="right" class="level_1_1">Chọn đơn vị</td>
 					<td width="80%" align="left" class="level_1_1">
-                    	<select id="cbo_tendonvi" name="cbo_tendonvi" class="cbo" style="width:100%;">
+                    	<select id="cbo_tendonvi" name="cbo_tendonvi" class="cbo" style="width:80%;">
                         </select></td>
 			</tr>
               <!--bang thuoc tinh dat o day-->
                
                     <tr>
-                        <td align="center" height="500" class="level_1_1" colspan="4" valign="top">
+                        <td align="center" height="400" class="level_1_1" colspan="4" valign="top">
                         <div class="yui3-skin-sam">                    
                         <div id="mytable"></div>                    
                         </div>
                         </td>
-                </tr>              
+                </tr>
+                      
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_capnhat" id="btn_capnhat" class="button_1" value="Lưu"></td>
               </tr>

@@ -1,127 +1,95 @@
-var dt, datasource;
 var records;
+var dt;
 // -------------------------
 //  Create Table 
 // -------------------------      
-function createTable()
-{
+function createTable_nguoidung(){
 	
-		YUI().use('datatable', function (Y)
-		 {	
-		
-		//Tao button Delete tren moi dong		 	
-		var fmtBlank = function(o) {
-			var fclass = o.column.className || null;
-			if (fclass)
-				o.className += ' '+fclass;
-			o.value = ' ';
-		 }          
-		 
+	YUI().use('datatable', function (Y)
+ {	
+	
+	//Tao button Delete tren moi dong		 	
+	var fmtBlank = function(o) 
+	{
+        var fclass = o.column.className || null;
+        if (fclass)
+            o.className += ' '+fclass;
+        o.value = ' ';
+     }          
+	 //co the cai tien them ham lay danh sách các quyền rồi gáng từng quyền đó = 1 loại checkbox, dua vao datatable=ham addcolumn
 	//Tao checkbox tren moi dong 
-		var fmtChkBox = function(o)
-		{
-			var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
-				o.value = cell;
-				o.className += ' align-center';
-		}
+    var fmtChkBox = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
 	var fmtChkBox2 = function(o)
-		{
-			var cell = '<input type="checkbox" class="myCheckboxFmtr2" />';
-				o.value = cell;
-				o.className += ' align-center';
-		}
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr2" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
+	var fmtChkBox3 = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr3" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
+	var fmtChkBox4 = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr4" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
+	var fmtChkBox5 = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr5" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
+/*	var fmttextbox = function(o)
+	{
+    	var cell = '<input type="text" class="textbox" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }*/
 	//Cac Column cua Bang
-	//var cols = [
-//				/*{name:'selectBox', label:'Chọn<input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },*/
-//				{key:'id', label:'Mã cán bộ', formatter: fmtBlank, className:'align-center '},
-//				{key:'ten', label:'Tên cán bộ', formatter: fmtBlank, className:'align-center cell-delete'},
-//				{name: 'Name', label:'Đơn vị',
-//						children:
-//						[
-//							{ key:"vpp", label: 'Sửa, thêm VPP' },
-//							{ key:"kk", label: 'Sửa, thêm KK' },
-//							{ key:"khms", label: 'Sửa thêm KHMS' }
-//						]
-//				},
-//				{name: 'Name', label:'Khoa',
-//						children:
-//						[
-//							{ key:"duyet", label:'Duyệt' },
-//						]
-//				},
-//		];
-var cols = [
-				{name:'chon', label:'Chọn',
-					children:
-					[
-					{name:'selectBox', label:'<input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
-					]
-				},
-				{name:'canbo', label:'Cán bộ',
-					children:
-					[
-					{key:"id",label:"Mã số", sortable: true},
-					{key:"ten",label:"Họ tên", sortable: true},
-					]	//formatter: fmttextbox, allowHTML:true
-				},
-				{name:"donvi",label:"Đơn vị", sortable: false,allowHTML:true,
-						//formatter: fmttextbox, allowHTML:true
+	var cols = [
+				/*{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },*/
+				//{key: "",label:"tay", sortable: true},
+				{name:'canbo', label:'Cán bộ',className:'align-center',
 				children:
-						[
-							{ key:"vpp", label: 'Sửa, thêm VPP',formatter: fmtChkBox2, allowHTML:true },
-							{ key:"kk", label: 'Sửa, thêm KK',formatter: fmtChkBox2, allowHTML:true },
-							{ key:"khms", label: 'Sửa thêm KHMS',formatter: fmtChkBox2, allowHTML:true }
-						]
-				},
-				{name: "khoa",label:"Khoa", sortable: false,
+				[
+						{key: "id",label:"Mã số", sortable: true},
+						{key: "ten",label:"Họ tên", sortable: true},
+				]},
+				{name:'donvi', label:'Đơn vị',className:'align-center',
 				children:
-						[
-						{ key:"duyet", label: 'Duyệt',formatter: fmtChkBox2, allowHTML:true}
-						]
-				}
+				[
+					{name:'themsuavpp', label:'Thêm, sửa VPP', formatter: fmtChkBox2, className:'align-center',allowHTML:true},
+					{name:'themsuakk', label:'Thêm, sửa KK', formatter: fmtChkBox3, className:'align-center', allowHTML:true},
+					{name:'themsuakhms',label:'Thêm, sửa KHMS',formatter: fmtChkBox4, className:'align-center', allowHTML:true},
+				]},
+				{name:'khoa', label:'Khoa',className:'align-center',
+				children:
+				[
+					{name:'duyet', label:'Duyệt', formatter: fmtChkBox5, className:'align-center',allowHTML:true},
+				]},
 		
 		];
+	dt = new Y.DataTable({
+    columns: cols,
+    data   : records, 
+	summary: 'Danh sách người dùng - quyền ',
+    caption: 'Danh sách người dùng - quyền(Chưa hoàn chỉnh)',
+    render : '#mytable'
+});	
 	
-		  dt = new Y.DataTable
-		  ({
-			columns: cols,
-			data   : records, 
-			summary: 'Danh sách người dùng và quyền',
-			caption: 'Danh sách người dùng và quyền',
-			render : '#mytable'
-		});		
-			//getRecord2('get_list_canbo_donvi.php',madonvi);
+
 	
-function getRecord2(phpfile,madonvi)
-{
-	http=GetXmlHttpObject();
-	var params ="madonvi="+madonvi;
-	//mo ket noi bang phuong thuc post
-	http.open("POST", phpfile, false);
-	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	//http.setRequestHeader("Content-length", params.length);
-	//http.setRequestHeader("Connection", "close");
-	//ham xu li du lieu tra ve cua ajax send thanh cong
-	http.onreadystatechange = function() {
-	if(http.readyState == 4 && http.status == 200) 
-	   { 
-				
-				var x=http.responseXML.getElementsByTagName('RESULT');
-				for(var i=0;i<x.length;i++)
-			   { 
-					dt.addRow({ 
-							id:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue, 
-							ten:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue, 
-							});
-							
+
 	
-				}
-				
-	   }
-	}
-	http.send(params);
-}
 	// -------------------------
 	//  Delete 1 record
 	// -------------------------      			
@@ -159,15 +127,15 @@ function getRecord2(phpfile,madonvi)
 	// -------------------------
 	//   Click handler on "Select" TH checkbox, toggle the settings of all rows
 	// -------------------------
-    Y.one("#selAll").on("click", function(e){		
+   /* Y.one("#selAll").on("click", function(e){		
         var selAll = this.get('checked');   // the checked status of the TH checkbox
     //  Get a NodeList of each of INPUT with class="myCheckboxFmtr" in the TBODY       
-	var chks = dt.get('srcNode').all("tbody tr td input.myCheckboxFmtr");
+	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr");
         chks.each( function(item){
             item.set('checked', selAll);    // set the individual "checked" to the TH setting			
         	});
     	});
-		
+		*/
 	/************************************
      Method to take an existing TD or TR Node element as input "target" and scan
      the dataset (ModelList) for the underlying data record (a Model).
@@ -223,7 +191,6 @@ function getRecord2(phpfile,madonvi)
         return ckey || false;
      }
 
-
 	     /**
      Method to scan the "columns" Array for the target and return the requested column.
      The requested "target" can be either of ;
@@ -273,6 +240,7 @@ function getRecord2(phpfile,madonvi)
      }	 
 });
 }
+
 function getRecord2(phpfile,madonvi)
 {
 	dt.reset();
@@ -304,3 +272,4 @@ function getRecord2(phpfile,madonvi)
 	}
 	http.send(params);
 }
+
