@@ -8,7 +8,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT * FROM `nhasanxuat`');
+					$db->setQuery('SELECT mavpp,tenvpp FROM `vanphongpham`');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
@@ -17,7 +17,7 @@
 							$xml.='-1';							
 							$xml.="</column>";
 							$xml.="<column>";
-							$xml.='-Chọn nhà sản xuất-';							
+							$xml.='-Chọn văn phòng phẩm-';							
 							$xml.="</column>";
 					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))

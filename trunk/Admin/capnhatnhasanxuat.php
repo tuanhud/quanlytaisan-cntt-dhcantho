@@ -24,8 +24,8 @@
 //Không cho nhập ký tự
 $(document).ready(function() { 
 	document.frm_themnsx.txt_tennsxthem.focus();
-	fillcombo2('get_list_nhasanxuat.php',document.frm_suansx.cbo_mansxsua);
-	fillcombo2('get_list_nhasanxuat.php',document.frm_xoansx.cbo_mansxxoa);	
+	fillcombo('get_list_nhasanxuat.php',document.frm_suansx.cbo_mansxsua);
+	fillcombo('get_list_nhasanxuat.php',document.frm_xoansx.cbo_mansxxoa);	
 	$('form[name="frm_suansx"] select[name="cbo_mansxsua"]').change(function(){
 		get_info_nhasanxuat('get_info_nhasanxuat.php',document.frm_suansx);
 	});
@@ -167,7 +167,7 @@ $(document).ready(function() {
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã nhà sản xuất </td>
+					<td height="22" align="right" class="level_1_1">Chọn nhà sản xuất </td>
 					<td width="50%" align="left" class="level_1_1">
                     	<select name="cbo_mansxsua" id="cbo_mansxsua" class="cbo" style="width:100%;">
                         </select>                       
@@ -210,18 +210,13 @@ $(document).ready(function() {
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã nhà sản xuất cần xóa</td>
+					<td height="22" align="right" class="level_1_1">Chọn nhà sản xuất cần xóa</td>
 					<td width="50%" align="left" class="level_1_1">
                     	<select name="cbo_mansxxoa" id="cbo_mansxxoa" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
-			</tr>   
-            <tr>
-					<td height="22" align="right" class="level_1_1">Tên nhà sản xuất cần xóa</td>
-					<td width="50%" align="left" class="level_1_1"><input name="txt_tennsxxoa" type="text" disabled class="txtbox" id="txt_tennsxxoa"style="width:100%"></td>
-			</tr>             
-              <tr>
-            <tr>
+			</tr>
+             <tr>
 						<td colspan="2" height="22" align="center" class="level_1_2">
                         <input type="button" name="btn_xoansx" id="btn_xoansx" class="button_1" value="Xóa">
                         </td>

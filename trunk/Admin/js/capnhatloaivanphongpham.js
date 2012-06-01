@@ -12,25 +12,25 @@ function CheckEmptyInput(n)
 var _admin;
 		$(function()
 		{
-			_admin.themnsx(),
-			_admin.suansx(),
-			_admin.xoansx()
+			_admin.themloaivpp(),
+			_admin.sualoaivpp(),
+			_admin.xoaloaivpp()
 		}),
 		_admin=
 			{
 			
-			themnsx:function()
+			themloaivpp:function()
 			{
-				$("#btn_themnsx").unbind("click").click(function()
+				$("#btn_themloaivpp").unbind("click").click(function()
 				{
-					if(CheckEmptyInput($("#txt_tennsxthem")))
+					if(CheckEmptyInput($("#txt_tenloaivppthem")))
 					{	
 						return $.ajax
 						({
-							url:"./themnhasanxuat.php",
+							url:"./themloaivanphongpham.php",
 							type:"POST",
 							//dataType:"html",
-							data:$("#frm_themnsx").serialize(),
+							data:$("#frm_themloaivpp").serialize(),
 							beforeSend:function(){},
 							success:function(n)
 							{
@@ -39,14 +39,15 @@ var _admin;
 								else if(n==1) 
 								{
 									alert("Thành công !"),
-									fillcombo('get_list_nhasanxuat.php',document.frm_suansx.cbo_mansxsua),
-									fillcombo('get_list_nhasanxuat.php',document.frm_xoansx.cbo_mansxxoa),
-									ClearInputValue("#txt_tennsxthem"),
-									FocusAndSelect("#txt_tennsxthem")
+									fillcombo('get_list_loaivpp.php',document.frm_sualoaivpp.cbo_tenloaivppsua),
+									fillcombo('get_list_loaivpp.php',document.frm_xoaloaivpp.cbo_tenloaivppxoa),
+									ClearInputValue("#txt_tenloaivppthem"),
+									ClearInputValue("#txt_diengiailoaivppthem"),
+									FocusAndSelect("#txt_tenloaivppthem")
 								}
 								else
 								{
-									alert("Nhà sản xuất này đã tồn tại.")
+									alert("Loại văn phòng phẩm này đã tồn tại.")
 								}
 								
 							},
@@ -58,37 +59,38 @@ var _admin;
 				})
 			},
 			
-			suansx:function()
+			sualoaivpp:function()
 			{
-				$("#btn_suansx").unbind("click").click(function()
+				$("#btn_sualoaivpp").unbind("click").click(function()
 				{
-					if(CheckEmptyInput($("#txt_tennsxsua")))
+					if(CheckEmptyInput($("#txt_tenloaivppsua")))
 					{	
 						return $.ajax
 						({
-							url:"./suanhasanxuat.php",
+							url:"./sualoaivanphongpham.php",
 							type:"POST",
 							//dataType:"html",
-							data:$("#frm_suansx").serialize(),
+							data:$("#frm_sualoaivpp").serialize(),
 							beforeSend:function(){},
 							success:function(n)
 							{
 								if(n==0){
 									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại."),
-									FocusAndSelect("#cbo_tennsxsua")
+									FocusAndSelect("#cbo_tenloaivppsua")
 								}
 								else if(n==1) 
 								{
 									alert("Thành công !"),
-									fillcombo('get_list_nhasanxuat.php',document.frm_suansx.cbo_mansxsua);
-									fillcombo('get_list_nhasanxuat.php',document.frm_xoansx.cbo_mansxxoa);
-									ClearInputValue("#txt_tennsxsua"),
-									FocusAndSelect("#cbo_tennsxsua")
+									fillcombo('get_list_loaivpp.php',document.frm_sualoaivpp.cbo_tenloaivppsua);
+									fillcombo('get_list_loaivpp.php',document.frm_xoaloaivpp.cbo_tenloaivppxoa);
+									ClearInputValue("#txt_tenloaivppsua"),
+									ClearInputValue("#txt_diengiailoaivppsua"),
+									FocusAndSelect("#cbo_tenloaivppsua")
 								}
 								else
 								{
-									alert("Tên nhà sản xuất này đã tồn tại."),
-									FocusAndSelect("#txt_tennsxsua")	
+									alert("Tên loại văn phòng phẩm này đã tồn tại."),
+									FocusAndSelect("#txt_tenloaivppsua")	
 								}
 							},
 							error:function(){},
@@ -99,20 +101,20 @@ var _admin;
 				})
 			},
 			
-			xoansx:function()
+			xoaloaivpp:function()
 			{
-			 $("#btn_xoansx").unbind("click").click(function()
+			 $("#btn_xoaloaivpp").unbind("click").click(function()
 			 {   
 			 	if (confirm('Bạn có chắc chắn muốn xóa không ?' ))
 				{	
-					if(CheckEmptyInput($("#cbo_mansxxoa")))
+					if(CheckEmptyInput($("#cbo_tenloaivppxoa")))
 					{	
 						return $.ajax
 						({
-							url:"./xoanhasanxuat.php",
+							url:"./xoaloaivanphongpham.php",
 							type:"POST",
 							//dataType:"html",
-							data:$("#frm_xoansx").serialize(),
+							data:$("#frm_xoaloaivpp").serialize(),
 							beforeSend:function(){},
 							success:function(n)
 							{
@@ -121,14 +123,15 @@ var _admin;
 								else if(n==1)
 								{
 									alert("Thành công !"),
-									fillcombo('get_list_nhasanxuat.php',document.frm_suansx.cbo_mansxsua),
-									fillcombo('get_list_nhasanxuat.php',document.frm_xoansx.cbo_mansxxoa),
-									ClearInputValue("#txt_tennsxxoa"),
-									FocusAndSelect("#cbo_tennsxxoa")
+									fillcombo('get_list_loaivpp.php',document.frm_sualoaivpp.cbo_tenloaivppsua);
+									fillcombo('get_list_loaivpp.php',document.frm_xoaloaivpp.cbo_tenloaivppxoa);
+									ClearInputValue("#txt_tenloaivppxoa"),
+									ClearInputValue("#txt_diengiailoaivppxoa"),
+									FocusAndSelect("#cbo_tenloaivppxoa")
 								}
 								else if(n==2)
 								{
-									alert("Bạn chưa chọn mã nhà sản xuất.")	
+									alert("Bạn chưa chọn loại văn phòng phẩm.")	
 								}
 							},
 							error:function(){},
@@ -144,17 +147,18 @@ var _admin;
 		}
 
 
-function get_info_nhasanxuat(filephp, frm)
+function get_info_loaivpp(filephp, frm)
 {
-	if(frm.cbo_mansxsua.value==-1)
+	if(frm.cbo_tenloaivppsua.value==-1)
 	{
-		frm.txt_tennsxsua.value='';
+		frm.txt_tenloaivppsua.value='';
+		frm.txt_diengiailoaivppsua.value='';
 	}
 	else
 	{
-		var mansxsua = frm.cbo_mansxsua.value;
+		var maloaivppsua = frm.cbo_tenloaivppsua.value;
 		http=GetXmlHttpObject();
-		var params = "mansxsua="+mansxsua;
+		var params = "maloaivppsua="+maloaivppsua;
 		//mo ket noi bang phuong thuc post
 		http.open("POST", filephp, false);
 		//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
@@ -166,25 +170,27 @@ function get_info_nhasanxuat(filephp, frm)
 		{
 			if(http.readyState == 4 && http.status == 200) 
 			{
-				var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-				frm.txt_tennsxsua.value = result;
+				var x=http.responseXML.getElementsByTagName('row');								
+				txt_tenloaivppsua.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
+				txt_diengiailoaivppsua.value=x[0].getElementsByTagName('column')[2].firstChild.nodeValue;
 			}
 		}
 		http.send(params);
 		
 		}
 	}
-function get_info_nhasanxuat2(filephp, frm)
+function get_info_loaivpp2(filephp, frm)
 {
-	if(frm.cbo_mansxxoa.value==-1)
+	if(frm.cbo_tenloaivppxoa.value=="-1")
 	{
-		frm.txt_tennsxxoa.value='';
+		frm.txt_tenloaivppxoa.value='';
+		frm.txt_diengiailoaivppxoa.value='';
 	}
 	else
 	{
-		var mansxsua = frm.cbo_mansxxoa.value;
+		var maloaivppsua = frm.cbo_tenloaivppxoa.value;
 		http=GetXmlHttpObject();
-		var params = "mansxsua="+mansxsua;
+		var params = "maloaivppsua="+maloaivppsua;
 		//mo ket noi bang phuong thuc post
 		http.open("POST", filephp, false);
 		//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
@@ -196,8 +202,9 @@ function get_info_nhasanxuat2(filephp, frm)
 		{
 			if(http.readyState == 4 && http.status == 200) 
 			{
-				var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-				frm.txt_tennsxxoa.value = result;
+				var x=http.responseXML.getElementsByTagName('row');								
+				txt_tenloaivppxoa.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
+				txt_diengiailoaivppxoa.value=x[0].getElementsByTagName('column')[2].firstChild.nodeValue;
 			}
 		}
 		http.send(params);
