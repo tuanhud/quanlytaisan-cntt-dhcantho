@@ -19,7 +19,6 @@
 <script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
 <script type="text/javascript" src="../js/ajax.js"></script>
 <script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
 <script type="text/javascript" src="js/table-noidung.js"></script>
 <script type="text/javascript" src="js/table-noidungsua.js"></script>
 <script type="text/javascript" src="js/yui/yui-min.js"></script>
@@ -173,7 +172,7 @@ $(document).ready(function() {
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_1">Ngày lập phiếu:</td>
-                <td height="22" align="center" class="level_1_1"><label for="txttendvt"></label>
+                <td height="22" align="left" class="level_1_1"><label for="txttendvt"></label>
                   Ngày 
                   <select name="ng" id="ng">
                   </select>

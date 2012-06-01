@@ -107,13 +107,18 @@
                   
                   <tr>
                     <td height="22" align="right" class="level_1_1">Mã nội dung lớn:</td>
-                    <td height="22" align="center" class="level_1_1"><label for="txtmndl"></label>
-                      <input name="txtmndl" type="text" disabled id="txtmndl" style="width:100%" readonly="readonly"></td>
+                    <td height="22" align="left" class="level_1_1"><label for="txtmndl"></label>
+                      <input name="txtmndl" type="text" disabled id="txtmndl" readonly="readonly"></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
                     <td height="22" align="center" class="level_1_1"><label for="txttendc"></label>
                       <input type="text" name="txttendc" id="txttenndc" style="width:100%"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_1">Thêm nội dung con từ file:</td>
+                    <td height="22" align="left" class="level_1_1"><label for="textfield"></label>
+                      <input type="file" name="txt_browse" id="txt_browse"></td>
                   </tr>
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
@@ -151,8 +156,8 @@
                   
                   <tr>
                     <td height="22" align="right" class="level_1_1">Mã nội dung lớn:</td>
-                    <td height="22" align="center" class="level_1_1"><label for="txtmndl"></label>
-                      <input name="txtmndls" type="text" disabled id="txtmndl" style="width:100%" readonly="readonly"></td>
+                    <td height="22" align="left" class="level_1_1"><label for="txtmndl"></label>
+                      <input name="txtmndls" type="text" disabled id="txtmndl" readonly="readonly"></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
@@ -200,8 +205,8 @@
                   
                   <tr>
                     <td height="22" align="right" class="level_1_1"> Mã nội dung con:</td>
-                    <td height="22" align="center" class="level_1_1"><label for="txttendc2"></label>
-                      <input name="txtmandcx" type="text" disabled id="txtmandcx" style="width:100%" readonly="readonly"></td>
+                    <td height="22" align="left" class="level_1_1"><label for="txttendc2"></label>
+                      <input name="txtmandcx" type="text" disabled id="txtmandcx" readonly="readonly"></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Tên nội dung lớn:</td>

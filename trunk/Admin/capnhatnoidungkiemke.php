@@ -171,6 +171,11 @@ $(document).ready(function() {
                   <textarea name="txtghichund" id="txtghichund" style="width:100%"></textarea></td>
               </tr>
               <tr>
+                <td height="22" align="right" class="level_1_2">Thêm nội dung từ file:</td>
+                <td align="left" class="level_1_2"><label for="textfield"></label>
+                  <input type="file" name="txt_browse" id="txt_browse"></td>
+              </tr>
+              <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
               </tr>
               <tr>
@@ -205,6 +210,10 @@ $(document).ready(function() {
 					<td width="50%" align="left" class="level_1_2">
                     	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
                         </select></td>
+               <tr>
+                 <td height="22" align="right" class="level_1_2">Mã nội dung kiểm kê:</td>
+                 <td align="left" class="level_1_2"><label for="txt_manoidungsua"></label>
+                   <input name="txt_manoidungsua" type="text" disabled id="txt_manoidungsua" readonly="readonly"></td>
                <tr>
 					<td height="22" align="right" class="level_1_1">Tên nội dung kiểm kê mới:</td>
 					<td width="50%" align="left" class="level_1_2"><label for="txttenndmoi"></label>
