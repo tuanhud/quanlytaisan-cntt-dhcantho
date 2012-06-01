@@ -13,51 +13,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật loại thiết bị</title>
+<title>Cập nhật văn phòng phẩm</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/capnhatvanphongpham.js"></script>
 <script type="text/javascript" >
-//Không cho nhập ký tự
-function keypress(e){
-var keypressed = null;
-if (window.event)
-	keypressed = window.event.keyCode; //IE
-else 
-	keypressed = e.which; //NON-IE, Standard
-
-if (keypressed >= 48 && keypressed <= 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed == 8 || keypressed == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
-	}
-	return false;
-}
-}
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
+	document.frm_themvpp.cbo_tenloaivppthem.focus();
+	fillcombo('get_list_loaivpp.php',document.frm_themvpp.cbo_tenloaivppthem);
+	fillcombo3('get_list_donvitinh.php',document.frm_themvpp.cbo_dvtthem);
+	fillcombo('get_list_nhasanxuat.php',document.frm_themvpp.cbo_tennsxthem);
+	
+	fillcombo('get_list_vpp.php',document.frm_suavpp.cbo_tenvppsua);
+	fillcombo('get_list_loaivpp.php',document.frm_suavpp.cbo_tenloaivppsua);
+	fillcombo3('get_list_donvitinh.php',document.frm_suavpp.cbo_dvtsua);
+	fillcombo('get_list_nhasanxuat.php',document.frm_suavpp.cbo_tennsxsua);
+	
+	fillcombo('get_list_vpp.php',document.frm_xoavpp.cbo_tenvppxoa);
+	fillcombo('get_list_loaivpp.php',document.frm_xoavpp.cbo_tenloaivppxoa);
+	fillcombo3('get_list_donvitinh.php',document.frm_xoavpp.cbo_dvtxoa);
+	fillcombo('get_list_nhasanxuat.php',document.frm_xoavpp.cbo_tennsxxoa);
+	
+	$('form[name="frm_suavpp"] select[name="cbo_tenvppsua"]').change(function(){
+		get_info_vpp('get_info_vpp.php',document.frm_suavpp);
 	});
 	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
+	$('form[name="frm_xoavpp"] select[name="cbo_tenvppxoa"]').change(function(){
+		get_info_vpp2('get_info_vpp.php',document.frm_xoavpp);
 	});
 }); 
 </script>
@@ -148,7 +133,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
+          	<form name="frm_themvpp" id="frm_themvpp">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -156,43 +141,33 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
               <tr>
-					<td height="22" align="right" class="level_1_2">Chọn mã loại văn phòng phẩm</td>
+					<td height="22" align="right" class="level_1_2">Chọn loại văn phòng phẩm</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenloaivppthem" id="cbo_tenloaivppthem" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
-			</tr>
-            <tr>
-					<td height="22" align="right" class="level_1_1">Tên loại văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
 			</tr>    
              <tr>
-					<td height="22" align="right" class="level_1_2">Chọn đơn vị tính của văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-			</tr>
+               <td height="22" align="right" class="level_1_1">Chọn đơn vị tính của văn phòng phẩm</td>
+               <td width="50%" align="left" class="level_1_1">
+                 <select name="cbo_dvtthem" id="cbo_dvtthem" class="cbo" style="width:100%;">
+                   </select>                       
+                 </td>
+             </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã nhà sản xuất văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+					<td height="22" align="right" class="level_1_2">Chọn nhà sản xuất văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_2">
+                    	<select name="cbo_tennsxthem" id="cbo_tennsxthem" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
-			</tr>
-            <tr>
-					<td height="22" align="right" class="level_1_2">Tên nhà sản xuất văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
 			</tr>    
                <tr>
-					<td height="22" align="right" class="level_1_1">Tên  văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>               
+                 <td height="22" align="right" class="level_1_1">Tên  văn phòng phẩm</td>
+                 <td width="50%" align="left" class="level_1_1">
+                   <input name="txt_tenvppthem" id="txt_tenvppthem" type="text" class="txtbox" style="width:100%"></td>
+               </tr>               
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themvpp" id="btn_themvpp" class="button_1" value="Thêm"></td>
               </tr>
 			  
 	
@@ -213,60 +188,49 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_suavpp" id="frm_suavpp">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
-              <tr>
-              		<tr>
+                <tr>
               		<td height="22" class="level_1_1"></td>
                     <td class="level_1_1"></td>
               </tr>
               <tr>
-					<td height="22" align="right" class="level_1_2">Chọn mã văn phòng phẩm cần sửa</td>
+					<td height="22" align="right" class="level_1_2">Chọn văn phòng phẩm cần sửa</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenvppsua" id="cbo_tenvppsua" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>
               <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã loại văn phòng phẩm cần sửa</td>
+					<td height="22" align="right" class="level_1_1">Chọn loại văn phòng phẩm cần sửa</td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenloaivppsua" id="cbo_tenloaivppsua" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
-			</tr>
-            <tr>
-					<td height="22" align="right" class="level_1_2">Tên loại văn phòng phẩm cần sửa</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
 			</tr>    
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn ĐVT của văn phòng phẩm cần sửa</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-			</tr>
+               <td height="22" align="right" class="level_1_2">Chọn ĐVT của văn phòng phẩm cần sửa</td>
+               <td width="50%" align="left" class="level_1_2">
+                 <select name="cbo_dvtsua" id="cbo_dvtsua" class="cbo" style="width:100%;">
+                   </select>                       
+                 </td>
+             </tr>
              <tr>
-					<td height="22" align="right" class="level_1_2">Chọn mã NSX văn phòng phẩm cần sửa</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+					<td height="22" align="right" class="level_1_1">Chọn  NSX văn phòng phẩm cần sửa</td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<select name="cbo_tennsxsua" id="cbo_tennsxsua" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
-			</tr>
-            <tr>
-					<td height="22" align="right" class="level_1_1">Tên NSX văn phòng phẩm cần sửa</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
 			</tr>    
                <tr>
-					<td height="22" align="right" class="level_1_2">Tên  văn phòng phẩm cần sửa</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>         
+                 <td height="22" align="right" class="level_1_2">Tên  văn phòng phẩm cần sửa</td>
+                 <td width="50%" align="left" class="level_1_2">
+                   <input name="txt_tenvppsua" id="txt_tenvppsua" type="text" class="txtbox" style="width:100%"></td>
+               </tr>         
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_1">
-                <input type="button" class="button_1" value="Lưu">
+                <input type="button" name="btn_suavpp" id="btn_suavpp" class="button_1" value="Lưu">
                 </td>
             </tr>
 				  						  
@@ -287,7 +251,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoaban">
+          	<form name="frm_xoavpp" id="frm_xoavpp">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
           <tr>
@@ -295,53 +259,32 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
               <tr>
-					<td height="22" align="right" class="level_1_2">Chọn mã văn phòng phẩm cần xóa</td>
+					<td height="22" align="right" class="level_1_2">Chọn văn phòng phẩm cần xóa</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-			</tr>
-              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã loại văn phòng phẩm cần xóa</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenvppxoa" id="cbo_tenvppxoa" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>
             <tr>
-					<td height="22" align="right" class="level_1_2">Tên loại văn phòng phẩm cần xóa</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
-			</tr>    
+              <td height="29" align="right" class="level_1_1">Tên loại văn phòng phẩm cần xóa</td>
+              <td width="50%" align="left" class="level_1_1"><select name="cbo_tenloaivppxoa" id="cbo_tenloaivppxoa" disabled class="cbo" style="width:100%;">
+                        </select></td>
+            </tr>    
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn ĐVT của văn phòng phẩm cần xóa</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-			</tr>
-             <tr>
-					<td height="22" align="right" class="level_1_2">Chọn mã NSX văn phòng phẩm cần xóa</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
+					<td height="30" align="right" class="level_1_2"> ĐVT của văn phòng phẩm cần xóa</td>
+					<td width="50%" align="left" class="level_1_2"><select name="cbo_dvtxoa" class="cbo" id="cbo_dvtxoa" disabled style="width:100%;">
+                        </select></td>
 			</tr>
             <tr>
-					<td height="22" align="right" class="level_1_1">Tên NSX văn phòng phẩm cần xóa</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
-			</tr>    
-               <tr>
-					<td height="22" align="right" class="level_1_2">Tên  văn phòng phẩm cần xóa</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>         
+              <td height="22" align="right" class="level_1_1">Tên NSX văn phòng phẩm cần xóa</td>
+              <td width="50%" align="left" class="level_1_1"><select name="cbo_tennsxxoa" id="cbo_tennsxxoa" disabled class="cbo" style="width:100%;">
+                        </select></td>
+            </tr>         
              <tr>
-						<td colspan="2" height="22" align="center" class="level_1_1">
-                        <input type="button" class="button_1" value="Xóa">
-                        </td>
-			</tr>
+               <td colspan="2" height="22" align="center" class="level_1_1">
+                 <input type="button" name="btn_xoavpp" id="btn_xoavpp" class="button_1" value="Xóa">
+                 </td>
+             </tr>
 				  						  
             </tbody>
         </table>

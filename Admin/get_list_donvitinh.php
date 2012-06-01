@@ -14,7 +14,7 @@
 					$xml.="<table>";
 					$xml.="<row>";
 							$xml.="<column>";
-							$xml.="Chọn đơn vị tính";							
+							$xml.="-Chọn đơn vị tính-";							
 							$xml.="</column>";
 					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
