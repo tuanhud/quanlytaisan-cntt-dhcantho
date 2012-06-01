@@ -80,7 +80,7 @@ var _admin;
 							success:function(n)
 							{
 								if(n==0)
-									alert("Bạn chưa thay đổi gì cả."),
+									alert("Thất bại."),
 									FocusAndSelect("#txt_tenloaitaisansua")
 								else if(n==1) 
 								{
@@ -93,7 +93,7 @@ var _admin;
 								}
 								else if(n==2)
 								{
-									alert("Tên loại tài sản này đã tồn tại."),
+									alert("Bạn chưa thay đổi gì cả."),
 									FocusAndSelect("#txt_tenloaitaisansua")	
 								}
 							},

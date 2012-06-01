@@ -78,7 +78,7 @@ var _admin;
 									FocusAndSelect("#cbo_tendonvisua")
 								else if(n==1) 
 								{
-									alert("Thành công !"),
+									alert("Thành công."),
 									fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
 									fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
 									ClearInputValue("#txt_tendonvisua"),
@@ -86,7 +86,7 @@ var _admin;
 								}
 								else if(n==2)
 								{
-									alert("Tên đơn vị này đã tồn tại."),
+									alert("Bạn chưa thay đổi gì cả."),
 									FocusAndSelect("#txt_tendonvisua")	
 								}
 							},
@@ -104,7 +104,8 @@ var _admin;
 			 {   
 			 	if (confirm('Ban có chắc chắn muốn xóa không ?' ))
 				{	
-					if(CheckEmptyInput($("#cbo_tendonvixoa")))
+					if($("#cbo_tendonvixoa").val()==-1){alert("Bạn chưa chọn đơn vị.");FocusAndSelect("#cbo_tendonvixoa")}
+					else
 					{	
 						return $.ajax
 						({
@@ -123,10 +124,6 @@ var _admin;
 									fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua),
 									fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa),
 									FocusAndSelect("#cbo_tendonvixoa")
-								}
-								else if(n==2)
-								{
-									alert("Bạn chưa chọn tên đơn vị.")	
 								}
 							},
 							error:function(){},
