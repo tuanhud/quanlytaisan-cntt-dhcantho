@@ -18,52 +18,28 @@
 
 <script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src=".js/fill.js"></script>
-<script type="text/javascript" src="js/capnhatnccvpp.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<!--<script type="text/javascript" src="js/capnhatnccvpp.js"></script>-->
+<script type="text/javascript" src="js/capnhatnhacungcap.js"></script>
 <script type="text/javascript" >
-//Không cho nhập ký tự
-function keypress(e){
-var keypressed = null;
-if (window.event)
-	keypressed = window.event.keyCode; //IE
-else 
-	keypressed = e.which; //NON-IE, Standard
-
-if (keypressed >= 48 && keypressed <= 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed == 8 || keypressed == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
-	}
-	return false;
-}
-}
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
+	document.frm_themnccvpp.cbo_tenvppthem.focus();
+	fillcombo('get_list_vpp.php',document.frm_themnccvpp.cbo_tenvppthem);
+	fillcombo('get_list_nhacungcap.php',document.frm_themnccvpp.cbo_tennccthem);
+	fillcombo('get_list_nccvpp.php',document.frm_xoanccvpp.cbo_tenvppxoa);
+	$('form[name="frm_themnccvpp"] select[name="cbo_tennccthem"]').change(function(){
+		get_info_nhacungcap3('get_info_nhacungcap.php',document.frm_themnccvpp);
 	});
-	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
+	$('form[name="frm_xoanccvpp"] select[name="cbo_tenvppxoa"]').change(function(){
+		_fillcombo('get_list_nccvpp2.php',document.frm_xoanccvpp.cbo_tenvppxoa, document.frm_xoanccvpp.cbo_tennccxoa);
+	});
+	$('form[name="frm_xoanccvpp"] select[name="cbo_tennccxoa"]').change(function(){
+		get_info_nhacungcap4('get_info_nhacungcap.php',document.frm_xoanccvpp);
 	});
 }); 
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
-  
 <table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tbody>
   
@@ -165,7 +141,7 @@ $(document).ready(function() {
             <tr>
               <td height="22" align="right" class="level_1_1">Chọn nhà cung cấp văn phòng phẩm</td>
               <td width="50%" align="left" class="level_1_1">
-                <select name="cbo_tenncc" id="cbo_tenncc" class="cbo" style="width:100%;">
+                <select name="cbo_tennccthem" id="cbo_tennccthem" class="cbo" style="width:100%;">
                   </select>
                 </td>
             </tr> 
@@ -191,57 +167,6 @@ $(document).ready(function() {
         </tbody>
         </table>
         <br>
-<table width="500" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa nhà cung cấp cho văn phòng phẩm</td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
-        <tr>
-          <td colspan="3" align="left">
-          	<form name="frm_suanccvpp" id="frm_suanccvpp">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-              <tbody>
-              <tr>
-              		<td height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
-              </tr>
-                    <td height="22" align="right" class="level_1_2">Chọn văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenvppsua" id="cbo_tenvppsua" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
- 
-                    
-            <tr>
-              <td height="22" align="right" class="level_1_1">Chọn nhà cung cấp văn phòng phẩm</td>
-              <td width="50%" align="left" class="level_1_1">
-                <select name="cbo_tennccsua" id="cbo_tennccsua" class="cbo" style="width:100%;">
-                  </select>
-                </td>
-            </tr> 
-            <tr>
-              <td height="22" align="right" class="level_1_2">Địa chỉ nhà cung cấp văn phòng phẩm</td>
-              <td width="50%" align="left" class="level_1_2">
-                <input name="txt_diachinccsua" id="txt_diachinccsua" type="text" disabled class="txtbox" style="width:100%"></td>
-            </tr> 
-            <tr>
-					<td height="22" align="right" class="level_1_1">SĐT nhà cung cấp văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_sdtncsua" id="txt_sdtncsua" type="text" disabled class="txtbox" style="width:100%"></td>
-			</tr>               
-              <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_suanccvpp" id="btn_suanccvpp" class="button_1" value="Lưu"></td>
-              </tr>
-			  
-
-           </table>
-           </form>
-          </td>
-        </tr>		
-        </tbody>
-        </table>
         <br/>
         <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
