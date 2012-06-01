@@ -16,10 +16,11 @@
 <title>Cập nhật phiếu kiểm kê</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript" src="js/capnhatphieukiemke.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -42,10 +43,19 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 }
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
+	fillcombo('get_list_loaikiemke.php',document.frm_themphieukiemke.cbo_loaikiemkethem);
+	fillcombo('get_list_loaikiemke.php',document.frm_suaphieukiemke.cbo_loaikiemkesua);
+	// Load ngay thang nam  cho nguoi dung chon them
+	init_date_input(document.frm_themphieukiemke.cbo_ngaythem1,document.frm_themphieukiemke.cbo_thangthem1,document.frm_themphieukiemke.cbo_namthem1);
+	init_date_input(document.frm_themphieukiemke.cbo_ngaythem2,document.frm_themphieukiemke.cbo_thangthem2,document.frm_themphieukiemke.cbo_namthem2);	
+	//load ngay thang nam cho nguoi dung chon sua
+	init_date_input(document.frm_suaphieukiemke.cbo_ngaysua1,document.frm_suaphieukiemke.cbo_thangsua1,document.frm_suaphieukiemke.cbo_namsua1);
+	init_date_input(document.frm_suaphieukiemke.cbo_ngaysua2,document.frm_suaphieukiemke.cbo_thangsua2,document.frm_suaphieukiemke.cbo_namsua2);
+	//load ngay thang nam cho nguoi dung chon xoa
+	init_date_input(document.frm_xoaphieukiemke.cbo_ngayxoa1,document.frm_xoaphieukiemke.cbo_thangxoa1,document.frm_xoaphieukiemke.cbo_namxoa1);
+	init_date_input(document.frm_xoaphieukiemke.cbo_ngayxoa2,document.frm_xoaphieukiemke.cbo_thangxoa2,document.frm_xoaphieukiemke.cbo_namxoa2);
 	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
+	/*$('form[name="frm_themban"] input[type="button"]').click(function(){
 		themban('../themban.php',document.frm_themban);	
 	});
 	
@@ -58,7 +68,7 @@ $(document).ready(function() {
 		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
 			xoaban('../xoaban.php',document.frm_xoaban);	
 		}		
-	});
+	});*/
 }); 
 </script>
 </head>
@@ -148,7 +158,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
+          	<form name="frm_themphieukiemke" id="frm_themphieukiemke">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -158,160 +168,47 @@ $(document).ready(function() {
 			  <tr>
 			    <td height="22" align="right" class="level_1_2">Chọn loại kiểm kê:</td>
 			    <td align="left" class="level_1_2"><label for="loaikk"></label>
-			      <select name="loaikk" id="loaikk" style="width:100%">
+			      <select name="cbo_loaikiemkethem" id="cbo_loaikiemkethem" style="width:100%">
 			        </select></td>
 			    <tr>
-					<td height="22" align="right" class="level_1_1">Tên phiếu kiểm kê: </td>
-					<td width="50%" align="left" class="level_1_1"><label for="txttenpkk"></label>
-					  <input type="text" name="txttenpkk" id="txttenpkk" style="width:100%"></td>
-               <tr>
                  <td height="22" align="right" class="level_1_2">Ngày kiểm kê:</td>
-                 <td align="left" class="level_1_2"><label for="ngktkk4">Ngày</label>
-                   <select name="ng" id="ng5" style="width:40">
-                     <option value="1" selected>1</option>
-                     <option value="2">2</option>
-                     <option value="3">3</option>
-                     <option value="4">4</option>
-                     <option value="5">5</option>
-                     <option value="6">6</option>
-                     <option value="7">7</option>
-                     <option value="8">8</option>
-                     <option value="9">9</option>
-                     <option value="10">10</option>
-                     <option value="11">11</option>
-                     <option value="12">12</option>
-                     <option value="13">13</option>
-                     <option value="14">14</option>
-                     <option value="15">15</option>
-                     <option value="16">16</option>
-                     <option value="17">17</option>
-                     <option value="18">18</option>
-                     <option value="19">19</option>
-                     <option value="20">20</option>
-                     <option value="21">21</option>
-                     <option value="22">22</option>
-                     <option value="23">23</option>
-                     <option value="24">24</option>
-                     <option value="25">25</option>
-                     <option value="26">26</option>
-                     <option value="27">27</option>
-                     <option value="28">28</option>
-                     <option value="29">29</option>
-                     <option value="30">30</option>
-                     <option value="31">31</option>
+                 <td align="left" class="level_1_2"><select name="cbo_ngaythem1" id="cbo_ngaythem1" style="width:60">
+                 </select>
+                   <label for="thktkk4">/</label>
+                   <select name="cbo_thangthem1" id="cbo_thangthem1" style="width:70">
                    </select>
-                   <label for="thktkk4">Tháng</label>
-                   <select name="th" id="th5" style="width:40">
-                     <option value="1" selected>1</option>
-                     <option value="2">2</option>
-                     <option value="3">3</option>
-                     <option value="4">4</option>
-                     <option value="5">5</option>
-                     <option value="6">6</option>
-                     <option value="7">7</option>
-                     <option value="8">8</option>
-                     <option value="9">9</option>
-                     <option value="10">10</option>
-                     <option value="11">11</option>
-                     <option value="12">12</option>
-                   </select>
-                   <label for="namktkk4">Năm</label>
-                   <select name="nam" id="nam5" style="width:55">
-                     <option value="2000" selected>2000</option>
-                     <option value="2001">2001</option>
-                     <option value="2002">2002</option>
-                     <option value="2003">2003</option>
-                     <option value="2004">2004</option>
-                     <option value="2005">2005</option>
-                     <option value="2006">2006</option>
-                     <option value="2007">2007</option>
-                     <option value="2008">2008</option>
-                     <option value="2009">2009</option>
-                     <option value="2010">2010</option>
-                     <option value="2011">2011</option>
-                     <option value="2012">2012</option>
+                   /
+                   <select name="cbo_namthem1" id="cbo_namthem1" style="width:70">
                    </select></td>
                </tr>
                <tr>
                  <td height="22" align="right" class="level_1_1">Ngày kết thúc kiểm kê:</td>
-                 <td align="left" class="level_1_1"><label for="ngktkk5">Ngày</label>
-                   <select name="ng2" id="ng2" style="width:40">
-                     <option value="1" selected>1</option>
-                     <option value="2">2</option>
-                     <option value="3">3</option>
-                     <option value="4">4</option>
-                     <option value="5">5</option>
-                     <option value="6">6</option>
-                     <option value="7">7</option>
-                     <option value="8">8</option>
-                     <option value="9">9</option>
-                     <option value="10">10</option>
-                     <option value="11">11</option>
-                     <option value="12">12</option>
-                     <option value="13">13</option>
-                     <option value="14">14</option>
-                     <option value="15">15</option>
-                     <option value="16">16</option>
-                     <option value="17">17</option>
-                     <option value="18">18</option>
-                     <option value="19">19</option>
-                     <option value="20">20</option>
-                     <option value="21">21</option>
-                     <option value="22">22</option>
-                     <option value="23">23</option>
-                     <option value="24">24</option>
-                     <option value="25">25</option>
-                     <option value="26">26</option>
-                     <option value="27">27</option>
-                     <option value="28">28</option>
-                     <option value="29">29</option>
-                     <option value="30">30</option>
-                     <option value="31">31</option>
+                 <td align="left" class="level_1_1"><select name="cbo_ngaythem2" id="cb_ngaythem2" style="width:60">
+                 </select>
+                   <label for="thktkk5">/</label>
+                   <select name="cbo_thangthem2" id="cbo_thangthem2" style="width:70">
+                    
                    </select>
-                   <label for="thktkk5">Tháng</label>
-                   <select name="th2" id="th2" style="width:40">
-                     <option value="1" selected>1</option>
-                     <option value="2">2</option>
-                     <option value="3">3</option>
-                     <option value="4">4</option>
-                     <option value="5">5</option>
-                     <option value="6">6</option>
-                     <option value="7">7</option>
-                     <option value="8">8</option>
-                     <option value="9">9</option>
-                     <option value="10">10</option>
-                     <option value="11">11</option>
-                     <option value="12">12</option>
-                   </select>
-                   <label for="namktkk5">Năm</label>
-                   <select name="nam2" id="nam2" style="width:55">
-                     <option value="2000" selected>2000</option>
-                     <option value="2001">2001</option>
-                     <option value="2002">2002</option>
-                     <option value="2003">2003</option>
-                     <option value="2004">2004</option>
-                     <option value="2005">2005</option>
-                     <option value="2006">2006</option>
-                     <option value="2007">2007</option>
-                     <option value="2008">2008</option>
-                     <option value="2009">2009</option>
-                     <option value="2010">2010</option>
-                     <option value="2011">2011</option>
-                     <option value="2012">2012</option>
+                   /<label for="namktkk5"></label>
+                   <select name="cbo_namthem2" id="cbo_namthem2" style="width:70">
                    </select></td>
                </tr>
                <tr>
 					<td height="22" align="right" class="level_1_2">Diễn giải:</td>
-					<td width="50%" align="left" class="level_1_2"><textarea name="txt_tenthietbi" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+					<td width="50%" align="left" class="level_1_2"><textarea name="txt_diengiai" rows="5" class="txtbox" id="txt_diengiai" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
 			</tr>
                <tr>
-                 <td height="22" align="right" class="level_1_2">Chọn phiếu mẫu có sẵng:</td>
-                 <td height="22" align="left" class="level_1_2"><select name="select4" id="select3" style="width:75%">
-                 </select>
-                   <input type="button" class="button_1" value="Thêm"></td>
+                 <td height="22" align="right" class="level_1_2">Chọn  mẫu có sẵng hoặc lập phiếu mới:</td>
+                 <td height="22" align="left" class="level_1_2"><select name="select4" id="select3" style="width:100%">
+                 </select></td>
                </tr>
                <tr>
-                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
+                 <td height="22" align="right" class="level_1_2">&nbsp;</td>
+                 <td height="22" align="left" class="level_1_2">&nbsp;</td>
+               </tr>
+               <tr>
+                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" id="btn_themphieukiemke" value="Thêm">
+                   <input type="button" class="button_1" id="btn_themphieukiemke2" value="Export phiếu"></td>
                </tr>
 			  
 			  <tr>
@@ -335,7 +232,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_suaphieukiemke" id="frm_suaphieukiemke">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -344,154 +241,35 @@ $(document).ready(function() {
               </tr>
               <tr>
               		<td height="22" class="level_1_2" align="right">Chọn phiếu kiểm kê: </td>
-                    <td width="50%" class="level_1_2"><select name="select" id="select" style="width:100%">
+                    <td width="50%" class="level_1_2"><select name="cbo_phieukiemkesua" id="cbo_phieukiemkesua"  style="width:100%">
                     </select></td>
               </tr>   
               <tr>
                 <td height="22" align="right" class="level_1_1">Chọn loại kiểm kê:</td>
                 <td height="22" align="center" class="level_1_1"><label for="select2"></label>
-                  <select name="select2" id="select2" style="width:100%">
+                  <select name="cbo_loaikiemkesua" id="cbo_loaikiemkesua" style="width:100%">
                   </select></td>
-              </tr>
-              <tr>
-                <td height="22" align="right" class="level_1_2">Tên phiếu kiểm kê mới:</td>
-                <td height="22" align="center" class="level_1_2"><label for="txtpkkm"></label>
-                  <input type="text" name="txtpkkm" id="txtpkkm" style="width:100%"></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_1">Ngày kiểm kê:</td>
-                <td align="left" class="level_1_1"><label for="ngktkk6">Ngày</label>
-                  <select name="ng5" id="ng6" style="width:40">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                    <option value="31">31</option>
+                <td align="left" class="level_1_1"><select name="cbo_ngaysua1" id="cbo_ngaysua1" style="width:60">
                   </select>
-                  <label for="thktkk6">Tháng</label>
-                  <select name="th5" id="th6" style="width:40">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
-                  <label for="namktkk6">Năm</label>
-                  <select name="nam5" id="nam6" style="width:55">
-                    <option value="2000" selected>2000</option>
-                    <option value="2001">2001</option>
-                    <option value="2002">2002</option>
-                    <option value="2003">2003</option>
-                    <option value="2004">2004</option>
-                    <option value="2005">2005</option>
-                    <option value="2006">2006</option>
-                    <option value="2007">2007</option>
-                    <option value="2008">2008</option>
-                    <option value="2009">2009</option>
-                    <option value="2010">2010</option>
-                    <option value="2011">2011</option>
-                    <option value="2012">2012</option>
-                  </select></td>
+                  <label for="thktkk6">/</label>
+                  <select name="cbo_thangsua1" id="cbo_thangsua1" style="width:70">
+                    </select>
+                  <label for="namktkk6">/</label>
+                  <select name="cbo_namsua1" id="cbo_namsua1" style="width:70">
+                    </select></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Ngày kết thúc kiểm kê:</td>
-                <td align="left" class="level_1_2"><label for="ngktkk2">Ngày</label>
-                  <select name="ng3" id="ng3" style="width:40">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                    <option value="31">31</option>
+                <td align="left" class="level_1_2"><select name="cbo_ngaysua2" id="cbo_ngaysua2" style="width:60">
+                </select>
+                  /<label for="thktkk2"></label>
+                  <select name="cbo_thangsua2" id="cbo_thangsua2" style="width:70">
                   </select>
-                  <label for="thktkk2">Tháng</label>
-                  <select name="th3" id="th3" style="width:40">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
-                  <label for="namktkk2">Năm</label>
-                  <select name="nam3" id="nam3" style="width:55">
-                    <option value="2000" selected>2000</option>
-                    <option value="2001">2001</option>
-                    <option value="2002">2002</option>
-                    <option value="2003">2003</option>
-                    <option value="2004">2004</option>
-                    <option value="2005">2005</option>
-                    <option value="2006">2006</option>
-                    <option value="2007">2007</option>
-                    <option value="2008">2008</option>
-                    <option value="2009">2009</option>
-                    <option value="2010">2010</option>
-                    <option value="2011">2011</option>
-                    <option value="2012">2012</option>
+                  /<label for="namktkk2"></label>
+                  <select name="cbo_namsua2" id="cbo_namsua2" style="width:70">
                   </select></td>
               </tr>
               <tr>
@@ -499,15 +277,18 @@ $(document).ready(function() {
                 <td height="22" align="center" class="level_1_1"><textarea name="txt_tenthietbi2" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
               </tr>
               <tr>
-                <td height="22" align="right" class="level_1_2">Chọn phiếu mẫu có sẵng:</td>
-                <td height="22" align="left" class="level_1_2"><select name="select3" id="cbochonmau" style="width:75%">
-                </select>
-                  <input type="button" class="button_1" value="Thêm"></td>
+                <td height="22" align="right" class="level_1_2">Chọn  mẫu có sẵng hoặc lập phiếu mới:</td>
+                <td height="22" align="left" class="level_1_2"><select name="select3" id="cbochonmau" style="width:100%">
+                </select></td>
+              </tr>
+              <tr>
+                <td height="22" align="right" class="level_1_2">&nbsp;</td>
+                <td height="22" align="left" class="level_1_2">&nbsp;</td>
               </tr>
               <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
-                <input type="button" class="button_1" value="Lưu">
-                </td>
+                <input type="button" class="button_1" id="btn_suaphieukiemke" value="Lưu"> 
+                <input type="button" class="button_1" id="btn_suaphieukiemke2" value="Export phiếu"></td>
             </tr>
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_1">&nbsp;</td>
@@ -530,7 +311,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoaban">
+          	<form name="frm_xoaphieukiemke" id="frm_xoaphieukiemke">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -540,7 +321,7 @@ $(document).ready(function() {
              <tr>
 					<td height="22" align="right" class="level_1_2">Chọn phiếu kiểm kê: </td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_phieukiemkexoa" class="cbo" id="cbo_phieukiemkexoa" style="width:100%;">
                         </select>                       
                     </td>
 					
@@ -551,139 +332,31 @@ $(document).ready(function() {
                  <input type="text" name="txttenpkk2" id="txttenpkk" style="width:100%"></td>
              <tr>
                <td height="22" align="right" class="level_1_2">Ngày kiểm kê:</td>
-               <td align="left" class="level_1_2"><label for="ngktkk7">Ngày</label>
-                 <select name="ng6" id="ng" style="width:40">
-                   <option value="1" selected>1</option>
-                   <option value="2">2</option>
-                   <option value="3">3</option>
-                   <option value="4">4</option>
-                   <option value="5">5</option>
-                   <option value="6">6</option>
-                   <option value="7">7</option>
-                   <option value="8">8</option>
-                   <option value="9">9</option>
-                   <option value="10">10</option>
-                   <option value="11">11</option>
-                   <option value="12">12</option>
-                   <option value="13">13</option>
-                   <option value="14">14</option>
-                   <option value="15">15</option>
-                   <option value="16">16</option>
-                   <option value="17">17</option>
-                   <option value="18">18</option>
-                   <option value="19">19</option>
-                   <option value="20">20</option>
-                   <option value="21">21</option>
-                   <option value="22">22</option>
-                   <option value="23">23</option>
-                   <option value="24">24</option>
-                   <option value="25">25</option>
-                   <option value="26">26</option>
-                   <option value="27">27</option>
-                   <option value="28">28</option>
-                   <option value="29">29</option>
-                   <option value="30">30</option>
-                   <option value="31">31</option>
+               <td align="left" class="level_1_2"><label for="ngktkk7"></label>
+                 <select name="cbo_ngayxoa1" id="cbo_ngayxoa1" style="width:60">
+                   
                  </select>
-                 <label for="thktkk7">Tháng</label>
-                 <select name="th6" id="th" style="width:40">
-                   <option value="1" selected>1</option>
-                   <option value="2">2</option>
-                   <option value="3">3</option>
-                   <option value="4">4</option>
-                   <option value="5">5</option>
-                   <option value="6">6</option>
-                   <option value="7">7</option>
-                   <option value="8">8</option>
-                   <option value="9">9</option>
-                   <option value="10">10</option>
-                   <option value="11">11</option>
-                   <option value="12">12</option>
+                 <label for="thktkk7">/</label>
+                 <select name="cbo_thangxoa1" id="cbo_thangxoa1" style="width:70">
+                
                  </select>
-                 <label for="namktkk7">Năm</label>
-                 <select name="nam6" id="nam" style="width:55">
-                   <option value="2000" selected>2000</option>
-                   <option value="2001">2001</option>
-                   <option value="2002">2002</option>
-                   <option value="2003">2003</option>
-                   <option value="2004">2004</option>
-                   <option value="2005">2005</option>
-                   <option value="2006">2006</option>
-                   <option value="2007">2007</option>
-                   <option value="2008">2008</option>
-                   <option value="2009">2009</option>
-                   <option value="2010">2010</option>
-                   <option value="2011">2011</option>
-                   <option value="2012">2012</option>
+                 <label for="namktkk7">/</label>
+                 <select name="cbo_namxoa1" id="cbo_namxoa1" style="width:70">
                  </select></td>
              </tr>
              <tr>
                <td height="22" align="right" class="level_1_1">Ngày kết thúc kiểm kê:</td>
-               <td align="left" class="level_1_1"><label for="ngktkk8">Ngày</label>
-                 <select name="ng4" id="ng4" style="width:40">
-                   <option value="1" selected>1</option>
-                   <option value="2">2</option>
-                   <option value="3">3</option>
-                   <option value="4">4</option>
-                   <option value="5">5</option>
-                   <option value="6">6</option>
-                   <option value="7">7</option>
-                   <option value="8">8</option>
-                   <option value="9">9</option>
-                   <option value="10">10</option>
-                   <option value="11">11</option>
-                   <option value="12">12</option>
-                   <option value="13">13</option>
-                   <option value="14">14</option>
-                   <option value="15">15</option>
-                   <option value="16">16</option>
-                   <option value="17">17</option>
-                   <option value="18">18</option>
-                   <option value="19">19</option>
-                   <option value="20">20</option>
-                   <option value="21">21</option>
-                   <option value="22">22</option>
-                   <option value="23">23</option>
-                   <option value="24">24</option>
-                   <option value="25">25</option>
-                   <option value="26">26</option>
-                   <option value="27">27</option>
-                   <option value="28">28</option>
-                   <option value="29">29</option>
-                   <option value="30">30</option>
-                   <option value="31">31</option>
+               <td align="left" class="level_1_1"><label for="ngktkk8"></label>
+                 <select name="cbo_ngayxoa2" id="cbo_ngayxoa2" style="width:60">
+                 
                  </select>
-                 <label for="thktkk8">Tháng</label>
-                 <select name="th4" id="th4" style="width:40">
-                   <option value="1" selected>1</option>
-                   <option value="2">2</option>
-                   <option value="3">3</option>
-                   <option value="4">4</option>
-                   <option value="5">5</option>
-                   <option value="6">6</option>
-                   <option value="7">7</option>
-                   <option value="8">8</option>
-                   <option value="9">9</option>
-                   <option value="10">10</option>
-                   <option value="11">11</option>
-                   <option value="12">12</option>
+                 <label for="thktkk8">/</label>
+                 <select name="cbo_thangxoa2" id="cbo_thangxoa2" style="width:70">
+                 
                  </select>
-                 <label for="namktkk8">Năm</label>
-                 <select name="nam4" id="nam4" style="width:55">
-                   <option value="2000" selected>2000</option>
-                   <option value="2001">2001</option>
-                   <option value="2002">2002</option>
-                   <option value="2003">2003</option>
-                   <option value="2004">2004</option>
-                   <option value="2005">2005</option>
-                   <option value="2006">2006</option>
-                   <option value="2007">2007</option>
-                   <option value="2008">2008</option>
-                   <option value="2009">2009</option>
-                   <option value="2010">2010</option>
-                   <option value="2011">2011</option>
-                   <option value="2012">2012</option>
-                 </select></td>
+                 <label for="namktkk8">/</label>
+                 <select name="cbo_namxoa2" id="cbo_namxoa2" style="width:70">
+                  </select></td>
              </tr>
              <tr>
                <td height="22" align="right" class="level_1_2">Diễn giải:</td>
@@ -691,7 +364,7 @@ $(document).ready(function() {
              </tr>
              <tr>
                <td colspan="2" height="22" align="center" class="level_1_1">
-                 <input type="button" class="button_1" value="Xóa">
+                 <input type="button" class="button_1" id="btn_xoaphieukiemke" value="Xóa">
                  </td>
              </tr>
             <tr>
