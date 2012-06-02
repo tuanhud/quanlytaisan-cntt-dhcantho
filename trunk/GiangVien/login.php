@@ -14,8 +14,10 @@
     if (isset($_POST['txtDinhDanh']) && isset($_POST['txtMatKhau']))
 	{   		
 		//kiem tra xem co ton tai nguoi voi maso va matkhau duoc cung cap hay khong ?
-			$sql="select * from nguoidung
-					where MSCB ='".$_POST['txtDinhDanh']."'
+			$sql="select * from nguoidung a, coquyen b
+					where a.MSCB=b.MSCB
+					and b.MaQuyen=2
+					and a.MSCB ='".$_POST['txtDinhDanh']."'
 					and Matkhau ='".$_POST['txtMatKhau']."'";
 					
 			$db->setQuery($sql);

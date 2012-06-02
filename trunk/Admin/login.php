@@ -8,53 +8,48 @@
 	//}
 ?>
 <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8">-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
-	/*include('../database.php');
+	include('../database.php');
 	$db=new database();
     if (isset($_POST['txtDinhDanh']) && isset($_POST['txtMatKhau']))
 	{   		
 		//kiem tra xem co ton tai nguoi voi maso va matkhau duoc cung cap hay khong ?
-			$sql="select * from hoivien
-					where HOIVIEN_ID ='".$_POST['txtDinhDanh']."'
-					and HOIVIEN_MATKHAU ='".md5($_POST['txtMatKhau'])."'
-					and HOIVIEN_TRANGTHAI = 1";
+			$sql="select * from nguoidung a, coquyen b
+					where a.MSCB=b.MSCB
+					and b.MaQuyen=1
+					and a.MSCB ='".$_POST['txtDinhDanh']."'
+					and Matkhau ='".$_POST['txtMatKhau']."'";
+					
 			$db->setQuery($sql);
 		if ($db->numRecord()==1)
 		{
-		 //Kiem tra xem nguoi dung co quyen Admin hay khong ?    
-				$sql="Select * from hoivien 
-				where HOIVIEN_ID = '".$_POST['txtDinhDanh']."' 
-				and Quyen_ID = 'AD'";
-				$db->setQuery($sql);
-			if($db->numRecord()==1)
-			{
+		 
 			//dua maso vao session
-			$msad =$_POST['txtDinhDanh'];
-			session_register("msad") ;
-			$sql = "Select HOIVIEN_HOTEN from hoivien where HOIVIEN_ID = '".$msad."'";			
+			$msclb =$_POST['txtDinhDanh'];
+			session_register("msclb") ;
+			$sql = "Select TenCB from nguoidung where MSCB = '".$msclb."'";			
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			$row = mysql_fetch_array($result);
-			$hoten = $row['HOIVIEN_HOTEN'];
+			$hoten = $row['TenCB'];
 			session_register("hoten");
 			//dua quyen vao session
-			$maquyen="AD";
+			$maquyen="3";
 			session_register("maquyen");
 			echo "<script language=javascript>window.location = 'main.php';</script>"; 
 			exit;
-			}
-			else
-			{
-				echo "<script language=javascript> alert('Bạn không có quyền Quản trị hệ thống.');window.location = 'loginUI.php';</script>";
-				}
+			
+			
 		}
 		else
 		{
 			echo "<script language=javascript> alert('Tên đăng nhập hoặc mật khẩu chưa chính xác.');window.location = 'loginUI.php';</script>";  
 		}  
-    } 
+    }
 	else
 	{
 			echo "<script language=javascript>window.location = 'loginUI.php'; </script>";
-	}*/
+	}
+	
 ?>
