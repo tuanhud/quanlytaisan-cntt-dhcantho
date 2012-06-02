@@ -1,7 +1,7 @@
 var numofSus = numofFai = 0;
 
 //Them hoi vien duoc khen thuong
-function themquyen_nguoidung(filephp,frm,macanbo,maquyen)
+function capnhat_quyen_nguoidung(filephp,frm,macanbo,maquyen)
 {
 	http=GetXmlHttpObject();
 	
@@ -30,59 +30,131 @@ function themquyen_nguoidung(filephp,frm,macanbo,maquyen)
 }
 
 //Them danh sach hoi vien duoc khen thuong
-function themlistquyen_nguoidung(phpfile, frm){
+function update_quyen_nguoidung(frm){
 
 	try
 	{
 		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr2");
 		chks.each( function(item){
-			if ( !item.get('checked') ) return;
 			var rec = dt.getRecord( item.ancestor() );
-			themquyen_nguoidung(phpfile, frm,rec.get('id'),'VPP');
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'VPP')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'VPP');
+			}
 		   	});
 	}
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);
 	}
+	
 	try
 	{
 		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr3");
 		chks.each( function(item){
-			if ( !item.get('checked') ) return;
 			var rec = dt.getRecord( item.ancestor() );
-			themquyen_nguoidung(phpfile, frm,rec.get('id'),'KK');
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'KK')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'KK');
+			}
 		   	});
 	}
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);
-	}try
+	}
+	
+	
+	try
 	{
 		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr4");
 		chks.each( function(item){
-			if ( !item.get('checked') ) return;
 			var rec = dt.getRecord( item.ancestor() );
-			themquyen_nguoidung(phpfile, frm,rec.get('id'),'KHMS');
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'KHMS')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'KHMS');
+			}
 		   	});
 	}
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);
 	}
+	
 	try
 	{
 		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr5");
 		chks.each( function(item){
-			if ( !item.get('checked') ) return;
 			var rec = dt.getRecord( item.ancestor() );
-			themquyen_nguoidung(phpfile, frm,rec.get('id'),'DUYET');
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'DUYETVPP')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'DUYETVPP');
+			}
 		   	});
 	}
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);
 	}
-	alert("Thành công : " + numofSus + "\nThất bại: " + numofFai);
+	
+	
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr6");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'DUYETKK')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'DUYETKK');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr7");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'DUYETKHMS')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'DUYETKHMS');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	alert("Thành công : " + numofSus);
+	document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value=-1;
+	dt.reset();
+	numofSus = numofFai = 0;
+	
 }
 
-function isValid(){
+/*function isValid(){
 	khenthuong = document.frm_capnhatkhenthuong.cbo_tenkhenthuong;
 	ngay = document.frm_capnhatkhenthuong.cbo_ngay;
 	thang = document.frm_capnhatkhenthuong.cbo_thang;
@@ -112,3 +184,4 @@ function isValid(){
 		}
 	return true;
 }
+*/

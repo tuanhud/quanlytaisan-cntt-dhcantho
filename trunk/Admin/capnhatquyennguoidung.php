@@ -15,13 +15,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật quyền - người dùng</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<script type="text/javascript" src="../js/yui.js"></script>
+<script type="text/javascript" src="js/yui.js"></script>
 <script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhatdonvi.js"></script>
-<script type="text/javascript" src="js/table-quyen-nguoidung.js"></script>
-<script type="text/javascript" src="js/quyen-nguoidung.js"></script>
+<script type="text/javascript" src="js/table_quyen_nguoidung.js"></script>
+<script type="text/javascript" src="js/check_quyen_nguoidung.js"></script>
+<script type="text/javascript" src="js/quyen_nguoidung.js"></script>
 <script type="text/javascript" >
 
 $(document).ready(function() { 
@@ -37,9 +38,16 @@ $(document).ready(function() {
 	$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
 			
 			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
+			checkbox_vpp();
+			checkbox_kk();
+			checkbox_khms();
+			checkbox_duyetvpp();
+			checkbox_duyetkk();
+			checkbox_duyetkhms();
+			
 		});
 	$('form[name="frm_capnhatquyen_nguoidung"] input[name="btn_capnhat"]').click(function(){		
-		themlistquyen_nguoidung('themquyen_nguoidung.php',document.frm_capnhatquyen_nguoidung);
+		update_quyen_nguoidung(document.frm_capnhatquyen_nguoidung);
 	});
 	
 }); 
@@ -143,12 +151,14 @@ $(document).ready(function() {
 					<td height="22" align="right" class="level_1_1">Chọn đơn vị</td>
 					<td width="80%" align="left" class="level_1_1">
                     	<select id="cbo_tendonvi" name="cbo_tendonvi" class="cbo" style="width:80%;">
-                        </select></td>
+                        </select>
+                        <input type="button" name="btn_themdonvi" id="btn_themdonvi" class="button_1" value="Thêm">
+                        </td>
 			</tr>
               <!--bang thuoc tinh dat o day-->
                
                     <tr>
-                        <td align="center" height="400" class="level_1_1" colspan="4" valign="top">
+                        <td align="center" height="400"  class="level_1_1" colspan="4" valign="top">
                         <div class="yui3-skin-sam">                    
                         <div id="mytable"></div>                    
                         </div>
