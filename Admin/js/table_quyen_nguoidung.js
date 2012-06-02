@@ -16,8 +16,8 @@ function createTable_nguoidung(){
             o.className += ' '+fclass;
         o.value = ' ';
      }          
-	 //co the cai tien them ham lay danh sách các quyền rồi gáng từng quyền đó = 1 loại checkbox, dua vao datatable=ham addcolumn
-	//Tao checkbox tren moi dong 
+	
+	//Tao checkbox
     var fmtChkBox = function(o)
 	{
     	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
@@ -26,7 +26,7 @@ function createTable_nguoidung(){
     }
 	var fmtChkBox2 = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr2" />';
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr2"/>';
         	o.value = cell;
 	        o.className += 'align-center';
     }
@@ -48,6 +48,18 @@ function createTable_nguoidung(){
         	o.value = cell;
 	        o.className += 'align-center';
     }
+	var fmtChkBox6 = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr6" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
+	var fmtChkBox7 = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr7" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
 /*	var fmttextbox = function(o)
 	{
     	var cell = '<input type="text" class="textbox" />';
@@ -56,25 +68,25 @@ function createTable_nguoidung(){
     }*/
 	//Cac Column cua Bang
 	var cols = [
-				/*{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },*/
-				//{key: "",label:"tay", sortable: true},
 				{name:'canbo', label:'Cán bộ',className:'align-center',
 				children:
 				[
-						{key: "id",label:"Mã số", sortable: true},
+						{key: "id",label:'Mã cán bộ', sortable: true},
 						{key: "ten",label:"Họ tên", sortable: true},
 				]},
 				{name:'donvi', label:'Đơn vị',className:'align-center',
 				children:
 				[
-					{name:'themsuavpp', label:'Thêm, sửa VPP', formatter: fmtChkBox2, className:'align-center',allowHTML:true},
-					{name:'themsuakk', label:'Thêm, sửa KK', formatter: fmtChkBox3, className:'align-center', allowHTML:true},
-					{name:'themsuakhms',label:'Thêm, sửa KHMS',formatter: fmtChkBox4, className:'align-center', allowHTML:true},
+					{name:'themsuavpp', label:'Thêm, sửa VPP', formatter: fmtChkBox2,allowHTML:true},
+					{name:'themsuakk', label:'Thêm, sửa KK', formatter: fmtChkBox3, allowHTML:true},
+					{name:'themsuakhms',label:'Thêm, sửa KHMS',formatter: fmtChkBox4, allowHTML:true},
 				]},
 				{name:'khoa', label:'Khoa',className:'align-center',
 				children:
 				[
-					{name:'duyet', label:'Duyệt', formatter: fmtChkBox5, className:'align-center',allowHTML:true},
+					{name:'duyetvpp', label:'Duyệt VPP',formatter: fmtChkBox5,allowHTML:true},
+					{name:'duyetkk', label:'Duyệt KK', formatter: fmtChkBox6, allowHTML:true},
+					{name:'duyetkhms',label:'Duyệt KHMS',formatter: fmtChkBox7, allowHTML:true},
 				]},
 		
 		];
@@ -127,15 +139,8 @@ function createTable_nguoidung(){
 	// -------------------------
 	//   Click handler on "Select" TH checkbox, toggle the settings of all rows
 	// -------------------------
-   /* Y.one("#selAll").on("click", function(e){		
-        var selAll = this.get('checked');   // the checked status of the TH checkbox
-    //  Get a NodeList of each of INPUT with class="myCheckboxFmtr" in the TBODY       
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr");
-        chks.each( function(item){
-            item.set('checked', selAll);    // set the individual "checked" to the TH setting			
-        	});
-    	});
-		*/
+ 
+	
 	/************************************
      Method to take an existing TD or TR Node element as input "target" and scan
      the dataset (ModelList) for the underlying data record (a Model).
@@ -240,7 +245,6 @@ function createTable_nguoidung(){
      }	 
 });
 }
-
 function getRecord2(phpfile,madonvi)
 {
 	dt.reset();
@@ -260,13 +264,14 @@ function getRecord2(phpfile,madonvi)
 				var x=http.responseXML.getElementsByTagName('RESULT');
 				for(var i=0;i<x.length;i++)
 			   { 
-					dt.addRow({ 
-							id:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue, 
+					dt.addRow
+					({ 
+							id:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue,
 							ten:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue, 
-							});
-							
-	
-				}
+					});
+					//lay duoc ma can bo roi di tim danh sach cac quyen cua cac bo nay, sau do moi hiển thi len bàng checkbox 
+					//gettenquyen('get_list_quyen_canbo.php',x[i].getElementsByTagName('MA')[0].firstChild.nodeValue);
+			   }
 				
 	   }
 	}
