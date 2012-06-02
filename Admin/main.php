@@ -32,11 +32,11 @@
 	<!--Thẻ hiển thị thông tin khi đăng nhập-->
 	<div style="Z-INDEX: 1; LEFT: 550px; WIDTH: 200px; POSITION: absolute; TOP: 46px; HEIGHT: 30px" align="center">
 		<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-			<a class="white" href="capnhathongtincanhan.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
-      <br>Xin chào, <?=$_SESSION['hotencanbo']?>
+			<a class="white" href="capnhatthongtincanhan.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
+      <br>Xin chào, <?=$_SESSION['hoten']?>
     		<br>
     		(<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-    		<?=$_SESSION['masocanbo']?>
+    		<?=$_SESSION['msclb']?>
     		</font>)    	</font>    </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
    <tbody><tr>
@@ -86,7 +86,7 @@
       <tr>
       <!--BẮT ĐẦU LEFT MAIN INFO-->
       <td align="center" width="100%">
-      <table width="50%" height="280" border="0" align="center" cellpadding="0" cellspacing="0">
+      <table width="56%" height="280" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
             <td class="tl_main">&nbsp;</td>
             <td class="tc_main">&nbsp;</td>
@@ -95,7 +95,7 @@
           <tr>
             <td class="cl_main">&nbsp;</td>
             <td style="font-family:Arial, Helvetica, sans-serif; font-size:12px">
-            	<table width="90%" border="0" cellspacing="0" cellpadding="0">                
+            	<table width="100%" border="0" cellspacing="0" cellpadding="0">                
                 <tbody ><tr>
                   <td colspan="2"><div align="center" class="textbold">THÔNG TIN CÁN BỘ ADMIN </div></td>
                 </tr>
@@ -104,15 +104,17 @@
                   <td colspan="2">&nbsp;</td>
                   </tr>
                 <tr>
-                  <td width="20%" class="bordersv"><div class="bg" align="right">Mã CB </div></td>
-                  <td width="55%" class="bordersv"><div class="bold" align="left"><?=$_SESSION['masocanbo']?></div></td>
+                  <td width="26%" class="bordersv"><div class="bg" align="right">Mã CB </div></td>
+                  <td width="74%" class="bordersv"><div class="bold" align="left"><?=$_SESSION['msclb']?></div></td>
                 </tr>
                 <tr>
                 <? 
 				//Select thong tin nguoi dung				
 				include('../database.php');				
 				$user = new database();
-				$sql = "Select * from nguoidung where MSCB = '".$_SESSION['masocanbo']."'";
+				$sql = "Select * from nguoidung where MSCB = '".$_SESSION['msclb']."'";
+				$msclb =$_SESSION['msclb'];
+			    session_register("msclb") ;
 				$user->setQuery($sql);
 				$result = $user->fetchAll();
 				$row = mysql_fetch_array($result);
@@ -122,11 +124,11 @@
                 </tr>
                 <tr>
                   <td class="bordersv"><div class="bg" align="right">Ngày sinh</div></td>
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['NgaySinh']?></div></td>
+                  <td class="bordersv"><div class="bold" align="left"><?=$row['NgaySinh']?>/<?=$row['ThangSinh']?>/<?=$row['NamSinh']?></div></td>
                 </tr>
                  <tr>
                   <td class="bordersv"><div class="bg" align="right">Giới tính</div></td>
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['GioiTinh']?></div></td>
+                  <td class="bordersv"><div class="bold" align="left"><?=$row['Gioitinh']?></div></td>
                 </tr>
                 <tr>
                   <td class="bordersv"><div class="bg" align="right">Email</div></td>
@@ -135,7 +137,7 @@
                 <tr>
                   <td class="bordersv"><div class="bg" align="right">Địa chỉ</div></td>
                  
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['DiaChi']?></div></td>
+                  <td class="bordersv"><div class="bold" align="left"><?=$row['Diachi']?></div></td>
                 </tr>
                 <tr>
                   <td class="bordersv"><div class="bg" align="right">Số ĐT</div></td>
@@ -145,8 +147,7 @@
                   <td class="bordersv"><div class="bg" align="right">Đơn vị</div></td>                  
                   <?
 				  //hien thi ten khoa
-				  $sql = "Select TenDV from nguoidung, donvi
-				  			where nguoidung.MSDV = donvi.MSDV and nguoidung.MSCB = '".$_SESSION['masocanbo']."'";
+				  $sql = "Select * from nguoidung, donvi  where nguoidung.MSDV = donvi.MSDV  and nguoidung.MSCB = '".$_SESSION['msclb']."'";
 				  $user->setQuery($sql);
                   $result = $user->fetchAll();
 				  $row = mysql_fetch_array($result);
