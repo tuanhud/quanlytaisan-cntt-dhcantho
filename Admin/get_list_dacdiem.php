@@ -8,16 +8,13 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT distinct a.mancc,a.tenncc FROM nhacungcap a,duoccc b where a.mancc=b.mancc and mavpp="'.$_POST['id'].'"');
+					$db->setQuery('SELECT * FROM `dacdiem`');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
 					$xml.="<row>";
 							$xml.="<column>";
-							$xml.=-1;							
-							$xml.="</column>";
-							$xml.="<column>";
-							$xml.='-Chọn nhà cung cấp-';							
+							$xml.="-Chọn đặc điểm-";							
 							$xml.="</column>";
 					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))

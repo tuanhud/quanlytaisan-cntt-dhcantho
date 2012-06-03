@@ -16,49 +16,37 @@
 <title>Cập nhật đặc điểm của văn phòng phẩm</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/capnhatdacdiem.js"></script>
 <script type="text/javascript" >
-//Không cho nhập ký tự
-function keypress(e){
-var keypressed = null;
-if (window.event)
-	keypressed = window.event.keyCode; //IE
-else 
-	keypressed = e.which; //NON-IE, Standard
-
-if (keypressed >= 48 && keypressed <= 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed == 8 || keypressed == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
-	}
-	return false;
-}
-}
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
+		fillcombo2('get_list_dacdiem.php',document.frm_xoadd.cbo_tenddxoa);
+		fillcombo2('get_list_dacdiem.php',document.frm_suadd.cbo_tenddsua);
+		fillcombo('get_list_vpp.php',document.frm_themddvpp.cbo_tenvppthem);
+		fillcombo2('get_list_dacdiem.php',document.frm_themddvpp.cbo_dacdiemvppthem);
+		fillcombo('get_list_vpp2.php',document.frm_suaddvpp.cbo_vppsua);
+		fillcombo('get_list_vpp2.php',document.frm_xoaddvpp.cbo_vppxoa);
+		$('form[name="frm_suaddvpp"] select[name="cbo_vppsua"]').change(function(){
+		_fillcombo('get_list_dacdiem2.php',document.frm_suaddvpp.cbo_vppsua, document.frm_suaddvpp.cbo_ddvppsua);
 	});
-	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
+	$('form[name="frm_xoaddvpp"] select[name="cbo_vppxoa"]').change(function(){
+		_fillcombo('get_list_dacdiem2.php',document.frm_xoaddvpp.cbo_vppxoa, document.frm_xoaddvpp.cbo_ddvppxoa);
 	});
+		$('form[name="frm_suadd"] select[name="cbo_tenddsua"]').change(function(){
+		get_info_dacdiem('get_info_dacdiem.php',document.frm_suadd);
+		});
+		
+		$('form[name="frm_suaddvpp"] select[name="cbo_ddvppsua"]').change(function(){
+		get_info_chitiet('get_info_ddvpp.php',document.frm_suaddvpp);
+		});
+		$('form[name="frm_xoaddvpp"] select[name="cbo_ddvppxoa"]').change(function(){
+		get_info_chitiet2('get_info_ddvpp.php',document.frm_xoaddvpp);
+		});
+		$('form[name="frm_xoadd"] select[name="cbo_tenddxoa"]').change(function(){
+		get_info_dacdiem2('get_info_dacdiem.php',document.frm_xoadd);
+		});
 }); 
 </script>
 </head>
@@ -148,7 +136,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
+          	<form name="frm_themddvpp" id="frm_themddvpp">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -156,35 +144,25 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
                <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+					<td height="22" align="right" class="level_1_2">Chọn  văn phòng phẩm</td>
+					<td width="50%" align="left" class="level_1_2">
+                    	<select name="cbo_tenvppthem" id="cbo_tenvppthem" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
-			</tr>
-               <tr>
-					<td height="22" align="right" class="level_1_2">Tên văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
 			</tr> 
              <tr>
-					<td height="30" align="right" class="level_1_1">Chọn mã đặc điểm văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:75%;">
-                        </select>
-                    	<input type="button" class="button_1" value="Thêm"></td>
-			</tr> 
-                 <tr>
-					<td height="22" align="right" class="level_1_2">Tên đặc điểm văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
-			</tr>  
+               <td height="30" align="right" class="level_1_1">Chọn  đặc điểm văn phòng phẩm</td>
+               <td width="50%" align="left" class="level_1_1">
+                 <select name="cbo_dacdiemvppthem" id="cbo_dacdiemvppthem" class="cbo" style="width:75%;">
+                   </select>
+                 <a href="#themdacdiem"><input type="button" class="button_1" value="Thêm"></a></td>
+             </tr>  
              <tr>
-					<td height="22" align="right" class="level_1_1">Chi tiết đặc điểm của văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1"><textarea name="txt_tenthietbi" rows="3" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
-			</tr>         
+               <td height="22" align="right" class="level_1_2">Chi tiết đặc điểm của văn phòng phẩm</td>
+               <td width="50%" align="left" class="level_1_2"><textarea name="txt_ghichuddvppthem" id="txt_ghichuddvppthem" rows="3" class="txtbox" style="width:100%"></textarea></td>
+             </tr>         
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="btn_themddvpp" id="btn_themddvpp" class="button_1" value="Thêm"></td>
               </tr>
 			   
               </tbody>
@@ -194,7 +172,8 @@ $(document).ready(function() {
         </tr>		
         </tbody>
         </table>
-   <table width="500" border="0" cellpadding="0" cellspacing="0">
+       <br>
+         <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -203,7 +182,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_suaddvpp" id="frm_suaddvpp">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
              <tr>
@@ -211,36 +190,26 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
                <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-			</tr>
-               <tr>
-					<td height="22" align="right" class="level_1_2">Tên văn phòng phẩm</td>
+					<td height="22" align="right" class="level_1_2">Chọn văn phòng phẩm</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
-			</tr> 
-             <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã đặc điểm văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_vppsua" id="cbo_vppsua" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr> 
-                 <tr>
-					<td height="22" align="right" class="level_1_2">Tên đặc điểm văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
-			</tr>  
              <tr>
-					<td height="22" align="right" class="level_1_1">Chi tiết đặc điểm của văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1"><textarea name="txt_tenthietbi" rows="3" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+               <td height="22" align="right" class="level_1_1">Chọn đặc điểm văn phòng phẩm</td>
+               <td width="50%" align="left" class="level_1_1">
+                 <select name="cbo_ddvppsua" id="cbo_ddvppsua" class="cbo" style="width:100%;">
+                   </select>                       
+                 </td>
+             </tr>  
+             <tr>
+               <td height="22" align="right" class="level_1_2">Chi tiết đặc điểm của văn phòng phẩm</td>
+               <td width="50%" align="left" class="level_1_2"><textarea name="txt_ghichuddvppsua" id="txt_ghichuddvppsua" rows="3" class="txtbox" style="width:100%"></textarea></td>
              </tr>
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_1">
-                <input type="button" class="button_1" value="Lưu">
+                <input type="button" name="btn_suaddvpp" id="btn_suaddvpp" class="button_1" value="Lưu">
                 </td>
             </tr>
 				  						  
@@ -251,7 +220,7 @@ $(document).ready(function() {
       </tr>		
       </tbody>
       </table>
-
+  <br>
         <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
@@ -261,7 +230,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_xoaddvpp" id="frm_xoaddvpp">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
              <tr>
@@ -269,36 +238,26 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
                <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-			</tr>
-               <tr>
-					<td height="22" align="right" class="level_1_2">Tên văn phòng phẩm</td>
+					<td height="22" align="right" class="level_1_2">Chọn  văn phòng phẩm</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
-			</tr> 
-             <tr>
-					<td height="22" align="right" class="level_1_1">Chọn mã đặc điểm văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_vppxoa" id="cbo_vppxoa" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr> 
-                 <tr>
-					<td height="22" align="right" class="level_1_2">Tên đặc điểm văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
-			</tr>  
              <tr>
-					<td height="22" align="right" class="level_1_1">Chi tiết đặc điểm của văn phòng phẩm</td>
-					<td width="50%" align="left" class="level_1_1"><textarea name="txt_tenthietbi" rows="3" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+               <td height="22" align="right" class="level_1_1">Chọn  đặc điểm văn phòng phẩm</td>
+               <td width="50%" align="left" class="level_1_1">
+                 <select name="cbo_ddvppxoa" id="cbo_ddvppxoa" class="cbo" style="width:100%;">
+                   </select>                       
+                 </td>
+             </tr>  
+             <tr>
+               <td height="22" align="right" class="level_1_2">Chi tiết đặc điểm của văn phòng phẩm</td>
+               <td width="50%" align="left" class="level_1_2"><textarea name="txt_chitietddvppxoa" id="txt_chitietddvppxoa" rows="3" class="txtbox" style="width:100%"></textarea></td>
              </tr>
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_1">
-                <input type="button" class="button_1" value="Xóa">
+                <input type="button" name="btn_xoaddvpp" id="btn_xoaddvpp" class="button_1" value="Xóa">
                 </td>
             </tr>
 				  						  
@@ -309,16 +268,17 @@ $(document).ready(function() {
       </tr>		
       </tbody>
       </table>
+        <a name="themdacdiem"></a><br>
    <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
-          <td width="161" height="35" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm đặc điểm</td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+        <td width="121" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="260" align="center">Thêm đặc điểm</td>
+          <td width="119" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_themdd" id="frm_themdd">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
              <tr>
@@ -328,15 +288,15 @@ $(document).ready(function() {
                <tr>
                  <td height="29" align="right" class="level_1_2">Đặc điểm của văn phòng phẩm</td>
                  <td width="50%" align="left" class="level_1_2">
-                   <input name="txt_tenthietbi" type="text" class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+                   <input name="txt_tenddthem" id="txt_tenddthem" type="text" class="txtbox" style="width:100%"></td>
                </tr>  
              <tr>
                <td height="22" align="right" class="level_1_1">Ghi chú đặc điểm</td>
-               <td width="50%" align="left" class="level_1_1"><textarea name="txt_tenthietbi" rows="3" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+               <td width="50%" align="left" class="level_1_1"><textarea name="txt_ghichuddthem" id="txt_ghichuddthem" rows="3" class="txtbox" style="width:100%"></textarea></td>
              </tr>
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
-                <input type="button" class="button_1" value="Lưu">
+                <input type="button" name="btn_themdd" id="btn_themdd" class="button_1" value="Thêm">
                 </td>
             </tr>
 				  						  
@@ -347,6 +307,7 @@ $(document).ready(function() {
       </tr>		
       </tbody>
       </table>
+        <br>
    <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
@@ -356,7 +317,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_suadd" id="frm_suadd">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
              <tr>
@@ -364,18 +325,22 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
                <tr>
-                 <td height="29" align="right" class="level_1_2">Chọn đặc điểm của văn phòng phẩm </td>
+                 <td height="29" align="right" class="level_1_2">Chọn đặc điểm của văn phòng phẩm</td>
                  <td width="50%" align="left" class="level_1_2">
-                   <select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                   <select name="cbo_tenddsua" id="cbo_tenddsua" class="cbo" style="width:100%;">
                         </select> </td>
-               </tr>  
+               </tr>
+               <tr>
+                 <td height="29" align="right" class="level_1_1">Đặc điểm của văn phòng phẩm mới</td>
+                 <td width="50%" align="left" class="level_1_1"><input name="txt_tenddsua" id="txt_tenddsua" type="text" class="txtbox" style="width:100%"></td>
+               </tr>    
              <tr>
-               <td height="22" align="right" class="level_1_1">Ghi chú đặc điểm cần sửa</td>
-               <td width="50%" align="left" class="level_1_1"><textarea name="txt_tenthietbi" rows="3" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+               <td height="22" align="right" class="level_1_2">Ghi chú đặc điểm mới</td>
+               <td width="50%" align="left" class="level_1_2"><textarea name="txt_ghichuddsua" id="txt_ghichuddsua" rows="3" class="txtbox" style="width:100%"></textarea></td>
              </tr>
             <tr>
-              <td colspan="2" height="22" align="center" class="level_1_2">
-                <input type="button" class="button_1" value="Lưu">
+              <td colspan="2" height="22" align="center" class="level_1_1">
+                <input type="button" name="btn_luudd" id="btn_luudd" class="button_1" value="Lưu">
                 </td>
             </tr>
 				  						  
@@ -386,7 +351,7 @@ $(document).ready(function() {
       </tr>		
       </tbody>
       </table>
-
+  <br>
         <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
@@ -396,7 +361,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoaban">
+          	<form name="frm_xoadd" id="frm_xoadd">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -404,19 +369,19 @@ $(document).ready(function() {
                     <td class="level_1_1"></td>
               </tr>
            <tr>
-                 <td height="29" align="right" class="level_1_2">Đặc điểm của văn phòng phẩm</td>
+                 <td height="29" align="right" class="level_1_2">Đặc điểm của văn phòng phẩm cần xóa</td>
                  <td width="50%" align="left" class="level_1_2">
-                   <select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                   <select name="cbo_tenddxoa" id="cbo_tenddxoa" class="cbo" style="width:100%;">
                         </select></td>
                </tr>  
              <tr>
-               <td height="22" align="right" class="level_1_1">Ghi chú đặc điểm</td>
-               <td width="50%" align="left" class="level_1_1"><textarea name="txt_tenthietbi" rows="3" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+               <td height="22" align="right" class="level_1_1">Ghi chú đặc điểm của văn phòng phẩm </td>
+               <td width="50%" align="left" class="level_1_1"><textarea name="txt_ghichuddxoa" id="txt_ghichuddxoa" rows="3" disabled class="txtbox" style="width:100%"></textarea></td>
              </tr>
                
              <tr>
 						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" class="button_1" value="Xóa">
+                        <input type="button" name="btn_xoadd" id="btn_xoadd" class="button_1" value="Xóa">
                         </td>
 			</tr>
 				  						  
