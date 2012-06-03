@@ -8,7 +8,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT distinct a.mancc,a.tenncc FROM nhacungcap a,duoccc b where a.mancc=b.mancc and mavpp="'.$_POST['id'].'"');
+					$db->setQuery('SELECT distinct motadd,motadd FROM codd where mavpp="'.$_POST['id'].'"');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
@@ -17,7 +17,7 @@
 							$xml.=-1;							
 							$xml.="</column>";
 							$xml.="<column>";
-							$xml.='-Chọn nhà cung cấp-';							
+							$xml.='-Chọn đặc điểm của văn phòng phẩm-';							
 							$xml.="</column>";
 					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
