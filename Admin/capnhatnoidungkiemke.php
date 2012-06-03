@@ -16,10 +16,10 @@
 <title>Cập nhật nội dung kiểm kê</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/capnhatnoidungkiemke.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -42,15 +42,18 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 }
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
+	fillcombo('get_list_noidungkiemke.php',document.frm_suanoidungkiemke.cbo_tennoidungkiemkesua);
+	fillcombo('get_list_noidungkiemke.php',document.frm_xoanoidungkiemke.cbo_tennoidungkiemkexoa);
 	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
+	$('form[name="frm_suanoidungkiemke"] select[name="cbo_tennoidungkiemkesua"]').change(function(){
+		get_info_noidungkiemkesua('get_info_noidungkiemke.php',document.frm_suanoidungkiemke);
+	});
+	$('form[name="frm_xoanoidungkiemke"] select[name="cbo_tennoidungkiemkexoa"]').change(function(){
+		get_info_noidungkiemkexoa('get_info_noidungkiemke.php',document.frm_xoanoidungkiemke);
 	});
 	
 	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
+	/*$('form[name="frm_suaban"] input[type="button"]').click(function(){
 		suaban('../suaban.php',document.frm_suaban);	
 	});	
 	//su kien click button xoa
@@ -58,7 +61,7 @@ $(document).ready(function() {
 		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
 			xoaban('../xoaban.php',document.frm_xoaban);	
 		}		
-	});
+	});*/
 }); 
 </script>
 </head>
@@ -148,7 +151,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
+          	<form name="frm_themnoidungkiemke" id="frm_themnoidungkiemke">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -158,17 +161,17 @@ $(document).ready(function() {
               <tr>
                 <td height="22" align="right" class="level_1_2">Tên nội dung kiểm kê: </td>
                 <td width="50%" align="center" class="level_1_2"><label for="txttennd"></label>
-                  <input type="text" name="txttennd" id="txttennd" style="width:100%"></td>
+                  <input type="text" name="txt_tennoidungkiemke" id="txt_tennoidungkiemke" style="width:100%"></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_1">Tên đơn vị tính:</td>
                 <td width="50%" align="center" class="level_1_1"><label for="txttendvt"></label>
-                  <input type="text" name="txttendvt" id="txttendvt" style="width:100%"></td>
+                  <input type="text" name="txt_tendonvitinhthem" id="txt_tendonvitinhthem" style="width:100%"></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Ghi chú nội dung:</td>
                 <td width="50%" align="center" class="level_1_2"><label for="txtghichund"></label>
-                  <textarea name="txtghichund" id="txtghichund" style="width:100%"></textarea></td>
+                  <textarea name="txt_ghichu" id="txt_ghichu" style="width:100%"></textarea></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Thêm nội dung từ file:</td>
@@ -176,7 +179,8 @@ $(document).ready(function() {
                   <input type="file" name="txt_browse" id="txt_browse"></td>
               </tr>
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_themnoidungkiemke" type="button" class="button_1" id="btn_themnoidungkiemke" value="Thêm">
+                  <input name="btn_huynoidungkiemke" type="reset" class="button_1" id="btn_huynoidungkiemke" value="Hủy"></td>
               </tr>
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1">&nbsp;</td>
@@ -198,7 +202,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_suanoidungkiemke" id="frm_suanoidungkiemke">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr class="level_1_1">
@@ -208,30 +212,30 @@ $(document).ready(function() {
              <tr>
 					<td height="22" align="right" class="level_1_2">Chọn tên nội dung kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_tennoidungkiemkesua" id="cbo_tennoidungkiemkesua" class="cbo" style="width:100%;">
                         </select></td>
                <tr>
                  <td height="22" align="right" class="level_1_2">Mã nội dung kiểm kê:</td>
                  <td align="left" class="level_1_2"><label for="txt_manoidungsua"></label>
-                   <input name="txt_manoidungsua" type="text" disabled id="txt_manoidungsua" readonly="readonly"></td>
+                   <input name="txt_manoidungkiemkesua" type="text" disabled id="txt_manoidungkiemkesua" readonly="readonly"></td>
                <tr>
 					<td height="22" align="right" class="level_1_1">Tên nội dung kiểm kê mới:</td>
 					<td width="50%" align="left" class="level_1_2"><label for="txttenndmoi"></label>
-					  <input type="text" name="txttenndmoi" id="txttenndmoi" style="width:100%"></td>
+					  <input type="text" name="txt_tennoidungkiemkemoi" id="txt_tennoidungkiemkemoi" style="width:100%"></td>
 			</tr>
 			 <tr>
 					<td height="22" align="right" class="level_1_2">Tên đơn vị tính:</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_donvitinh" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
+                    	<input name="txt_tendonvitinhsua" type="text" class="txtbox" id="txt_tendonvitinhsua" style="width:100%"></td>
 			</tr> 
 			<tr>
 					<td height="22" align="right" class="level_1_1">Ghi chú nội dung:</td>
-					<td width="50%" align="left" class="level_1_1"><textarea name="txt_nhanhieu" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+					<td width="50%" align="left" class="level_1_1"><textarea name="txt_ghichusua" class="txtbox" id="txt_ghichusua" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
 			</tr> 
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
-                <input type="button" class="button_1" value="Lưu">
-                </td>
+                <input name="btn_luunoidungkiemke" type="button" class="button_1" id="btn_luunoidungkiemke" value="Lưu">
+                <input name="btn_huynoidungkiemke" type="reset" class="button_1" id="btn_huynoidungkiemke" value="Hủy"></td>
             </tr>
 				  						  
             </tbody>
@@ -251,7 +255,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoaban">
+          	<form name="frm_xoanoidungkiemke" id="frm_xoanoidungkiemke">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -261,7 +265,7 @@ $(document).ready(function() {
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn tên nội dung kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    	<select name="cbo_tennoidungkiemkexoa" id="cbo_tennoidungkiemkexoa" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 					
@@ -269,23 +273,23 @@ $(document).ready(function() {
              <tr>
 					<td height="22" align="right" class="level_1_1">Mã nội dung kiểm kê:</td>
 					<td width="50%" align="left" class="level_1_1"><label for="txtmand"></label>
-					  <input name="txtmand" type="text" disabled id="txtmand" readonly="readonly" "></td>
+					  <input name="txt_manoidungkiemkexoa" type="text" disabled id="txt_manoidungkiemkexoa" readonly="readonly" "></td>
 					
 			</tr>    
              <tr>
                <td height="22" align="right" class="level_1_2">Tên đơn vị tính:</td>
                <td height="22" align="center" class="level_1_2"><label for="txtxoatendvt"></label>
-                 <input name="txtxoatendvt" type="text" disabled id="txtxoatendvt" style="width:100%" readonly="readonly"></td>
+                 <input name="txt_tendonvitinhxoa" type="text" disabled id="txt_tendonvitinhxoa" style="width:100%" readonly="readonly"></td>
              </tr>
              <tr>
                <td height="22" align="right" class="level_1_1">Ghi chú nội dung kiểm kê:</td>
                <td height="22" align="center" class="level_1_1"><label for="txtxoaghichundkk"></label>
-                 <textarea name="txtxoaghichundkk" disabled readonly="readonly" id="txtxoaghichundkk" style="width:100%"></textarea></td>
+                 <textarea name="txt_ghichuxoa" disabled readonly="readonly" id="txt_ghichuxoa" style="width:100%"></textarea></td>
              </tr>
              <tr>
 						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" class="button_1" value="Xóa">
-                        </td>
+                        <input name="btn_xoanoidungkiemke" type="button" class="button_1" id="btn_xoanoidungkiemke" value="Xóa">
+                        <input name="btn_Huynoidungkiemke" type="reset" class="button_1" id="btn_Huynoidungkiemke" value="Huy"></td>
 			</tr>
 				  						  
             </tbody>
