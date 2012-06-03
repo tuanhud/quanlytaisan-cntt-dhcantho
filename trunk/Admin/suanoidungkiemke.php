@@ -7,21 +7,19 @@
 	{
 			include_once('../database.php');
 			$db=new database();	
-			$sql = "Select tenloaikk from loaikiemke";
+			$sql = "Select TenND from noidung";
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			while($row = mysql_fetch_array($result))
 			{
-				$tenloaikiemke=strtolower($row[1]);
-			   if($tenloaikiemke==strtolower($_POST['txt_tenloaikiemkemoi']))
-				{
+				$tennoidungkiemke=strtolower($row[1]);
+			   if($tennoidungkiemke==strtolower($_POST['txt_tennoidungkiemkemoi']))
+			   {
 					echo 2;//ten don vi da ton tai
 					exit;
 				}
 			}
-			$sql="update loaikiemke ";
-			$sql.="set `tenloaikk` = '".$_POST['txt_tenloaikiemkemoi']."'";
-			$sql.="where `maloaikk` = '".$_POST['cbo_tenloaikiemkesua']."'";
+			$sql="update noidung set `tendonvitinh` = '".$_POST['txt_tendonvitinhsua']."', `tennd` = '".$_POST['txt_tennoidungkiemkemoi']."', `ghichund` = '".$_POST['txt_ghichusua']."' where `mand` = '".$_POST['cbo_tennoidungkiemkesua']."'";
 			$db->setQuery($sql);
 			if($db->executeQuery()!=1)
 			{

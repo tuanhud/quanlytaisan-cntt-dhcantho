@@ -121,7 +121,8 @@
                       <input type="file" name="txt_browse" id="txt_browse"></td>
                   </tr>
                   <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" id="btn_themnoidungcon" value="Thêm">
+                      <input name="Reset" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
                   </tr>
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_1"></td>
@@ -162,7 +163,14 @@
                   <tr>
                     <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
                     <td height="22" align="center" class="level_1_1"><label for="txttendc"></label>
-                      <input name="txttendcs" type="text" disabled id="txttendc" style="width:100%" readonly="readonly"></td>
+                      <label for="cbo_tennoidungconsua"></label>
+                      <select name="cbo_tennoidungconsua" id="cbo_tennoidungconsua" style="width:100%">
+                      </select></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_1">Mã nội dung con: </td>
+                    <td height="22" align="left" class="level_1_1"><label for="txt_manoidungcon"></label>
+                      <input name="txt_manoidungcon" type="text" disabled id="txt_manoidungcon" readonly="readonly"></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_2">Tên nội dung con mới:</td>
@@ -170,7 +178,8 @@
                       <input type="text" name="txttenndcsl" id="txttenndcsl" style="width:100%"></td>
                   </tr>
                   <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Lưu"></td>
+                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" id="btn_suanoidungcon" value="Lưu">
+                      <input name="Reset" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
                   </tr>
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_1"></td>
@@ -214,7 +223,8 @@
                       <input name="txttenndl" type="text" disabled id="txttenndl" style="width:100%" readonly="readonly"></td>
                   </tr>
                   <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Xóa"></td>
+                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" id="btn_xoanoidungcon" value="Xóa">
+                      <input name="Reset" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
                   </tr>
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_1"></td>
