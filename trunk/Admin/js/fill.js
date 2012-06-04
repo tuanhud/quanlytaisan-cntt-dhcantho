@@ -82,6 +82,38 @@ function fillcombo3(filephp,combo)
 	}
 	http.send();
 }
+function fillcombo3bien(filephp, par_combo,par2_combo,par3_combo, chil_combo)
+{	
+	var id = par_combo.value;
+	var id2 = par2_combo.value;
+	var id3 = par3_combo.value;
+	http=GetXmlHttpObject();
+	var params = "id="+id;
+	params +="&id2="+id2;
+	params +="&id3="+id3;
+	//mo ket noi bang phuong thuc post
+	http.open("POST", filephp, false);
+	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//http.setRequestHeader("Content-length", params.length);
+	//http.setRequestHeader("Connection", "close");
+	//ham xu li du lieu tra ve cua ajax send thanh cong
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) 
+		{
+				var x=http.responseXML.getElementsByTagName('row');
+				chil_combo.options.length=0;
+				for(var i=0;i<x.length;i++)
+				{	
+					 var oOption = document.createElement("OPTION");
+					   oOption.text=x[i].getElementsByTagName('column')[0].firstChild.nodeValue;
+					   oOption.value=x[i].getElementsByTagName('column')[0].firstChild.nodeValue;
+					   chil_combo.add(oOption);
+				}
+		}
+	}
+	http.send(params);
+}
 function _fillcombo(filephp, par_combo, chil_combo)
 {	
 	var id = par_combo.value;
