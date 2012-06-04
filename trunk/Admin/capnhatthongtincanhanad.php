@@ -4,7 +4,7 @@
 	//kiem tra quyen truoc khi hien thi trang
 	//if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="BCHCHSV")
 	//{
-	////echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
+	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	
 ?>
 <html>
@@ -18,7 +18,7 @@
 <script type="text/javascript" src="capnhatcanhan.js"></script>
 <script type="text/javascript">	
 	function thoat() {
-		if (confirm('Ban co chac chan muon thoat khong ?' )) {
+		if (confirm('Bạn có thật sự muốn thoát không ?' )) {
 			document.location = '../logout.php';
 			return;
 		}
@@ -41,7 +41,7 @@ $(document).ready(function()
 	<!--Thẻ hiển thị thông tin khi đăng nhập-->
 	<div style="Z-INDEX: 1; LEFT: 557px; WIDTH: 200px; POSITION: absolute; TOP: 55px; HEIGHT: 30px" align="center">
 		<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-			<a class="white" href="capnhatthongtincanhan.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
+			<a class="white" href="capnhatthongtincanhanad.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
     		<br>
     		Xin chào, <?=$_SESSION['hoten']?>
     		<br>(<?=$_SESSION['msclb']?>)    
@@ -86,7 +86,7 @@ $(document).ready(function()
         <tr height="10">        
 	   	<td align="center" colspan="3">
         <?php
-		include_once('../GiangVien/node-menunav-3.php');
+		include_once('node-menunav-3ad.php');
 		?> 
         </td>
 	    <!--<td align="center" >&nbsp;</td>

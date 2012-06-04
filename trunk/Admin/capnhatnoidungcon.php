@@ -72,7 +72,7 @@
         <tr height="10">        
 	   	<td align="center" colspan="3">
         <?php
-		include_once('node-menunav-3.php');
+		include_once('node-menunav-3ad.php');
 		?> 
 </script>        </td>
 	    <!--<td align="center" >&nbsp;</td>

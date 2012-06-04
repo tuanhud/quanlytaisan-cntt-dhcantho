@@ -3,7 +3,7 @@
 	//if(session_is_registered("maquyen") && $_SESSION['maquyen']=="AD")
 	//{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
-	echo "<script language=javascript>window.location = 'main.php';</script>"; 
+	//echo "<script language=javascript>window.location = 'main.php';</script>"; 
 	//exit;
 	//}
 ?>
@@ -17,7 +17,7 @@
 		//kiem tra xem co ton tai nguoi voi maso va matkhau duoc cung cap hay khong ?
 			$sql="select * from nguoidung a, coquyen b
 					where a.MSCB=b.MSCB
-					and b.MaQuyen=1
+					and b.MaQuyen='1'
 					and a.MSCB ='".$_POST['txtDinhDanh']."'
 					and Matkhau ='".$_POST['txtMatKhau']."'";
 					
