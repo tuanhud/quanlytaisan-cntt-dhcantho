@@ -1,11 +1,10 @@
 <?php
 	session_start();
 	//if(session_is_registered("maquyen") && $_SESSION['maquyen']=="BCNCLB")
-	/*{
+	//{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
-	echo "<script language=javascript>window.location = 'main.php';</script>"; 
-	exit;
-	}*/
+	//echo "<script language=javascript>window.location = 'main.php';</script>"; 
+	
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
@@ -17,7 +16,7 @@
 			$sql="select * from nguoidung a, coquyen b
 					where a.MSCB=b.MSCB
 					and b.MaQuyen=2
-					and a.MSCB ='".$_POST['txtDinhDanh']."'
+					and a.MSCB =".$_POST['txtDinhDanh']."
 					and Matkhau ='".$_POST['txtMatKhau']."'";
 					
 			$db->setQuery($sql);

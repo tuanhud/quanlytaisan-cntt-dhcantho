@@ -222,8 +222,10 @@
                 $this->__construct();
             }
             $this->result = mysql_query($this->query);
+			if(mysql_num_rows($this->result)!=0){
             $num = mysql_num_rows($this->result);
             return $num;            
+			}
         }
         public function getConnection(){
             return $this->connection;
