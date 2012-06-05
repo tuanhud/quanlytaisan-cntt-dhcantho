@@ -164,9 +164,17 @@ $(document).ready(function() {
 			</tr>
             <tr>
 					<td height="30" align="right" class="level_1_1">Năm mua sắm</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tenthietbi" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+					<td width="50%" align="left" class="level_1_1"><label for="select"></label>
+					  <select name="select" id="select">
+					    </select></td>
 			</tr>               
+              <tr>
+                <td colspan="2" height="22" align="center" class="level_1_2">
+                <div class="yui3-skin-sam">                    
+                    <div id="mytable"></div>                    
+                    </div>
+                </td>
+              </tr>
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Duyệt"></td>
               </tr>
