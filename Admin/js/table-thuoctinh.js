@@ -14,7 +14,7 @@ function createTable(){
         var fclass = o.column.className || null;
         if (fclass)
             o.className += ' '+fclass;
-        o.value = ' ';
+        o.value = '<img src="images/drop.png" title="Xóa mẫu tin đã chọn" height="16">';
      }          
 	 
 	//Tao checkbox tren moi dong 
@@ -30,20 +30,20 @@ function createTable(){
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	var fmtChkBox2 = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr2" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }
-/*	var fmttextbox = function(o)
+	var fmttextbox = function(o)
 	{
     	var cell = '<input type="text" class="textbox" />';
         	o.value = cell;
 	        o.className += 'align-center';
-    }*/
+    }
 	//Cac Column cua Bang
 	var cols = [
+<<<<<<< .mine
+				{name:'selectBox', label:'Chọn<input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
+				{key: "ma",label:"Mã thuộc tính", sortable: true},
+				{key: "ten",label:"Tên thuộc tính", sortable: true},
+				{key: "giatri",label:"Giá trị thuộc tính",formatter: fmttextbox, allowHTML:true}
+=======
 				{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox2, allowHTML:true },
 				{key:'them', label:'Thêm', formatter: fmtChkBox2, className:'align-center',allowHTML:true},
 				{key:'sua', label:'Sửa', formatter: fmtChkBox, className:'align-center', allowHTML:true},
@@ -59,6 +59,7 @@ function createTable(){
 				},
 				{key: "ghichu",label:"Khóa học", sortable: true}
 		
+>>>>>>> .r100
 		];
 	dt = new Y.DataTable({
     columns: cols,
@@ -89,12 +90,9 @@ function getRecord2(phpfile)
 				for(var i=0;i<x.length;i++)
 			   { 
 					dt.data.add({ 
-							chon:'abc',
-							stt:i+1,
-							id:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue, 
+							ma:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue, 
 							ten:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue, 
-							giatri:'mm',
-							ghichu:x[i].getElementsByTagName('GHICHU')[0].firstChild.nodeValue,
+							giatri:x[i].getElementsByTagName('GIATRI')[0].firstChild.nodeValue,
 							});
 							
 	
