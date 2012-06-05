@@ -14,6 +14,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật nội dung con</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/capnhatnoidungcon.js"></script>
+<script type="text/javascript">
+$(document).ready(function() { 
+	fillcombo('get_list_noidunglon.php',document.frm_themnoidungcon.cbo_tennoidunglon);
+	fillcombo('get_list_noidunglon.php',document.frm_suanoidungcon.cbo_tennoidunglon);
+	fillcombo('get_list_noidunglon.php',document.frm_themnoidungcon.cbo_tennoidungcon);
+	fillcombo('get_list_noidunglon.php',document.frm_suanoidungcon.cbo_tennoidungconmoi);
+	fillcombo('get_list_noidungcon.php',document.frm_suanoidungcon.cbo_tennoidungcon);
+	fillcombo('get_list_noidungcon.php',document.frm_xoanoidungcon.cbo_tennoidungconxoa);
+	$('form[name="frm_themnoidungcon"] select[name="cbo_tennoidunglon"]').change(function(){
+		get_info_manoidunglonthem('get_info_manoidunglon.php',document.frm_themnoidungcon);
+	});
+	$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidungcon"]').change(function(){
+		get_info_manoidungconsua('get_info_manoidungcon.php',document.frm_suanoidungcon);
+	});
+	$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidunglon"]').change(function(){
+		get_info_manoidunglonsua('get_info_manoidunglon.php',document.frm_suanoidungcon);
+	});
+    });
+</script>
 <script>	
 	function thoat() {
 		if (confirm('Ban co chac chan muon thoat khong ?' )) {
@@ -93,7 +116,7 @@
             <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
           </tr>
           <tr>
-            <td colspan="3" align="left"><form name="frm_themban">
+            <td colspan="3" align="left"><form name="frm_themnoidungcon" id="frm_themnoidungcon">
               <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
                 <tbody>
                   <tr>
@@ -102,18 +125,20 @@
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_2">Chọn tên nội dung lớn:</td>
-                    <td width="50%" align="left" class="level_1_2"><select name="cbotenndl" class="cbo" style="width:100%;">
+                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tennoidunglon" class="cbo" id="cbo_tennoidunglon" style="width:100%;">
                     </select></td>
                   
                   <tr>
                     <td height="22" align="right" class="level_1_1">Mã nội dung lớn:</td>
                     <td height="22" align="left" class="level_1_1"><label for="txtmndl"></label>
-                      <input name="txtmndl" type="text" disabled id="txtmndl" readonly="readonly"></td>
+                      <input name="txt_manoidunglon" type="text" disabled id="txt_manoidunglon" readonly="readonly"></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
                     <td height="22" align="center" class="level_1_1"><label for="txttendc"></label>
-                      <input type="text" name="txttendc" id="txttenndc" style="width:100%"></td>
+                      <label for="cbo_tennoidungcon"></label>
+                      <select name="cbo_tennoidungcon" id="cbo_tennoidungcon" style="width:100%">
+                      </select></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Thêm nội dung con từ file:</td>
@@ -143,42 +168,44 @@
             <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
           </tr>
           <tr>
-            <td colspan="3" align="left"><form name="frm_themban">
+            <td colspan="3" align="left"><form name="frm_suanoidungcon" id="frm_suanoidungcon">
               <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
+                <tr>
+                  <td height="22" align="right" class="level_1_1">&nbsp;</td>
+                  <td height="22" align="center" class="level_1_1">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
+                  <td height="22" align="center" class="level_1_1"><label for="txttendc3"></label>
+                    <label for="cbo_tennoidungconsua"></label>
+                    <select name="cbo_tennoidungcon" id="cbo_tennoidungcon" style="width:100%">
+                    </select></td>
+                </tr>
+                <tr>
+                  <td height="22" align="right" class="level_1_1">Mã nội dung con: </td>
+                  <td height="22" align="left" class="level_1_1"><label for="txt_manoidungcon"></label>
+                    <input name="txt_manoidungcon" type="text" disabled id="txt_manoidungcon" readonly="readonly"></td>
+                </tr>
                 <tbody>
                   <tr>
-                    <td height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
-                  </tr>
-                  <tr>
                     <td height="22" align="right" class="level_1_2">Chọn tên nội dung lớn:</td>
-                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                    </select></td>
-                  
+                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tennoidunglon" class="cbo" id="cbo_tennoidunglon" style="width:100%;">
+                      </select></td>
+                    
                   <tr>
                     <td height="22" align="right" class="level_1_1">Mã nội dung lớn:</td>
                     <td height="22" align="left" class="level_1_1"><label for="txtmndl"></label>
-                      <input name="txtmndls" type="text" disabled id="txtmndl" readonly="readonly"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
-                    <td height="22" align="center" class="level_1_1"><label for="txttendc"></label>
-                      <label for="cbo_tennoidungconsua"></label>
-                      <select name="cbo_tennoidungconsua" id="cbo_tennoidungconsua" style="width:100%">
-                      </select></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Mã nội dung con: </td>
-                    <td height="22" align="left" class="level_1_1"><label for="txt_manoidungcon"></label>
-                      <input name="txt_manoidungcon" type="text" disabled id="txt_manoidungcon" readonly="readonly"></td>
+                      <input name="txt_manoidunglon" type="text" disabled id="txt_manoidunglon" readonly="readonly"></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_2">Tên nội dung con mới:</td>
                     <td height="22" align="center" class="level_1_2"><label for="txttenndcsl"></label>
-                      <input type="text" name="txttenndcsl" id="txttenndcsl" style="width:100%"></td>
+                      <label for="cbo_tennoidungconmoi"></label>
+                      <select name="cbo_tennoidungconmoi" id="cbo_tennoidungconmoi" style="width:100%">
+                      </select></td>
                   </tr>
                   <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" id="btn_suanoidungcon" value="Lưu">
+                    <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_luunoidungcon" type="button" class="button_1" id="btn_luunoidungcon" value="Lưu">
                       <input name="Reset" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
                   </tr>
                   <tr>
@@ -200,7 +227,7 @@
             <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
           </tr>
           <tr>
-            <td colspan="3" align="left"><form name="frm_themban">
+            <td colspan="3" align="left"><form name="frm_xoanoidungcon" id="frm_xoanoidungcon">
               <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
                 <tbody>
                   <tr>
@@ -209,18 +236,18 @@
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_2">Chọn tên nội dung con:</td>
-                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tennoidungconxoa" class="cbo" id="cbo_tennoidungconxoa" style="width:100%;">
                     </select></td>
                   
                   <tr>
                     <td height="22" align="right" class="level_1_1"> Mã nội dung con:</td>
                     <td height="22" align="left" class="level_1_1"><label for="txttendc2"></label>
-                      <input name="txtmandcx" type="text" disabled id="txtmandcx" readonly="readonly"></td>
+                      <input name="txt_manoidungcon" type="text" disabled id="txt_manoidungcon" readonly="readonly"></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Tên nội dung lớn:</td>
                     <td height="22" align="center" class="level_1_1"><label for="txtmndl"></label>
-                      <input name="txttenndl" type="text" disabled id="txttenndl" style="width:100%" readonly="readonly"></td>
+                      <input name="txt_tennoidunglon" type="text" disabled id="txt_tennoidunglon" style="width:100%" readonly="readonly"></td>
                   </tr>
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" id="btn_xoanoidungcon" value="Xóa">
