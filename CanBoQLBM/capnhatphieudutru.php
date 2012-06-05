@@ -1,10 +1,10 @@
--<?php	
+<?php	
 	//khoi dong session
 	session_start();	
 	//kiem tra quyen truoc khi hien thi trang
 	//if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="BCHCHSV")
 	//{
-	////echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
+	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	
 ?>
 <html>
