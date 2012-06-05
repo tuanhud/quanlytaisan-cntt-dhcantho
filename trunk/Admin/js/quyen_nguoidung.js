@@ -39,18 +39,17 @@ function update_quyen_nguoidung(frm){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
 			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'VPP')
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'THEMVPP')
 			}
 			else
 			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'VPP');
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'THEMVPP');
 			}
 		   	});
 	}
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);
 	}
-	
 	try
 	{
 		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr3");
@@ -58,18 +57,17 @@ function update_quyen_nguoidung(frm){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
 			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'KK')
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'SUAVPP')
 			}
 			else
 			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'KK');
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'SUAVPP');
 			}
 		   	});
 	}
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);
 	}
-	
 	
 	try
 	{
@@ -78,11 +76,29 @@ function update_quyen_nguoidung(frm){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
 			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'KHMS')
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'THEMKK')
 			}
 			else
 			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'KHMS');
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'THEMKK');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr5");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'SUAKK')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'SUAKK');
 			}
 		   	});
 	}
@@ -92,7 +108,44 @@ function update_quyen_nguoidung(frm){
 	
 	try
 	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr5");
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr6");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'THEMKHMS')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'THEMKHMS');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr7");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'SUAKHMS')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'SUAKHMS');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr8");
 		chks.each( function(item){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
@@ -112,7 +165,7 @@ function update_quyen_nguoidung(frm){
 	
 	try
 	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr6");
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr9");
 		chks.each( function(item){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
@@ -131,7 +184,7 @@ function update_quyen_nguoidung(frm){
 	
 	try
 	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr7");
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr10");
 		chks.each( function(item){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
@@ -147,41 +200,9 @@ function update_quyen_nguoidung(frm){
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);
 	}
-	alert("Thành công : " + numofSus);
+	alert("Cập nhật thành công : " + numofSus+ " quyền.");
 	document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value=-1;
 	dt.reset();
 	numofSus = numofFai = 0;
 	
 }
-
-/*function isValid(){
-	khenthuong = document.frm_capnhatkhenthuong.cbo_tenkhenthuong;
-	ngay = document.frm_capnhatkhenthuong.cbo_ngay;
-	thang = document.frm_capnhatkhenthuong.cbo_thang;
-	nam = document.frm_capnhatkhenthuong.cbo_nam;
-	quyetdinh = document.frm_capnhatkhenthuong.txt_quyetdinh;
-	file = document.frm_capnhatkhenthuong.file_import;	
-	if(khenthuong.value==-1){
-		alert('Bạn chưa chọn hình thức khen thưởng.');
-		khenthuong.focus();
-		return false;
-		}
-	
-	if(!isValidDate_2(ngay.value,thang.value,nam.value)){
-		alert('Ngày khen thưởng không hợp lệ.');
-		ngay.focus();
-		return false;
-		}
-	if(quyetdinh.value==""){
-		alert('Số quyết định không được rỗng.');
-		quyetdinh.focus();
-		return false;
-		}
-	if(file.value==""){
-		alert('Bạn chưa chọn file.');
-		file.focus();
-		return false;
-		}
-	return true;
-}
-*/

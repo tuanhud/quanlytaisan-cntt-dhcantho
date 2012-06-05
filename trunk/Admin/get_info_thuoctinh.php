@@ -19,9 +19,9 @@
 								$xml.=$row['TenThuocTinh'];							
 							$xml.="</TEN>";
 														
-							$xml.="<GHICHU>";
+							$xml.="<GIATRI>";
 								$xml.=$row['GhiChu'];							
-							$xml.="</GHICHU>";
+							$xml.="</GIATRI>";
 							
 						$xml.="</RESULT>";
 					}

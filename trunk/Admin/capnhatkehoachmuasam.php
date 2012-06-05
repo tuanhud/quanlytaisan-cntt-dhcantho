@@ -17,23 +17,22 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 <script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/yui.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhattaisan.js"></script>
-<script type="text/javascript" src="js/table-hoivien.js"></script>
-<script type="text/javascript" src="js/khenthuong-hoivien.js"></script>
-<script type="text/javascript" src="js/yui/yui-min.js"></script>
-<script type="text/javascript" src="js/autocomplete.js"></script>
+<script type="text/javascript" src="js/table-khms.js"></script>
+
 <script type="text/javascript" >
 $(document).ready(function() { 
-	document.frm_themtaisan.cbo_tenloaitaisanthem.focus();
+	/*document.frm_themtaisan.cbo_tenloaitaisanthem.focus();
 	fillcombo('get_list_loaitaisan.php',document.frm_themtaisan.cbo_tenloaitaisanthem);
-	fillcombo3('get_list_donvitinh.php',document.frm_themtaisan.cbo_donvitinhthem);
+	fillcombo3('get_list_donvitinh.php',document.frm_themtaisan.cbo_donvitinhthem);*/
 	createTable();
-	$('form[name="frm_themtaisan"] select[name="cbo_tenthuoctinh"]').change(function(){		
+	/*$('form[name="frm_themtaisan"] select[name="cbo_tenthuoctinh"]').change(function(){		
 		 ('get_list_hoivien_chsv.php', this.value);
 	});
-	
+	*/
 }); 
 </script>
 </head>
@@ -115,7 +114,7 @@ $(document).ready(function() {
         <!--KET THUC MENU-->
         <tr>
     <td height="100%" align="center" valign="middle">   
-		 <table width="600" border="0" cellpadding="0" cellspacing="0">
+		 <table width="650" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -133,7 +132,7 @@ $(document).ready(function() {
               </tr>
 			  <tr>
 			    <td height="22" align="right" class="level_1_2">Năm:</td>
-					<td width="72%" align="left" class="level_1_2"><label for="select2"></label>
+					<td width="70%" align="left" class="level_1_2"><label for="select2"></label>
 					  <select name="select2" id="select2">
 					    <option>2012</option>
 					    </select></td>
@@ -144,29 +143,6 @@ $(document).ready(function() {
                      <option>Bộ môn công nghệ phần mềm</option>
                    </select></td>
                </tr>
-               <tr>
-                 <td height="30" align="right" class="level_1_1">Chọn thiết bị:</td>
-					<td width="72%" align="left" class="level_1_1"><label for="select3"></label>
-					  <select name="select3" id="select3">
-					    </select> 
-					  Tên thiết bị: 
-					  <label for="textfield"></label>
-					  <input type="text" name="textfield" id="textfield"></td>
-			</tr>
-			 <tr>
-			   <td height="22" align="right" class="level_1_2">Số lượng</td>
-					<td width="72%" align="left" class="level_1_2"><span class="level_1_1">
-					  <input type="text" name="textfield2" id="textfield2">
-					</span></td>
-			</tr> 
-			 <tr>
-			   <td height="22" align="right" class="level_1_1">Giá: </td>
-			   <td align="left" class="level_1_1"><input type="text" name="textfield3" id="textfield3"></td>
-			   </tr>
-			 <tr>
-			  <td height="22" align="right" class="level_1_1">Thuyết minh sử dụng:</td>
-					<td width="72%" align="left" class="level_1_1"><textarea name="txt_tinhtrangthem" rows="5" class="txtbox" style="width:100%"></textarea></td>
-			</tr> 
            <!--bang thuoc tinh dat o day-->
              <tr>
 					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
@@ -183,15 +159,6 @@ $(document).ready(function() {
               		<td colspan="2" height="22" align="center" class="level_1_2">
 					</td>
               </tr>
-			  
-			   <tr>
-			     <td height="22" align="right" class="level_1_1">Thêm bằng file Excel</td>
-					<td width="72%" align="left" class="level_1_1">
-					  <input name="file_ecxel" maxlength="31" type="file" style="width:100%"></td>
-				</tr>
-				<tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themtaisan2" id="btn_themtaisan2" class="button_1" value="Thêm"></td>
-              </tr>  
               </tbody>
            </table>
            </form>

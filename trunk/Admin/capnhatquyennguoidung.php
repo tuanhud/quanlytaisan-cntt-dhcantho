@@ -38,9 +38,12 @@ $(document).ready(function() {
 	$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
 			
 			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
-			checkbox_vpp();
-			checkbox_kk();
-			checkbox_khms();
+			checkbox_themvpp();
+			checkbox_suavpp();
+			checkbox_themkk();
+			checkbox_suakk();
+			checkbox_themkhms();
+			checkbox_suakhms();
 			checkbox_duyetvpp();
 			checkbox_duyetkk();
 			checkbox_duyetkhms();

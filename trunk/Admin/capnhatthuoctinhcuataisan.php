@@ -15,7 +15,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật thuộc tính tài sản - thiết bị</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<script type="text/javascript" src="../js/yui.js"></script>
+<script type="text/javascript" src="js/yui.js"></script>
 <script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
@@ -171,86 +171,7 @@ $(document).ready(function() {
         </tr>		
         </tbody>
         </table>
-		<br>
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa thuộc tính tài sản - thiết bị </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
-        <tr>
-          <td colspan="3" align="left">
-          	<form name="frm_suaban">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-              <tbody>
-              <tr>
-              		<td width="43%" height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
-              </tr>
-             <tr>
-					<td height="22" align="right" class="level_1_2">Chọn tên thuộc tính</td>
-					<td width="57%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;"> </select>
-					</td>
-			</tr>
-			<tr>
-					<td height="22" align="right" class="level_1_1">Tên mới</td>
-					<td width="57%" align="left" class="level_1_1">
-                    	<input name="txt_dongia" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)"></td>
-			</tr>    
-			    
-            <tr>
-						<td colspan="2" height="22" align="center" class="level_1_1">
-                        <input type="button" class="button_1" value="Lưu">
-                        </td>
-			</tr>
-				  						  
-            </tbody>
-        </table>
-        	</form>
-       </td>
-      </tr>		
-      </tbody>
-      </table>
-		<br>
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa thuộc tính tài sản - thiết bị</td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
-        <tr>
-          <td colspan="3" align="left">
-          	<form name="frm_xoaban">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-              <tbody>
-              <tr>
-              		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
-              </tr>
-             <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên thuộc tính </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-					
-			</tr>              
-            <tr>
-						<td colspan="2" height="22" align="center" class="level_1_1">
-                        <input type="button" class="button_1" value="Xóa">
-                        </td>
-			</tr>
-				  						  
-            </tbody>
-        </table>
-        	</form>
-       </td>
-      </tr>		
-      </tbody>
-      </table>
+		
 	</td>
 </tr>
 </table>

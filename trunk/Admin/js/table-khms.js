@@ -3,7 +3,7 @@ var dt;
 // -------------------------
 //  Create Table 
 // -------------------------      
-function createTable_nguoidung(){
+function createTable(){
 	
 	YUI().use('datatable', function (Y)
  {	
@@ -14,10 +14,10 @@ function createTable_nguoidung(){
         var fclass = o.column.className || null;
         if (fclass)
             o.className += ' '+fclass;
-        o.value = ' ';
+        o.value = '<img src="images/drop.png" title="Xóa mẫu tin đã chọn" height="16">';
      }          
-	
-	//Tao checkbox
+	 
+	//Tao checkbox tren moi dong 
     var fmtChkBox = function(o)
 	{
     	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
@@ -26,113 +26,37 @@ function createTable_nguoidung(){
     }
 	var fmtChkBox2 = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr2"/>';
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	var fmtChkBox3 = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr3" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }
-	var fmtChkBox4 = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr4" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }
-	var fmtChkBox5 = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr5" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }
-	var fmtChkBox6 = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr6" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }
-	var fmtChkBox7 = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr7" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }
-	var fmtChkBox8 = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr8" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }
-	var fmtChkBox9 = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr9" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }
-	var fmtChkBox10 = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr10" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }
-/*	var fmttextbox = function(o)
+	var fmttextbox = function(o)
 	{
     	var cell = '<input type="text" class="textbox" />';
         	o.value = cell;
 	        o.className += 'align-center';
-    }*/
+    }
 	//Cac Column cua Bang
 	var cols = [
-				{name:'canbo', label:'Cán bộ',className:'align-center',
-				children:
-				[
-						{key: "id",label:'Mã cán bộ', sortable: true},
-						{key: "ten",label:"Họ tên", sortable: true},
-				]},
-				{name:'donvi', label:'Đơn vị',className:'align-center',
-				children:
-				[
-					{name:'vpp', label:'VPP',
-					children:
-					[
-						{name:'themvpp', label:'Thêm', formatter: fmtChkBox2,allowHTML:true},
-						{name:'suavpp', label:'Sửa', formatter: fmtChkBox3,allowHTML:true},
-					]},
-					{name:'kk', label:'KK',
-					children:
-					[
-						{name:'themkk', label:'Thêm', formatter: fmtChkBox4,allowHTML:true},
-						{name:'suakk', label:'Sửa', formatter: fmtChkBox5,allowHTML:true},
-					]},
-					{name:'khms',label:'KHMS',
-					children:
-					[
-						{name:'themkhms', label:'Thêm', formatter: fmtChkBox6,allowHTML:true},
-						{name:'suakhms', label:'Sửa', formatter: fmtChkBox7,allowHTML:true},
-					]},
-
-				]},
-				{name:'khoa', label:'Khoa',className:'align-center',
-				children:
-				[
-					{name:'duyetvpp', label:'Duyệt VPP',formatter: fmtChkBox8,allowHTML:true},
-					{name:'duyetkk', label:'Duyệt KK', formatter: fmtChkBox9, allowHTML:true},
-					{name:'duyetkhms',label:'Duyệt KHMS',formatter: fmtChkBox10, allowHTML:true},
-				]},
-		
+				{name:'selectBox', label:'Chọn<input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
+			//	{key: "ma",label:"Mã tài sản", sortable: true},
+				{key: "ten",label:"Tên tài sản", sortable: true},
+				{key:'tinhnang', label:'Tính năng',sortable: true},
+				{key:'donvitinh', label:'ĐVT',sortable: true},
+				{key: "soluong",label:"Số lượng",formatter: fmttextbox, allowHTML:true},
+				{key: "dongia",label:"Đơn giá",formatter: fmttextbox, allowHTML:true},
+				{key:'thanhtien', label:'Thành tiền',sortable: true},
+				{key:'thuyetminh', label:'Thuyết minh',sortable: true},
 		];
+		
 	dt = new Y.DataTable({
     columns: cols,
     data   : records, 
-	summary: 'Danh sách người dùng - quyền ',
-    caption: 'Danh sách người dùng - quyền(Chưa hoàn chỉnh)',
-    render : '#mytable'
-});	
+	summary: 'Danh sách tài sản - thiết bị',
+    caption: 'Danh sách tài sản - thiết bị',
+    render : '#mytable',
 	
-
+});	
 	
 
 	
@@ -173,8 +97,15 @@ function createTable_nguoidung(){
 	// -------------------------
 	//   Click handler on "Select" TH checkbox, toggle the settings of all rows
 	// -------------------------
- 
-	
+    Y.one("#selAll").on("click", function(e){		
+        var selAll = this.get('checked');   // the checked status of the TH checkbox
+    //  Get a NodeList of each of INPUT with class="myCheckboxFmtr" in the TBODY       
+	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr");
+        chks.each( function(item){
+            item.set('checked', selAll);    // set the individual "checked" to the TH setting			
+        	});
+    	});
+		
 	/************************************
      Method to take an existing TD or TR Node element as input "target" and scan
      the dataset (ModelList) for the underlying data record (a Model).
@@ -279,9 +210,9 @@ function createTable_nguoidung(){
      }	 
 });
 }
+
 function getRecord2(phpfile,madonvi)
 {
-	dt.reset();
 	http=GetXmlHttpObject();
 	var params ="madonvi="+madonvi;
 	//mo ket noi bang phuong thuc post
@@ -298,17 +229,101 @@ function getRecord2(phpfile,madonvi)
 				var x=http.responseXML.getElementsByTagName('RESULT');
 				for(var i=0;i<x.length;i++)
 			   { 
-					dt.addRow
-					({ 
-							id:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue,
+					dt.data.add({ 
+							ma:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue, 
 							ten:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue, 
-					});
-					//lay duoc ma can bo roi di tim danh sach cac quyen cua cac bo nay, sau do moi hiển thi len bàng checkbox 
-					//gettenquyen('get_list_quyen_canbo.php',x[i].getElementsByTagName('MA')[0].firstChild.nodeValue);
-			   }
+							soluong:x[i].getElementsByTagName('SOLUONG')[0].firstChild.nodeValue, 
+							dongia:x[i].getElementsByTagName('DONGIA')[0].firstChild.nodeValue, 
+							});
+							
+	
+				}
 				
 	   }
 	}
 	http.send(params);
 }
 
+
+function table() {
+	var loader = new YAHOO.util.YUILoader();
+	loader.loadOptional = true;
+	loader.filter = 'raw';
+	loader.require("reset-fonts-grids","base","datatable","calendar");
+	loader.insert({ 
+		onSuccess: function() 
+		{
+			var formatterDispatcher = function (elCell, oRecord, oColumn,oData)
+			{
+				var meta = oRecord.getData('meta_' + oColumn.key);
+				oColumn.editorOptions = meta.editorOptions;
+				switch (meta) 
+				{
+					case 'Number':
+						YAHOO.widget.DataTable.formatNumber.call(this,elCell, oRecord, oColumn,oData);
+						break;
+					case 'Date':
+						YAHOO.widget.DataTable.formatDate.call(this,elCell, oRecord, oColumn,oData);
+						break;
+					case 'Text':
+						YAHOO.widget.DataTable.formatText.call(this,elCell, oRecord, oColumn,oData);
+						break;
+					case 'YesNoMaybe':
+						elCell.innerHTML = oData;
+						break;
+				}
+			};
+			
+			var editors = 
+			{
+				Text: new YAHOO.widget.TextboxCellEditor(),
+				Number:new YAHOO.widget.TextboxCellEditor(
+				{
+					validator:function (val)
+					{ 
+						val = parseFloat(val);
+						if (YAHOO.lang.isNumber(val)) {return val;}
+					}
+				}),
+				Date:new YAHOO.widget.DateCellEditor(),
+				YesNoMaybe:new YAHOO.widget.RadioCellEditor(
+				{
+					radioOptions:["yes","no","maybe"],disableBtns:true
+				})
+			};
+			var myColumnDefs = [
+				{key:"Rows",label:'&nbsp;',className:'th'},
+				{key:"A",formatter:formatterDispatcher,editor:new YAHOO.widget.BaseCellEditor()},
+				{key:"B",formatter:formatterDispatcher,editor:new YAHOO.widget.BaseCellEditor()},
+				{key:"C",formatter:formatterDispatcher,editor:new YAHOO.widget.BaseCellEditor()}
+
+			];
+
+			var ds = new YAHOO.util.DataSource([
+				{Rows:1,A:1,meta_A:'Number',B:new Date(),meta_B:'Date',C:'hello world!',meta_C:'Text'},
+				{Rows:2,B:42,meta_B:'Number',A:new Date(2005,10,2),meta_A:'Date',C:'long time no see',meta_C:'Text'},
+				{Rows:3,C:1,meta_C:'Number',B:new Date(),meta_B:'Date',A:'hello world!',meta_A:'Text'},
+				{Rows:4,C:'yes',meta_C:'YesNoMaybe',B:new Date(),meta_B:'Date',A:'hello world!',meta_A:'Text'}
+			]);
+			ds.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+			ds.responseSchema = {
+				fields: ['Rows','A','meta_A','B','meta_B','C','meta_C']
+			};
+
+			var dt = new YAHOO.widget.DataTable("tableContainer", myColumnDefs,ds);
+			
+			
+			dt.subscribe("cellClickEvent", function (oArgs) 
+			{
+				var target = oArgs.target,
+					record = this.getRecord(target),
+					column = this.getColumn(target),
+					type = record.getData('meta_' + column.key);
+					
+
+				column.editor = editors[type];
+				this.showCellEditor(target);  
+			});
+		}
+	});
+}

@@ -15,11 +15,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật thiết bị thuộc đơn vị</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<style>
+			.th {
+				background: url(http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/sprite.png)  repeat-x 0 0;
+			}
+		</style>
+<script type="text/javascript" src="js/yui.js"></script>
+<script src="js/yuiloader-min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/table-taisan.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -42,23 +48,24 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 }
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
-	});
-	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
-	});
+	createTable();
+	//table();
+	fillcombo('get_list_donvi.php',document.frm_capnhattaisandonvi.cbo_tendonvi);
+	//Create table after loading page
+	$('form[name="frm_capnhattaisandonvi"] select[name="cbo_tendonvi"]').change(function(){		
+			
+			getRecord2('get_list_taisan_donvi.php',document.frm_capnhattaisandonvi.cbo_tendonvi.value);
+			/*checkbox_themvpp();
+			checkbox_suavpp();
+			checkbox_themkk();
+			checkbox_suakk();
+			checkbox_themkhms();
+			checkbox_suakhms();
+			checkbox_duyetvpp();
+			checkbox_duyetkk();
+			checkbox_duyetkhms();*/
+			
+		});
 }); 
 </script>
 </head>
@@ -139,7 +146,7 @@ $(document).ready(function() {
         <!--KET THUC MENU-->
         <tr>
     <td height="100%" align="center" valign="middle">   
-		 <table width="500" border="0" cellpadding="0" cellspacing="0">
+		 <table width="650" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -148,47 +155,34 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
+          	<form name="frm_capnhattaisandonvi">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
               		<td height="22" class="level_1_1"></td>
                     <td class="level_1_1"></td>
               </tr>
-			  <tr>
-					<td height="22" align="right" class="level_1_2">Chọn loại thiết bị</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select></td>
-               <tr>
-					<td height="22" align="right" class="level_1_1">Chọn thiết bị</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select></td>
-			</tr>
 			 <tr>
 					<td height="22" align="right" class="level_1_2">Chọn đơn vị </td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
+					<td width="70%" align="left" class="level_1_2">
+                    	<select name="cbo_tendonvi" id="cbo_tendonvi" class="cbo" style="width:80%;">
                         </select></td>
 			</tr> 
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
-              </tr>
-			  
+					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
+                    <div class="yui3-skin-sam">                    
+                    <div id="mytable"></div>                    
+                    </div>
+                    </td>
+			</tr>
 			  <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2">
 					</td>
               </tr>
-			  
-			   <tr>
-					<td height="22" align="right" class="level_1_1">Thêm bằng file Excel</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="file_ecxel" maxlength="31" type="file" style="width:100%"></td>
-				</tr>
-				<tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
-              </tr>  
+			  <tr>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Cập nhật"></td>
+              </tr> 
+			 
               </tbody>
            </table>
            </form>
@@ -197,52 +191,7 @@ $(document).ready(function() {
         </tbody>
         </table>
 	 	 <br>
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa  thiết bị thuộc đơn vị </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
-        <tr>
-          <td colspan="3" align="left">
-          	<form name="frm_xoaban">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-              <tbody>
-              <tr>
-              		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
-              </tr>
-             <tr>
-					<td height="22" align="right" class="level_1_2">Chọn đơn vị</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select></td>
-               <tr>
-					<td height="22" align="right" class="level_1_1">Chọn loại thiết bị</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select></td>
-			</tr>
-			 <tr>
-					<td height="22" align="right" class="level_1_2">Chọn tên thiết bị</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select></td>
-			</tr>   
-            <tr>
-						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" class="button_1" value="Xóa">
-                        </td>
-			</tr>
-				  						  
-            </tbody>
-        </table>
-        	</form>
-       </td>
-      </tr>		
-      </tbody>
-      </table>
+        
 	</td>
 </tr>
 </table>
