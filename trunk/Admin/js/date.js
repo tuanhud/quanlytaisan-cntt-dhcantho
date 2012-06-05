@@ -41,6 +41,22 @@ function init_date_input(cbNgay,cbThang,cbNam)
 
  				}
 }
+function nam(cbNam){
+	var d = new Date();
+		cbNam.options.length=0;
+	 var oOption = document.createElement("OPTION");
+	   oOption.text="Năm";
+	   oOption.value="-1";
+	   cbNam.add(oOption)
+				for(var i=d.getFullYear();i>d.getFullYear()-100;i--)
+				{	
+					 	var oOption = document.createElement("OPTION");
+					   oOption.text=i;
+					   oOption.value=i;
+					   cbNam.add(oOption)
+
+ 				}
+	}
 
 /*
 function isValidDate(d,m,y) {

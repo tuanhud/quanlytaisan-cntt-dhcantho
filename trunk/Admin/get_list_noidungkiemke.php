@@ -17,7 +17,7 @@
 							$xml.=-1;							
 							$xml.="</column>";
 							$xml.="<column>";
-							$xml.='-Chọn nội dung kiểm kê-';							
+							$xml.='-Chọn tên nội dung kiểm kê-';							
 							$xml.="</column>";
 					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
