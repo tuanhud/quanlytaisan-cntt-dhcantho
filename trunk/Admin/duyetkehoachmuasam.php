@@ -149,7 +149,7 @@ $(document).ready(function() {
         <tr>
           <td colspan="3" align="left">
           	<form name="frm_themban">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+            <table width="108%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
               		<td height="22" class="level_1_1"></td>
@@ -171,7 +171,10 @@ $(document).ready(function() {
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_2">
                 <div class="yui3-skin-sam">                    
-                    <div id="mytable"></div>                    
+                    <div id="mytable">
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                    </div>                    
                     </div>
                 </td>
               </tr>
