@@ -12,7 +12,7 @@
 			$result = $db->fetchAll();
 			while($row = mysql_fetch_array($result))
 			{
-				if($row[1]==$_POST['txt_tenquyensua'])
+				if($row[1]==$_POST['txt_tenquyensua']&&$row[2]==$_POST['txt_diengiaisua'])
 				{
 					echo 2;//ten don vi da ton tai
 					exit;

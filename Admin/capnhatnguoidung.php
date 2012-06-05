@@ -20,6 +20,8 @@
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhatnguoidung.js"></script>
+<script type="text/javascript" src="js/capnhatdonvi.js"></script>
+<script type="text/javascript" src="js/yui/yui-min.js"></script>
 <script type="text/javascript" src="js/date.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
@@ -68,7 +70,7 @@ $(document).ready(function()
 	document.frm_themcanbo.cbo_tendonvithem.focus();
 	//load combo don vi
 	fillcombo('get_list_donvi.php',document.frm_themcanbo.cbo_tendonvithem);
-	fillcombo('get_list_donvi.php',document.frm_themcanbo.cbo_tendonvithem2);
+	fillcombo('get_list_donvi.php',document.frm_importcanbo.cbo_tendonvithem2);
 	fillcombo('get_list_donvi.php',document.frm_xoacanbo.cbo_tendonvixoa);
 	fillcombo('get_list_donvi.php',document.frm_suacanbo.cbo_tendonvisua);
 	
@@ -89,10 +91,14 @@ $(document).ready(function()
 	});
 }); 
 
+
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
-  
+ <?php
+//include('doimatkhau_UI.php');
+//include('capnhatdonvi_UI.php');
+?> 
 <table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tbody>
   
@@ -274,23 +280,50 @@ $(document).ready(function()
 			  		<td height="44" class="level_1_1" colspan="2"></td>
 			  </tr>
               
-               <tr>
+              
+              </tbody>
+           </table>
+           </form>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" align="left">
+            	<form name="frm_importcanbo" id="frm_importcanbo" action="importcanboUI.php" enctype="multipart/form-data" method="post" target="export" onSubmit="return isValid();window.open('', 'export', 'width=1350,height=660,status=yes,resizable=yes,scrollbars=yes')">
+            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+              <tbody>
+              <tr>
+              		<td height="22" class="level_1_1"></td>
+                    <td class="level_1_2"></td>
+              </tr>
+              
+              <tr>
 					<td height="22" align="right" class="level_1_2">Chọn đơn vị </td>
-					<td width="50%" align="left" class="level_1_2"><select class="cbo" name="cbo_tendonvithem2" style="width:100%">
-					  </select>					</td>
+					<td width="50%" align="left" class="level_1_2"><select class="cbo" name="cbo_tendonvithem2" id="cbo_tendonvithem2" style="width:100%">
+					  </select>					
+                     </td>
               </tr>
 			  <tr>
-					<td height="22" align="right" class="level_1_2">Nhập file Excel</td>
-					<td width="50%" align="left" class="level_1_2"><input name="nhapfile" type="file" style="width:100%"></td>
+					<td height="22" align="right" class="level_1_2">Chọn file Excel</td>
+					<td width="70%" align="left" class="level_1_2"><input name="file_import" id="file_import" type="file" style="width:100%"><input type="hidden" name="MAX_FILE_SIZE" value="100000"></td>
+			  </tr>
+               <tr>
+					<td height="22" align="right" class="level_1_2">Chọn Sheet cần lưu</td>
+					<td width="70%" align="left" class="level_1_2">
+                    <select name="cbo_chonsheet" id="cbo_chonsheet" style="width:60">
+                      <option value="0">1</option>
+                      <option value="1">2</option>
+                      <option value="2">3</option>
+                   </select>
+                    </td>
 			  </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="btn_themcanbo2" class="button_1" value="Thêm"></td>
+              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="submit" name="btn_importcanbo" class="button_1" value="Xem trước"></td>
               </tr>
               </tbody>
            </table>
            </form>
           </td>
-        </tr>		
+        </tr>	
         </tbody>
         </table>
 		
@@ -459,6 +492,7 @@ $(document).ready(function()
         //  Show the menu now that it is ready
         menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
     });
+	//createPanel();
 </script>
 </html>
 

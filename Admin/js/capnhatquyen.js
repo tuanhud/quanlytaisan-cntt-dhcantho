@@ -47,7 +47,7 @@ var _admin;
 								}
 								else if(n==2)
 								{
-									alert("Quyền này đã tồn tại."),
+									alert("Bạn chưa thay đổi gì cả."),
 									FocusAndSelect($("#txt_tenquyen"))
 								}
 								
