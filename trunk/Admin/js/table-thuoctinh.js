@@ -45,8 +45,8 @@ function createTable(){
 	//Cac Column cua Bang
 	var cols = [
 				{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox2, allowHTML:true },
-				{key:'them', label:'them', formatter: fmtChkBox2, className:'align-center',allowHTML:true},
-				{key:'sua', label:'sua', formatter: fmtChkBox, className:'align-center', allowHTML:true},
+				{key:'them', label:'Thêm', formatter: fmtChkBox2, className:'align-center',allowHTML:true},
+				{key:'sua', label:'Sửa', formatter: fmtChkBox, className:'align-center', allowHTML:true},
 				{key: "stt",label:"STT", sortable: true},
 				{key: "id",label:"Mã số", sortable: true},
 				{key: "ten",label:"Họ tên", sortable: true,
@@ -62,7 +62,7 @@ function createTable(){
 		];
 	dt = new Y.DataTable({
     columns: cols,
-    data   : records, 
+    data   : records,
 	summary: 'Danh sách thuộc tính',
     caption: 'Danh sách thuộc tính',
     render : '#mytable'
