@@ -2,8 +2,8 @@
 	session_start();
 	//if(session_is_registered("maquyen") && $_SESSION['maquyen']=="BCNCLB")
 	//{
-	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
-	//echo "<script language=javascript>window.location = 'main.php';</script>"; 
+	//echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
+	//echo "<script language=javascript>window.location = 'main.php';
 	
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
