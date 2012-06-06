@@ -28,7 +28,14 @@ $(document).ready(function() {
 	/*document.frm_themtaisan.cbo_tenloaitaisanthem.focus();
 	fillcombo('get_list_loaitaisan.php',document.frm_themtaisan.cbo_tenloaitaisanthem);
 	fillcombo3('get_list_donvitinh.php',document.frm_themtaisan.cbo_donvitinhthem);*/
+	fillcombo2('get_list_nam.php',document.frm_themkehoachmuasam.cbo_nam);
+	fillcombo('get_list_donvi.php',document.frm_themkehoachmuasam.cbo_chondonvi);
+	fillcombo2('get_list_nam.php',document.frm_xoakehoachmuasam.cbo_namxoa);
+	fillcombo('get_list_donvi.php',document.frm_xoakehoachmuasam.cbo_chondonvixoa);
+	fillcombo2('get_list_nam.php',document.frm_suakehoachmuasam.cbo_namsua);
+	fillcombo('get_list_donvi.php',document.frm_suakehoachmuasam.cbo_chondonvisua);
 	createTable();
+	createTable2();
 	/*$('form[name="frm_themtaisan"] select[name="cbo_tenthuoctinh"]').change(function(){		
 		 ('get_list_hoivien_chsv.php', this.value);
 	});
@@ -123,7 +130,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themtaisan" id="frm_themtaisan">
+          	<form name="frm_themkehoachmuasam" id="frm_themkehoachmuasam">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -132,14 +139,14 @@ $(document).ready(function() {
               </tr>
 			  <tr>
 			    <td height="22" align="right" class="level_1_2">Năm:</td>
-					<td width="70%" align="left" class="level_1_2"><label for="select2"></label>
-					  <select name="select2" id="select2">
+					<td width="70%" align="left" class="level_1_2"><label for="cbo_nam"></label>
+					  <select name="cbo_nam" id="cbo_nam">
 					    <option>2012</option>
 					    </select></td>
                <tr>
                  <td height="22" align="right" class="level_1_1">Chọn đơn vị:</td>
-                 <td align="left" class="level_1_1"><label for="select"></label>
-                   <select name="select" id="select">
+                 <td align="left" class="level_1_1"><label for="cbo_chondonvi"></label>
+                   <select name="cbo_chondonvi" id="cbo_chondonvi">
                      <option>Bộ môn công nghệ phần mềm</option>
                    </select></td>
                </tr>
@@ -166,7 +173,54 @@ $(document).ready(function() {
         </tr>		
         </tbody>
         </table>
-		<br>
+		 <p>&nbsp;</p>
+		 <table width="650" border="0" cellpadding="0" cellspacing="0">
+		   <tbody>
+		     <tr class="main_1">
+		       <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+		       <td width="419" align="center">Sửa kế hoạch mua sắm</td>
+		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+		       </tr>
+		     <tr>
+		       <td colspan="3" align="left"><form name="frm_suakehoachmuasam" id="frm_suakehoachmuasam">
+		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
+		           <tbody>
+		             <tr>
+		               <td height="22" class="level_1_1"></td>
+		               <td class="level_1_1"></td>
+		               </tr>
+		             <tr>
+		               <td height="22" align="right" class="level_1_2">Năm:</td>
+		               <td width="70%" align="left" class="level_1_2"><label for="cbo_namsua"></label>
+		                 <select name="cbo_namsua" id="cbo_namsua">
+		                   <option>2012</option>
+		                   </select></td>
+		               <tr>
+		                 <td height="22" align="right" class="level_1_1">Chọn đơn vị:</td>
+		                 <td align="left" class="level_1_1"><label for="cbo_chondonvisua"></label>
+		                   <select name="cbo_chondonvisua" id="cbo_chondonvisua">
+		                     <option>Bộ môn công nghệ phần mềm</option>
+		                     </select></td>
+		                 </tr>
+		             <!--bang thuoc tinh dat o day-->
+		             <tr>
+		               <td align="center" height="300" class="level_1_1" colspan="4" valign="top"><div class="yui3-skin-sam">
+		                 <div id="mytable2"></div>
+		                 </div></td>
+		               </tr>
+		             <tr>
+		               <td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_suakehoachmuasam" id="btn_suakehoachmuasam" type="button" class="button_1" value="Sửa"></td>
+		               </tr>
+		             <tr>
+		               <td colspan="2" height="22" align="center" class="level_1_2"></td>
+		               </tr>
+		             </tbody>
+		           </table>
+		         </form></td>
+		       </tr>
+		     </tbody>
+		   </table>
+<br>
 		<br>
         <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
@@ -177,7 +231,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoaban">
+          	<form name="frm_xoakehoachmuasam" id="frm_xoakehoachmuasam">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -185,19 +239,21 @@ $(document).ready(function() {
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn tên loại thiết bị </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
+					<td height="22" align="right" class="level_1_1">Chọn năm: </td>
+					<td width="50%" align="left" class="level_1_1"><span class="level_1_2">
+					  <select name="cbo_namxoa" id="cbo_namxoa">
+					    <option>2012</option>
+					    </select>
+					</span></td>
 					
 			</tr>              
              <tr>
-					<td height="22" align="right" class="level_1_2">Chọn tên thiết bị </td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenthietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
+					<td height="22" align="right" class="level_1_2"> Chọn đơn vị:</td>
+					<td width="50%" align="left" class="level_1_2"><span class="level_1_1">
+					  <select name="cbo_chondonvixoa" id="cbo_chondonvixoa">
+					    <option>Bộ môn công nghệ phần mềm</option>
+					    </select>
+					</span></td>
 					
 			</tr>    
             <tr>

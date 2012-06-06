@@ -16,10 +16,11 @@
 <title>Duyệt phiếu dự trù văn phòng phẩm</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
-<script type="text/javascript" src="../js/ban.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/ban.js"></script>
+<script type="text/javascript" src="js/table-khms.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -42,23 +43,11 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 }
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
-	});
-	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
-	});
+	fillcombo2('get_list_nam.php',document.frm_duyetkhms.cbo_nam);
+	fillcombo('get_list_donvi.php',document.frm_duyetkhms.cbo_chondonvi);
+	fillcombo2('get_list_nam.php',document.frm_boduyet.cbo_namboduyet);
+	fillcombo('get_list_donvi.php',document.frm_boduyet.cbo_chondonviboduyet);
+	createTable();
 }); 
 </script>
 </head>
@@ -81,7 +70,7 @@ $(document).ready(function() {
 </script>	 
 
 <!--Thẻ hiển thị thông tin khi đăng nhập-->
-<div style="Z-INDEX: 1; LEFT: 575px; WIDTH: 200px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
+<div style="Z-INDEX: 1; LEFT: 575px; WIDTH: 180px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
 <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
 	<a class="white" href="javascript:thoat();">Thoát</a>
     <br>Xin chào, <?=$_SESSION['hoten']?>
@@ -148,38 +137,36 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
-            <table width="108%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+          	<form name="frm_duyetkhms" id="frm_duyetkhms">
+            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
               		<td height="22" class="level_1_1"></td>
                     <td class="level_1_1"></td>
               </tr>
               <tr>
-					<td height="22" align="right" class="level_1_2">Chọn mã kế hoạch mua sắm:</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tenloaithietbi" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
+					<td height="22" align="right" class="level_1_2">Chọn năm:</td>
+					<td width="50%" align="left" class="level_1_2"><span class="level_1_1">
+					  <select name="cbo_nam" id="cbo_nam">
+					    </select>
+					</span></td>
 			</tr>
             <tr>
-					<td height="30" align="right" class="level_1_1">Năm mua sắm</td>
-					<td width="50%" align="left" class="level_1_1"><label for="select"></label>
-					  <select name="select" id="select">
+					<td height="30" align="right" class="level_1_1">Chọn đơn vị:</td>
+					<td width="50%" align="left" class="level_1_1"><label for="cbo_chondonvi"></label>
+					  <select name="cbo_chondonvi" id="cbo_chondonvi">
 					    </select></td>
 			</tr>               
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2">
-                <div class="yui3-skin-sam">                    
-                    <div id="mytable">
-                      <p>&nbsp;</p>
-                      <p>&nbsp;</p>
-                    </div>                    
-                    </div>
-                </td>
+                <td colspan="2" height="22" align="center" class="level_1_2"><div class="yui3-skin-sam">
+                  <div id="mytable"></div>
+                </div></td>
               </tr>
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Duyệt"></td>
+              </tr>
+              <tr>
+                <td colspan="2" height="22" align="center" class="level_1_2">&nbsp;</td>
               </tr>
 			  
 	
@@ -199,7 +186,7 @@ $(document).ready(function() {
 		       <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
 		       </tr>
 		     <tr>
-		       <td colspan="3" align="left"><form name="frm_themban">
+		       <td colspan="3" align="left"><form name="frm_boduyet" id="frm_boduyet">
 		         <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
 		           <tbody>
 		             <tr>
@@ -207,13 +194,16 @@ $(document).ready(function() {
 		               <td class="level_1_1"></td>
 		               </tr>
 		             <tr>
-		               <td height="22" align="right" class="level_1_2">Chọn mã kế hoạch mua sắm:</td>
-		               <td width="50%" align="left" class="level_1_2"><select name="cbo_tenloaithietbi2" class="cbo" style="width:100%;">
+		               <td height="22" align="right" class="level_1_2">Chọn năm:</td>
+		               <td width="50%" align="left" class="level_1_2"><select name="cbo_namboduyet" class="cbo" id="cbo_namboduyet" style="width:100%;">
 		                 </select></td>
 		               </tr>
 		             <tr>
-		               <td height="30" align="right" class="level_1_1">Năm mua sắm</td>
-		               <td width="50%" align="left" class="level_1_1"><input name="txt_tenthietbi2" type="text" disabled class="txtbox" style="width:100%" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
+		               <td height="30" align="right" class="level_1_1">Chọn đơn vị:</td>
+		               <td width="50%" align="left" class="level_1_1"><span class="level_1_2">
+		                 <select name="cbo_chondonviboduyet" class="cbo" id="cbo_chondonviboduyet" style="width:100%;">
+		                   </select>
+		               </span></td>
 		               </tr>
 		             <tr>
 		               <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Bỏ duyệt"></td>
