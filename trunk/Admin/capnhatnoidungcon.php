@@ -18,8 +18,11 @@
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhatnoidungcon.js"></script>
+<script type="text/javascript" src="js/table-noidungcon.js"></script>
+<script type="text/javascript" src="js/yui/yui-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() { 
+	createTable();
 	fillcombo('get_list_noidunglon.php',document.frm_themnoidungcon.cbo_tennoidunglon);
 	fillcombo('get_list_noidunglon.php',document.frm_suanoidungcon.cbo_tennoidunglon);
 	fillcombo('get_list_noidunglon.php',document.frm_themnoidungcon.cbo_tennoidungcon);
@@ -30,11 +33,11 @@ $(document).ready(function() {
 		get_info_manoidunglonthem('get_info_manoidunglon.php',document.frm_themnoidungcon);
 	});
 	$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidungcon"]').change(function(){
-		get_info_manoidungconsua('get_info_manoidungcon.php',document.frm_suanoidungcon);
+		get_info_noidungconsua('get_info_noidungcon.php',document.frm_suanoidungcon);
 	});
-	$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidunglon"]').change(function(){
+	/*$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidunglon"]').change(function(){
 		get_info_manoidunglonsua('get_info_manoidunglon.php',document.frm_suanoidungcon);
-	});
+	});*/
     });
 </script>
 <script>	
@@ -47,13 +50,13 @@ $(document).ready(function() {
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" ondragstart="return false" onselectstart="return false" class="yui3-skin-sam">  
-<table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
+<table width="872" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tbody>  
   <!--Bắt đầu của HEADER-->
   <tr> 
-    <td height="26" valign="middle">       	 
+    <td width="872" height="26" valign="middle">       	 
 	<!--Thẻ hiển thị thông tin khi đăng nhập-->
-	<div style="Z-INDEX: 1; LEFT: 550px; WIDTH: 200px; POSITION: absolute; TOP: 46px; HEIGHT: 30px" align="center">
+	<div style="Z-INDEX: 1; LEFT: 626px; WIDTH: 200px; POSITION: absolute; TOP: 51px; HEIGHT: 30px" align="center">
 		<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
 			<a class="white" href="../doimatkhauUI.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
       <br>Xin chào, <?=$_SESSION['hoten']?>
@@ -65,9 +68,9 @@ $(document).ready(function() {
    <tbody><tr>
      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
        <tbody><tr>
-         <td class="tl_header">&nbsp;</td>
-         <td class="tc_header">&nbsp;</td>
-         <td class="tr_header">&nbsp;</td>
+         <td width="20" class="tl_header">&nbsp;</td>
+         <td width="832" class="tc_header">&nbsp;</td>
+         <td width="20" class="tr_header">&nbsp;</td>
        </tr>
        <tr>
          <td class="cl_header">&nbsp;</td>
@@ -90,7 +93,7 @@ $(document).ready(function() {
   
   <tr>
 	<td height="54%" valign="middle">
-    	<table align="center" border="0" cellpadding="0" cellspacing="0" width="752">      
+    	<table align="center" border="0" cellpadding="0" cellspacing="0" width="847">      
 	    <tbody>
         <tr height="10">        
 	   	<td align="center" colspan="3">
@@ -108,12 +111,12 @@ $(document).ready(function() {
         </tr>                        
       <tr>
       <!--BẮT ĐẦU LEFT MAIN INFO-->
-      <td align="center" width="100%"><table width="500" border="0" cellpadding="0" cellspacing="0">
+      <td align="center" width="100%"><table width="777" border="0" cellpadding="0" cellspacing="0">
         <tbody>
           <tr class="main_1">
-            <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-            <td width="419" align="center">Thêm nội dung con</td>
-            <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+            <td width="212" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+            <td width="366" align="center">Thêm nội dung con</td>
+            <td width="199" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
           </tr>
           <tr>
             <td colspan="3" align="left"><form name="frm_themnoidungcon" id="frm_themnoidungcon">
@@ -150,7 +153,7 @@ $(document).ready(function() {
                       <input name="Reset" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
                   </tr>
                   <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_1"></td>
+                    <td colspan="2" height="22" align="center" class="level_1_1">     </td>
                   </tr>
                 </tbody>
               </table>
@@ -160,19 +163,19 @@ $(document).ready(function() {
           </tr>
         </tbody>
       </table>
-      <table width="500" border="0" cellpadding="0" cellspacing="0">
+      <table width="779" border="0" cellpadding="0" cellspacing="0">
         <tbody>
           <tr class="main_1">
-            <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-            <td width="419" align="center">Sửa nội dung con</td>
-            <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+            <td width="211" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+            <td width="368" align="center">Sửa nội dung con</td>
+            <td width="200" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
           </tr>
           <tr>
             <td colspan="3" align="left"><form name="frm_suanoidungcon" id="frm_suanoidungcon">
               <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
                 <tr>
                   <td height="22" align="right" class="level_1_1">&nbsp;</td>
-                  <td height="22" align="center" class="level_1_1">&nbsp;</td>
+                  <td width="50%" height="22" align="center" class="level_1_1">&nbsp;</td>
                 </tr>
                 <tr>
                   <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
@@ -182,35 +185,20 @@ $(document).ready(function() {
                     </select></td>
                 </tr>
                 <tr>
-                  <td height="22" align="right" class="level_1_1">Mã nội dung con: </td>
-                  <td height="22" align="left" class="level_1_1"><label for="txt_manoidungcon"></label>
-                    <input name="txt_manoidungcon" type="text" disabled id="txt_manoidungcon" readonly="readonly"></td>
-                </tr>
+                <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
+                    <div class="yui3-skin-sam">                    
+                    <div id="mytable"></div>                    
+                    </div>
+                    </td>
+                  </tr>
                 <tbody>
-                  <tr>
-                    <td height="22" align="right" class="level_1_2">Chọn tên nội dung lớn:</td>
-                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tennoidunglon" class="cbo" id="cbo_tennoidunglon" style="width:100%;">
-                      </select></td>
-                    
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Mã nội dung lớn:</td>
-                    <td height="22" align="left" class="level_1_1"><label for="txtmndl"></label>
-                      <input name="txt_manoidunglon" type="text" disabled id="txt_manoidunglon" readonly="readonly"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_2">Tên nội dung con mới:</td>
-                    <td height="22" align="center" class="level_1_2"><label for="txttenndcsl"></label>
-                      <label for="cbo_tennoidungconmoi"></label>
-                      <select name="cbo_tennoidungconmoi" id="cbo_tennoidungconmoi" style="width:100%">
-                      </select></td>
-                  </tr>
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_luunoidungcon" type="button" class="button_1" id="btn_luunoidungcon" value="Lưu">
                       <input name="Reset" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
                   </tr>
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_1"></td>
-                  </tr>
+                    </tr>
                 </tbody>
               </table>
               
@@ -218,53 +206,7 @@ $(document).ready(function() {
             </td>
           </tr>
         </tbody>
-      </table>
-      <table width="500" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-          <tr class="main_1">
-            <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-            <td width="419" align="center">Xóa nội dung con</td>
-            <td width="180" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-          </tr>
-          <tr>
-            <td colspan="3" align="left"><form name="frm_xoanoidungcon" id="frm_xoanoidungcon">
-              <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">
-                <tbody>
-                  <tr>
-                    <td height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_2">Chọn tên nội dung con:</td>
-                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tennoidungconxoa" class="cbo" id="cbo_tennoidungconxoa" style="width:100%;">
-                    </select></td>
-                  
-                  <tr>
-                    <td height="22" align="right" class="level_1_1"> Mã nội dung con:</td>
-                    <td height="22" align="left" class="level_1_1"><label for="txttendc2"></label>
-                      <input name="txt_manoidungcon" type="text" disabled id="txt_manoidungcon" readonly="readonly"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Tên nội dung lớn:</td>
-                    <td height="22" align="center" class="level_1_1"><label for="txtmndl"></label>
-                      <input name="txt_tennoidunglon" type="text" disabled id="txt_tennoidunglon" style="width:100%" readonly="readonly"></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" id="btn_xoanoidungcon" value="Xóa">
-                      <input name="Reset" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_1"></td>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </td>
+      </table></td>
       <!--KẾT THÚC LEFT MAIN INFO-->            
       </tr>   
     </tbody></table>    </td>
