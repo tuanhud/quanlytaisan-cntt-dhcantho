@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 2.11.11
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 30, 2012 at 12:43 PM
+-- Generation Time: Jun 08, 2012 at 10:53 AM
 -- Server version: 5.0.91
--- PHP Version: 5.2.17
+-- PHP Version: 5.2.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -94,6 +94,10 @@ CREATE TABLE IF NOT EXISTS `coquyen` (
 -- Dumping data for table `coquyen`
 --
 
+INSERT INTO `coquyen` (`MSCB`, `MaQuyen`) VALUES
+('1', 'CBQLBM'),
+('2', 'GV'),
+('3', 'ADMIN');
 
 -- --------------------------------------------------------
 
@@ -171,7 +175,8 @@ INSERT INTO `donvi` (`MSDV`, `TenDV`) VALUES
 ('4', 'Hệ thống thông tin'),
 ('3', 'Công nghệ phần mềm'),
 ('1', 'Khoa học máy tính'),
-('2', 'Mạng máy tính và truyền thông');
+('2', 'Mạng máy tính và truyền thông'),
+('5', '');
 
 -- --------------------------------------------------------
 
@@ -319,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `nam` (
 --
 
 INSERT INTO `nam` (`Nam`) VALUES
-('');
+('2012');
 
 -- --------------------------------------------------------
 
@@ -366,10 +371,9 @@ CREATE TABLE IF NOT EXISTS `nguoidung` (
 --
 
 INSERT INTO `nguoidung` (`MSCB`, `MSDV`, `TenCB`, `Gioitinh`, `NgaySinh`, `ThangSinh`, `NamSinh`, `Email`, `Diachi`, `SDT`, `Matkhau`) VALUES
-('111111', '3', 'Nhân', 'Nam', '1', '2', '1990', 'nhan@yahoo.com', 'Ben Tre', '25225252222', 'aaaaaa'),
-('000009', '4', 'tin', 'Nam', '20', '2', '2010', 'tin@yahoo.com.vn', 'afgajfgw', '73965237627', 'ksghfksghf'),
-('313131', '4', 'afadad', 'Nam', '29', '1', '2000', 'lvty@yahoo.com.vn', 'aUKDQUAGHA', '1471947', 'JFGA'),
-('222222', '4', 'tay', 'Nam', '1', '2', '2011', 'lvtay92@yahoo.com.vn', 'hakugfaugf', '72562965927', 'jlhgsghsuo');
+('3', '1', 'Đoàn Văn Nhân', 'Nam', '17', '10', '1990', 'changtraidethuong@yahoo.com.vn', 'Ben Tre', '01668510075', 'nhan'),
+('1', '4', 'Nhân đại ca', 'Nam', '17', '10', '1990', 'lvty@yahoo.com.vn', 'Bến', '01668510075', '1'),
+('2', '4', 'tay', 'Nữ', '1', '2', '1990', 'lvtay92@yahoo.com.vn', 'An Giang', '72562965927', '1');
 
 -- --------------------------------------------------------
 
@@ -389,6 +393,8 @@ CREATE TABLE IF NOT EXISTS `nhacungcap` (
 -- Dumping data for table `nhacungcap`
 --
 
+INSERT INTO `nhacungcap` (`MaNCC`, `TenNCC`, `DiaChiNCC`, `SoDTNCC`) VALUES
+('1', 'SamSung', 'Han Quoc', '0909009090');
 
 -- --------------------------------------------------------
 
@@ -406,6 +412,8 @@ CREATE TABLE IF NOT EXISTS `nhasanxuat` (
 -- Dumping data for table `nhasanxuat`
 --
 
+INSERT INTO `nhasanxuat` (`MaNSX`, `TenNSX`) VALUES
+('1', 'SamSung');
 
 -- --------------------------------------------------------
 
@@ -525,6 +533,8 @@ CREATE TABLE IF NOT EXISTS `quy` (
 -- Dumping data for table `quy`
 --
 
+INSERT INTO `quy` (`Quy`) VALUES
+('I');
 
 -- --------------------------------------------------------
 
@@ -544,7 +554,9 @@ CREATE TABLE IF NOT EXISTS `quyen` (
 --
 
 INSERT INTO `quyen` (`MaQuyen`, `TenQuyen`, `DienGiaiQuyen`) VALUES
-('1', 'daad', 'dada');
+('ADMIN', 'admin', 'Quản trị'),
+('GV', 'Giảng Viên', 'Giảng Viên'),
+('CBQLBM', 'CBQLBM', 'Cán bộ quản lý bộ môn');
 
 -- --------------------------------------------------------
 
@@ -564,6 +576,8 @@ CREATE TABLE IF NOT EXISTS `sotiencap` (
 -- Dumping data for table `sotiencap`
 --
 
+INSERT INTO `sotiencap` (`Nam`, `MSDV`, `SoTien`) VALUES
+('2012', '3', '108');
 
 -- --------------------------------------------------------
 
@@ -589,7 +603,7 @@ CREATE TABLE IF NOT EXISTS `taisan` (
 INSERT INTO `taisan` (`MaTaiSan`, `TenDonViTinh`, `MaLoai`, `TenTaiSan`, `TinhTrang`) VALUES
 ('1', 'Cái', '1', 'àhalhflagf', 'àaaaaaaaaaaaaaaa'),
 ('2', 'Cái', '1', 'sfgasfs', 'afafa'),
-('3', 'Kg', '1', 'àdaf', 'hu');
+('3', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -647,6 +661,8 @@ CREATE TABLE IF NOT EXISTS `taisanthuocdonvi` (
 -- Dumping data for table `taisanthuocdonvi`
 --
 
+INSERT INTO `taisanthuocdonvi` (`MSDV`, `MaTaiSan`, `SoLuongCuaDonVi`, `DonGiaTS`) VALUES
+('1', '1', 3, '30000');
 
 -- --------------------------------------------------------
 
