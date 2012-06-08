@@ -1,0 +1,45 @@
+RewriteEngine on
+
+
+# vitinhphinom da chinh sua khong ca nhan hoa. ban khong can chinh sua gi trong nay. moi van de truc trac minh se khong ho tro:
+
+# RULE NAME: Redirect non-www website to www
+# (http://vitinhphinom.tk to http://www.vitinhphinom.tk)
+
+ # RewriteCond %{HTTPS} (on)?
+ #RewriteCond %{HTTP:Host} ^(?!www\.)(.+)$ [NC]
+ #RewriteCond %{REQUEST_URI} (.+)
+ #RewriteRule .? http(?%1s)://www.%2%3 [R=301]
+
+RewriteRule ^index.html$ /at/index.php [L]
+RewriteRule ^index.asp$ /at/index.php [L]
+RewriteRule ^index.aspx$ /at/index.php [L]
+RewriteRule ^index.xhtml$ /at/index.php [L]
+RewriteRule ^index.xml$ /at/index.php [L]
+RewriteRule ^trang_chu$ /at/index.php [L]
+# huong dan, lien he, quy dinh
+RewriteRule ^([a-zA-Z]*).html index.php?page=$1 
+RewriteRule ^intro_([0-9]*).html index.php?page=intro&id=$1  
+
+# anh
+RewriteRule ^album_([0-9]*).html index.php?page=album&viewParent=$1 
+RewriteRule ^album_([0-9]*)_([0-9]*).html index.php?page=album&viewParent=$1&viewSub=$2  
+RewriteRule ^album_([0-9]*)_([0-9]*)-([0-9]*).html index.php?page=album&viewParent=$1&viewSub=$2&view=$3  
+
+
+
+
+# san pham
+RewriteRule ^product_([0-9]*).html index.php?page=product&viewParent=$1 
+RewriteRule ^product_([0-9]*)_([0-9]*).html index.php?page=product&viewParent=$1&viewSub=$2 
+RewriteRule ^product_([0-9]*)_([0-9]*)-([0-9]*).html index.php?page=product&viewParent=$1&viewSub=$2&view=$3 
+RewriteRule ^productView_([0-9]*)_([0-9]*)_([0-9]*).html index.php?page=productView&viewParent=$1&viewSub=$2&id=$3  
+
+
+# dichvu
+RewriteRule ^service_([0-9]*).html index.php?page=product2&viewParent2=$1 
+RewriteRule ^service_([0-9]*)_([0-9]*).html index.php?page=product2&viewParent2=$1&viewSub2=$2 
+RewriteRule ^service_([0-9]*)_([0-9]*)-([0-9]*).html index.php?page=product2&viewParent2=$1&viewSub2=$2&view=$3 
+RewriteRule ^serviceView_([0-9]*)_([0-9]*)_([0-9]*).html index.php?page=productView2&viewParent2=$1&viewSub2=$2&id=$3  
+
+
