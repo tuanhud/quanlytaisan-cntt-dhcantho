@@ -41,6 +41,10 @@ var _admin;
 							{
 								if(n==0)
 									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
+									if(n==2)
+									alert("Đã xảy ra lỗi1.\nBạn hãy kiểm tra lại.")
+									if(n==3)
+									alert("Đã xảy ra lỗi2.\nBạn hãy kiểm tra lại.")
 								else if(n==1)
 								{
 									alert("Thành công !")

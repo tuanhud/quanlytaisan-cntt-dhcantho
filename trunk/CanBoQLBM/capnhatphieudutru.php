@@ -25,6 +25,26 @@
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhatphieudutruvpp.js"></script>
 <script type="text/javascript">
+function keypress(e){
+var keypressed = null;
+if (window.event)
+	keypressed = window.event.keyCode; //IE
+else 
+	keypressed = e.which; //NON-IE, Standard
+
+if (keypressed < 48 || keypressed > 57)
+{ 
+	//CharCode của 0 là 48 (Theo bảng mã ASCII)
+	//CharCode của 9 là 57 (Theo bảng mã ASCII)
+	if (keypressed == 8 || keypressed == 127)
+	{
+	//Phím Delete và Phím Back
+	return;
+	}
+	alert("Bạn chỉ được phép nhập số!");
+	return false;
+}
+}
 $(document).ready(function() {
 	$btn=0; 
 	fillcombo2('get_list_nam.php',document.frm_lapphieudutru.cbo_namthem);
@@ -174,8 +194,8 @@ while($row=mysql_fetch_array($list))
 	echo "<td>$row[tenvpp]</td>";
 	echo "<td align=\"center\">$row[tendonvitinh]</td>";
 	echo "<td>$row[tennsx]</td>";
-	echo "<td><input type='text' style='width:100%' name='sl$row[mavpp]' id='sl$row[mavpp]'></td>";
-	echo "<td><input type='text' name='dg$row[mavpp]' id='dg$row[mavpp]'></td>";
+	echo "<td><input type='text' style='width:100%' name='sl$row[mavpp]' id='sl$row[mavpp]' onKeyPress='return keypress(event)'></td>";
+	echo "<td><input type='text' name='dg$row[mavpp]' id='dg$row[mavpp]' onKeyPress='return keypress(event)'></td>";
 	echo "</tr>";
 	}
 ?>
