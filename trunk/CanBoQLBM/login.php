@@ -16,7 +16,7 @@
 		//kiem tra xem co ton tai nguoi voi maso va matkhau duoc cung cap hay khong ?
 			$sql="select * from nguoidung a, coquyen b
 					where a.MSCB=b.MSCB
-					and b.MaQuyen=CBQLBM
+					and b.MaQuyen='CBQLBM'
 					and a.MSCB ='".$_POST['txtDinhDanh']."'
 					and Matkhau ='".$_POST['txtMatKhau']."'";
 					
