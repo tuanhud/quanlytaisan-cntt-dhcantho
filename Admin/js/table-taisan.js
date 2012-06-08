@@ -26,13 +26,19 @@ function createTable(){
     }
 	var fmtChkBox2 = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr2" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
 	var fmttextbox = function(o)
 	{
-    	var cell = '<input type="text" class="textbox" />';
+    	var cell = '<input type="text" class="textboxtemp" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
+	var fmttextbox2 = function(o)
+	{
+    	var cell = '<input type="text" class="textboxtemp2" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
@@ -43,7 +49,7 @@ function createTable(){
 				{key: "ma",label:"Mã tài sản", sortable: true},
 				{key: "ten",label:"Tên tài sản", sortable: true},
 				{key: "soluong",label:"Số lượng",formatter: fmttextbox, allowHTML:true},
-				{key: "dongia",label:"Đơn giá",formatter: fmttextbox, allowHTML:true}
+				{key: "dongia",label:"Đơn giá",formatter: fmttextbox2, allowHTML:true}
 		];
 		
 	dt = new Y.DataTable({
@@ -210,6 +216,7 @@ function createTable(){
 
 function getRecord2(phpfile,madonvi)
 {
+	dt.reset();
 	http=GetXmlHttpObject();
 	var params ="madonvi="+madonvi;
 	//mo ket noi bang phuong thuc post
@@ -242,7 +249,7 @@ function getRecord2(phpfile,madonvi)
 }
 
 
-function table() {
+/*function table() {
 	var loader = new YAHOO.util.YUILoader();
 	loader.loadOptional = true;
 	loader.filter = 'raw';
@@ -323,4 +330,4 @@ function table() {
 			});
 		}
 	});
-}
+}*/

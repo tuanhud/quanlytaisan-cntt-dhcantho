@@ -15,17 +15,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật thiết bị thuộc đơn vị</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<style>
-			.th {
-				background: url(http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/sprite.png)  repeat-x 0 0;
-			}
-		</style>
-<script type="text/javascript" src="js/yui.js"></script>
-<script src="js/yuiloader-min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/yui/yui.js"></script>
 <script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/table-taisan.js"></script>
+<script type="text/javascript" src="js/taisan_donvi.js"></script>
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -66,6 +61,9 @@ $(document).ready(function() {
 			checkbox_duyetkhms();*/
 			
 		});
+		$('form[name="frm_capnhattaisandonvi"] input[name="btncapnhat"]').click(function(){		
+		update_taisan_donvi(document.frm_capnhattaisandonvi);
+	});
 }); 
 </script>
 </head>
@@ -150,7 +148,7 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm thiết bị thuộc đơn vị </td>
+          <td width="419" align="center">Cập nhật thiết bị thuộc đơn vị </td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -180,7 +178,7 @@ $(document).ready(function() {
 					</td>
               </tr>
 			  <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Cập nhật"></td>
+              		<td colspan="2" height="22" align="center" class="level_1_2"><input name="btncapnhat" type="button" class="button_1" value="Cập nhật"></td>
               </tr> 
 			 
               </tbody>
