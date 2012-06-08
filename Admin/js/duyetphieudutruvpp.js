@@ -37,13 +37,14 @@ var _admin;
 									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
 								else if(n==1) 
 								{
-									alert("Thành công.")
+									alert("Thành công."),
 									fillcombo('get_list_donvi.php',document.frm_duyetphieudutruvpp.cbo_donviduyet);
 	fillcombo2('get_list_nam.php',document.frm_duyetphieudutruvpp.cbo_namduyet);
 	fillcombo2('get_list_quy.php',document.frm_duyetphieudutruvpp.cbo_quyduyet);
 	fillcombo('get_list_donvi.php',document.frm_huyphieudutruvpp.cbo_donvihuy);
 	fillcombo2('get_list_nam.php',document.frm_huyphieudutruvpp.cbo_namhuy);
 	fillcombo2('get_list_quy.php',document.frm_huyphieudutruvpp.cbo_quyhuy);
+	fillcombo3bien('get_list_maphieudutruvpp.php',document.frm_duyetphieudutruvpp.cbo_donviduyet,document.frm_duyetphieudutruvpp.cbo_namduyet,document.frm_duyetphieudutruvpp.cbo_quyduyet, document.frm_duyetphieudutruvpp.cbo_maphieuduyet);
 								}
 								else if(n==2)
 								{
@@ -84,6 +85,7 @@ var _admin;
 	fillcombo('get_list_donvi.php',document.frm_huyphieudutruvpp.cbo_donvihuy);
 	fillcombo2('get_list_nam.php',document.frm_huyphieudutruvpp.cbo_namhuy);
 	fillcombo2('get_list_quy.php',document.frm_huyphieudutruvpp.cbo_quyhuy);
+	fillcombo3bien('get_list_maphieudutruvpp2.php',document.frm_huyphieudutruvpp.cbo_donvihuy,document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
 								}
 								else if(n==2)
 								{
