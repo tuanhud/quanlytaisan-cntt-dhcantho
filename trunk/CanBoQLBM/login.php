@@ -16,7 +16,7 @@
 		//kiem tra xem co ton tai nguoi voi maso va matkhau duoc cung cap hay khong ?
 			$sql="select * from nguoidung a, coquyen b
 					where a.MSCB=b.MSCB
-					and b.MaQuyen=3
+					and b.MaQuyen=CBQLBM
 					and a.MSCB ='".$_POST['txtDinhDanh']."'
 					and Matkhau ='".$_POST['txtMatKhau']."'";
 					
@@ -34,7 +34,7 @@
 			$hoten = $row['TenCB'];
 			session_register("hoten");
 			//dua quyen vao session
-			$maquyen="3";
+			$maquyen="CBQLBM";
 			session_register("maquyen");
 			echo "<script language=javascript>window.location = 'main.php';</script>"; 
 			exit;

@@ -4,7 +4,7 @@
 	//kiem tra quyen truoc khi hien thi trang
 	//if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="BCHCHSV")
 	//{
-	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
+	//echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	
 ?>
 <html>
@@ -13,6 +13,7 @@
 <title>Cán bộ quản lý bộ môn</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="../js/yui-min_3.5.js"></script>
 <script type="text/javascript" src="../js/ajax.js"></script>
 <script type="text/javascript" src="../js/date.js"></script>
 <script type="text/javascript" src="capnhatcanhan.js"></script>
