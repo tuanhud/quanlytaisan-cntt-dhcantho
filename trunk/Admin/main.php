@@ -32,7 +32,7 @@
 	<!--Thẻ hiển thị thông tin khi đăng nhập-->
 	<div style="Z-INDEX: 1; LEFT: 550px; WIDTH: 200px; POSITION: absolute; TOP: 46px; HEIGHT: 30px" align="center">
 		<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-			<a class="white" href="capnhatthongtincanhanad.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
+			<a class="white" href="capnhatthongtincanhan.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
       <br>Xin chào, <?=$_SESSION['hoten']?>
     		<br>
     		(<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">

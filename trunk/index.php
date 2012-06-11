@@ -15,9 +15,9 @@
 	
              <table width="100%" border="0" cellspacing="0" cellpadding="0">
        			<tr>
-		         <td class="tl_header">&nbsp;</td>
-        		 <td class="tc_header">&nbsp;</td>
-		         <td class="tr_header">&nbsp;</td>
+		         <td width="20" class="tl_header">&nbsp;</td>
+        		 <td width="738" class="tc_header">&nbsp;</td>
+		         <td width="119" class="tr_header">&nbsp;</td>
        			</tr>
        			<tr>	
 		         <td class="cl_header">&nbsp;</td>

@@ -12,10 +12,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cán bộ quản lý bộ môn</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/yui-min_3.5.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/date.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/yui-min_3.5.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
 <script type="text/javascript" src="capnhatcanhan.js"></script>
 <script type="text/javascript">	
 	function thoat() {
@@ -83,13 +83,14 @@ $(document).ready(function()
   <tr>
 	<td height="50%" valign="middle">
     	<table align="center" border="0" cellpadding="0" cellspacing="0" width="752">      
-	    <tbody>
+	    
         <tr height="10">        
-	   	<td align="center" colspan="3">
-        <?php
-		include_once('node-menunav-3ad.php');
-		?> 
-        </td>
+			<td align="center" colspan="3">
+			<?php
+			include_once('node-menunav-3ad.php');
+			?> 
+			</td>    
+        
 	    <!--<td align="center" >&nbsp;</td>
 	    <td align="center">&nbsp;</td>-->
 	    </tr>
@@ -98,7 +99,8 @@ $(document).ready(function()
         <td align="center" >&nbsp;</td>
         <td align="center" >&nbsp;</td>
         </tr>                        
-      <tr>
+      
+      
       <!--BẮT ĐẦU LEFT MAIN INFO-->
       <td align="center" width="100%"><table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
@@ -185,7 +187,7 @@ $(document).ready(function()
       </table></td>
       <!--KẾT THÚC LEFT MAIN INFO-->            
       </tr>   
-    </tbody></table></td>
+    </table></td>
   </tr>
   <!--Kết thúc của MAINPAGE-->
   <!--Bắt đàu của FOOTER-->
