@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Data Grid</title>
+    <script src="admin/js/yui.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+   var Y = YUI();
+   var loader = new Y.Loader({
+	   loadOptional:true,
+       filter: 'raw',
+       require: ["reset-fonts-grids","base","datatable","calendar"],
+	   insert: ({
+	   onSuccess: function() 
+		{
+			/*var formatterDispatcher = function (elCell, oRecord, oColumn,oData)
+			{
+				var meta = oRecord.getData('meta_' + oColumn.key);
+				oColumn.editorOptions = meta.editorOptions;
+				switch (meta) 
+				{
+					case 'Number':
+						YAHOO.widget.DataTable.formatNumber.call(this,elCell, oRecord, oColumn,oData);
+						break;
+					case 'Date':
+						YAHOO.widget.DataTable.formatDate.call(this,elCell, oRecord, oColumn,oData);
+						break;
+					case 'Text':
+						YAHOO.widget.DataTable.formatText.call(this,elCell, oRecord, oColumn,oData);
+						break;
+					case 'YesNoMaybe':
+						elCell.innerHTML = oData;
+						break;
+				}
+			};*/
+			
+			/*var editors = 
+			{
+				Text: new YAHOO.widget.TextboxCellEditor(),
+				Number:new YAHOO.widget.TextboxCellEditor(
+				{
+					validator:function (val)
+					{ 
+						val = parseFloat(val);
+						if (YAHOO.lang.isNumber(val)) {return val;}
+					}
+				}),
+				Date:new YAHOO.widget.DateCellEditor(),
+				YesNoMaybe:new YAHOO.widget.RadioCellEditor(
+				{
+					radioOptions:["yes","no","maybe"],disableBtns:true
+				})
+			};*/
+			/*var myColumnDefs = [
+				{key:"Rows",label:'&nbsp;',className:'th'},
+				{key:"A",formatter:formatterDispatcher,editor:new YAHOO.widget.BaseCellEditor()},
+				{key:"B",formatter:formatterDispatcher,editor:new YAHOO.widget.BaseCellEditor()},
+				{key:"C",formatter:formatterDispatcher,editor:new YAHOO.widget.BaseCellEditor()}
+
+			];*/
+			var cols = [
+				{name:'selectBox', label:'Chọn<input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
+				{name:'delete', label:'Xóa', formatter: fmtBlank, className:'cell-delete', allowHTML:true },
+				{key: "ma",label:"Mã tài sản", sortable: true},
+				{key: "ten",label:"Tên tài sản", sortable: true},
+				{key: "soluong",label:"Số lượng",formatter: fmttextbox, allowHTML:true},
+				{key: "dongia",label:"Đơn giá",formatter: fmttextbox2, allowHTML:true}
+			];
+
+			var records = ([
+				/*{Rows:1,A:1,meta_A:'Number',B:new Date(),meta_B:'Date',C:'hello world!',meta_C:'Text'},
+				{Rows:2,B:42,meta_B:'Number',A:new Date(2005,10,2),meta_A:'Date',C:'long time no see',meta_C:'Text'},
+				{Rows:3,C:1,meta_C:'Number',B:new Date(),meta_B:'Date',A:'hello world!',meta_A:'Text'},
+				{Rows:4,C:'yes',meta_C:'YesNoMaybe',B:new Date(),meta_B:'Date',A:'hello world!',meta_A:'Text'}*/
+				{ ma: "ga-3475", ten: "gadget",   soluong: "$6.99", dongia: "$5.99" },
+				{ ma: "ga-3475", ten: "gadget",   soluong: "$6.99", dongia: "$5.99" },
+				{ ma: "ga-3475", ten: "gadget",   soluong: "$6.99", dongia: "$5.99" },
+				{ ma: "ga-3475", ten: "gadget",   soluong: "$6.99", dongia: "$5.99" }
+ 
+			]);
+			dt = new Y.DataTable({
+			columns: cols,
+			data   : records, 
+			summary: 'Danh sách tài sản - thiết bị',
+			caption: 'Danh sách tài sản - thiết bị',
+			render : '#tableContainer',
+	
+});	
+			/*ds.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+			ds.responseSchema = {
+				fields: ['Rows','A','meta_A','B','meta_B','C','meta_C']
+			};
+*/
+			//var dt = new YAHOO.widget.DataTable("tableContainer", myColumnDefs,ds);
+			
+			
+			/*dt.subscribe("cellClickEvent", function (oArgs) 
+			{
+				var target = oArgs.target,
+					record = this.getRecord(target),
+					column = this.getColumn(target),
+					type = record.getData('meta_' + column.key);
+					
+
+				column.editor = editors[type];
+				this.showCellEditor(target);  
+			});
+		}*/
+		   
+		   }
+	   
+	   
+   }),
+});
+ /*  var out = loader.resolve(true);
+	var loader = new YAHOO.util.YUILoader();
+	loader.loadOptional = true;
+	loader.filter = 'raw';
+	loader.require("reset-fonts-grids","base","datatable","calendar");
+	loader.insert({ 
+		onSuccess: function() 
+		{
+			var formatterDispatcher = function (elCell, oRecord, oColumn,oData)
+			{
+				var meta = oRecord.getData('meta_' + oColumn.key);
+				oColumn.editorOptions = meta.editorOptions;
+				switch (meta) 
+				{
+					case 'Number':
+						YAHOO.widget.DataTable.formatNumber.call(this,elCell, oRecord, oColumn,oData);
+						break;
+					case 'Date':
+						YAHOO.widget.DataTable.formatDate.call(this,elCell, oRecord, oColumn,oData);
+						break;
+					case 'Text':
+						YAHOO.widget.DataTable.formatText.call(this,elCell, oRecord, oColumn,oData);
+						break;
+					case 'YesNoMaybe':
+						elCell.innerHTML = oData;
+						break;
+				}
+			};
+			
+			var editors = 
+			{
+				Text: new YAHOO.widget.TextboxCellEditor(),
+				Number:new YAHOO.widget.TextboxCellEditor(
+				{
+					validator:function (val)
+					{ 
+						val = parseFloat(val);
+						if (YAHOO.lang.isNumber(val)) {return val;}
+					}
+				}),
+				Date:new YAHOO.widget.DateCellEditor(),
+				YesNoMaybe:new YAHOO.widget.RadioCellEditor(
+				{
+					radioOptions:["yes","no","maybe"],disableBtns:true
+				})
+			};
+			var myColumnDefs = [
+				{key:"Rows",label:'&nbsp;',className:'th'},
+				{key:"A",formatter:formatterDispatcher,editor:new YAHOO.widget.BaseCellEditor()},
+				{key:"B",formatter:formatterDispatcher,editor:new YAHOO.widget.BaseCellEditor()},
+				{key:"C",formatter:formatterDispatcher,editor:new YAHOO.widget.BaseCellEditor()}
+
+			];
+
+			var ds = new YAHOO.util.DataSource([
+				{Rows:1,A:1,meta_A:'Number',B:new Date(),meta_B:'Date',C:'hello world!',meta_C:'Text'},
+				{Rows:2,B:42,meta_B:'Number',A:new Date(2005,10,2),meta_A:'Date',C:'long time no see',meta_C:'Text'},
+				{Rows:3,C:1,meta_C:'Number',B:new Date(),meta_B:'Date',A:'hello world!',meta_A:'Text'},
+				{Rows:4,C:'yes',meta_C:'YesNoMaybe',B:new Date(),meta_B:'Date',A:'hello world!',meta_A:'Text'}
+			]);
+			ds.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+			ds.responseSchema = {
+				fields: ['Rows','A','meta_A','B','meta_B','C','meta_C']
+			};
+
+			var dt = new YAHOO.widget.DataTable("tableContainer", myColumnDefs,ds);
+			
+			
+			dt.subscribe("cellClickEvent", function (oArgs) 
+			{
+				var target = oArgs.target,
+					record = this.getRecord(target),
+					column = this.getColumn(target),
+					type = record.getData('meta_' + column.key);
+					
+
+				column.editor = editors[type];
+				this.showCellEditor(target);  
+			});
+		}
+	});
+})();*/
+		</script>
+		<!--<style>
+			.th {
+				background: url(http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/sprite.png)  repeat-x 0 0;
+			}
+		</style>-->
+	</head>
+
+	<body class="yui-skin-sam">
+		<div id="doc"> 
+			<div id="bd" style="margin:2em">
+				<div id="tableContainer"></div>
+			</div>
+
+		</div>
+	</body>
+</html>
+
