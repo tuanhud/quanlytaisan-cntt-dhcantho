@@ -14,18 +14,18 @@
     if (isset($_POST['txtDinhDanh']) && isset($_POST['txtMatKhau']))
 	{   		
 		//kiem tra xem co ton tai nguoi voi maso va matkhau duoc cung cap hay khong ?
-			$sql="select * from nguoidung a, coquyen b
+			/*$sql="select * from nguoidung a, coquyen b
 					where a.MSCB=b.MSCB
 					and b.MaQuyen='ADMIN'
 					and a.MSCB ='".$_POST['txtDinhDanh']."'
 					and Matkhau ='".$_POST['txtMatKhau']."'";
 					
-			$db->setQuery($sql);
-		if ($db->numRecord()==1)
+			$db->setQuery($sql);*/
+		//if ($db->numRecord()==1)
 		{
 		 
 			//dua maso vao session
-			$msclb =$_POST['txtDinhDanh'];
+			/*$msclb =$_POST['txtDinhDanh'];
 			session_register("msclb") ;
 			$sql = "Select TenCB from nguoidung where MSCB = '".$msclb."'";			
 			$db->setQuery($sql);
@@ -35,16 +35,16 @@
 			session_register("hoten");
 			//dua quyen vao session
 			$maquyen="ADMIN";
-			session_register("maquyen");
+			session_register("maquyen");*/
 			echo "<script language=javascript>window.location = 'main.php';</script>"; 
 			exit;
 			
 			
 		}
-		else
-		{
+	//	else
+		/*{
 			echo "<script language=javascript> alert('Tên đăng nhập hoặc mật khẩu chưa chính xác.');window.location = 'loginUI.php';</script>";  
-		}  
+		}  */
     }
 	else
 	{

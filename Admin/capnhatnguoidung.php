@@ -293,22 +293,15 @@ $(document).ready(function()
               <tbody>
               <tr>
               		<td height="22" class="level_1_1"></td>
-                    <td class="level_1_2"></td>
-              </tr>
-              
-              <tr>
-					<td height="22" align="right" class="level_1_2">Chọn đơn vị </td>
-					<td width="50%" align="left" class="level_1_2"><select class="cbo" name="cbo_tendonvithem2" id="cbo_tendonvithem2" style="width:100%">
-					  </select>					
-                     </td>
+                    <td class="level_1_1"></td>
               </tr>
 			  <tr>
 					<td height="22" align="right" class="level_1_2">Chọn file Excel</td>
 					<td width="70%" align="left" class="level_1_2"><input name="file_import" id="file_import" type="file" style="width:100%"><input type="hidden" name="MAX_FILE_SIZE" value="100000"></td>
 			  </tr>
                <tr>
-					<td height="22" align="right" class="level_1_2">Chọn Sheet cần lưu</td>
-					<td width="70%" align="left" class="level_1_2">
+					<td height="22" align="right" class="level_1_1">Chọn Sheet cần lưu</td>
+					<td width="70%" align="left" class="level_1_1">
                     <select name="cbo_chonsheet" id="cbo_chonsheet" style="width:60">
                       <option value="0">1</option>
                       <option value="1">2</option>
