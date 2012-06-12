@@ -47,7 +47,7 @@ $(document).ready(function() {
 	fillcombo('get_list_donvi.php',document.frm_duyetkhms.cbo_chondonvi);
 	fillcombo2('get_list_nam.php',document.frm_boduyet.cbo_namboduyet);
 	fillcombo('get_list_donvi.php',document.frm_boduyet.cbo_chondonviboduyet);
-	createTable();
+	//createTable();
 }); 
 </script>
 </head>
