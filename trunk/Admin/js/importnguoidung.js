@@ -1,5 +1,6 @@
 var records;
-var dt, tieude;
+var dt;
+var data;
 // -------------------------
 //  Create Table 
 // -------------------------      
@@ -60,7 +61,7 @@ function createTable(){
 		
 		];
 	dt = new Y.DataTable({
-    columns: tieude,
+    columns: cols,
     data   : records,
 	summary: 'Danh sách thuộc tính',
     caption: 'Danh sách thuộc tính',
@@ -90,14 +91,14 @@ function getRecord2(phpfile)
 					key: 'price',
 					label: 'Khoa',
 				}, 0);*/
+				
 				for(var i=0;i<x.length;i++)
 			   { 
-					dt.data.add({ 
-							ma:x[i].getElementsByTagName('MA')[0].firstChild.nodeValue, 
-							ten:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue, 
-							giatri:x[i].getElementsByTagName('GIATRI')[0].firstChild.nodeValue,
-							});
+			   	data = ({
+							ma:x[i].getElementsByTagName('row')[0].firstChild.nodeValue, 
+						}); 
 				}
+				
 				
 	   }
 	}

@@ -118,9 +118,13 @@ function createTable_nguoidung(){
 				{name:'khoa', label:'Khoa',className:'align-center',
 				children:
 				[
-					{name:'duyetvpp', label:'Duyệt VPP',formatter: fmtChkBox8,allowHTML:true},
-					{name:'duyetkk', label:'Duyệt KK', formatter: fmtChkBox9, allowHTML:true},
-					{name:'duyetkhms',label:'Duyệt KHMS',formatter: fmtChkBox10, allowHTML:true},
+					{name:'khoa', label:'Duyệt',className:'align-center',
+						children:
+						[
+							{name:'duyetvpp', label:'VPP',formatter: fmtChkBox8,allowHTML:true},
+							{name:'duyetkk', label:'KK', formatter: fmtChkBox9, allowHTML:true},
+							{name:'duyetkhms',label:'KHMS',formatter: fmtChkBox10, allowHTML:true},
+						]},
 				]},
 		
 		];
