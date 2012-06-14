@@ -51,7 +51,7 @@ function createTable(){
     render : '#mytable',
 	
 });	
-	getRecord2('get_list_kehoachmuasam.php');
+	getRecord2('get_info_kehoachmuasam.php');
 
 	
 	// -------------------------
