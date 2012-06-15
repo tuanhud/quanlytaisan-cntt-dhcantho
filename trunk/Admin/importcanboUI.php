@@ -27,13 +27,10 @@ session_start();
      <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
 	<script type="text/javascript" src="js/table-taisan.js"></script>
     <script type="text/javascript" src="js/gettheme.js"></script>
-    
-    
 	<script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
-
 <script type="text/javascript" src="js/importcanbo.js"></script>
-<script type="text/javascript" src="js/table_nguoidung.js"></script>
+<script type="text/javascript" src="js/table_quyen_nguoidung.js"></script>
 <script type="text/javascript" src="js/check_quyen_nguoidung.js"></script>
 <script type="text/javascript" src="js/quyen_nguoidung.js"></script>
 <script type="text/javascript">
@@ -90,13 +87,16 @@ $(document).ready(function() {
               <tr>
 					<td height="22" align="left" class="level_1_2" width="90">Chọn đơn vị </td>
 					<td width="300" align="left" class="level_1_2">
-                  	<select class="cbo" name="tendonvithem" id="tendonvithem" style="width:200" ></select>
+                  	<!--<select class="cbo" name="tendonvithem" id="tendonvithem" style="width:200" ></select>-->
+                    <div id='jqxWidget2'></div>			
                  </td>
               </tr>
               <tr>
 					<td height="22" align="left" class="level_1_2">Mã số cán bộ</td>
 					<td align="left" class="level_1_2">
-                    	<select class="cbo" name="masocanbo" id="masocanbo" style="width:200"></select>
+                    	<!--<select class="cbo" name="masocanbo" id="masocanbo" style="width:200"></select>-->
+                       <div id='jqxWidget2'>
+        							</div>
                     </td>
 			  </tr>
               <tr>
@@ -144,20 +144,11 @@ $(document).ready(function() {
               <tr>
               		<td height="22" align="right" class="level_1_1"></td>
               		<td colspan="2" height="22" class="level_1_2">
-                     <input type="button" value="Xem lại dữ liệu" id="showWindowButton" />
                     <input type="button" name="btn_capnhat" id="btn_capnhat" class="button_1" value="Lưu">
                     </td>
               </tr>
               </tbody>
               </table>
-              <div style="visibility: hidden;" id='jqxWidget'>
-                            <div style="margin-top: 80px;" id="jqxgrid"></div>
-                            <div style="margin-top: 30px;">
-                                <div id="cellbegineditevent"></div>
-                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
-                           </div>
-                         
-                 </div>   
     
 	<?php
 	$strHtml="";
