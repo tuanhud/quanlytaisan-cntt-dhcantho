@@ -20,28 +20,25 @@
 <script type="text/javascript" src="js/capnhatnoidungcon.js"></script>
 <script type="text/javascript" src="js/table-noidungcon.js"></script>
 <script type="text/javascript" src="js/yui/yui-min.js"></script>
+ 
 <script type="text/javascript">
 $(document).ready(function() { 
 	createTable();
 	fillcombo('get_list_noidunglon.php',document.frm_themnoidungcon.cbo_tennoidunglon);
 	fillcombo('get_list_noidunglon.php',document.frm_suanoidungcon.cbo_tennoidunglon);
 	fillcombo('get_list_noidunglon.php',document.frm_themnoidungcon.cbo_tennoidungcon);
-	fillcombo('get_list_noidunglon.php',document.frm_suanoidungcon.cbo_tennoidungconmoi);
-	fillcombo('get_list_noidungcon.php',document.frm_suanoidungcon.cbo_tennoidungcon);
-	fillcombo('get_list_noidungcon.php',document.frm_xoanoidungcon.cbo_tennoidungconxoa);
+	//fillcombo('get_list_noidungcon.php',document.frm_suanoidungcon.cbo_tennoidungcon);
 	$('form[name="frm_themnoidungcon"] select[name="cbo_tennoidunglon"]').change(function(){
 		get_info_manoidunglonthem('get_info_manoidunglon.php',document.frm_themnoidungcon);
 	});
-	$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidungcon"]').change(function(){
-		get_info_noidungconsua('get_info_noidungcon.php',document.frm_suanoidungcon);
+	$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidunglon"]').change(function(){
+		get_info_noidungconsua('get_info_noidungcon.php',document.frm_suanoidungcon.cbo_tennoidunglon.value);
 	});
-	/*$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidunglon"]').change(function(){
-		get_info_manoidunglonsua('get_info_manoidunglon.php',document.frm_suanoidungcon);
-	});*/
+
     });
 </script>
 <script>	
-	function thoat() {
+	function thoat(){
 		if (confirm('Ban co chac chan muon thoat khong ?' )) {
 			document.location = '../logout.php';
 			return;
@@ -50,13 +47,13 @@ $(document).ready(function() {
 </script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" ondragstart="return false" onselectstart="return false" class="yui3-skin-sam">  
-<table width="872" height="100%" border="0" cellpadding="0" cellspacing="0">
+<table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tbody>  
   <!--Bắt đầu của HEADER-->
   <tr> 
-    <td width="872" height="26" valign="middle">       	 
+    <td width="778" height="26" valign="middle">       	 
 	<!--Thẻ hiển thị thông tin khi đăng nhập-->
-	<div style="Z-INDEX: 1; LEFT: 626px; WIDTH: 200px; POSITION: absolute; TOP: 51px; HEIGHT: 30px" align="center">
+	<div style="Z-INDEX: 1; LEFT: 538px; WIDTH: 200px; POSITION: absolute; TOP: 51px; HEIGHT: 30px" align="center">
 		<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
 			<a class="white" href="../doimatkhauUI.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
       <br>Xin chào, <?=$_SESSION['hoten']?>
@@ -69,13 +66,13 @@ $(document).ready(function() {
      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
        <tbody><tr>
          <td width="20" class="tl_header">&nbsp;</td>
-         <td width="832" class="tc_header">&nbsp;</td>
-         <td width="20" class="tr_header">&nbsp;</td>
+         <td width="740" class="tc_header">&nbsp;</td>
+         <td width="19" class="tr_header">&nbsp;</td>
        </tr>
        <tr>
          <td class="cl_header">&nbsp;</td>
          <td class="cm_header">
-         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+         <table width="103%" border="0" cellspacing="0" cellpadding="0">
          <tbody>
            <tr>            
              <td class="tittle_header"><img src="../images/ctulogo1.gif" alt=""></td>             
@@ -93,7 +90,7 @@ $(document).ready(function() {
   
   <tr>
 	<td height="54%" valign="middle">
-    	<table align="center" border="0" cellpadding="0" cellspacing="0" width="847">      
+    	<table align="center" border="0" cellpadding="0" cellspacing="0" width="751">      
 	    <tbody>
         <tr height="10">        
 	   	<td align="center" colspan="3">
@@ -106,17 +103,17 @@ $(document).ready(function() {
 	    </tr>
         <tr>
         <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
+        <td width="1%" align="center" >&nbsp;</td>
+        <td width="1%" align="center" >&nbsp;</td>
         </tr>                        
       <tr>
       <!--BẮT ĐẦU LEFT MAIN INFO-->
-      <td align="center" width="100%"><table width="777" border="0" cellpadding="0" cellspacing="0">
+      <td align="center" width="98%"><table width="707" border="0" cellpadding="0" cellspacing="0">
         <tbody>
           <tr class="main_1">
             <td width="212" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
             <td width="366" align="center">Thêm nội dung con</td>
-            <td width="199" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+            <td width="129" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
           </tr>
           <tr>
             <td colspan="3" align="left"><form name="frm_themnoidungcon" id="frm_themnoidungcon">
@@ -163,12 +160,12 @@ $(document).ready(function() {
           </tr>
         </tbody>
       </table>
-      <table width="779" border="0" cellpadding="0" cellspacing="0">
+      <table width="710" border="0" cellpadding="0" cellspacing="0">
         <tbody>
           <tr class="main_1">
             <td width="211" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
             <td width="368" align="center">Sửa nội dung con</td>
-            <td width="200" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+            <td width="131" align="right"><img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
           </tr>
           <tr>
             <td colspan="3" align="left"><form name="frm_suanoidungcon" id="frm_suanoidungcon">
@@ -178,10 +175,10 @@ $(document).ready(function() {
                   <td width="50%" height="22" align="center" class="level_1_1">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td height="22" align="right" class="level_1_1">Tên nội dung con:</td>
+                  <td height="22" align="right" class="level_1_1">Chọn tên nội dung:</td>
                   <td height="22" align="center" class="level_1_1"><label for="txttendc3"></label>
                     <label for="cbo_tennoidungconsua"></label>
-                    <select name="cbo_tennoidungcon" id="cbo_tennoidungcon" style="width:100%">
+                    <select name="cbo_tennoidunglon" id="cbo_tennoidunglon" style="width:100%">
                     </select></td>
                 </tr>
                 <tr>
@@ -218,9 +215,9 @@ $(document).ready(function() {
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tbody>
   <tr>
-    <td class="cl_footer">&nbsp;</td>
-    <td class="cm_footer"><div align="right" class="copy"><!--Copyright © 2008 by <a href="http://www.cuscsoft.com" target="_blank" class="white"><strong>CUSC</strong></a>--></div></td>
-    <td class="cr_footer">&nbsp;</td>
+    <td width="20" class="cl_footer">&nbsp;</td>
+    <td width="738" class="cm_footer"><div align="right" class="copy"><!--Copyright © 2008 by <a href="http://www.cuscsoft.com" target="_blank" class="white"><strong>CUSC</strong></a>--></div></td>
+    <td width="20" class="cr_footer">&nbsp;</td>
   </tr>
   <tr>
     <td class="bl_footer">&nbsp;</td>

@@ -249,6 +249,8 @@ function getRecord2(phpfile,madonvi)
 }
 
 
+<<<<<<< .mine
+=======
 /*function table() {
 	var loader = new YAHOO.util.YUILoader();
 	loader.loadOptional = true;
@@ -330,4 +332,4 @@ function getRecord2(phpfile,madonvi)
 			});
 		}
 	});
-}*/
+}*/>>>>>>> .r115
