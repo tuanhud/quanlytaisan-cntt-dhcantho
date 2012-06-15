@@ -4,6 +4,8 @@
 	//if (session_is_registered('maquyen') && $_SESSION['maquyen']=="HSVT")
 	{			
 			include_once('../database.php');
+			$thanhcong=0;
+			$thatbai=0;
 			$db=new database();
 			$db->setQuery('SELECT * FROM `temp`');
 			$result=$db->fetchAll();
@@ -46,9 +48,11 @@
 					
 					$sql.= ")";
 					$db->setQuery($sql);
-					$db->executeQuery();
+					if($db->executeQuery()==1) $thanhcong +=1;
 				}
 			
 			}
+			echo $thanhcong;
+			exit;
 	}
 ?>  

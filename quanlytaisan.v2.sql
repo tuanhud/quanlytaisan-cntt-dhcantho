@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 3.3.9
 -- http://www.phpmyadmin.net
 --
@@ -359,6 +359,7 @@ CREATE TABLE IF NOT EXISTS `nammuasam` (
 --
 -- Table structure for table `nguoidung`
 --
+
 
 CREATE TABLE IF NOT EXISTS `nguoidung` (
   `MSCB` char(6) NOT NULL,

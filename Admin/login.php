@@ -18,7 +18,7 @@
 					where a.MSCB=b.MSCB
 					and b.MaQuyen='ADMIN'
 					and a.MSCB ='".$_POST['txtDinhDanh']."'
-					and Matkhau ='".$_POST['txtMatKhau']."'";
+					and a.Matkhau ='".$_POST['txtMatKhau']."'";
 					
 			$db->setQuery($sql);
 		if ($db->numRecord()==1)
