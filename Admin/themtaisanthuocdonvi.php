@@ -12,7 +12,7 @@
 	}
 	else
 	{
-		$insert_query = "insert into `taisanthuocdonvi` values(`MSDV`='".$_GET['MSDV']."',`MaTaiSan`='".$_GET['MaTaiSan']."',`SoLuongCuaDonVi`='".$_GET['SoLuongCuaDonVi']."',`DonGiaTS`='".$_GET['DonGiaTS']."')";
+		$insert_query = "insert into `taisanthuocdonvi` values('".$_GET['MSDV']."','".$_GET['MaTaiSan']."','".$_GET['SoLuongCuaDonVi']."','".$_GET['DonGiaTS']."')";
 		 $result = mysql_query($insert_query) or die("SQL Error 1: " . mysql_error());
 		 echo $result;
 	}
