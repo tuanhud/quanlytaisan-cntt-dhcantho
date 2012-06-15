@@ -17,6 +17,7 @@ function get_info_vpp(filephp,frm)
 		frm.cbo_dvtsua.value="-Chọn đơn vị tính-";
 		frm.cbo_tennsxsua.value=-1;
 		frm.txt_tenvppsua.value='';
+		frm.txt_dongiavppsua.value='';
 	}
 	else
 	{
@@ -25,6 +26,7 @@ function get_info_vpp(filephp,frm)
 	donvitinh=frm.cbo_dvtsua;
 	tennsxvpp=frm.cbo_tennsxsua;
 	tenvpp=frm.txt_tenvppsua;
+	dongia=frm.txt_dongiavppsua;
 	
 	http=GetXmlHttpObject();
 	var params = "mavpp="+mavpp;
@@ -43,6 +45,7 @@ function get_info_vpp(filephp,frm)
 				donvitinh.value=x[0].getElementsByTagName('column')[2].firstChild.nodeValue;
 				tennsxvpp.value=x[0].getElementsByTagName('column')[3].firstChild.nodeValue;
 				tenvpp.value=x[0].getElementsByTagName('column')[4].firstChild.nodeValue;
+				dongia.value=x[0].getElementsByTagName('column')[5].firstChild.nodeValue;
 		}
 	}
 	http.send(params);
@@ -152,7 +155,7 @@ var _admin;
 										fillcombo('get_list_loaivpp.php',document.frm_themvpp.cbo_tenloaivppthem);
 	fillcombo3('get_list_donvitinh.php',document.frm_themvpp.cbo_dvtthem);
 	fillcombo('get_list_nhasanxuat.php',document.frm_themvpp.cbo_tennsxthem);
-	
+	ClearInputValue("#txt_dongiavppthem")
 	fillcombo('get_list_vpp.php',document.frm_suavpp.cbo_tenvppsua);
 	fillcombo('get_list_loaivpp.php',document.frm_suavpp.cbo_tenloaivppsua);
 	fillcombo3('get_list_donvitinh.php',document.frm_suavpp.cbo_dvtsua);
@@ -219,7 +222,7 @@ var _admin;
 																				fillcombo('get_list_loaivpp.php',document.frm_themvpp.cbo_tenloaivppthem);
 	fillcombo3('get_list_donvitinh.php',document.frm_themvpp.cbo_dvtthem);
 	fillcombo('get_list_nhasanxuat.php',document.frm_themvpp.cbo_tennsxthem);
-	
+	ClearInputValue("#txt_dongiavppsua")
 	fillcombo('get_list_vpp.php',document.frm_suavpp.cbo_tenvppsua);
 	fillcombo('get_list_loaivpp.php',document.frm_suavpp.cbo_tenloaivppsua);
 	fillcombo3('get_list_donvitinh.php',document.frm_suavpp.cbo_dvtsua);

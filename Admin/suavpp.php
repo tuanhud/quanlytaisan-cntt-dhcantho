@@ -8,7 +8,7 @@
 			include_once('../database.php');
 			$db=new database();	
 			$sql="update `vanphongpham`";
-			$sql.="set `maloaivpp` = '".$_POST['cbo_tenloaivppsua']."',`tendonvitinh` = '".$_POST['cbo_dvtsua']."', `mansx` = '".$_POST['cbo_tennsxsua']."', `tenvpp` = '".$_POST['txt_tenvppsua']."'";
+			$sql.="set `maloaivpp` = '".$_POST['cbo_tenloaivppsua']."',`tendonvitinh` = '".$_POST['cbo_dvtsua']."', `mansx` = '".$_POST['cbo_tennsxsua']."', `tenvpp` = '".$_POST['txt_tenvppsua']."', `dongiavpp` = '".$_POST['txt_dongiavppsua']."'";
 			$sql.="where `Mavpp` = '".$_POST['cbo_tenvppsua']."'";
 			$db->setQuery($sql);
 			if($db->executeQuery()!=1)

@@ -13,7 +13,7 @@
 			$row = mysql_fetch_array($result,MYSQL_NUM);
 			$ma = $row[0]+1;
 			
-			$sql = "insert into vanphongpham values('".$ma."','".$_POST['cbo_tenloaivppthem']."', '".$_POST['cbo_dvtthem']."', '".$_POST['cbo_tennsxthem']."', '".$_POST['txt_tenvppthem']."')";
+			$sql = "insert into vanphongpham values('".$ma."','".$_POST['cbo_tenloaivppthem']."', '".$_POST['cbo_dvtthem']."', '".$_POST['cbo_tennsxthem']."', '".$_POST['txt_tenvppthem']."','".$_POST['txt_dongiavppthem']."')";
 					$db->setQuery($sql);
 					if($db->executeQuery()!=1)
 					{

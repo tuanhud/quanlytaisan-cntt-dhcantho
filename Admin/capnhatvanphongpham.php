@@ -3,12 +3,12 @@
 	session_start();
 	
 	//kiem tra quyen truoc khi hien thi trang
-	if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="ADMIN")
+	/*if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="ADMIN")
 	{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
 	exit;
-	}
+	}*/
 ?>
 <html>
 <head>
@@ -165,9 +165,14 @@ $(document).ready(function() {
                  <td height="22" align="right" class="level_1_1">Tên  văn phòng phẩm</td>
                  <td width="50%" align="left" class="level_1_1">
                    <input name="txt_tenvppthem" id="txt_tenvppthem" type="text" class="txtbox" style="width:100%"></td>
-               </tr>               
+               </tr>
+                <tr>
+                 <td height="22" align="right" class="level_1_2">Đơn giá văn phòng phẩm</td>
+                 <td width="50%" align="left" class="level_1_2">
+                   <input name="txt_dongiavppthem" id="txt_dongiavppthem" type="text" class="txtbox" style="width:100%"></td>
+               </tr>                
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themvpp" id="btn_themvpp" class="button_1" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="btn_themvpp" id="btn_themvpp" class="button_1" value="Thêm"></td>
               </tr>
 			  
 	
@@ -227,9 +232,14 @@ $(document).ready(function() {
                  <td height="22" align="right" class="level_1_2">Tên  văn phòng phẩm cần sửa</td>
                  <td width="50%" align="left" class="level_1_2">
                    <input name="txt_tenvppsua" id="txt_tenvppsua" type="text" class="txtbox" style="width:100%"></td>
-               </tr>         
+               </tr> 
+               <tr>
+                 <td height="22" align="right" class="level_1_1">Đơn giá văn phòng phẩm sửa</td>
+                 <td width="50%" align="left" class="level_1_1">
+                   <input name="txt_dongiavppsua" id="txt_dongiavppsua" type="text" class="txtbox" style="width:100%"></td>
+               </tr>          
             <tr>
-              <td colspan="2" height="22" align="center" class="level_1_1">
+              <td colspan="2" height="22" align="center" class="level_1_2">
                 <input type="button" name="btn_suavpp" id="btn_suavpp" class="button_1" value="Lưu">
                 </td>
             </tr>
