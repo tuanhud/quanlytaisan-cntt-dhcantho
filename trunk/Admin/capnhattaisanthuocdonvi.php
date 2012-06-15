@@ -15,62 +15,39 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật thiết bị thuộc đơn vị</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<<<<<<< .mine
-<script type="text/javascript" src="js/yui.js"></script>
-<script src="js/yuiloader-min.js" type="text/javascript"></script>
-=======
-<script type="text/javascript" src="js/yui/yui.js"></script>
->>>>>>> .r115
-<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/fill.js"></script>
-<script type="text/javascript" src="js/table-taisan.js"></script>
-<script type="text/javascript" src="js/taisan_donvi.js"></script>
-<script type="text/javascript" >
-//Không cho nhập ký tự
-function keypress(e){
-var keypressed = null;
-if (window.event)
-	keypressed = window.event.keyCode; //IE
-else 
-	keypressed = e.which; //NON-IE, Standard
 
-if (keypressed >= 48 && keypressed <= 57)
-{ 
-	//CharCode của 0 là 48 (Theo bảng mã ASCII)
-	//CharCode của 9 là 57 (Theo bảng mã ASCII)
-	if (keypressed == 8 || keypressed == 127)
-	{
-	//Phím Delete và Phím Back
-	return;
-	}
-	return false;
-}
-}
-$(document).ready(function() { 
-	createTable();
-	//table();
-	fillcombo('get_list_donvi.php',document.frm_capnhattaisandonvi.cbo_tendonvi);
-	//Create table after loading page
-	$('form[name="frm_capnhattaisandonvi"] select[name="cbo_tendonvi"]').change(function(){		
-			
-			getRecord2('get_list_taisan_donvi.php',document.frm_capnhattaisandonvi.cbo_tendonvi.value);
-			/*checkbox_themvpp();
-			checkbox_suavpp();
-			checkbox_themkk();
-			checkbox_suakk();
-			checkbox_themkhms();
-			checkbox_suakhms();
-			checkbox_duyetvpp();
-			checkbox_duyetkk();
-			checkbox_duyetkhms();*/
-			
-		});
-		$('form[name="frm_capnhattaisandonvi"] input[name="btncapnhat"]').click(function(){		
-		update_taisan_donvi(document.frm_capnhattaisandonvi);
-	});
-}); 
-</script>
+	<link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+	<script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+	<script type="text/javascript" src="js/table-taisan.js"></script>
+    <script type="text/javascript" src="js/gettheme.js"></script>
+    
+    
+	<script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/fill.js"></script>
+    
+    <script type="text/javascript" >
+	$(document).ready(function() 
+	{ 
+		taobangtaisan();
+	}); 
+	</script>
 </head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
   
@@ -148,56 +125,81 @@ $(document).ready(function() {
         </tr>                    
         <!--KET THUC MENU-->
         <tr>
-    <td height="100%" align="center" valign="middle">   
-		 <table width="650" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Cập nhật thiết bị thuộc đơn vị </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
-        <tr>
-          <td colspan="3" align="left">
-          	<form name="frm_capnhattaisandonvi">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-              <tbody>
-              <tr>
-              		<td height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
-              </tr>
-			 <tr>
-					<td height="22" align="right" class="level_1_2">Chọn đơn vị </td>
-					<td width="70%" align="left" class="level_1_2">
-                    	<select name="cbo_tendonvi" id="cbo_tendonvi" class="cbo" style="width:80%;">
-                        </select></td>
-			</tr> 
-              <tr>
-					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
-                    <div class="yui3-skin-sam">                    
-                    <div id="mytable"></div>                    
+        <td height="100%" align="center" valign="middle">   
+           
+            <tr>
+              <td colspan="3" align="left">
+                
+                <table width="100%"  cellspacing="0" cellpadding="0" align="center" border="0">             		
+                  <tbody>
+                  <tr>
+                        <td height="22" class="level_1_1"></td>
+                        <td class="level_1_1"></td>
+                  </tr>
+                   <tr >
+                  
+      					 <div style="visibility: hidden;" id='jqxWidget'>
+                            <div style="margin-top: 80px;" id="jqxgrid"></div>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                           </div>
+                           <div style="margin-left: 30px; float: left;">
+                                <div style="margin-top: 5px;">
+                                    <input type="button" value="Add A New Row" id="showWindowButton" />
+                                </div> 
+                                <div style="margin-top: 5px;">
+                                    <input id="deleterowbutton" type="button" value="Delete Selected Row" />
+                                </div>
+                               
+                                
+                         </div>
+                         <div style="width:600px; height: 650px; border: 0px solid #ccc; margin-top: 10px;"
+                            id="mainDemoContainer">
+                            </div>
+                            <div id="eventWindow" style="display:none">
+                                <div>
+                                    <img width="14" height="14" src="../images/help.png" alt="" />
+                                    Modal Window
+                                </div>
+                                <div>
+                                  <div style="margin: 10px">
+                                    Chọn đơn vị
+                                    <div id='jqxWidget2'>
+        							</div>
+                                    Chọn tài sản
+                                    <div id='jqxWidget3'>
+        							</div>
+                                    <div>Số lượng</div>
+                                    <div id='numericInput'></div>
+                                    <div>Đơn giá</div>
+                                    <div id='currencyInput'></div>
+                                    <div style='margin-top: 3px;' id='validation'></div>
+                                </div>
+                                <div>
+                                    <div style="float: right; margin-top: 10px;">
+                                        <input type="button" id="save" value="Save"/>
+                                        <input type="button" id="cancel" value="Cancel" />
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                         
                     </div>
-                    </td>
-			</tr>
-			  <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2">
-					</td>
-              </tr>
-			  <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input name="btncapnhat" type="button" class="button_1" value="Cập nhật"></td>
-              </tr> 
-			 
-              </tbody>
-           </table>
-           </form>
-          </td>
-        </tr>		
-        </tbody>
-        </table>
-	 	 <br>
-        
-	</td>
-</tr>
-</table>
+                    </tr>
+                    <tr>
+                        <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Thêm"></td>
+                  </tr>  
+                  </tbody>
+               </table>
+              
+              </td>
+            </tr>		
+           
+        </td>
+		</tr>
+	</table>
 
 		
 	</td>
