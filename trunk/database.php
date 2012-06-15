@@ -203,6 +203,37 @@
             $this->result = mysql_query($this->query);
             return mysql_affected_rows($this->connection);
         }
+		
+		
+		public function Execute($i_sql)
+		 {
+			mysql_query("SET NAMES 'utf8'");
+			$resource = mysql_query($i_sql);
+			return $resource;
+		}
+		
+		
+		public function ExecuteQuery2($i_sql){
+			
+			$resource = $this->Execute($i_sql);
+			$result_array = array();
+			//var_dump($resource);
+			if($resource){
+	
+				$num_rec = 0;
+				while($row = mysql_fetch_array($resource))
+				{
+					$result_array[$num_rec] = $row;
+					$num_rec++;
+				}
+				mysql_free_result($resource);
+							// echo "here";
+							// echo $num_rec;
+				if ($num_rec > 0 )
+					return $result_array;
+			}
+			return false;
+		}
         
         /*---------------------------------------------------------
         function: destruct

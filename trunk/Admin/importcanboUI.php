@@ -6,16 +6,39 @@ session_start();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Kết quả Import</title>
-<script type="text/javascript" src="js/yui.js"></script>
-<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/fill.js"></script>
+<link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+	<script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+	<script type="text/javascript" src="js/table-taisan.js"></script>
+    <script type="text/javascript" src="js/gettheme.js"></script>
+    
+    
+	<script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/fill.js"></script>
+
 <script type="text/javascript" src="js/importcanbo.js"></script>
-<script type="text/javascript" src="js/table_quyen_nguoidung.js"></script>
+<script type="text/javascript" src="js/table_nguoidung.js"></script>
 <script type="text/javascript" src="js/check_quyen_nguoidung.js"></script>
 <script type="text/javascript" src="js/quyen_nguoidung.js"></script>
 <script type="text/javascript">
 $(document).ready(function() { 
+	taobangtaisan();
 	fillcombo('get_list_temp2.php',document.importcanbo.tendonvithem);
 	fillcombo('get_list_temp2.php',document.importcanbo.masocanbo);
 	fillcombo('get_list_temp2.php',document.importcanbo.tencanbo);
@@ -121,11 +144,20 @@ $(document).ready(function() {
               <tr>
               		<td height="22" align="right" class="level_1_1"></td>
               		<td colspan="2" height="22" class="level_1_2">
+                     <input type="button" value="Xem lại dữ liệu" id="showWindowButton" />
                     <input type="button" name="btn_capnhat" id="btn_capnhat" class="button_1" value="Lưu">
                     </td>
               </tr>
               </tbody>
               </table>
+              <div style="visibility: hidden;" id='jqxWidget'>
+                            <div style="margin-top: 80px;" id="jqxgrid"></div>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                           </div>
+                         
+                 </div>   
     
 	<?php
 	$strHtml="";
@@ -155,13 +187,11 @@ $(document).ready(function() {
 	$db = new database;
 	$db->setQuery($sql2);
 	$result2=$db->fetchAll();
-	if($result2)echo 'xoa temp2 thanh cong<br/>';
 	
 	$sql ="CREATE TABLE `quanlytaisan`.`temp2` (`ma` varchar(100), `tentruong` varchar(100))";
 	$db = new database;
 	$db->setQuery($sql);
 	$result=$db->fetchAll();
-	if($result)echo 'tao temp2 thanh cong<br/>';
 	for ($j=1;$j<=$colsnum;$j++) //cot
 	{
 		$sql3  = "insert into temp2 (`ma`,`tentruong`)";
@@ -171,14 +201,12 @@ $(document).ready(function() {
 		$db->setQuery($sql3);
 		$result3=$db->fetchAll();
 	}	
-	if($result3) echo 'them du lieu temp2 thanh cong';	
 		
 		
 	$sql2 ="DROP TABLE `quanlytaisan`.`temp`"; 	
 	$db = new database;
 	$db->setQuery($sql2);
 	$result2=$db->fetchAll();
-	if($result2)echo 'xoa thanh cong<br/>';
 	
 	$sql ="CREATE TABLE `quanlytaisan`.`temp` (";
 	$sql .= "`".$data->val(1,1)."` varchar(100)";
@@ -190,7 +218,6 @@ $(document).ready(function() {
 	$db = new database;
 	$db->setQuery($sql);
 	$result=$db->fetchAll();
-	if($result)echo 'tao thanh cong<br/>';
 	
 	for ($i=2;$i<=$rowsnum;$i++)//hang
 	{	
@@ -215,7 +242,6 @@ $(document).ready(function() {
 		$result3=$db->fetchAll();
 		
 	}
-	if($result3) echo 'them du lieu thanh cong';
 	
 ?>
 </body>

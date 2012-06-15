@@ -32,7 +32,8 @@ var _admin;
 							beforeSend:function(){},
 							success:function(n)
 							{
-								alert(n);
+								var tb ='Đã lưu mẩu tin thành công.';
+								alert ('Thành công.');
 								/*if(n==0)
 									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
 								else if(n==1) 

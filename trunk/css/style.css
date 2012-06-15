@@ -200,3 +200,14 @@ position: relative;
 }
 /*----------------END EDIT-----------------------*/
 
+/*popup them tai san thuoc don vi*/
+.forgotform{float:left;width:100%}
+.forgot-item{float:left;width:100%;margin-bottom:5px}
+.forgot-item-title{float:left;width:100px;text-align:right;margin-top:6px}
+.forgot-item-input{float:left;margin-left:5px}
+.forgot-item-input input{border:solid 1px #cdcdcd;height:22px}
+.cpt_img{float:left;margin-left:5px;margin-top:2px}
+.cpt_img img{float:left}
+.forgot-item-btn{float:left;height:23px;width:75px;background:url("images/BtnGreenBlue.png") no-repeat center top}
+.forgot-item-btn:hover{background-position:0 -23px;cursor:pointer}
+.forgot-item-btn a{float:left;width:100%;text-align:center;line-height:20px;font-size:14px;font-weight:bold;color:#fff}
