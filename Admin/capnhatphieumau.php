@@ -16,12 +16,16 @@
 <title>Cập nhật phiếu mẫu</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/fill.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/yui.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/fill.js"></script>
+<script type="text/javascript" src="js/capnhatphieumau.js"></script>
 <script type="text/javascript" src="js/table-noidung.js"></script>
 <script type="text/javascript" src="js/table-noidungsua.js"></script>
-<script type="text/javascript" src="js/yui/yui-min.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+
+
 <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -44,25 +48,17 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 }
 $(document).ready(function() { 
-	fillcombo('../get_list_ban.php',document.frm_xoaban.cbo_tenban);
-	fillcombo('../get_list_ban.php',document.frm_suaban.cbo_tenban);
 	createTable();
 	createTable1();
-	//su kien nhan button them
-	$('form[name="frm_themban"] input[type="button"]').click(function(){
-		themban('../themban.php',document.frm_themban);	
+	fillcombo('get_list_phieumau.php',document.frm_suaphieumau.cbo_tenphieumausua);
+	fillcombo('get_list_phieumau.php',document.frm_xoaphieumau.cbo_tenphieumauxoa);
+	init_date_input(document.frm_themphieumau.cbo_ngay,document.frm_themphieumau.cbo_thang,document.frm_themphieumau.cbo_nam);
+	init_date_input(document.frm_suaphieumau.cbo_ngaysua,document.frm_suaphieumau.cbo_thangsua,document.frm_suaphieumau.cbo_namsua);
+	init_date_input(document.frm_xoaphieumau.cbo_ngayxoa,document.frm_xoaphieumau.cbo_thangxoa,document.frm_xoaphieumau.cbo_namxoa);
+	$('form[name="frm_themphieumau"] input[name="btn_themphieumau"]').click(function(){		
+		themnoidung(document.frm_themphieumau);
 	});
-	
-	//su kien nhan button sua
-	$('form[name="frm_suaban"] input[type="button"]').click(function(){
-		suaban('../suaban.php',document.frm_suaban);	
-	});	
-	//su kien click button xoa
-	$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-		if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-			xoaban('../xoaban.php',document.frm_xoaban);	
-		}		
-	});
+
 }); 
 </script>
 </head>
@@ -152,7 +148,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themban">
+          	<form name="frm_themphieumau" id="frm_themphieumau">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -162,34 +158,28 @@ $(document).ready(function() {
               <tr>
                 <td height="22" align="right" class="level_1_2">Tên phiếu: </td>
                 <td height="22" align="center" class="level_1_2"><label for="txttennd"></label>
-                  <input type="text" name="txttennd" id="txttennd" style="width:100%"></td>
-              </tr>
-              <tr>
-                <td height="22" align="right" class="level_1_1">Loại kiểm kê:                  </td>
-                <td height="22" align="center" class="level_1_1"><label for="cbolkk"></label>
-                  <select name="cbolkk" id="cbolkk" style="width:100%">
-                  </select></td>
+                  <input type="text" name="txt_tenphieumau" id="txt_tenphieumau" style="width:100%"></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_1">Ngày lập phiếu:</td>
                 <td height="22" align="left" class="level_1_1"><label for="txttendvt"></label>
-                  Ngày 
-                  <select name="ng" id="ng">
-                  </select>
-                  <label for="ng"></label>
-                  Tháng 
-                  <select name="th" id="th">
-                  </select>
-                  <label for="th">Năm 
-                    <select name="nam" id="nam">
+                  <select name="cbo_ngay" id="cbo_ngay">
                     </select>
-                  </label></td>
+                  /
+                  <label for="ng"></label>
+                  <select name="cbo_thang" id="cbo_thang">
+                    </select>
+                  /
+                  <label for="th">
+                    <select name="cbo_nam" id="cbo_nam">
+                      </select>
+                    </label></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Ghi chú: </td>
                 <td height="22" align="center" class="level_1_2"><label for="txteraghichund"></label>
                   <label for="txtghind"></label>
-                  <textarea name="txtghind" rows="5" id="txtghind" style="width:100%"></textarea></td>
+                  <textarea name="txt_ghichu" rows="5" id="txt_ghichu" style="width:100%"></textarea></td>
               </tr>
               <tr>
                 <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
@@ -200,7 +190,7 @@ $(document).ready(function() {
               </tr>
               
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_themphieumau" type="button" class="button_1" id="btn_themphieumau" value="Thêm"></td>
               </tr>
 				<tr>
 				  <td colspan="2" height="22" align="center" class="level_1_1">&nbsp;</td>
@@ -222,7 +212,7 @@ $(document).ready(function() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suaban">
+          	<form name="frm_suaphieumau" id="frm_suaphieumau">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -231,40 +221,30 @@ $(document).ready(function() {
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Chọn phiếu mẫu cần sửa:</td>
-                <td align="left" class="level_1_2"><select name="cbotenpms" class="cbo" id="cbotenpms" style="width:100%;">
+                <td align="left" class="level_1_2"><select name="cbo_tenphieumausua" class="cbo" id="cbo_tenphieumausua" style="width:100%;">
                 </select></td>
-                <tr>
-                  <td height="22" align="right" class="level_1_2">Tên phiếu mẫu: 
-                    <label for="txttenphieumau"></label></td>
-                  <td align="left" class="level_1_2"><input name="txttenphieumau" type="text" disabled id="txttenphieumau" readonly="readonly" style="width:100%"></td>
                 <tr>
                   <td height="22" align="right" class="level_1_2">Tên phiếu mẫu mới</td>
                   <td align="left" class="level_1_2"><label for="txttenphieumaumoi"></label>
-                    <input type="text" name="txttenphieumaumoi" id="txttenphieumaumoi" style="width:100%"></td>
-                <tr>
-                  <td height="22" align="right" class="level_1_2">Loại kiểm kê: </td>
-                  <td align="left" class="level_1_2"><label for="cbo_loaikiemke"></label>
-                    <select name="cbo_loaikiemke" id="cbo_loaikiemke" style="width:100%">
-                    </select></td>
+                    <input type="text" name="txt_tenphieumaumoi" id="txt_tenphieumaumoi" style="width:100%"></td>
                 <tr>
                   <td height="22" align="right" class="level_1_2">Ngày lập phiếu: </td>
                   <td align="left" class="level_1_2"><label for="ng2"></label>
-                    Ngày
-                    <select name="ng2" id="ng2">
+                    <select name="cbo_ngaysua" id="cbo_ngaysua">
                     </select>
-                    Tháng
+                    /
   <label for="th2"></label>
-  <select name="th2" id="th2">
+  <select name="cbo_thangsua" id="cbo_thangsua">
   </select>
-                    Năm
+  /
   <label for="nam"></label>
-  <select name="nam2" id="nam">
+  <select name="cbo_namsua" id="cbo_namsua">
 </select></td>
                   <tr>
                 <td height="22" align="right" class="level_1_2">Ghi chú:: </td>
                 <td align="left" class="level_1_2"><label for="ng2"></label>
                   <label for="txtghichu"></label>
-                  <textarea name="txtghichu" rows="5" id="txtghichu" style="width:100%"></textarea></td>
+                  <textarea name="txt_ghichu" rows="5" id="txt_ghichu" style="width:100%"></textarea></td>
               <tr>
                 <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
                     <div class="yui3-skin-sam">                    
@@ -274,7 +254,7 @@ $(document).ready(function() {
              </tr>
              <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
-                <input type="button" class="button_1" value="Lưu">
+                <input name="btn_luuphieumau" type="button" class="button_1" id="btn_luuphieumau" value="Lưu">
                 </td>
             </tr>
              <tr>
@@ -289,16 +269,16 @@ $(document).ready(function() {
       </tbody>
       </table>
 
-        <table width="530" border="0" cellpadding="0" cellspacing="0">
+        <table width="591" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
           <td width="275" align="center">Xóa phiếu mẫu</td>
-          <td width="150" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+          <td width="211" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoaban">
+          	<form name="frm_xoaphieumau" id="frm_xoaphieumau">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -307,41 +287,35 @@ $(document).ready(function() {
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_1">Chọn phiếu mẫu: </td>
-                <td align="left" class="level_1_1"><select name="cbo_phieumau" class="cbo" id="cbo_phieumau" style="width:100%;">
+                <td align="left" class="level_1_1"><select name="cbo_tenphieumauxoa" class="cbo" id="cbo_tenphieumauxoa" style="width:100%;">
                 </select></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Mã phiếu: </td>
                 <td align="left" class="level_1_2"><label for="txt_maphieu"></label>
-                  <input name="txt_maphieu" type="text" disabled id="txt_maphieu" readonly="readonly"></td>
-              <tr>
-                <td height="22" align="right" class="level_1_2">Loại kiểm kê: </td>
-                <td align="left" class="level_1_2"><label for="cbo_loaikiemke"></label>
-                  <select name="cbo_loaikiemke2" id="cbo_loaikiemke" style="width:100%">
-                  </select></td>
+                  <input name="txt_maphieumauxoa" type="text" disabled id="txt_maphieumauxoa" readonly="readonly"></td>
               <tr>
                 <td height="22" align="right" class="level_1_2">Ngày lập phiếu: </td>
                 <td align="left" class="level_1_2"><label for="ng3"></label>
-                  Ngày
-                  <select name="ng3" id="ng3">
+                  <select name="cbo_ngayxoa" id="cbo_ngayxoa">
                   </select>
-                  Tháng
+                  /
                   <label for="th3"></label>
-                  <select name="th3" id="th3">
+                  <select name="cbo_thangxoa" id="cbo_thangxoa">
                   </select>
-                  Năm
+                  /
                   <label for="nam"></label>
-                  <select name="nam3" id="nam">
+                  <select name="cbo_namxoa" id="cbo_namxoa">
                   </select></td>
               <tr>
                 <td height="22" align="right" class="level_1_2">Ghi chú:: </td>
                 <td align="left" class="level_1_2"><label for="ng4"></label>
                   <label for="txtghichu"></label>
-                  <textarea name="txtghichu" rows="5" disabled readonly="readonly" id="txtghichu" style="width:100%"></textarea></td>
+                  <textarea name="txt_ghichu" rows="5" disabled readonly="readonly" id="txt_ghichu" style="width:100%"></textarea></td>
                   
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
-                <input type="button" class="button_1" value="Xóa">
+                <input name="btn_xoaphieumau" type="button" class="button_1" id="btn_xoaphieumau" value="Xóa">
                 </td>
             </tr>
             <tr>

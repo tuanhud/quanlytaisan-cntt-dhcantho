@@ -55,9 +55,10 @@ var _admin;
 							})
 					},
 					suanoidungcon:function(){
-						$("#btn_luunoidungcon").unbind("click").click(function()
+						$("#btn_sua").unbind("click").click(function()
 						{
-							if($("#cbo_tennoidungcon").val()==-1) {
+							alert("Thông báo");
+							/*if($("#cbo_tennoidungcon").val()==-1) {
 								alert("Bạn chưa chọn tên nội dung con cần sửa!");
 								FocusAndSelect("#cbo_tennoidungcon");}
 						    else if($("#cbo_tennoidunglon").val()==-1) {
@@ -94,7 +95,7 @@ var _admin;
 													error:function(){},
 													complete:function(){}
 											}),!1
-								}
+								}*/
 							})
 					}
 			}
@@ -158,17 +159,8 @@ function get_info_manoidunglonsua(filephp, frm)
 		
 		}
 	}
-function get_info_noidungconsua(filephp, frm)
+function get_info_noidungconsua(filephp, manoidung)
 {
-	if(frm.cbo_tennoidungcon.value==-1)
-	{
-		frm.txt_manoidungcon.value='';
-		frm.cbo_tennoidunglon.value=-1;
-		frm.txt_manoidunglon.value='';
-	}
-	else
-	{
-		var manoidung = frm.cbo_tennoidungcon.value;
 		http=GetXmlHttpObject();
 		var params = "manoidung="+manoidung;
 		//mo ket noi bang phuong thuc post
@@ -182,14 +174,20 @@ function get_info_noidungconsua(filephp, frm)
 		{
 			if(http.readyState == 4 && http.status == 200) 
 			{
-				var x=http.responseXML.getElementsByTagName('row');
-				frm.txt_manoidungcon.value = x[0].getElementsByTagName('column')[0].firstChild.nodeValue;
-				alert(x[0].getElementsByTagName('column')[1].firstChild.nodeValue);
-				frm.cbo_tennoidunglon.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
-				frm.txt_manoidunglon.value=x[0].getElementsByTagName('column')[2].firstChild.nodeValue;
+				dt.reset();
+				var x=http.responseXML.getElementsByTagName('RESULT');
+				for(var i=0;i<x.length;i++){
+						dt.data.add({
+							sothutu:x[i].getElementsByTagName('STT')[0].firstChild.nodeValue,
+							manoidungcon:x[i].getElementsByTagName('MANDC')[0].firstChild.nodeValue,
+							tennoidungcon:x[i].getElementsByTagName('TENNDC')[0].firstChild.nodeValue,
+							manoidunglon:x[i].getElementsByTagName('MANDL')[0].firstChild.nodeValue,
+							tennoidunglon:x[i].getElementsByTagName('TENNDL')[0].firstChild.nodeValue,
+						    //trangthaisua:x[i].getElementsByTagName('SUA')[0].firstChild.nodeValue,
+							//trangthaixoa:x[i].getElementsByTagName('XOA')[0].firstChild.nodeValue,
+							});
+					}
 			}
 		}
 		http.send(params);
-		
-		}
 }
