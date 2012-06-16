@@ -43,15 +43,15 @@
 		while ($row = mysql_fetch_array($result, MYSQL_NUM)) 
 		{
 			$$data[] = array(
-				'TenDV' => $row[$_GET['tendonvi']],
-				'MSCB' => $row[$_GET['masocanbo']],
-				'TenCB' => $row[$_GET['tencanbo']],
-				'GioiTinh' => $row[$_GET['gioitinh']],
-				'NgaySinh' => $row[$_GET['ngaysinh']],
-				'Email' => $row[$_GET['email']],
-				'DiaChi' => $row[$_GET['diachi']],
-				'SDT' => $row[$_GET['sodienthoai']],
-				'MatKhau' => $row[$_GET['matkhau']]
+				'TenDV' => $row[$_GET['tendonvi']-1],
+				'MSCB' => $row[$_GET['masocanbo']-1],
+				'TenCB' => $row[$_GET['tencanbo']-1],
+				'GioiTinh' => $row[$_GET['gioitinh']-1],
+				'NgaySinh' => $row[$_GET['ngaysinh']-1],
+				'Email' => $row[$_GET['email']-1],
+				'DiaChi' => $row[$_GET['diachi']-1],
+				'SDT' => $row[$_GET['sodienthoai']-1],
+				'MatKhau' => $row[$_GET['matkhau']-1]
 			  );
 		}
 		echo json_encode($data);

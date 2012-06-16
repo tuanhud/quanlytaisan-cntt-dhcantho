@@ -18,15 +18,9 @@ function createTable(){
      }          
 	 
 	//Tao checkbox tren moi dong 
-    var linksua = function(o)
+    var fmtChkBox = function(o)
 	{
-    	var cell = '<input type="button" class="sua" value="Sửa" id="btn_sua" name="btn_sua"/>';
-        	o.value = cell;
-	        o.className += ' align-center';
-    }
-	var linkxoa = function(o)
-	{
-    	var cell = '<input type="button" class="xoa" value="Xóa" id="btn_xoa" />';
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
         	o.value = cell;
 	        o.className += ' align-center';
     }
@@ -39,8 +33,8 @@ function createTable(){
 				{key: "tennoidungcon",label:"Tên nội dung con", sortable: true},
 				{key: "manoidunglon",label:"MNDL", sortable: true},
 				{key: "tennoidunglon",label:"Tên nội dung lớn", sortable: true},
-				{name: "trangthaisua",label:"Sửa",formatter:linksua, allowHTML:true, sortable: true},
-				{name: "trangthaixoa",label:"Xóa",formatter:linkxoa, allowHTML:true, sortable: true},
+				{key: "trangthaisua",label:"Trạng thái 1", sortable: true},
+				{key: "trangthaixoa",label:"Trạng thái 2", sortable: true},
 		];
 	
     dt = new Y.DataTable({
@@ -54,7 +48,7 @@ function createTable(){
 	// -------------------------
 	//  Delete 1 record
 	// -------------------------      			
-	/*dt.delegate("click", function(e) {
+	dt.delegate("click", function(e) {
         var cell = e.currentTarget,               // the clicked TD
             rec  = this.getRecord(cell),          //  Call the helper method above to return the "data" record (a Model)
             ckey = this.getCellColumnKey( cell ),
@@ -69,7 +63,7 @@ function createTable(){
                 break; 
         }
     }, "tbody tr td", dt); 			    
-*/
+
 // -------------------------
 //  Delete all current record if it's checked
 // -------------------------      
