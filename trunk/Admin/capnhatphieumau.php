@@ -1,12 +1,12 @@
 <?php
 	//khoi dong session
-	/*session_start();
-	
+	session_start();
+	/*
 	//kiem tra quyen truoc khi hien thi trang
 	if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
 	{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
-	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
+	echo "<script language=javascript>window.location = 'loginUI.php';</script>";
 	exit;
 	}*/
 ?>
@@ -86,7 +86,7 @@ $(document).ready(function() {
 	<a class="white" href="javascript:thoat();">Thoát</a>
     <br>Xin chào, <?=$_SESSION['hoten']?>
     <br>
-	(<?=$_SESSION['msad']?>)
+	(<?=$_SESSION['msclb']?>)
     </font>
     </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
