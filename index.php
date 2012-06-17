@@ -6,13 +6,11 @@
 <link href="css/style.css" rel="stylesheet" type="text/css"></head>
 <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
 <table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td height="26" valign="top">  
+  <tr>
+    <td height="26" valign="top">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
    			<tr>
 		     <td>
-             
-	
              <table width="100%" border="0" cellspacing="0" cellpadding="0">
        			<tr>
 		         <td width="20" class="tl_header">&nbsp;</td>
