@@ -15,14 +15,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật quyền - người dùng</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<script type="text/javascript" src="js/yui.js"></script>
-<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/fill.js"></script>
-<script type="text/javascript" src="js/capnhatdonvi.js"></script>
-<script type="text/javascript" src="js/table_quyen_nguoidung.js"></script>
-<script type="text/javascript" src="js/check_quyen_nguoidung.js"></script>
-<script type="text/javascript" src="js/quyen_nguoidung.js"></script>
+
+	<link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+	<script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+	<script type="text/javascript" src="js/table-thuoctinh.js"></script>
+    <script type="text/javascript" src="js/gettheme.js"></script>
+
+	<script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/fill.js"></script>
+    <script type="text/javascript" src="js/table-quyen-nguoidung2.js"></script>
+    <script type="text/javascript" src="js/check_quyen_nguoidung.js"></script>
+    <script type="text/javascript" src="js/quyen_nguoidung.js"></script>
 <script type="text/javascript" >
 
 $(document).ready(function() { 
@@ -32,10 +53,10 @@ $(document).ready(function() {
 	$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(function(){
 		get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
 	});*/
-	createTable_nguoidung();
+	taobangquyen ()
 	fillcombo('get_list_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
 	//Create table after loading page
-	$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
+	/*$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
 			
 			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
 			checkbox_themvpp();
@@ -48,7 +69,7 @@ $(document).ready(function() {
 			checkbox_duyetkk();
 			checkbox_duyetkhms();
 			
-		});
+		});*/
 	$('form[name="frm_capnhatquyen_nguoidung"] input[name="btn_capnhat"]').click(function(){		
 		update_quyen_nguoidung(document.frm_capnhatquyen_nguoidung);
 	});
@@ -161,9 +182,48 @@ $(document).ready(function() {
               <!--bang thuoc tinh dat o day-->
                
                     <tr>
-                        <td align="center" height="400"  class="level_1_1" colspan="4" valign="top">
-                        <div class="yui3-skin-sam">                    
-                        <div id="mytable"></div>                    
+                        <td align="center" height="400"  class="level_1_1" colspan="2" valign="top">
+                       			<div style="visibility: hidden;" id='jqxWidget'>
+                            <div id="jqxgrid"></div>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                           </div>
+                           <div style="margin-left: 30px; float: left;">
+                                <div style="margin-top: 5px;">
+                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton" />
+                                </div> 
+                                <div style="margin-top: 5px;">
+                                    <input id="deleterowbutton" type="button" value="Xóa thuộc tính" />
+                                </div>
+                               
+                                
+                         </div>
+                         <div style="width:600px; border: 0px solid #ccc; margin-top: 10px;"
+                            id="mainDemoContainer">
+                            </div>
+                            <div id="eventWindow" style="display:none">
+                                <div>
+                                    <img width="14" height="14" src="../jqwidgets/resources/drag.png" alt="" />
+                                    Thêm thuộc tính cho tài sản
+                                </div>
+                                <div>
+                                  <div style="margin: 10px">
+                                    Chọn tài sản
+                                    <div id='jqxWidget3'>
+        							</div>
+                                    Chọn thuộc tính
+                                    <div id='jqxWidget2'>
+        							</div>
+                                </div>
+                                <div>
+                                    <div style="float: right; margin-top: 10px; margin-right:38px">
+                                       
+                                        <input type="button" id="cancel" value="Thoát" />
+                                    </div>
+                                </div>
+                             </div>
+                          </div>
                         </div>
                         </td>
                 </tr>

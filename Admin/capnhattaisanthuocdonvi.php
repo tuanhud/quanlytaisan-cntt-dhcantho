@@ -146,10 +146,10 @@
                            </div>
                            <div style="margin-left: 30px; float: left;">
                                 <div style="margin-top: 5px;">
-                                    <input type="button" value="Add A New Row" id="showWindowButton" />
+                                    <input type="button" value="Thêm tài sản" id="showWindowButton" />
                                 </div> 
                                 <div style="margin-top: 5px;">
-                                    <input id="deleterowbutton" type="button" value="Delete Selected Row" />
+                                    <input id="deleterowbutton" type="button" value="Xóa tài sản" />
                                 </div>
                                
                                 
@@ -159,8 +159,8 @@
                             </div>
                             <div id="eventWindow" style="display:none">
                                 <div>
-                                    <img width="14" height="14" src="../images/help.png" alt="" />
-                                    Modal Window
+                                    <img width="14" height="14" src="../jqwidgets/resources/drag.png" alt="" />
+                                    Thêm tài sản
                                 </div>
                                 <div>
                                   <div style="margin: 10px">
@@ -170,20 +170,15 @@
                                     Chọn tài sản
                                     <div id='jqxWidget3'>
         							</div>
-                                    <div>Số lượng</div>
-                                    <div id='numericInput'></div>
-                                    <div>Đơn giá</div>
-                                    <div id='currencyInput'></div>
-                                    <div style='margin-top: 3px;' id='validation'></div>
+           
                                 </div>
                                 <div>
-                                    <div style="float: right; margin-top: 10px;">
-                                        <input type="button" id="save" value="Save"/>
-                                        <input type="button" id="cancel" value="Cancel" />
+                                    <div style="float: right; margin-top: 10px;"> 
+                                        <input type="button" id="cancel" value="Thoát" />
                                     </div>
                                 </div>
-                                </div>
-                            </div>
+                             </div>
+                          </div>
                         </div>
                          
                     </div>

@@ -19,7 +19,7 @@ function createTable(){
 	//Tao checkbox tren moi dong 
     var fmtChkBox = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr" id="checkboxID" />';
+    	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
         	o.value = cell;
 	        o.className += ' align-center';
     }
@@ -40,38 +40,7 @@ function createTable(){
         caption: 'Danh sách nội dung',
         render : '#mytable'
     });		
-	get_info_noidung_phieumau('get_info_noidung_phieumau.php');
-	function get_info_noidung_phieumau(filephp)
-{
-		http=GetXmlHttpObject();
-		var params ="";
-		//mo ket noi bang phuong thuc post
-		http.open("POST", filephp, false);
-		//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		//http.setRequestHeader("Content-length", params.length);
-		//http.setRequestHeader("Connection", "close");
-		//ham xu li du lieu tra ve cua ajax send thanh cong
-		http.onreadystatechange = function()
-		{
-			if(http.readyState == 4 && http.status == 200) 
-			{
-				dt.reset();
-				var x=http.responseXML.getElementsByTagName('RESULT');
-				for(var i=0;i<x.length;i++)
-				{
-						
-						dt.data.add({
-							sothutu:x[i].getElementsByTagName('STT')[0].firstChild.nodeValue,
-							manoidung:x[i].getElementsByTagName('MAND')[0].firstChild.nodeValue,
-							tennoidung:x[i].getElementsByTagName('TENND')[0].firstChild.nodeValue,
-							ghichu:x[i].getElementsByTagName('GHICHU')[0].firstChild.nodeValue,
-							});
-					}
-				}
-			}
-			http.send(params);
-		}
+	
 	// -------------------------
 	//  Delete 1 record
 	// -------------------------      			
@@ -94,15 +63,17 @@ function createTable(){
 // -------------------------
 //  Delete all current record if it's checked
 // -------------------------      
-	$('#btn').click(function(){	
+	$('#btnXoa').click(function(){	
+	
         var chks = dt.get("srcNode").all("tbody tr td input.myCheckboxFmtr");     // get all checks   
+		if (confirm('Bạn có chắc muốn xóa không ?' )) {
         chks.each( function(item){
-            if ( !item.get('checked') ) 
-			alert("Bạn chưa chọn nội dung!");
-           // var rec = dt.getRecord( item.ancestor().ancestor()); // item is INPUT, first parent is TD, second is TR
+            if ( !item.get('checked') ) return;
+            var rec = dt.getRecord( item.ancestor().ancestor()); // item is INPUT, first parent is TD, second is TR
 			//msg += rec.get('em_id') + ' : ' + rec.get('ename') + "\n";
-			//dt.removeRow( rec.get('clientId') );
+			dt.removeRow( rec.get('clientId') );
         }, dt);		
+		}
 	});
 	// -------------------------
 	//   Click handler on "Select" TH checkbox, toggle the settings of all rows
@@ -220,4 +191,3 @@ function createTable(){
      }	 
 });
 }// JavaScript Document
-

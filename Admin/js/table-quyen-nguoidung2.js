@@ -1,7 +1,7 @@
-function taobangtaisan ()
+function taobangquyen ()
 {
 	 		var data = {};
-			var theme = '';
+			var theme = 'Dark Blue';
 			var madonvi= '';
 			var tendonvi= '';
 			var mataisan= '';
@@ -97,8 +97,10 @@ function taobangtaisan ()
 					  return dataadapter.records;     
 				},
                 columns: [
-					  { text: 'Mã đơn vị', editable: false, datafield: 'MSDV', width: 70, cellsalign: 'left' },
-					  { text: 'Tên đơn vị', editable: false, datafield: 'TenDV', width: 150, cellsalign: 'left' },
+					   { text: 'Available', datafield: 'available', columntype: 'checkbox', width: 70 },
+
+					  { text: 'Mã cán bộ', editable: false, datafield: 'MSDV', width: 70, cellsalign: 'left' },
+					  { text: 'Tên cán bộ', editable: false, datafield: 'TenDV', width: 150, cellsalign: 'left' },
                       { text: 'Mã thiết bị', editable: false, datafield: 'MaTaiSan', width: 80, cellsalign: 'left' },
                       { text: 'Tên thiết bị',editable: false, datafield: 'TenTaiSan', width: 180 },
 					  { text: 'Số Lượng', datafield: 'SoLuongCuaDonVi', width: 80 },

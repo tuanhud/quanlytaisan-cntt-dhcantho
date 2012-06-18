@@ -34,21 +34,6 @@ var _admin;
 							{
 								var tb ='Đã lưu mẩu tin thành công.';
 								alert (tb);
-								/*if(n==0)
-									alert("Đã xảy ra lỗi.\nBạn hãy kiểm tra lại.")
-								else if(n==1) 
-								{
-									alert("Thành công !"),
-									fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
-									fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);
-									ClearInputValue("#txt_tendonvithem"),
-									FocusAndSelect("#txt_tendonvithem")
-								}
-								else
-								{
-									alert("Đơn vị này đã tồn tại."),
-									FocusAndSelect("#txt_tendonvithem")
-								}*/
 								
 							},
 							error:function(){},

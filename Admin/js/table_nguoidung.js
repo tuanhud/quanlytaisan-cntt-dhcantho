@@ -7,9 +7,16 @@ function taobangtaisan ()
 		{
             $('#showWindowButton').mousedown(function () 
 			{
-					
-					
-					var data = "tendonvi=" +document.importcanbo.tendonvithem.value + "&masocanbo=" + document.importcanbo.masocanbo.value + "&tencanbo=" + document.importcanbo.tencanbo.value+ "&gioitinh=" + document.importcanbo.gioitinh.value + "&ngaysinh=" + document.importcanbo.ngaysinh.value+ "&email=" + document.importcanbo.email.value + "&diachi=" +document.importcanbo.diachi.value+ "&sodienthoai=" + document.importcanbo.sodienthoai.value + "&matkhau=" + document.importcanbo.matkhau.value; 
+					var tendonvithem = document.importcanbo.tendonvithem.value;
+					var masocanbo =document.importcanbo.masocanbo.value;
+					var tencanbo =document.importcanbo.tencanbo.value;
+					var gioitinh = document.importcanbo.gioitinh.value;
+					var ngaysinh =document.importcanbo.ngaysinh.value;
+					var email =document.importcanbo.email.value;
+					var diachi = document.importcanbo.diachi.value;
+					var sodienthoai =document.importcanbo.sodienthoai.value;
+					var matkhau =document.importcanbo.matkhau.value;
+					var data = "tendonvithem=" + tendonvithem + "&masocanbo=" + masocanbo + "&tencanbo=" + tencanbo + "&gioitinh=" + gioitinh + "&ngaysinh=" + ngaysinh+ "&email=" + email + "&diachi=" +diachi+ "&sodienthoai=" + sodienthoai + "&matkhau=" + matkhau; 
 					$.ajax
 					({
 						dataType: 'json',
