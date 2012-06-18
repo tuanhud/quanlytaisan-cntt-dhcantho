@@ -38,7 +38,8 @@ function createTable(){
 				//{key:'tinhnang', label:'Tính năng',sortable: true},
 				{key:'DVT', label:'Đơn vị tính',sortable: true},
 				{name: "soluong",label:"Số lượng",formatter: fmttextbox, allowHTML:true},
-				{name: "dongia",label:"Đơn giá",formatter: fmttextbox, allowHTML:true},
+				//{name: "dongia",label:"Đơn giá",formatter: fmttextbox, allowHTML:true},
+				{key: "dongia",label:"Đơn giá",sortable: true},
 				{name:'thanhtien', label:'Thành tiền',formatter: fmttextbox, allowHTML:true},
 				{name:'thuyetminh', label:'Thuyết minh',formatter: fmttextbox,size:50, allowHTML:true},
 		];
@@ -228,6 +229,7 @@ function getRecord2(phpfile)
 							
 							TEN:x[i].getElementsByTagName('TEN')[0].firstChild.nodeValue, 
 							DVT:x[i].getElementsByTagName('DVT')[0].firstChild.nodeValue, 
+							dongia:x[i].getElementsByTagName('dongia')[0].firstChild.nodeValue, 
 							 
 							});
 							

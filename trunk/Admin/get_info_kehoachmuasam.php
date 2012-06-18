@@ -8,7 +8,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-			        $sql="Select * from taisan";
+			        $sql="Select TenTaiSan,TenDonViTinh,GiaTriThuocTinh from taisan a, cothuoctinh b where a.MaTaiSan= b.MaTaiSan ";
 					$db->setQuery($sql);
 					$result=$db->fetchAll();
 					$xml="";
@@ -23,7 +23,9 @@
 							$xml.="<DVT>";
 								$xml.=$row['TenDonViTinh'];							
 							$xml.="</DVT>";
-							
+							$xml.="<dongia>";
+								$xml.=$row['GiaTriThuocTinh'];							
+							$xml.="</dongia>";
 						$xml.="</RESULT>";
 					}
 					$xml.="</INFO>";
