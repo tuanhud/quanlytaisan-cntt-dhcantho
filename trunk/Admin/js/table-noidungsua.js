@@ -1,4 +1,4 @@
-var dt2, datasource2;
+var dt, datasource;
 // -------------------------
 //  Create Table 
 // -------------------------      
@@ -33,45 +33,14 @@ function createTable1(){
 				{key: "ghichu",label:"Ghi chú", sortable: false},
 		];
 	
-    dt2 = new Y.DataTable({
+    dt = new Y.DataTable({
         columns: cols,
-        data   : datasource2,
+        data   : datasource,
         summary: 'Danh sách nội dung',
         caption: 'Danh sách nội dung',
         render : '#mytable1'
     });		
-	get_info_noidung_phieumausua('get_info_noidung_phieumau.php');
-	function get_info_noidung_phieumausua(filephp)
-{
-		http=GetXmlHttpObject();
-		var params ="";
-		//mo ket noi bang phuong thuc post
-		http.open("POST", filephp, false);
-		//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		//http.setRequestHeader("Content-length", params.length);
-		//http.setRequestHeader("Connection", "close");
-		//ham xu li du lieu tra ve cua ajax send thanh cong
-		http.onreadystatechange = function()
-		{
-			if(http.readyState == 4 && http.status == 200) 
-			{
-				dt2.reset();
-				var x=http.responseXML.getElementsByTagName('RESULT');
-				for(var i=0;i<x.length;i++)
-				{
-						
-						dt2.data.add({
-							sothutu:x[i].getElementsByTagName('STT')[0].firstChild.nodeValue,
-							manoidung:x[i].getElementsByTagName('MAND')[0].firstChild.nodeValue,
-							tennoidung:x[i].getElementsByTagName('TENND')[0].firstChild.nodeValue,
-							ghichu:x[i].getElementsByTagName('GHICHU')[0].firstChild.nodeValue,
-							});
-					}
-				}
-			}
-			http.send(params);
-		}
+	
 	// -------------------------
 	//  Delete 1 record
 	// -------------------------      			

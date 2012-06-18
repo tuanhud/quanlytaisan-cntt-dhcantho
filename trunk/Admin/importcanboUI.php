@@ -24,12 +24,9 @@ session_start();
     <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
-     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
-	<script type="text/javascript" src="js/table-taisan.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
     <script type="text/javascript" src="js/gettheme.js"></script>
-    
-    
-	<script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
 
 <script type="text/javascript" src="js/importcanbo.js"></script>

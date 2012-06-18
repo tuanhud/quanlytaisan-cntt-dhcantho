@@ -74,11 +74,8 @@ function taobangthuoctinh ()
             $('#eventWindow').jqxWindow({ maxHeight: 500, maxWidth:400, minHeight: 30, minWidth: 250, height: 250, width: 360,
                 theme: theme, resizable: false, isModal: true, modalOpacity: 0.3,
                 cancelButton: $('#cancel')
-            });
-            $('#showWindowButton').jqxButton({ theme: theme, width: '150px', height: '25px' });
-			$("#deleterowbutton").jqxButton({ theme: theme, width: '150px', height: '25px' });
+            });   
         }
-        
         $('#showWindowButton').mousedown(function () 
 		{
 				createElements(theme);
@@ -227,6 +224,8 @@ function taobangthuoctinh ()
 		
         $(document).ready(function () {
             var theme = $.data(document.body, 'theme', theme);
+			$('#showWindowButton').jqxButton({ theme: theme, width: '150px', height: '25px' });
+			$("#deleterowbutton").jqxButton({ theme: theme, width: '150px', height: '25px' });
             if (theme == undefined) theme = '';
             $("#jqxWidget").css('visibility', 'visible');
         });

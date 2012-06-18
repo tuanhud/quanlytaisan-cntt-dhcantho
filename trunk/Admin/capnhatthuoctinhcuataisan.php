@@ -16,14 +16,30 @@
 <title>Cập nhật thuộc tính tài sản - thiết bị</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="js/yui.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/fill.js"></script>
-<script type="text/javascript" src="js/table-thuoctinh.js">
-</script>
-<script type="text/javascript" src="js/thuoctinh-taisan.js"></script>
-<script type="text/javascript" >
+	<link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+	<script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+     <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+	<script type="text/javascript" src="js/table-thuoctinh.js"></script>
+    <script type="text/javascript" src="js/gettheme.js"></script>
+    <script type="text/javascript" src="js/thuoctinh-taisan.js"></script>
+    <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
 var keypressed = null;
@@ -46,11 +62,10 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 $(document).ready(function() { 
 		//createAutoComplete();
-		createTable();
-		fillcombo('get_list_taisan.php',document.frm_themthuoctinh.cbo_tenthietbi);
-		$('form[name="frm_themthuoctinh"] input[name="btn_themthuoctinh"]').click(function(){		
+		taobangthuoctinh();
+		/*$('form[name="frm_themthuoctinh"] input[name="btn_themthuoctinh"]').click(function(){		
 		themlistthuoctinhtaisan('themthuoctinh_taisan.php',document.frm_themthuoctinh);
-	});
+	});*/
 }); 
 </script>
 </head>
@@ -136,7 +151,7 @@ $(document).ready(function() {
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm thuộc tính tài sản - thiết bị </td>
+          <td width="419" align="center">Cập nhật thuộc tính tài sản - thiết bị </td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -144,27 +159,56 @@ $(document).ready(function() {
           	<form name="frm_themthuoctinh">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
-              <tr>
-              		<td height="22" class="level_1_1" colspan="2"></td>    
-              </tr>
-              <tr align="center">
-					<td height="22" align="right" class="level_1_2">Tên loại thiết bị</td>
-					<td align="left" class="level_1_2"><select name="cbo_tenloaithietbi" class="cbo" style="width:300;"> </select></td>
-			</tr> 
-			  <tr align="center">
-					<td height="22" align="right" class="level_1_2">Tên thiết bị</td>
-					<td align="left" class="level_1_2"><select name="cbo_tenthietbi" id="cbo_tenthietbi" class="cbo" style="width:300;"> </select></td>
-			</tr> 
             <tr>
-					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
-                    <div class="yui3-skin-sam">                    
-                    <div id="mytable"></div>                    
-                    </div>
-                    </td>
+            		
+                    <td align="left" class="level_1_1" colspan="2">
+					 <div style="visibility: hidden;" id='jqxWidget'>
+                            <div id="jqxgrid"></div>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                           </div>
+                           <div style="margin-left: 30px; float: left;">
+                                <div style="margin-top: 5px;">
+                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton" />
+                                </div> 
+                                <div style="margin-top: 5px;">
+                                    <input id="deleterowbutton" type="button" value="Xóa thuộc tính" />
+                                </div>
+                               
+                                
+                         </div>
+                         <div style="width:600px; border: 0px solid #ccc; margin-top: 10px;"
+                            id="mainDemoContainer">
+                            </div>
+                            <div id="eventWindow" style="display:none">
+                                <div>
+                                    <img width="14" height="14" src="../jqwidgets/resources/drag.png" alt="" />
+                                    Thêm thuộc tính cho tài sản
+                                </div>
+                                <div>
+                                  <div style="margin: 10px">
+                                    Chọn tài sản
+                                    <div id='jqxWidget3'>
+        							</div>
+                                    Chọn thuộc tính
+                                    <div id='jqxWidget2'>
+        							</div>
+                                </div>
+                                <div>
+                                    <div style="float: right; margin-top: 10px; margin-right:38px">
+                                       
+                                        <input type="button" id="cancel" value="Thoát" />
+                                    </div>
+                                </div>
+                             </div>
+                          </div>
+                        </div>
+                         
+                    
+                         </td>
 			</tr>       
-				<tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_themthuoctinh" id="btn_themthuoctinh" type="button" class="button_1" value="Thêm"></td>
-              </tr>  
+				
               </tbody>
            </table>
            </form>
