@@ -12,17 +12,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Lập phiếu dự trù VPP</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<script>	
-	function thoat() {
-		if (confirm('Ban co chac chan muon thoat khong ?' )) {
-			document.location = '../logout.php';
-			return;
-		}
-	}
-</script>
-<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/fill.js"></script>
+
+	<link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+	<script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+	<script type="text/javascript" src="js/table-vpp.js"></script>
+    <script type="text/javascript" src="js/gettheme.js"></script>
+    <script type="text/javascript" src="js/taopopupvpp.js"></script>
+    <script type="text/javascript" src="js/table-vppsua.js"></script>
+    
+    
+	<script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/fill.js"></script>
+    
 <script type="text/javascript" src="js/capnhatphieudutruvpp.js"></script>
 <script type="text/javascript">
 function keypress(e){
@@ -46,6 +64,17 @@ if (keypressed < 48 || keypressed > 57)
 }
 }
 $(document).ready(function() {
+	
+	taobangvpp();
+	taopopup()
+	function thoat() {
+		if (confirm('Ban co chac chan muon thoat khong ?' )) {
+			document.location = '../logout.php';
+			return;
+		}
+	}
+	
+	
 	$btn=0; 
 	fillcombo2('get_list_nam.php',document.frm_lapphieudutru.cbo_namthem);
 	fillcombo2('get_list_quy.php',document.frm_lapphieudutru.cbo_quythem);
@@ -145,7 +174,7 @@ $(document).ready(function() {
 		   <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-              		<td height="22" colspan="2" class="level_1_1"></td>
+              		
                     </tr>
             <tr>
               <td width="50%" height="30" align="right" class="level_1_1">Năm áp dụng</td>
@@ -163,175 +192,68 @@ $(document).ready(function() {
 					  </select></td>
 			</tr>   
                 <tr>
-					<td height="22" colspan="2" align="left" class="level_1_2"><em><strong>Chi tiết văn phòng phẩm:</strong> (Check vào ô và điền số lượng, đơn giá tương ứng)</em></td>
+					<td height="22" colspan="2" align="left" class="level_1_2"><em><strong>Chi tiết văn phòng phẩm:</strong> </em></td>
 					</tr>
-             <tr>
-					<td height="22" colspan="2" align="center" class="level_1_1"><table class="border_1" bordercolor="#111111" width="645" border="0">
-					  <tr class="level_1_2">
-					    <th width="31"><input type="checkbox"></th>
-					    <th width="190">Tên VPP</th>
-					    <th width="84">ĐVT</th>
-					    <th width="119">NSX</th>
-					    <th width="66">SL</th>
-					    <th width="129">Đơn Giá</th>
-					    </tr>
-<?php
-include("../database.php");
-$db=new database();
-$sql="select a.mavpp,a.tenvpp,a.tendonvitinh, b.tennsx from vanphongpham a, nhasanxuat b where a.mansx=b.mansx";
-$db->setQuery($sql);
-$list=$db->fetchAll();
-$count=0;
-$btn_lap;
-while($row=mysql_fetch_array($list))
-	{
-		$count=$count+1;
-	if($count%2!=0)
-	echo "<tr class='level_1_1'>";
-	else
-	echo "<tr class='level_1_2'>";
-	echo "<td align=\"center\"><input type='checkbox' name='checkbox[]' id='checkbox[]' value='$row[mavpp]'</td>";
-	echo "<td>$row[tenvpp]</td>";
-	echo "<td align=\"center\">$row[tendonvitinh]</td>";
-	echo "<td>$row[tennsx]</td>";
-	echo "<td><input type='text' style='width:100%' name='sl$row[mavpp]' id='sl$row[mavpp]' onKeyPress='return keypress(event)'></td>";
-	echo "<td><input type='text' name='dg$row[mavpp]' id='dg$row[mavpp]' onKeyPress='return keypress(event)'></td>";
-	echo "</tr>";
-	}
-?>
-					  
-					  </table></td>
-					</tr>          
+      				<tr>
+                    <td colspan="2" align="center">
+              
+                            <div style="margin-top: 10px;" id="jqxgrid"></div>
+                            <span> <strong>Tổng thành tiền:</strong></span> <span id="tongtien"></span>
+                            </span> <span><strong>VNĐ</strong></span>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                 
+                           <div style="margin-left: 30px; float: left;">
+                                <div style="margin-top: 5px;">
+                                    <input type="button" value="Thêm văn phòng phẩm" id="showWindowButton" />
+                                </div> 
+                                <div style="margin-top: 5px;">
+                                    <input id="deleterowbutton" type="button" value="Xóa văn phòng phẩm" />
+                                </div>
+                               
+                                
+                         
+                         <div style="width:600px; border: 0px solid #ccc; margin-top: 10px;"
+                            id="mainDemoContainer">
+                            </div>
+                            <div id="eventWindow" style="display:none">
+                                <div>
+                                    <img width="14" height="14" src="../images/help.png" alt="" />
+                                    Bảng chi tiết các văn phòng phẩm
+                                </div>
+                                <div>
+                                
+                                	<div style="margin-top: 10px;" id="jqxgrid2"></div>
+                                    <div style="margin-top: 30px;">
+                                        <div id="cellbegineditevent"></div>
+                                        <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                                   </div>
+                                    <div style="float: right; margin-top: 10px;">
+                                        <input type="button" id="cancel" value="Thoát" />
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                         
+                    </div>    
+                    </td>
+               </tr>         
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2"><input type="submit" name="btn_lap" id="btn_lap" class="button_1" value="Lập" ></td>
+                <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_lap" id="btn_lap" class="button_1" value="Lập" ></td>
               </tr>
               </form>
               </tbody>
-           </table>
-           <?php
-		   
-	if(isset($_POST['btn_lap'])){
-			   //tim ma phieu du toan lon nhat
-		$db=new database();
-		$sql = "Select max(Maphieudutoan) from phieudutoanvpp";
-		$db->setQuery($sql);
-		$result = $db->fetchAll();
-		$row = mysql_fetch_array($result,MYSQL_NUM);
-		$maphieudutoan = $row[0]+1;
- 		if(($_POST['cbo_namthem']=="-Chọn năm-") || ($_POST['cbo_quythem']=="-Chọn quý-") || ($_POST['cbo_donvithem']==-1))
-	{
-		echo "<script type=\"text/javascript\">
-		alert('Chưa chọn đủ thông tin')
-		</script>";
-		}
-	else {
-		//them vao bang có van phong pham
-		if(empty($_POST['checkbox'])){
-		echo "<script type=\"text/javascript\">
-		alert('Chưa chọn các văn phòng phẩm')
-		</script>";
-	
-		}
-		else{
-		$check=$_POST['checkbox'];
-	for($i=0;$i<count($check);$i++){
-		$gan =$check[$i];
-		if($gan!=0){
-		if(($_POST['sl'.$gan]=='') || ($_POST['dg'.$gan]=='')){
-			echo "<script type=\"text/javascript\">
-		alert('Chưa chọn đủ thông tin')
-		</script>";
-		break;
-		}
-		else{
-		$sqlvpp="insert into covpp values('".$maphieudutoan."','".$gan."','".$_POST['sl'.$gan]."','".$_POST['dg'.$gan]."')";
-		$db1=new database();
-		$db1->setQuery($sqlvpp);
-		$db1->executeQuery();
-		//them vao ban phieu du toan van phong pham
-		$db2=new database();
-	$db3=new database();
-		$sqldutoan="insert into phieudutoanvpp values('".$maphieudutoan."','".$_POST['cbo_namthem']."','".$_POST['cbo_donvithem']."','0')";
-		$db2->setQuery($sqldutoan);
-		$db2->executeQuery();
-		//them vao ban thuocquyvpp
-		$sqlquyvpp="insert into thuocquyvpp values('".$maphieudutoan."','".$_POST['cbo_quythem']."')";
-		$db3->setQuery($sqlquyvpp);
-		$db3->executeQuery();
-		}
-		}
-		else{
-			echo "<script type=\"text/javascript\">
-		alert('Chưa chọn đủ thông tin')
-		</script>";
-			}
-		}//KET THUC VONG LAP FOR
-		}
-	}
-		   }
-	?>   
+           </table>   
           </td>
         </tr>		
         </tbody>
         </table>
 <br/>
         <table width="700" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa phiếu dự trù văn phòng phẩm</td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
-        <tr>
-          <td height="165" colspan="3" align="left">
-          	<form name="frm_suaphieudutru" id="frm_suaphieudutru">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-              <tbody>
-              <tr>
-              		<tr>
-              		<td height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
-              </tr>
-              <tr>
-					<td height="22" align="right" class="level_1_2">Chọn mã phiếu dự toán</td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_maphieusua" id="cbo_maphieusua" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-			</tr>
-            <tr>
-					<td width="50%" height="30" align="right" class="level_1_1">Năm áp dụng</td>
-              <td width="50%" align="left" class="level_1_1"><select name="cbo_namsua" id="cbo_namsua" class="cbo" style="width:100%;">
-              </select></td>
-            </tr>    
-             <tr>
-					<td height="22" align="right" class="level_1_2">Quý áp dụng</td>
-					<td width="50%" align="left" class="level_1_2"><select name="cbo_quysua" id="cbo_quysua" class="cbo" style="width:100%;">
-					  </select></td>
-			</tr>
-             <tr>
-					<td height="22" align="right" class="level_1_1">Phiếu dự toán của đơn vị</td>
-					<td width="50%" align="left" class="level_1_1"><select name="cbo_donvisua" id="cbo_donvisua" class="cbo" style="width:100%;">
-					  </select></td>
-			</tr>   
-                <tr>
-					<td height="22" colspan="2" align="left" class="level_1_2"><em><strong>Chi tiết văn phòng phẩm:</strong> (Check vào ô và điền số lượng, đơn giá tương ứng)</em></td>
-					</tr>
-             <tr>
-					<td height="22" colspan="2" align="right" class="level_1_1">&nbsp;</td>
-			</tr>         
-            <tr>
-              <td colspan="2" height="22" align="center" class="level_1_2">
-                <input type="button" name="btn_luu" id="btn_luu" class="button_1" value="Lưu">
-                </td>
-            </tr>
-				  						  
-            </tbody>
-        </table>
-        	</form>
-       </td>
-      </tr>		
-      </tbody>
+        
+        
       </table>
 <br/>
    <table width="500" border="0" cellpadding="0" cellspacing="0">
