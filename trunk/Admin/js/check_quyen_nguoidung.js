@@ -1,316 +1,81 @@
-// JavaScript Document
-function checkbox_themvpp()
-{
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr2");
-			chks.each( function(item)
+
+$("#jqxgrid").bind("bindingcomplete", function (event) {
+
+ 
+			var i = 0,them=1;
+	      	var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
+			for(i;i < rowscount;i++) 
 			{
-								var rec = dt.getRecord( item.ancestor().ancestor() );
-								http=GetXmlHttpObject();
-								var params ="macanbo="+rec.get('id');
-								//mo ket noi bang phuong thuc post
-								http.open("POST",'get_list_quyen_canbo.php', false);
-								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								//http.setRequestHeader("Content-length", params.length);
-								//http.setRequestHeader("Connection", "close");
-								//ham xu li du lieu tra ve cua ajax send thanh cong
-								http.onreadystatechange = function() 
+					var masocanbo = $('#jqxgrid').jqxGrid('getcellvalue', i, "MSCB");	
+					alert(masocanbo);			
+				   var params ="macanbo="+masocanbo;
+				   //mo ket noi bang phuong thuc post
+				   http.open("POST",'get_list_quyen_canbo.php', false);
+				   //gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+					http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					//http.setRequestHeader("Content-length", params.length);
+					//http.setRequestHeader("Connection", "close");
+					//ham xu li du lieu tra ve cua ajax send thanh cong
+					http.onreadystatechange = function() 
+					{
+						if(http.readyState == 4 && http.status == 200) 
+						{											
+							var x=http.responseXML.getElementsByTagName('RESULT');	
+							for(var j=0;j<x.length;j++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+							{
+								var maquyen = x[j].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue;
+								if(maquyen=='ADMIN')
 								{
-									if(http.readyState == 4 && http.status == 200) 
-									   {											
-												var x=http.responseXML.getElementsByTagName('RESULT');
-												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
-											   {
-													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='THEMVPP')
-													{
-																	item.set('checked', true);
-																	//alert(macanbo);
-								
-													}
-											   }
-												
-									   }
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "ADMIN",1);
 								}
-								http.send(params);
-			})	
-}
-function checkbox_suavpp()
-{
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr3");
-			chks.each( function(item)
-			{
-								var rec = dt.getRecord( item.ancestor().ancestor() );
-								http=GetXmlHttpObject();
-								var params ="macanbo="+rec.get('id');
-								//mo ket noi bang phuong thuc post
-								http.open("POST",'get_list_quyen_canbo.php', false);
-								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								//http.setRequestHeader("Content-length", params.length);
-								//http.setRequestHeader("Connection", "close");
-								//ham xu li du lieu tra ve cua ajax send thanh cong
-								http.onreadystatechange = function() 
+								else if(maquyen=='CBQLBM')
 								{
-									if(http.readyState == 4 && http.status == 200) 
-									   {											
-												var x=http.responseXML.getElementsByTagName('RESULT');
-												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
-											   {
-													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='SUAVPP')
-													{
-																	item.set('checked', true);
-																	//alert(macanbo);
-								
-													}
-											   }
-												
-									   }
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "CBQLBM",1);
 								}
-								http.send(params);
-			})	
-}
-function checkbox_themkk()
-{
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr4");
-			chks.each( function(item)
-			{
-								var rec = dt.getRecord( item.ancestor().ancestor() );
-								http=GetXmlHttpObject();
-								var params ="macanbo="+rec.get('id');
-								//mo ket noi bang phuong thuc post
-								http.open("POST",'get_list_quyen_canbo.php', false);
-								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								//http.setRequestHeader("Content-length", params.length);
-								//http.setRequestHeader("Connection", "close");
-								//ham xu li du lieu tra ve cua ajax send thanh cong
-								http.onreadystatechange = function() 
+								else if(maquyen=='GV')
 								{
-									if(http.readyState == 4 && http.status == 200) 
-									   {											
-												var x=http.responseXML.getElementsByTagName('RESULT');
-												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
-											   {
-													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='THEMKK')
-													{
-																	item.set('checked', true);
-																	//alert(macanbo);
-								
-													}
-											   }
-												
-									   }
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "GV",1);
 								}
-								http.send(params);
-			})	
-}
-function checkbox_suakk()
-{
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr5");
-			chks.each( function(item)
-			{
-								var rec = dt.getRecord( item.ancestor().ancestor() );
-								http=GetXmlHttpObject();
-								var params ="macanbo="+rec.get('id');
-								//mo ket noi bang phuong thuc post
-								http.open("POST",'get_list_quyen_canbo.php', false);
-								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								//http.setRequestHeader("Content-length", params.length);
-								//http.setRequestHeader("Connection", "close");
-								//ham xu li du lieu tra ve cua ajax send thanh cong
-								http.onreadystatechange = function() 
+								else if(maquyen=='THEMKHMS')
 								{
-									if(http.readyState == 4 && http.status == 200) 
-									   {											
-												var x=http.responseXML.getElementsByTagName('RESULT');
-												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
-											   {
-													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='SUAKK')
-													{
-																	item.set('checked', true);
-																	//alert(macanbo);
-								
-													}
-											   }
-												
-									   }
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "THEMKHMS",1);
 								}
-								http.send(params);
-			})	
-}
-function checkbox_themkhms()
-{
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr6");
-			chks.each( function(item)
-			{
-								var rec = dt.getRecord( item.ancestor().ancestor() );
-								http=GetXmlHttpObject();
-								var params ="macanbo="+rec.get('id');
-								//mo ket noi bang phuong thuc post
-								http.open("POST",'get_list_quyen_canbo.php', false);
-								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								//http.setRequestHeader("Content-length", params.length);
-								//http.setRequestHeader("Connection", "close");
-								//ham xu li du lieu tra ve cua ajax send thanh cong
-								http.onreadystatechange = function() 
+								else if(maquyen=='SUAKHMS')
 								{
-									if(http.readyState == 4 && http.status == 200) 
-									   {											
-												var x=http.responseXML.getElementsByTagName('RESULT');
-												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
-											   {
-													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='THEMKHMS')
-													{
-																	item.set('checked', true);
-																	//alert(macanbo);
-								
-													}
-											   }
-												
-									   }
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "SUAKHMS",1);
 								}
-								http.send(params);
-			})	
-}
-function checkbox_suakhms()
-{
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr7");
-			chks.each( function(item)
-			{
-								var rec = dt.getRecord( item.ancestor().ancestor() );
-								http=GetXmlHttpObject();
-								var params ="macanbo="+rec.get('id');
-								//mo ket noi bang phuong thuc post
-								http.open("POST",'get_list_quyen_canbo.php', false);
-								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								//http.setRequestHeader("Content-length", params.length);
-								//http.setRequestHeader("Connection", "close");
-								//ham xu li du lieu tra ve cua ajax send thanh cong
-								http.onreadystatechange = function() 
+								else if(maquyen=='THEMVPP')
 								{
-									if(http.readyState == 4 && http.status == 200) 
-									   {											
-												var x=http.responseXML.getElementsByTagName('RESULT');
-												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
-											   {
-													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='SUAKHMS')
-													{
-																	item.set('checked', true);
-																	//alert(macanbo);
-								
-													}
-											   }
-												
-									   }
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "THEMVPP",1);
 								}
-								http.send(params);
-			})	
-}
-function checkbox_duyetvpp()
-{
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr8");
-			chks.each( function(item)
-			{
-								var rec = dt.getRecord( item.ancestor().ancestor() );
-								http=GetXmlHttpObject();
-								var params ="macanbo="+rec.get('id');
-								//mo ket noi bang phuong thuc post
-								http.open("POST",'get_list_quyen_canbo.php', false);
-								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								//http.setRequestHeader("Content-length", params.length);
-								//http.setRequestHeader("Connection", "close");
-								//ham xu li du lieu tra ve cua ajax send thanh cong
-								http.onreadystatechange = function() 
+								else if(maquyen=='SUAVPP')
 								{
-									if(http.readyState == 4 && http.status == 200) 
-									   {											
-												var x=http.responseXML.getElementsByTagName('RESULT');
-												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
-											   {
-													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='DUYETVPP')
-													{
-																	item.set('checked', true);
-																	//alert(macanbo);
-								
-													}
-											   }
-												
-									   }
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "SUAVPP",1);
 								}
-								http.send(params);
-			})	
-}
-function checkbox_duyetkk()
-{
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr9");
-			chks.each( function(item)
-			{
-								var rec = dt.getRecord( item.ancestor().ancestor() );
-								http=GetXmlHttpObject();
-								var params ="macanbo="+rec.get('id');
-								//mo ket noi bang phuong thuc post
-								http.open("POST",'get_list_quyen_canbo.php', false);
-								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								//http.setRequestHeader("Content-length", params.length);
-								//http.setRequestHeader("Connection", "close");
-								//ham xu li du lieu tra ve cua ajax send thanh cong
-								http.onreadystatechange = function() 
+								else if(maquyen=='THEMKK')
 								{
-									if(http.readyState == 4 && http.status == 200) 
-									   {											
-												var x=http.responseXML.getElementsByTagName('RESULT');
-												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
-											   {
-													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='DUYETKK')
-													{
-																	item.set('checked', true);
-																	//alert(macanbo);
-								
-													}
-											   }
-												
-									   }
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "THEMKK",1);
 								}
-								http.send(params);
-			})	
-}
-function checkbox_duyetkhms()
-{
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr10");
-			chks.each( function(item)
-			{
-								var rec = dt.getRecord( item.ancestor().ancestor() );
-								http=GetXmlHttpObject();
-								var params ="macanbo="+rec.get('id');
-								//mo ket noi bang phuong thuc post
-								http.open("POST",'get_list_quyen_canbo.php', false);
-								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
-								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								//http.setRequestHeader("Content-length", params.length);
-								//http.setRequestHeader("Connection", "close");
-								//ham xu li du lieu tra ve cua ajax send thanh cong
-								http.onreadystatechange = function() 
+								else if(maquyen=='SUAKK')
 								{
-									if(http.readyState == 4 && http.status == 200) 
-									   {											
-												var x=http.responseXML.getElementsByTagName('RESULT');
-												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
-											   {
-													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='DUYETKHMS')
-													{
-																	item.set('checked', true);
-																	//alert(macanbo);
-								
-													}
-											   }
-												
-									   }
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "SUAKK",1);
 								}
-								http.send(params);
-			})	
-}
+								else if(maquyen=='DUYETVPP')
+								{
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "DUYETVPP",1);
+								}
+								else if(maquyen=='DUYETKK')
+								{
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "DUYETKK",1);
+								}
+								else if(maquyen=='DUYETKHMS')
+								{
+									$("#jqxgrid").jqxGrid('setcellvalue',i, "DUYETKHMS",1);
+								}
+							}
+						}
+					}
+					
+					http.send(params);
+         }   
+});	

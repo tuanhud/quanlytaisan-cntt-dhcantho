@@ -1,5 +1,5 @@
 ﻿// JavaScript Document
-/*function FocusAndSelect(n)
+function FocusAndSelect(n)
 {
 	$(n).focus(),$(n).select()
 }
@@ -268,4 +268,4 @@ function capnhatdonvi(filephp,frm)
 	http.send(params);
 }
 });
-}*/
+}
