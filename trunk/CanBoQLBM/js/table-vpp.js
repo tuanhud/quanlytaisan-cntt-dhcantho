@@ -1,5 +1,4 @@
-// JavaScript Document
-function taobangsua()
+function taobangvpp ()
 {
 	 		var data = {};
 			var theme = '';
@@ -28,7 +27,7 @@ function taobangsua()
 			
  		    var dataadapter = new $.jqx.dataAdapter(source);
            // initialize jqxGrid
-            $("#jqxsua").jqxGrid(
+            $("#jqxgrid").jqxGrid(
             {
                 width: 690,
 				selectionmode: 'singlecell',
@@ -65,7 +64,7 @@ function taobangsua()
             });
 			
 			//chon 1 dong
-			 $("#jqxsua").jqxGrid('selectionmode', 'singlerow');
+			 $("#jqxgrid").jqxGrid('selectionmode', 'singlerow');
 	        // delete row.
           $("#deleterowbutton").bind('click', function () 
 			{
@@ -76,11 +75,11 @@ function taobangsua()
                     $("#jqxgrid").jqxGrid('deleterow', id);
 					$('#jqxgrid2').jqxGrid('refreshdata');
 					//tinh gia tri tong thanh tien
-					var rowscount3 = $("#jqxsua").jqxGrid('getdatainformation').rowscount;
+					var rowscount3 = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
 					var tongtien=0;
 					for(var k=0; k < rowscount3;k++) 
 						{ 
-						var tien = $('#jqxsua').jqxGrid('getcellvalue', k, "tong");
+						var tien = $('#jqxgrid').jqxGrid('getcellvalue', k, "tong");
 						tongtien=tongtien+tien;						   
 						}
 					$("#tongtien").html(tongtien);
@@ -91,24 +90,24 @@ function taobangsua()
 					}	
 					
             });
-           $("#jqxsua").bind('cellvaluechanged', function (event) {
+           $("#jqxgrid").bind('cellvaluechanged', function (event) {
 			   //gan gia tri cho cot thanh tien
-					var rowscount2 = $("#jqxsua").jqxGrid('getdatainformation').rowscount;
+					var rowscount2 = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
 					for(var j=0; j < rowscount2;j++) 
 						{ 
 							var tien=0
-						   var sl = $('#jqxsua').jqxGrid('getcellvalue', j, "soluong");
-						   var dg = $('#jqxsua').jqxGrid('getcellvalue', j, "dongia");
+						   var sl = $('#jqxgrid').jqxGrid('getcellvalue', j, "soluong");
+						   var dg = $('#jqxgrid').jqxGrid('getcellvalue', j, "dongia");
 						   tien=sl*dg;
-						   $("#jqxsua").jqxGrid('setcellvalue', j, "tong", tien);
+						   $("#jqxgrid").jqxGrid('setcellvalue', j, "tong", tien);
 						   
 						}
 					//tinh gia tri tong thanh tien
-					var rowscount3 = $("#jqxsua").jqxGrid('getdatainformation').rowscount;
+					var rowscount3 = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
 					var tongtien=0;
 					for(var k=0; k < rowscount3;k++) 
 						{ 
-						var tien = $('#jqxsua').jqxGrid('getcellvalue', k, "tong");
+						var tien = $('#jqxgrid').jqxGrid('getcellvalue', k, "tong");
 						tongtien=tongtien+tien;						   
 						}
 					$("#tongtien").html(tongtien);
