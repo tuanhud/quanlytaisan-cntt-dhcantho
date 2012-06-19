@@ -36,7 +36,6 @@
     <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
-	<script type="text/javascript" src="js/table-thuoctinh.js"></script>
     <script type="text/javascript" src="js/gettheme.js"></script>
 
 	<script type="text/javascript" src="js/ajax.js"></script>
@@ -53,23 +52,15 @@ $(document).ready(function() {
 	$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(function(){
 		get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
 	});*/
-	taobangquyen ()
+	taobangquyen ();
+	 
 	fillcombo('get_list_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
 	//Create table after loading page
-	/*$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
+	$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function()
+	{		
+		//	fillcheckbox();
 			
-			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
-			checkbox_themvpp();
-			checkbox_suavpp();
-			checkbox_themkk();
-			checkbox_suakk();
-			checkbox_themkhms();
-			checkbox_suakhms();
-			checkbox_duyetvpp();
-			checkbox_duyetkk();
-			checkbox_duyetkhms();
-			
-		});*/
+	});
 	$('form[name="frm_capnhatquyen_nguoidung"] input[name="btn_capnhat"]').click(function(){		
 		update_quyen_nguoidung(document.frm_capnhatquyen_nguoidung);
 	});

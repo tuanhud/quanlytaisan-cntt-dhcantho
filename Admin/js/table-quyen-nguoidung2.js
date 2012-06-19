@@ -1,3 +1,4 @@
+var rowscount ;
 function taobangquyen ()
 {
 	 		var data = {};
@@ -11,16 +12,11 @@ function taobangquyen ()
                  datatype: "json",
                  datafields: 
 				 [
-				 	 { name: 'MSDV'},
-					 { name: 'TenDV'},
-					 { name: 'MaTaiSan'},
-					 { name: 'TenTaiSan'},
-					 { name: 'SoLuongCuaDonVi'},
-					 { name: 'DonGiaTS'},
-					 { name: 'ThanhTien'}
+				 	 { name: 'MSCB'},
+					 { name: 'TenCB'},
                 ],
-				
-                url: 'data_taisanthuocdonvi.php',    
+				id:'MSCB',
+                url: 'data_quyennguoidung.php',    
 				root: 'Rows',
 				beforeprocessing: function(data)
 				{		
@@ -92,20 +88,27 @@ function taobangquyen ()
 				autoheight: true,
 				pageable: true,
 				virtualmode: true,
+				autoheight: true,
 				rendergridrows: function()
 				{
 					  return dataadapter.records;     
 				},
-                columns: [
-					   { text: 'Available', datafield: 'available', columntype: 'checkbox', width: 70 },
-
-					  { text: 'Mã cán bộ', editable: false, datafield: 'MSDV', width: 70, cellsalign: 'left' },
-					  { text: 'Tên cán bộ', editable: false, datafield: 'TenDV', width: 150, cellsalign: 'left' },
-                      { text: 'Mã thiết bị', editable: false, datafield: 'MaTaiSan', width: 80, cellsalign: 'left' },
-                      { text: 'Tên thiết bị',editable: false, datafield: 'TenTaiSan', width: 180 },
-					  { text: 'Số Lượng', datafield: 'SoLuongCuaDonVi', width: 80 },
-					  { text: 'Đơn giá (VNĐ)', datafield: 'DonGiaTS', width: 100 },
-					  { text: 'Thành tiền',editable: false, datafield: 'ThanhTien', width: 100 },
+                columns: 
+				[
+					  { text: 'Mã cán bộ', editable: false, datafield: 'MSCB', width: 70, cellsalign: 'left' },
+					  { text: 'Tên cán bộ', editable: false, datafield: 'TenCB', width: 150, cellsalign: 'left' },
+                      { text: 'GV', datafield: 'GV', columntype: 'checkbox', width: 70 },
+					  { text: 'CBQLBM', datafield: 'CBQLBM', columntype: 'checkbox', width: 70 },
+					  { text: 'ADMIN', datafield: 'ADMIN', columntype: 'checkbox', width: 70 },
+					  { text: 'THEMKHMS', datafield: 'THEMKHMS', columntype: 'checkbox', width: 70 },
+					  { text: 'SUAKHMS', datafield: 'SUAKHMS', columntype: 'checkbox', width: 70 },
+					  { text: 'THEMVPP', datafield: 'THEMVPP', columntype: 'checkbox', width: 70 },
+					  { text: 'SUAVPP', datafield: 'SUAVPP', columntype: 'checkbox', width: 70 },
+					  { text: 'THEMKK', datafield: 'THEMKK', columntype: 'checkbox', width: 70 },
+					  { text: 'SUAKK', datafield: 'SUAKK', columntype: 'checkbox', width: 70 },
+					  { text: 'DUYET KHMS', datafield: 'DUYETKHMS', columntype: 'checkbox', width: 70 },
+					  { text: 'DUYET VPP', datafield: 'DUYETVPP', columntype: 'checkbox', width: 70 },
+					  { text: 'DUYET KK', datafield: 'DUYETKK', columntype: 'checkbox', width: 70 },
                   ]
             });
 			
@@ -118,7 +121,7 @@ function taobangquyen ()
 			madonvi = $('#jqxgrid').jqxGrid('getcellvalue', row, "MSDV");
 			mataisan = $('#jqxgrid').jqxGrid('getcellvalue', row, "MaTaiSan");
 		});
-			
+		
         // delete row.
         $("#deleterowbutton").bind('click', function () 
 		{
@@ -222,7 +225,7 @@ function taobangquyen ()
         }
         //bat su kien chon don vi de lay ten don vi
 		$("#jqxWidget2").bind('select', function (event) 
-		{
+			{
                     if (event.args) {
                         var item = event.args.item;
                         if (item) 
@@ -232,58 +235,58 @@ function taobangquyen ()
                         }
                     }
           });
-		 
-		 
+		 	 
 		//khi chon 1 row tren bang thuoc tinh, tu dong se addrow vao bang co thuoc tinh
         $('#jqxWidget3').bind('rowselect', function (event) 
 		{
-			var args = event.args;
-			var row = args.rowindex;
-			mataisan = $('#jqxWidget3').jqxGrid('getcellvalue', row, "MaTaiSan");
-			tentaisan = $('#jqxWidget3').jqxGrid('getcellvalue', row, "TenTaiSan");
-            var row = {};
-            row["MaTaiSan"] = mataisan;
-            row["TenTaiSan"] = tentaisan;
-            row["MSDV"] = madonvi;
-            row["TenDV"] = tendonvi;
-			row["SoLuongCuaDonVi"] = 1;
-			row["DonGiaTS"] = 1;
-			row["ThanhTien"] = row["SoLuongCuaDonVi"]*row["DonGiaTS"];
-			
-			var i = 0,them=1;
-	      	var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
-			for(i;i < rowscount;i++) 
-			{
-				   var madonvi2 = $('#jqxgrid').jqxGrid('getcellvalue', i, "MSDV");
-				   var mataisan2 = $('#jqxgrid').jqxGrid('getcellvalue', i, "MaTaiSan");
-				   if((madonvi2==madonvi)&&(mataisan2==mataisan))
-				   {
-						them=0;
-				   }
-            }
-
-			// add vao bang co taisan
-			if(them==1)
-			{
-				$('#jqxgrid').jqxGrid('addrow',null, row);
-				//xoa du lieu trong bang taisan
-            	//$("#jqxWidget2").jqxGrid('deleterow', mathuoctinh);
-				
-				//luu vao bang cotaisan
-				var data = "insert=true&MaTaiSan=" +mataisan + "&MSDV=" + madonvi; 	
-				alert(data);				
-				$.ajax
-				({
-					dataType: 'json',
-					url: 'data_taisanthuocdonvi.php',
-					data: data,
-					success: function (data, status, xhr) {}		
-				})
-			}
-			else{alert('Đã tồn tại mã tài sản và mã đơn vị này.');}
+			//var args = event.args;
+//			var row = args.rowindex;
+//			mataisan = $('#jqxWidget3').jqxGrid('getcellvalue', row, "MaTaiSan");
+//			tentaisan = $('#jqxWidget3').jqxGrid('getcellvalue', row, "TenTaiSan");
+//            var row = {};
+//            row["MaTaiSan"] = mataisan;
+//            row["TenTaiSan"] = tentaisan;
+//            row["MSDV"] = madonvi;
+//            row["TenDV"] = tendonvi;
+//			row["SoLuongCuaDonVi"] = 1;
+//			row["DonGiaTS"] = 1;
+//			row["ThanhTien"] = row["SoLuongCuaDonVi"]*row["DonGiaTS"];
+//			var i = 0,them=1;
+//	      	rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
+//			for(i;i < rowscount;i++) 
+//			{
+//				   var madonvi2 = $('#jqxgrid').jqxGrid('getcellvalue', i, "MSDV");
+//				   var mataisan2 = $('#jqxgrid').jqxGrid('getcellvalue', i, "MaTaiSan");
+//				   if((madonvi2==madonvi)&&(mataisan2==mataisan))
+//				   {
+//						them=0;
+//				   }
+//            }
+//
+//			// add vao bang co taisan
+//			if(them==1)
+//			{
+//				$('#jqxgrid').jqxGrid('addrow',null, row);
+//				//xoa du lieu trong bang taisan
+//            	//$("#jqxWidget2").jqxGrid('deleterow', mathuoctinh);
+//				
+//				//luu vao bang cotaisan
+//				var data = "insert=true&MaTaiSan=" +mataisan + "&MSDV=" + madonvi; 					
+//				$.ajax
+//				({
+//					dataType: 'json',
+//					url: 'data_taisanthuocdonvi.php',
+//					data: data,
+//					success: function (data, status, xhr) {}		
+//				})
+//			}
+//			else{alert('Đã tồn tại mã tài sản và mã đơn vị này.');}
 		});
 		  
-		  
+		 //fill check box
+		
+		
+		 
 		//auto tinh tong tien
 		$("#jqxgrid").bind('cellendedit', function (event) 
 		{
@@ -307,7 +310,10 @@ function taobangquyen ()
 			$("#deleterowbutton").jqxButton({ theme: theme, width: '150px', height: '25px' });
             addEventListeners();
             $("#jqxWidget").css('visibility', 'visible');
+			
         });
 				
 
 }
+
+	
