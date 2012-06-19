@@ -14,12 +14,13 @@
 			$sql="delete from `phieudutoanvpp` where `Maphieudutoan` = '".$ma."'";
 			$sql1="delete from `covpp` where `MaPhieuDuToan` = '".$ma."'";
 			$sql2="delete from `thuocquyvpp` where MaPhieuDuToan ='".$ma."' and quy ='".$quy."'";
-			$db->setQuery($sql);
+			
 			$db1->setQuery($sql1);
 			$db2->setQuery($sql2);
-			$gt1=$db->executeQuery();
 			$gt2=$db1->executeQuery();
 			$gt3=$db2->executeQuery();
+			$db->setQuery($sql);
+			$gt1=$db->executeQuery();
 			if($gt1!=1)
 			{
 						echo 0;//sua that bai
