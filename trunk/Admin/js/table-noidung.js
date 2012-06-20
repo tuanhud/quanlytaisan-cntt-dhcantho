@@ -1,193 +1,248 @@
-var dt, datasource;
-// -------------------------
-//  Create Table 
-// -------------------------      
-function createTable(){
-	
-	YUI().use('datatable', function (Y)
- {	
-	
-	//Tao button Delete tren moi dong		 	
-	var fmtBlank = function(o) 
-	{
-        var fclass = o.column.className || null;
-        if (fclass)
-            o.className += ' '+fclass;
-        o.value = ' ';
-     }          
-	 
-	//Tao checkbox tren moi dong 
-    var fmtChkBox = function(o)
-	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
-        	o.value = cell;
-	        o.className += ' align-center';
-    }
-	
-	//Cac Column cua Bang
-	var cols = [
-				{name:'selectBox', label:'<button type="button" id="btnXoa" title="Xóa các mẫu tin đã chọn" style="border:none; background-color:transparent; float:left;"><img src="images/drop.png" title="Xóa các mẫu tin đã chọn" height="16"></button>Chọn <input type="checkbox" id="selAll" title="Chọn tất cả"/>', formatter: fmtChkBox, allowHTML:true },
-				{key: "sothutu",label:"STT", sortable: true},
-				{key: "manoidung",label:"Mã nội dung", sortable: true},
-				{key: "tennoidung",label:"Tên nội dung", sortable: true},
-				{key: "ghichu",label:"Ghi chú", sortable: false},
-		];
-	
-    dt = new Y.DataTable({
-        columns: cols,
-        data   : datasource,
-        summary: 'Danh sách nội dung',
-        caption: 'Danh sách nội dung',
-        render : '#mytable'
-    });		
-	
-	// -------------------------
-	//  Delete 1 record
-	// -------------------------      			
-	dt.delegate("click", function(e) {
-        var cell = e.currentTarget,               // the clicked TD
-            rec  = this.getRecord(cell),          //  Call the helper method above to return the "data" record (a Model)
-            ckey = this.getCellColumnKey( cell ),
-            col  = this.getColumn(cell);
-			         
-    	//If a column 'action' is available, process it
-        switch( col.name || null ) {
-            case 'delete':
-                if( confirm("Bạn có chắc muốn xóa không ?")) {
-                    dt.removeRow( rec.get('clientId') );
-                }
-                break; 
+//Kiểm tra ngày tháng năm*********************************************************************************************************************
+function check_date_ngaysinh(day,month,year)
+{
+		var ngay = parseInt(day, 10) ;
+        var thang = parseInt(month, 10) ;
+        var nam = parseInt(year, 10);
+		if(ngay<1&&ngay>31) return true;
+        switch (thang){
+            case 2:
+                if ((nam%4 == 0)&&(nam%400 !=0))
+				{
+					if(thang==2&&ngay>29)
+                    	return true;
+				}
+                else
+				{
+					if(thang==2&&ngay>28)
+					{
+                    	return true;
+					}
+				}
+                break;
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                if(ngay>31)
+				return true;
+                break;
+            default:
+                if(ngay>30)
+					return true;
         }
-    }, "tbody tr td", dt); 			    
-
-// -------------------------
-//  Delete all current record if it's checked
-// -------------------------      
-	$('#btnXoa').click(function(){	
-	
-        var chks = dt.get("srcNode").all("tbody tr td input.myCheckboxFmtr");     // get all checks   
-		if (confirm('Bạn có chắc muốn xóa không ?' )) {
-        chks.each( function(item){
-            if ( !item.get('checked') ) return;
-            var rec = dt.getRecord( item.ancestor().ancestor()); // item is INPUT, first parent is TD, second is TR
-			//msg += rec.get('em_id') + ' : ' + rec.get('ename') + "\n";
-			dt.removeRow( rec.get('clientId') );
-        }, dt);		
-		}
-	});
-	// -------------------------
-	//   Click handler on "Select" TH checkbox, toggle the settings of all rows
-	// -------------------------
-    Y.one("#selAll").on("click", function(e){		
-        var selAll = this.get('checked');   // the checked status of the TH checkbox
-    //  Get a NodeList of each of INPUT with class="myCheckboxFmtr" in the TBODY       
-	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr");
-        chks.each( function(item){
-            item.set('checked', selAll);    // set the individual "checked" to the TH setting			
-        	});
-    	});
+}
+//Tao bang hien thi noi dung phieu mau************************************************************************************************************
+function taobang()
+{
+	 		var data = {};
+			var theme = '';
+			var manoidung='';
+			var tennoidung='';
+			var ghichunoidung='';
+            var source =
+            {
+                 datatype: "json",
+                 datafields: 
+				 [
+				 	//{ name: 'stt' },
+                    { name: 'mand' },
+                    { name: 'tennd' },
+                    { name: 'ghichu' },
+                ],				
+				id: 'mand',    
+				root: 'Rows',
+				//url: url,
+				beforeprocessing: function(data)
+				{		
+					source.totalrecords = data[0].TotalRows;
+				},						
+            };
+			
+ 		    var dataadapter = new $.jqx.dataAdapter(source);
+           // initialize jqxGrid
+            $("#jqthem").jqxGrid(
+            {
+                width: 550,
+				selectionmode: 'singlecell',
+				altrows: true,
+                source: dataadapter,
+                theme: theme,
+				editable: true,
+				autoheight: true,
+				pageable: true,
+				virtualmode: true,
+				rendergridrows: function()
+				{
+					  return dataadapter.records;     
+				},
+                columns: [
+					  { text: 'Mã nội dung', editable: false, datafield: 'mand', width: 150, cellsalign: 'center' },
+					  { text: 'Tên nội dung', editable: false, datafield: 'tennd', width: 150, cellsalign: 'center' },
+                      { text: 'Ghi chú', editable: false, datafield: 'ghichu', width: 250, cellsalign: 'center' },
+                  ]
+            });
+			//chon 1 dong
+			 $("#jqthem").jqxGrid('selectionmode', 'singlerow');
+// delete row.********************************************************************************************************************************
+          $("#deleterowbutton").bind('click', function () 
+			{
+				var selectedrowindex = $("#jqthem").jqxGrid('getselectedrowindex');
+                var rowscount = $("#jqthem").jqxGrid('getdatainformation').rowscount;
+                if (selectedrowindex >= 0 && selectedrowindex < rowscount) {
+                    var id = $("#jqthem").jqxGrid('getrowid', selectedrowindex);
+                    $("#jqthem").jqxGrid('deleterow', id);
+				}
+				else{
+					alert("Bạn chưa chọn nội dung cần xóa!");
+					}	
+					
+            });		
+			
+	function capitaliseFirstLetter(string) 
+		{
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
 		
-	/************************************
-     Method to take an existing TD or TR Node element as input "target" and scan
-     the dataset (ModelList) for the underlying data record (a Model).
-     @method getRecord
-     @param target {Node} Either a TR or TD Node
-     @returns {Model} Data record or false (or -1 if not found)
-     ************************************/
-     //FIXME: if target is numeric or string, not working yet ... Node only works
-     Y.DataTable.prototype.getRecord = function( target ) {
-        var rs = this.get('data');
-        var tag = target.get('tagName').toLowerCase();
-        var row = ( tag === 'td' ) ? target.ancestor() : ( tag === 'tr' ) ? target : null;
-        if ( !row ) return false;
-        if ( Y.Lang.isNumber(row) )         // assume row is rowindex
-            return rs.item(row) || false;
-        else if ( row instanceof Y.Node || Y.Lang.isString(row) ) {
-            var crow = ( Y.Lang.isString(row) ) ? row : row.get('id');  // matches based on DOM id
-            var rec = -1;
-            rs.some( function(item) {
-                if ( item.get('clientId') === crow ) {
-                    rec = item;
-                    return true;
-                }
+//tao popup hiện thị data trong bang noidung de chọn *******************************************************************************************
+		function createElements(theme)
+		{
+            $('#cancel').jqxButton({ theme: theme, height: '25px', width: '65px' });
+            $('#eventWindow').jqxWindow({ maxHeight: 400, maxWidth:400, minHeight: 30, minWidth: 150, height: 300, width: 400,
+                theme: theme, resizable: false, isModal: true, modalOpacity: 0.3,
+                okButton: $('#save'), cancelButton: $('#cancel')
             });
-            return rec;
-        }              
-        return false;
-     }
-	 
-	 	/**
-     Helper method to return the column's key property associated with the current TD.
-     Uses DataTable's current method of identifying a class on TD as "yui3-datatable-col-XXX"
-     where XXX is the column 'key' (or 'name')
-     @method getDTColumnKey
-     @param tdTarget {Node} The TD cell to return column key to
-     @returns ckey {String} column key name      
-     **/
-     Y.DataTable.prototype.getCellColumnKey = function( tdTarget ) {
-        var DT_COL_CLASS = this.getClassName('col');
-        var regex = new RegExp( DT_COL_CLASS+'-(.*)'),      // currently creates /yui3-datatable-col-(.*) to grab column key
-            tdclass = tdTarget.get('className').split(" "),
-            ckey    = -1;
-     //
-     //  Scan through the TD class(es), checking for a match
-     // 
-        Y.Array.some( tdclass, function(item){
-            var mitem = item.match( regex );
-            if ( mitem && mitem[1] ) {
-                ckey = mitem[1].replace(/^\s+|\s+$/g,"");   // trim all spaces
-                return true;
+        }
+        function addEventListeners() 
+		{
+            $('#showWindowButton').mousedown(function () 
+			{
+				createElements(theme);
+                $('#eventWindow').jqxWindow('show');
+// lấy dữ liệu tử bang noidung đưa lên bảng trong popup  ***************************************************************************************
+				var source2 =
+					{
+						datatype: "json",
+						datafields: 
+						[
+							//{ name: 'stt' },
+                    		{ name: 'mand' },
+                  			{ name: 'tennd' },
+                    		{ name: 'ghichu' },
+						],
+						id: 'mand',
+						url: 'get_info_noidung_phieumau.php',             
+					};
+					var dataAdapter3 = new $.jqx.dataAdapter(source2);
+					$("#jqxWidget3").jqxGrid(
+					{
+						width: 350,
+						selectionmode: 'singlerow',
+						source: dataAdapter3,
+						theme: theme,
+						editable: true,
+						autoheight: true, 
+						columns: [
+					 			{ text: 'Mã nội dung', editable: false, datafield: 'mand', width: 100, cellsalign: 'center' },
+							 	{ text: 'Tên nội dung', editable: false, datafield: 'tennd', width: 100, cellsalign: 'center' },
+                     			{ text: 'Ghi chú', editable: false, datafield: 'ghichu', width: 180, cellsalign: 'center' },
+						  ]
+					});
+            });
+        } 
+// Select 1 dong tren popup roi đổ qua bảng lớn*************************************************************************************************
+ 		$('#jqxWidget3').bind('rowclick', function (event) 
+		{
+			var args = event.args;
+			var row = args.rowindex;
+			var data = $('#jqxWidget3').jqxGrid('getrowdata',row);
+			manoidung = $('#jqxWidget3').jqxGrid('getcellvalue', row, "mand");
+			var i = 0,them=1;
+	      	var rowscount = $("#jqthem").jqxGrid('getdatainformation').rowscount;
+			for(i;i < rowscount;i++) 
+			{
+				   var manoidung2 = $('#jqthem').jqxGrid('getcellvalue', i, "mand");
+				   if(manoidung2==manoidung)
+				   {
+						them=0;
+				   }
             }
+// add vao bang co lớn (Không phải popup)*******************************************************************************************************
+			if(them==1)
+			{
+				$('#jqthem').jqxGrid('addrow',null, data);
+			}
+			else{alert('Đã tồn tại tên nội dung này!!!.');}
+		});
+// Chỉnh sửa size cua 2 button thêm và xóa******************************************************************************************************
+	$(document).ready(function () {
+            var theme = $.data(document.body, 'theme', theme);
+            if (theme == undefined) theme = '';
+            addEventListeners();
+			$('#showWindowButton').jqxButton({ theme: theme, width: '150px', height: '25px' });
+			$("#deleterowbutton").jqxButton({ theme: theme, width: '150px', height: '25px' });
+            $("#jqxWidget").css('visibility', 'visible');
         });
-        return ckey || false;
-     }
-
-	     /**
-     Method to scan the "columns" Array for the target and return the requested column.
-     The requested "target" can be either of ;
-        a column index,
-        or a TD Node,
-        or a column "key", column "name" or "_yuid" (in that order).
-      
-     @method getColumn
-     @param target {Number | Node | String} Either the column index, the TD node or a column ID
-     @returns {Object} Column
-     **/
-    Y.DataTable.prototype.getColumn = function( target ) {
-        var cs = this.get('columns'),
-            ckey = null;
-        if (Y.Lang.isNumber(target) )
-            return cs[target];  //return cs.keys[col];
-        else if ( Y.Lang.isString(target) || target instanceof Y.Node ) {   // check for 'key' or then 'name', finally '_yuid'
-            ckey = ( target instanceof Y.Node ) ? ckey = this.getCellColumnKey( target ) : ckey;
-            col = ( ckey ) ? ckey : target;
-        // Check if a column "key"
-            var cm = -1;
-            Y.Array.some( cs, function(citem) {
-                if ( citem['key'] === col ) {
-                    cm = citem;
-                    return true;
+// su kiện khi click vao nút thêm phiếu mẫu *****************************************************************************************************
+		$("#btn_themphieumau").unbind("click").click(function()
+		{
+			var rowcount4 = $("#jqthem").jqxGrid('getdatainformation').rowscount;
+			 if($("#txt_tenphieumau").val()=="") {
+					alert("Bạn chưa nhập tên phiếu mẫu!"),
+					FocusAndSelect("#txt_tenphieumau");
+			}else if($("#cbo_ngay").val()==-1) {
+					alert("Bạn chưa nhập ngày!"),
+					FocusAndSelect("#cbo_ngay");
+			}else if($("#cbo_thang").val()==-1) {
+					alert("Bạn chưa nhập tháng!"),
+					FocusAndSelect("#cbo_thang");
+			}else if($("#cbo_nam").val()==-1) {
+					alert("Bạn chưa nhập năm!"),
+					FocusAndSelect("#cbo_nam");
+			}
+			else if(check_date_ngaysinh($("#cbo_ngay option:selected").val(),$("#cbo_thang option:selected").val(),$("#cbo_nam option:selected").val())){
+					alert("Ngày tháng năm không hợp lệ.");FocusAndSelect("#cbo_ngay");
+			}
+			 else if(rowcount4==0){
+					alert("Bạn chưa chọn nội dung cho phiếu mẫu!");
+			}else{			        // synchronize with the server - send update command
+				var data1="&tenphieumau=" +$("#txt_tenphieumau").val() + "&ngay=" + $("#cbo_ngay").val()+ "&thang=" + $("#cbo_thang").val() + "&nam="+ $("#cbo_nam").val() + "&ghichu="+$("#txt_ghichu").val();
+				$.ajax
+					({
+						dataType: 'json',
+						url: 'themphieumau.php',//them phiếu mẫu mới vào bảng phiếu mẫu
+						data: data1,
+						success: function (data, status, xhr)
+						{}
+				});	
+					
+				for(var m=0;m<rowcount4;m++){
+						var mand = $('#jqthem').jqxGrid('getcellvalue', m,'mand');
+						var data = "insert=true&mand=" + mand ;
+					$.ajax
+					({
+						dataType: 'json',
+						url: 'them_noidung.php',//them nội dung vào bảng thuocphieumau
+						data: data,
+						success: function (data, status, xhr)
+						{
+						}
+					});		
                 }
-            });
-            if ( cm !== -1) return cm;  // found one, bail !!
-        // If not found, Check if a column "name"
-            Y.Array.some( cs, function(citem) {
-                if ( citem.name === col ) {
-                    cm = citem;
-                    return true;
-                }
-            });
-            if ( cm!==-1 ) return cm;
-        // If not found, Check if a column "_yui" something
-            Y.Array.some( cs, function(citem) {
-                if ( citem._yuid === col ) {
-                    cm = citem;
-                    return true;
-                }
-            });
-            return cm;
-        } else
-            return false;
-     }	 
-});
-}// JavaScript Document
+				alert("Lập phiếu mẫu thành công!");
+				window.location.reload(true);		
+			}
+		});
+		/*$(document).ready(function () {
+            var theme = $.data(document.body, 'theme', theme);
+            if (theme == undefined) theme = '';
+			 addEventListeners();
+			$('#showWindowButton').jqxButton({ theme: theme, width: '150px', height: '25px' });
+			$("#deleterowbutton").jqxButton({ theme: theme, width: '150px', height: '25px' });
+            $("#jqxWidget").css('visibility', 'visible');
+			
+        });*/
+}
