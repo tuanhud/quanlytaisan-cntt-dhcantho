@@ -309,9 +309,49 @@ $(document).ready(function() {
                   <textarea name="txt_ghichusua" rows="5" id="txt_ghichusua" style="width:100%"></textarea></td>
               <tr>
                 <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
-                    <div style="visibility: hidden;" id='jqxWidget2'>
+                    <div style="visibility: hidden;" id='jqxWidget'>
                             <div id="jqsua"></div>
-                        </div>
+                          
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                               <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                           </div>
+                           <div style="margin-left: 30px; float: left;">
+                                <div style="margin-top: 5px;">
+                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton" width="70" />
+                                </div> 
+                                <div style="margin-top: 5px;">
+                                    <input id="deleterowbutton" type="button" value="Xóa thuộc tính" width="70" />
+                                </div>
+                               
+                                
+                         </div>
+                         <div style="width:400px; border: 0px solid #ccc; margin-top: 10px;"
+                            id="mainDemoContainer">
+                            </div>
+                            <div id="eventWindow" style="display:none">
+                                <div>
+                                    <img width="14" height="14" src="../jqwidgets/resources/drag.png" alt="" />
+                                    Thêm nội dung cho phiếu mẫu:
+                                </div>
+                                <div>
+                                  <div style="margin: 10px">
+                                    Chọn nội dung:
+                                    <div id='jqxWidget3'>
+        							</div>
+                                   <!-- Chọn thuộc tính
+                                    <div id='jqxWidget2'>
+        							</div>-->
+                                </div>
+                                <div>
+                                    <div style="float: right; margin-top: 10px; margin-right:38px">
+                                       
+                                        <input type="button" id="cancel" value="Thoát" />
+                                   	 </div>
+                                	</div>
+                      			</div>
+                       		 </div>
+                            </div>
                     </td>
              </tr>
              <tr>
