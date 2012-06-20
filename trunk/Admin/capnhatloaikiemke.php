@@ -1,16 +1,16 @@
 <?php
 	//khoi dong session
-	session_start();
+	//session_start();
 	
 	//kiem tra quyen truoc khi hien thi trang
-	if(!session_is_registered("tkk") || $_SESSION['tkk']!="THEMKK")
+	/*if(!session_is_registered("tkk") || $_SESSION['tkk']!="THEMKK")
 	{
 		
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
 	exit;
 		
-	}
+	}*/
 ?>
 <html>
 <head>
