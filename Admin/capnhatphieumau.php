@@ -16,8 +16,26 @@
 <title>Cập nhật phiếu mẫu</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="js/yui.js"></script>
+	<link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+	<script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
 <script type="text/javascript" src="js/capnhatphieumau.js"></script>
@@ -48,15 +66,18 @@ if (keypressed >= 48 && keypressed <= 57)
 }
 }
 $(document).ready(function() { 
-	createTable();
-	createTable1();
+	taobang();
+	taobangsua();
 	fillcombo('get_list_phieumau.php',document.frm_suaphieumau.cbo_tenphieumausua);
 	fillcombo('get_list_phieumau.php',document.frm_xoaphieumau.cbo_tenphieumauxoa);
 	init_date_input(document.frm_themphieumau.cbo_ngay,document.frm_themphieumau.cbo_thang,document.frm_themphieumau.cbo_nam);
 	init_date_input(document.frm_suaphieumau.cbo_ngaysua,document.frm_suaphieumau.cbo_thangsua,document.frm_suaphieumau.cbo_namsua);
 	init_date_input(document.frm_xoaphieumau.cbo_ngayxoa,document.frm_xoaphieumau.cbo_thangxoa,document.frm_xoaphieumau.cbo_namxoa);
-	$('form[name="frm_themphieumau"] input[name="btn_themphieumau"]').click(function(){		
+	/*$('form[name="frm_themphieumau"] input[name="btn_themphieumau"]').click(function(){		
 		themnoidung(document.frm_themphieumau);
+	});*/
+	$('form[name="frm_suaphieumau"] select[name="cbo_tenphieumausua"]').change(function(){
+		get_info_phieumausua('get_info_phieumau.php',document.frm_suaphieumau);
 	});
 
 }); 
@@ -182,11 +203,52 @@ $(document).ready(function() {
                   <textarea name="txt_ghichu" rows="5" id="txt_ghichu" style="width:100%"></textarea></td>
               </tr>
               <tr>
-                <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
-                    <div class="yui3-skin-sam">                    
-                    <div id="mytable"></div>                    
-                    </div>
-                    </td>
+					<td align="center" height="400"  class="level_1_1" colspan="2" valign="top">
+                       <div style="visibility: hidden;" id='jqxWidget'>
+                            <div id="jqthem"></div>
+                          
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                               <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                           </div>
+                           <div style="margin-left: 30px; float: left;">
+                                <div style="margin-top: 5px;">
+                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton" width="70" />
+                                </div> 
+                                <div style="margin-top: 5px;">
+                                    <input id="deleterowbutton" type="button" value="Xóa thuộc tính" width="70" />
+                                </div>
+                               
+                                
+                         </div>
+                         <div style="width:400px; border: 0px solid #ccc; margin-top: 10px;"
+                            id="mainDemoContainer">
+                            </div>
+                            <div id="eventWindow" style="display:none">
+                                <div>
+                                    <img width="14" height="14" src="../jqwidgets/resources/drag.png" alt="" />
+                                    Thêm nội dung cho phiếu mẫu:
+                                </div>
+                                <div>
+                                  <div style="margin: 10px">
+                                    Chọn nội dung:
+                                    <div id='jqxWidget3'>
+        							</div>
+                                   <!-- Chọn thuộc tính
+                                    <div id='jqxWidget2'>
+        							</div>-->
+                                </div>
+                                <div>
+                                    <div style="float: right; margin-top: 10px; margin-right:38px">
+                                       
+                                        <input type="button" id="cancel" value="Thoát" />
+                                   	 </div>
+                                	</div>
+                      			</div>
+                       		 </div>
+                            </div>
+                        </td>
+
               </tr>
               
               <tr>
@@ -244,12 +306,12 @@ $(document).ready(function() {
                 <td height="22" align="right" class="level_1_2">Ghi chú:: </td>
                 <td align="left" class="level_1_2"><label for="ng2"></label>
                   <label for="txtghichu"></label>
-                  <textarea name="txt_ghichu" rows="5" id="txt_ghichu" style="width:100%"></textarea></td>
+                  <textarea name="txt_ghichusua" rows="5" id="txt_ghichusua" style="width:100%"></textarea></td>
               <tr>
                 <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
-                    <div class="yui3-skin-sam">                    
-                    <div id="mytable1"></div>                    
-                    </div>
+                    <div style="visibility: hidden;" id='jqxWidget2'>
+                            <div id="jqsua"></div>
+                        </div>
                     </td>
              </tr>
              <tr>
