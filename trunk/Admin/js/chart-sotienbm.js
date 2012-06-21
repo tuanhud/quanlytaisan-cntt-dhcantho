@@ -3,7 +3,6 @@ function taochartsotien() {
 				var tunam=$("#cbo_tunam").val();
 				var dennam=$("#cbo_dennam").val();
 				var data = "donvi=" + donvi + "&tunam=" + tunam + "&dennam=" + dennam;
-				alert(data);
 			/*$.ajax
 				({
 					//dataType: 'json',
@@ -42,7 +41,7 @@ function taochartsotien() {
 							var settings =
 							 {
                 title: "Thống Kê Kinh Phí Cấp Cho Đơn Vị " + ten,
-                description: "Thông kê số tiền cấp trong giai đoạn từ "+tunam +" den "+dennam,
+                description: "Thông kê số tiền cấp trong giai đoạn từ "+tunam +" đến "+dennam,
                 showLegend: true,
                 enableAnimations: true,
                 padding: { left: 5, top: 5, right: 5, bottom: 5 },

@@ -114,7 +114,9 @@
                             <div class="yui3-menu-content">
                                 <ul>
                                     <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">In danh sách yêu cầu thiết bị</a></li>
-                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">In danh sách thiết bị hiện có</a></li>                                    
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="#">In danh sách thiết bị hiện có</a></li>                   
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="thongkesotienbomon.php" target="_blank">Thống kê số tiền cấp cho đơn vị</a></li>              
+                                    <li class="yui3-menuitem"><a class="yui3-menuitem-content" href="thongkesoluongnguoidung.php" target="_blank">Thống kê số lượng người dùng</a></li>                                     
                                 </ul>
                             </div>
                         </div>
