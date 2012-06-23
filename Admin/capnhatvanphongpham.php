@@ -174,6 +174,14 @@ $(document).ready(function() {
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="btn_themvpp" id="btn_themvpp" class="button_1" value="Thêm"></td>
               </tr>
+               <tr>
+                 <td height="22" align="right" class="level_1_2">Import bằng file excel:</td>
+                 <td width="50%" align="left" class="level_1_2">
+                   <input name="txt_file" id="txt_file" type="file" class="txtbox" style="width:100%"></td>
+               </tr> 
+               <tr>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="btn_import" id="btn_import" class="button_1" value="Import"></td>
+              </tr>
 			  
 	
               </tbody>
@@ -183,6 +191,7 @@ $(document).ready(function() {
         </tr>		
         </tbody>
         </table>
+        <br/>
 
         <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
@@ -251,7 +260,7 @@ $(document).ready(function() {
       </tr>		
       </tbody>
       </table>
-
+<br/>
         <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
