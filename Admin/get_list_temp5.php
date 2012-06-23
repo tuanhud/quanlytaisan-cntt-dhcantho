@@ -8,7 +8,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT * FROM `temp2`');
+					$db->setQuery('SELECT * FROM `temp5`');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";

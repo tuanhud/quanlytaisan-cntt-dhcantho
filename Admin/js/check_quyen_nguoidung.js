@@ -1,13 +1,10 @@
-
-$("#jqxgrid").bind("bindingcomplete", function (event) {
-
- 
+/*function fillcheckbox() 
+{
 			var i = 0,them=1;
 	      	var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
-			for(i;i < rowscount;i++) 
-			{
-					var masocanbo = $('#jqxgrid').jqxGrid('getcellvalue', i, "MSCB");	
-					alert(masocanbo);			
+		for(i;i < rowscount;i++) 
+		{
+			var masocanbo = $('#jqxgrid').jqxGrid('getcellvalue', i, "MSCB");			
 				   var params ="macanbo="+masocanbo;
 				   //mo ket noi bang phuong thuc post
 				   http.open("POST",'get_list_quyen_canbo.php', false);
@@ -78,4 +75,4 @@ $("#jqxgrid").bind("bindingcomplete", function (event) {
 					
 					http.send(params);
          }   
-});	
+};   	*/

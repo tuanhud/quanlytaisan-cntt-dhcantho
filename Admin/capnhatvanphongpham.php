@@ -1,9 +1,13 @@
 <?php
 	//khoi dong session
-	session_start();
+	/*session_start();
 	
 	//kiem tra quyen truoc khi hien thi trang
+<<<<<<< .mine
+	if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
+=======
 	/*if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="ADMIN")
+>>>>>>> .r128
 	{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
@@ -174,16 +178,37 @@ $(document).ready(function() {
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="btn_themvpp" id="btn_themvpp" class="button_1" value="Thêm"></td>
               </tr>
-               <tr>
-                 <td height="22" align="right" class="level_1_2">Import bằng file excel:</td>
-                 <td width="50%" align="left" class="level_1_2">
-                   <input name="txt_file" id="txt_file" type="file" class="txtbox" style="width:100%"></td>
-               </tr> 
-               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" name="btn_import" id="btn_import" class="button_1" value="Import"></td>
+            </tbody>
+           </table>
+           </form>
+          </td>
+        </tr>	
+        <tr>
+          <td colspan="3" align="left">
+            	<form name="frm_importvpp" id="frm_importvpp" action="importvppUI.php" enctype="multipart/form-data" method="post" target="export" onSubmit="return isValid();window.open('', 'export', 'width=1350,height=660,status=yes,resizable=yes,scrollbars=yes')">
+            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+              <tbody>
+              <tr>
+              		<td height="22" class="level_1_1"></td>
+                    <td class="level_1_1"></td>
               </tr>
-			  
-	
+			  <tr>
+					<td height="22" align="right" class="level_1_2">Chọn file Excel</td>
+					<td width="70%" align="left" class="level_1_2"><input name="file_import" id="file_import" type="file" style="width:100%"><input type="hidden" name="MAX_FILE_SIZE" value="100000"></td>
+			  </tr>
+               <tr>
+					<td height="22" align="right" class="level_1_1">Chọn Sheet cần lưu</td>
+					<td width="70%" align="left" class="level_1_1">
+                    <select name="cbo_chonsheet" id="cbo_chonsheet" style="width:60">
+                      <option value="0">1</option>
+                      <option value="1">2</option>
+                      <option value="2">3</option>
+                   </select>
+                    </td>
+			  </tr>
+              <tr>
+              		<td colspan="2" height="33" align="center" class="level_1_1"><input type="submit" name="frm_importvpp" class="button_1" value="Xem trước"></td>
+              </tr>
               </tbody>
            </table>
            </form>

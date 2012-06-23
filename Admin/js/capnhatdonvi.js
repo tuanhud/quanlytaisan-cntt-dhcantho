@@ -269,3 +269,15 @@ function capnhatdonvi(filephp,frm)
 }
 });
 }
+
+function isValid()
+{
+	var tendonvi = document.frm_themdonvi.txt_tendonvithem;
+	if(tendonvi.value=='')
+	{
+		alert('Bạn chưa chọn câu hỏi.');
+		tendonvi.focus();
+		return false;
+	}
+	return true;
+}

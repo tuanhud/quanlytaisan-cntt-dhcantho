@@ -34,11 +34,14 @@
     <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
-     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
-     <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
 	<script type="text/javascript" src="js/table-thuoctinh.js"></script>
     <script type="text/javascript" src="js/gettheme.js"></script>
     <script type="text/javascript" src="js/thuoctinh-taisan.js"></script>
+    
+    <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript" >
 //Không cho nhập ký tự
 function keypress(e){
@@ -189,10 +192,10 @@ $(document).ready(function() {
                                 <div>
                                   <div style="margin: 10px">
                                     Chọn tài sản
-                                    <div id='jqxWidget3'>
+                                    <div id='cbotaisan'>
         							</div>
                                     Chọn thuộc tính
-                                    <div id='jqxWidget2'>
+                                    <div id='tablethuoctinh'>
         							</div>
                                 </div>
                                 <div>

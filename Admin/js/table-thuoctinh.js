@@ -1,43 +1,52 @@
 function taobangthuoctinh ()
 {
 	 		var data = {};
+			var data2 = {};
+			var data3 = {};
 			var theme = '';
 			var tendonvi= '';
 			var mathuoctinh= '';
 			var mataisan= '';
 			var tentaisan='';
+			
+			http=GetXmlHttpObject();
+			var params ="";
+			http.open("POST", 'get_list_thuoctinhcuataisan.php', false);
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			http.onreadystatechange = function()
+			{
+				if(http.readyState == 4 && http.status == 200) 
+				{
+					var x=http.responseXML.getElementsByTagName('INFO');
+					for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+					{
+						var row = {};
+						row["MaTaiSan"] = x[i].getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+						row["TenTaiSan"] = x[i].getElementsByTagName('RESULT')[1].firstChild.nodeValue;
+						row["MaThuocTinh"] = x[i].getElementsByTagName('RESULT')[2].firstChild.nodeValue;
+						row["TenThuocTinh"] = x[i].getElementsByTagName('RESULT')[3].firstChild.nodeValue;
+						row["GiaTriThuocTinh"] = x[i].getElementsByTagName('RESULT')[4].firstChild.nodeValue;
+						data[i] = row;
+					}
+				}
+			}
+			http.send(params);
             var source =
-           	 {
-                 datatype: "json",
-                 datafields: 
-				 [
-				 	 { name: 'MaTaiSan'},
-					 { name: 'TenTaiSan'},
-					 { name: 'MaThuocTinh'},
-					 { name: 'TenThuocTinh'},
-					 { name: 'GiaTriThuocTinh'}
-                ],
-                url: 'data_thuoctinhcuataisan.php',    
-				root: 'Rows',
-				beforeprocessing: function(data)
-				{		
-					source.totalrecords = data[0].TotalRows;
-				},				
+            {
+                localdata: data,
+				datatype: "array",			
                 updaterow: function (rowid, rowdata) 
 				{
-			        // synchronize with the server - send update command
-                    var data = "update=true&GiaTriThuocTinh=" + rowdata.GiaTriThuocTinh + "&MaTaiSan=" + rowdata.MaTaiSan;
-					data = data + "&MaThuocTinh=" + rowdata.MaThuocTinh;
-					
-					$.ajax
-					({
-						dataType: 'json',
-						url: 'data_thuoctinhcuataisan.php',
-						data: data,
-						success: function (data, status, xhr) {}
-					});		
-                },
-				
+					http=GetXmlHttpObject();
+					var params ="GiaTriThuocTinh=" + rowdata.GiaTriThuocTinh + "&MaTaiSan=" + rowdata.MaTaiSan + "&MaThuocTinh=" + rowdata.MaThuocTinh;
+					http.open("POST", 'suathuoctinhcuataisan.php', false);
+					http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					http.onreadystatechange = function()
+					{
+						if(http.readyState == 4 && http.status == 200) {}
+					}
+					http.send(params);
+				},
             };
  		    var dataadapter = new $.jqx.dataAdapter(source);
            	// initialize jqxGrid
@@ -71,33 +80,49 @@ function taobangthuoctinh ()
 		function createElements(theme)
 		{
             $('#cancel').jqxButton({ theme: theme, height: '25px', width: '65px' });
-            $('#eventWindow').jqxWindow({ maxHeight: 500, maxWidth:400, minHeight: 30, minWidth: 250, height: 250, width: 360,
+            $('#eventWindow').jqxWindow({ maxHeight: 500, maxWidth:400, minHeight: 30, minWidth: 250, height: 370, width: 400,
                 theme: theme, resizable: false, isModal: true, modalOpacity: 0.3,
                 cancelButton: $('#cancel')
             });   
         }
+		
         $('#showWindowButton').mousedown(function () 
 		{
 				createElements(theme);
                 $('#eventWindow').jqxWindow('show');
 				
                 // bang thuoc tinh
-				var source2 =
+				http=GetXmlHttpObject();
+				var params ="";
+				http.open("POST", 'get_list_thuoctinh.php', false);
+				http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				http.onreadystatechange = function()
+				{
+					if(http.readyState == 4 && http.status == 200) 
 					{
-						datatype: "json",
-						datafields: [
-							{ name: 'MaThuocTinh' },
-							{ name: 'TenThuocTinh' }
-						],
-						id: 'MaThuocTinh',
-						url: 'data_thuoctinh.php',             
-					};
-					var dataAdapter2 = new $.jqx.dataAdapter(source2);
-					$("#jqxWidget2").jqxGrid(
+						var x=http.responseXML.getElementsByTagName('row');
+						for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+						{
+							var row3 = {};
+							row3["MaThuocTinh"] = x[i].getElementsByTagName('column')[0].firstChild.nodeValue;
+							row3["TenThuocTinh"] = x[i].getElementsByTagName('column')[1].firstChild.nodeValue;
+							data3[i] = row3;
+						}
+					}
+				}
+				http.send(params);
+				
+				var source3 =
+				{
+					localdata: data3,
+					datatype: "array",
+				};
+				var dataAdapter3 = new $.jqx.dataAdapter(source3);
+					$("#tablethuoctinh").jqxGrid(
 					{
 						width: 300,
 						selectionmode: 'singlerow',
-						source: dataAdapter2,
+						source: dataAdapter3,
 						theme: theme,
 						editable: true,
 						autoheight: true,
@@ -108,31 +133,45 @@ function taobangthuoctinh ()
 					});
 					
 				// combo tai san
-				var source3 =
+				http=GetXmlHttpObject();
+				var params ="";
+				http.open("POST", 'get_list_taisan.php', false);
+				http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				http.onreadystatechange = function()
+				{
+					if(http.readyState == 4 && http.status == 200) 
 					{
-						datatype: "json",
-						datafields: [
-							{ name: 'MaTaiSan' },
-							{ name: 'TenTaiSan' }
-						],
-						id: 'MaTaiSan',
-						url: 'data_taisan.php',             
-					};
-					var dataAdapter3 = new $.jqx.dataAdapter(source3);
+						var x=http.responseXML.getElementsByTagName('row');
+						for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+						{
+							var row2 = {};
+							row2["MaTaiSan"] = x[i].getElementsByTagName('column')[0].firstChild.nodeValue;
+							row2["TenTaiSan"] = x[i].getElementsByTagName('column')[1].firstChild.nodeValue;
+							data2[i] = row2;
+						}
+					}
+				}
+				http.send(params);
+				var source2 =
+				{
+					localdata: data2,
+					datatype: "array",
+				};
+				var dataAdapter2 = new $.jqx.dataAdapter(source2);
 					// Create a jqxComboBox
-					$("#jqxWidget3").jqxComboBox(
+					$("#cbotaisan").jqxComboBox(
 					{ 
 						autocomplete: true,
-						source: dataAdapter3, 
+						source: dataAdapter2, 
 						displayMember: "TenTaiSan", 
 						valueMember: "MaTaiSan", 
 						width: 300, height: 25, 
 						theme: theme 
-					});	
+					});
             });
 			
    	    //bat su kien chon don vi de lay ten don vi
-		$("#jqxWidget3").bind('select', function (event) 
+		$("#cbotaisan").bind('select', function (event) 
 		{
                     if (event.args) 
 					{
@@ -178,12 +217,12 @@ function taobangthuoctinh ()
          });
 		
 		//khi chon 1 row tren bang thuoc tinh, tu dong se addrow vao bang co thuoc tinh
-        $('#jqxWidget2').bind('rowselect', function (event) 
+        $('#tablethuoctinh').bind('rowselect', function (event) 
 		{
 			var args = event.args;
 			var row = args.rowindex;
-			var mathuoctinh = $('#jqxWidget2').jqxGrid('getcellvalue', row, "MaThuocTinh");
-			var tenthuoctinh = $('#jqxWidget2').jqxGrid('getcellvalue', row, "TenThuocTinh");
+			var mathuoctinh = $('#tablethuoctinh').jqxGrid('getcellvalue', row, "MaThuocTinh");
+			var tenthuoctinh = $('#tablethuoctinh').jqxGrid('getcellvalue', row, "TenThuocTinh");
             var row = {};
             row["MaTaiSan"] = mataisan;
             row["TenTaiSan"] = tentaisan;
@@ -222,7 +261,8 @@ function taobangthuoctinh ()
 			else{alert('Đã tồn tại mã tài sản và mã thuộc tính này.');}
 		});
 		
-        $(document).ready(function () {
+        $(document).ready(function () 
+		{
             var theme = $.data(document.body, 'theme', theme);
 			$('#showWindowButton').jqxButton({ theme: theme, width: '150px', height: '25px' });
 			$("#deleterowbutton").jqxButton({ theme: theme, width: '150px', height: '25px' });

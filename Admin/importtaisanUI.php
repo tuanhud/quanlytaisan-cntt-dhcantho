@@ -34,19 +34,18 @@ session_start();
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
 
-<script type="text/javascript" src="js/importcanbo.js"></script>
-<script type="text/javascript" src="js/table_nguoidung.js"></script>
+<script type="text/javascript" src="js/table_taisan.js"></script>
 <script type="text/javascript">
 $(document).ready(function() 
 { 
-	taobangtaisan();
+	taobang();
 })
 </script>
 </head>
 
 <body>
 	<?php	
-	echo '<form id="importcanbo" name="importcanbo">';
+	echo '<form id="importtaisan" name="importtaisan">';
 	$numofSus = 0;
 	$numofFai = 0;
 	$message = '';
@@ -71,64 +70,34 @@ $(document).ready(function()
                     <td class="level_1_1"></td>
               </tr>
               <tr>
-					<td height="22" align="left" class="level_1_2" width="90">Chọn đơn vị </td>
+					<td height="22" align="left" class="level_1_2" width="90">Loại tài sản</td>
 					<td width="300" align="left" class="level_1_2">
-                  	<div name="tendonvithem" id="tendonvithem" style="width:200" ></div>
+                  	<div name="loaitaisan" id="loaitaisan" style="width:200" ></div>
                  </td>
               </tr>
               <tr>
-					<td height="22" align="left" class="level_1_2">Mã số cán bộ</td>
+					<td height="22" align="left" class="level_1_2">Tên tài sản</td>
 					<td align="left" class="level_1_2">
-                    	<div  name="masocanbo" id="masocanbo" style="width:200"></div>
+                    	<div  name="taisan" id="taisan" style="width:200"></div>
                     </td>
 			  </tr>
               <tr>
-					<td height="22" align="left"  class="level_1_1">Tên cán bộ</td>
+					<td height="22" align="left"  class="level_1_1">Đơn vị tính </td>
 					<td  class="level_1_1">
-                    <div  name="tencanbo" id="tencanbo" style="width:200"></div>
+                    <div  name="donvitinh" id="donvitinh" style="width:200"></div>
                     </td>
 			  </tr>
               <tr>
-					<td height="22" align="left"  class="level_1_2">Giới tính</td>
+					<td height="22" align="left"  class="level_1_2">Tình trạng</td>
 					<td class="level_1_2">
-					 <div name="gioitinh" id="gioitinh" style="width:200"></div>					
+					 <div name="tinhtrang" id="tinhtrang" style="width:200"></div>					
 					</td>
-			  </tr>
-			  <tr>
-					<td height="22" align="left"  class="level_1_1">Ngày sinh</td>
-					<td class="level_1_1">
-                   	<div  name="ngaysinh" id="ngaysinh" style="width:200"></div>
-					</td>
-			  </tr>
-               <tr>
-					<td height="22" align="left"  class="level_1_2">Email</td>
-					<td class="level_1_2">
-					<div name="email" id="email" style="width:200"></div>					
-                    </td>
-			  </tr>
-			   <tr>
-					<td height="22" align="left"  class="level_1_1">Địa chỉ</td>
-					<td class="level_1_1">
-					<div name="diachi" id="diachi" style="width:200"></div>					
-                    </td>
-			  </tr>
-              <tr>
-					<td height="22" align="left"  class="level_1_2">Số điện thoại</td>
-					<td class="level_1_2">
-					<div  name="sodienthoai" id="sodienthoai" style="width:200"></div>					
-					</td>
-			  </tr>
-              <tr>
-					<td height="22" align="left"  class="level_1_1">Mật khẩu</td>
-					<td class="level_1_1">
-					<div name="matkhau" id="matkhau" style="width:200"></div>					
-                    </td>
 			  </tr>
               <tr>
               		<td height="22" align="right" class="level_1_1"></td>
               		<td colspan="2" height="22" class="level_1_2">
-                     <input type="button" value="Xem lại dữ liệu" id="showWindowButton" />
-                    <input type="button" name="save" id="save" class="button_1" value="Lưu">
+                     <input type="button" value="Xem lại dữ liệu" id="showWindowButton2" />
+                    <input type="button" name="save" id="save2" class="button_1" value="Lưu">
                     </td>
               </tr>
               </tbody>
@@ -141,43 +110,22 @@ $(document).ready(function()
                            </div>
                          
               </div>   
-    
-	<?php
-	/*$strHtml="";
-	$strHtml .= "<table border='1' cellspacing=1 cellpadding=0>";
-	$strHtml .="<tr  align='center'>";
-	for ($i=1;$i<=$rowsnum;$i++)//hang
-	{	
-		
-		$strHtml .= "<tr bgcolor='#CCCCCC' align='center' >";
-		
-		for ($j=1;$j<=$colsnum;$j++) //cot
-		{	
-				$strHtml .="<td>".$data->val($i,$j)."</td> ";//hang i cot j
-		}
-		$strHtml .="</tr>";
-	}
-	$strHtml .="</tr>";
-	$strHtml .= "</table>";
-	echo $strHtml;
-	echo '</form>';*/
-	?>
     <?php
 		/*----------------------------------------------
 		/* Lưu dữ liệu vào DB
 		/*---------------------------------------------*/
-	$sql2 ="DROP TABLE `quanlytaisan`.`temp2`"; 	
+	$sql2 ="DROP TABLE `quanlytaisan`.`temp3`"; 	
 	$db = new database;
 	$db->setQuery($sql2);
 	$result2=$db->fetchAll();
 	
-	$sql ="CREATE TABLE `quanlytaisan`.`temp2` (`ma` varchar(100), `tentruong` varchar(100))";
+	$sql ="CREATE TABLE `quanlytaisan`.`temp3` (`ma` varchar(100), `tentruong` varchar(100))";
 	$db = new database;
 	$db->setQuery($sql);
 	$result=$db->fetchAll();
 	for ($j=1;$j<=$colsnum;$j++) //cot
 	{
-		$sql3  = "insert into temp2 (`ma`,`tentruong`)";
+		$sql3  = "insert into temp3 (`ma`,`tentruong`)";
 		$sql3 .= " values (";
 		$sql3 .= "'".$j."'";
 		$sql3 .= ",'".$data->val(1,$j)."')";
@@ -186,12 +134,12 @@ $(document).ready(function()
 	}	
 		
 		
-	$sql2 ="DROP TABLE `quanlytaisan`.`temp`"; 	
+	$sql2 ="DROP TABLE `quanlytaisan`.`temp4`"; 	
 	$db = new database;
 	$db->setQuery($sql2);
 	$result2=$db->fetchAll();
 	
-	$sql ="CREATE TABLE `quanlytaisan`.`temp` (";
+	$sql ="CREATE TABLE `quanlytaisan`.`temp4` (";
 	$sql .= "`".$data->val(1,1)."` varchar(100)";
 	for ($j=2;$j<$colsnum;$j++) //cot
 	{	
@@ -205,7 +153,7 @@ $(document).ready(function()
 	for ($i=2;$i<=$rowsnum;$i++)//hang
 	{	
 		$temp = $i-1;
-		$sql3  = "insert into temp (";
+		$sql3  = "insert into temp4 (";
 		$sql3 .= "`".$data->val(1,1)."`";
 		for ($j=2;$j<$colsnum;$j++) //cot
 		{	

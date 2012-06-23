@@ -54,16 +54,16 @@ $(document).ready(function() {
 	});*/
 	taobangquyen ();
 	 
-	fillcombo('get_list_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
+	/*fillcombo('get_list_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
 	//Create table after loading page
 	$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function()
 	{		
-		//	fillcheckbox();
+			fillcheckbox();
 			
 	});
 	$('form[name="frm_capnhatquyen_nguoidung"] input[name="btn_capnhat"]').click(function(){		
 		update_quyen_nguoidung(document.frm_capnhatquyen_nguoidung);
-	});
+	});*/
 	
 }); 
 //addRow_('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung);
@@ -165,8 +165,8 @@ $(document).ready(function() {
                <tr>
 					<td height="22" align="right" class="level_1_1">Chọn đơn vị</td>
 					<td width="80%" align="left" class="level_1_1">
-                    	<select id="cbo_tendonvi" name="cbo_tendonvi" class="cbo" style="width:80%;">
-                        </select>
+                    	<div id="cbo_tendonvi" name="cbo_tendonvi" style="width:80%;">
+                        </div>
                         <input type="button" name="btn_themdonvi" id="btn_themdonvi" class="button_1" value="Thêm">
                         </td>
 			</tr>
@@ -180,41 +180,6 @@ $(document).ready(function() {
                                 <div id="cellbegineditevent"></div>
                                 <div style="margin-top: 10px;" id="cellendeditevent"></div>
                            </div>
-                           <div style="margin-left: 30px; float: left;">
-                                <div style="margin-top: 5px;">
-                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton" />
-                                </div> 
-                                <div style="margin-top: 5px;">
-                                    <input id="deleterowbutton" type="button" value="Xóa thuộc tính" />
-                                </div>
-                               
-                                
-                         </div>
-                         <div style="width:600px; border: 0px solid #ccc; margin-top: 10px;"
-                            id="mainDemoContainer">
-                            </div>
-                            <div id="eventWindow" style="display:none">
-                                <div>
-                                    <img width="14" height="14" src="../jqwidgets/resources/drag.png" alt="" />
-                                    Thêm thuộc tính cho tài sản
-                                </div>
-                                <div>
-                                  <div style="margin: 10px">
-                                    Chọn tài sản
-                                    <div id='jqxWidget3'>
-        							</div>
-                                    Chọn thuộc tính
-                                    <div id='jqxWidget2'>
-        							</div>
-                                </div>
-                                <div>
-                                    <div style="float: right; margin-top: 10px; margin-right:38px">
-                                       
-                                        <input type="button" id="cancel" value="Thoát" />
-                                    </div>
-                                </div>
-                             </div>
-                          </div>
                         </div>
                         </td>
                 </tr>

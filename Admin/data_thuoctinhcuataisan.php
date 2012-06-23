@@ -11,15 +11,15 @@
 	   print "can't find $database";
 	}
 
-	if (isset($_GET['update']))
+	/*if (isset($_GET['update']))
 	{
 		// UPDATE COMMAND 
 		$update_query = "UPDATE `cothuoctinh` SET
 		`GiaTriThuocTinh`='".$_GET['GiaTriThuocTinh']."' WHERE `MaTaiSan`='".$_GET['MaTaiSan']."' and `MaThuocTinh`='".$_GET['MaThuocTinh']."'";
 		 $result = mysql_query($update_query) or die("SQL Error 1: " . mysql_error());
 		 echo $result;
-	}
-	else if (isset($_GET['insert']))
+	}*/
+	if (isset($_GET['insert']))
 	{
 		// INSERT COMMAND 
 		$insert_query = "insert into `cothuoctinh` values('".$_GET['MaTaiSan']."','".$_GET['MaThuocTinh']."','".$_GET['GiaTriThuocTinh']."')";
@@ -33,7 +33,7 @@
 		 $result = mysql_query($delete_query) or die("SQL Error 1: " . mysql_error());
 		 echo $result;
 	}
-	else 
+	/*else 
 	{
 		$pagenum = $_GET['pagenum'];
 		$pagesize = $_GET['pagesize'];
@@ -61,5 +61,5 @@
 		   'Rows' => $employees
 		);
 		echo json_encode($data);
-	}
+	}*/
 ?>

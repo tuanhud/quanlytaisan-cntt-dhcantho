@@ -8,18 +8,10 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT * FROM `thuoctinh`');
+					$db->setQuery('SELECT MaThuocTinh, TenThuocTinh FROM `thuoctinh`');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
-					$xml.="<row>";
-							$xml.="<column>";
-							$xml.=-1;							
-							$xml.="</column>";
-							$xml.="<column>";
-							$xml.='-Chọn thuộc tính-';							
-							$xml.="</column>";
-					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
 					{
 						$xml.="<row>";
