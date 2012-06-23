@@ -24,7 +24,6 @@
     <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
-    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
@@ -35,7 +34,8 @@
     <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
      <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
-	<script type="text/javascript" src="js/table-taisan.js"></script>
+     <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+	<script type="text/javascript" src="js/table-taisanthuocdonvi.js"></script>
     <script type="text/javascript" src="js/gettheme.js"></script>
     
     
@@ -160,20 +160,24 @@
                             <div id="eventWindow" style="display:none">
                                 <div>
                                     <img width="14" height="14" src="../jqwidgets/resources/drag.png" alt="" />
-                                    Thêm tài sản
+                                    Thêm tài sản thuộc đơn vị
                                 </div>
                                 <div>
                                   <div style="margin: 10px">
                                     Chọn đơn vị
-                                    <div id='jqxWidget2'>
+                                    <div id='cbodonvi'>
+        							</div>
+                                    Tìm tài sản
+                                    <div id='cbotaisan'>
         							</div>
                                     Chọn tài sản
-                                    <div id='jqxWidget3'>
+                                    <div id='tabletaisan'>
         							</div>
            
                                 </div>
                                 <div>
                                     <div style="float: right; margin-top: 10px;"> 
+                                    	<input type="button" id="save" value="Thêm" />
                                         <input type="button" id="cancel" value="Thoát" />
                                     </div>
                                 </div>

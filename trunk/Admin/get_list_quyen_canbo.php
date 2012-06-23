@@ -8,24 +8,22 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT * FROM `coquyen` where MSCB="'.$_POST['macanbo'].'"');
+					$db->setQuery('SELECT MaQuyen FROM `coquyen` where MSCB="'.$_POST['macanbo'].'"');
 					$result=$db->fetchAll();
 					$xml="";
-					$xml.="<INFO>";					
-					while($row=mysql_fetch_array($result))
-					{												
-						$xml.="<RESULT>";
-							
-							$xml.="<MAQUYEN>";
-								$xml.=$row['MaQuyen'];							
-							$xml.="</MAQUYEN>";
-							$xml.="<MSCB>";
-								$xml.=$row['MSCB'];							
-							$xml.="</MSCB>";
-						$xml.="</RESULT>";
+					$xml.="<table>";					
+					while($row=mysql_fetch_array($result,MYSQL_NUM))
+					{
+						$xml.="<row>";
+						for($i = 0; $i < count($row); $i++) {
+							$xml.="<column>";
+							$xml.=$row[$i];								
+							$xml.="</column>";
+						}
+						$xml.="</row>";
 					}
-					$xml.="</INFO>";
-				echo $xml;
-				exit;
+					$xml.="</table>";
+					mysql_free_result($result);
+					echo $xml;
 	//}
 ?>

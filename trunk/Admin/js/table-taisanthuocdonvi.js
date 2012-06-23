@@ -1,31 +1,43 @@
 function taobangtaisan ()
 {
 	 		var data = {};
+			var data2 = {};
+			var data3 = {};
 			var theme = '';
 			var madonvi= '';
 			var tendonvi= '';
 			var mataisan= '';
-			var tentaisan='';
+			
+			
+			http=GetXmlHttpObject();
+			var params ="";
+			http.open("POST", 'get_list_taisanthuocdonvi.php', false);
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			http.onreadystatechange = function()
+			{
+				if(http.readyState == 4 && http.status == 200) 
+				{
+					var x=http.responseXML.getElementsByTagName('INFO');
+					for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+					{
+						var row = {};
+						row["MSDV"] = x[i].getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+						row["TenDV"] = x[i].getElementsByTagName('RESULT')[1].firstChild.nodeValue;
+						row["MaTaiSan"] = x[i].getElementsByTagName('RESULT')[2].firstChild.nodeValue;
+						row["TenTaiSan"] = x[i].getElementsByTagName('RESULT')[3].firstChild.nodeValue;
+						row["SoLuongCuaDonVi"] = x[i].getElementsByTagName('RESULT')[4].firstChild.nodeValue;
+						row["DonGiaTS"] = x[i].getElementsByTagName('RESULT')[5].firstChild.nodeValue;
+						row["ThanhTien"] = x[i].getElementsByTagName('RESULT')[4].firstChild.nodeValue*x[i].getElementsByTagName('RESULT')[5].firstChild.nodeValue;
+						data[i] = row;
+					}
+				}
+			}
+			http.send(params);
             var source =
             {
-                 datatype: "json",
-                 datafields: 
-				 [
-				 	 { name: 'MSDV'},
-					 { name: 'TenDV'},
-					 { name: 'MaTaiSan'},
-					 { name: 'TenTaiSan'},
-					 { name: 'SoLuongCuaDonVi'},
-					 { name: 'DonGiaTS'},
-					 { name: 'ThanhTien'}
-                ],
-				
-                url: 'data_taisanthuocdonvi.php',    
-				root: 'Rows',
-				beforeprocessing: function(data)
-				{		
-					source.totalrecords = data[0].TotalRows;
-				},				
+                localdata: data,
+				datatype: "array",
+							
                 updaterow: function (rowid, rowdata) 
 				{
 			        // synchronize with the server - send update command
@@ -107,22 +119,18 @@ function taobangtaisan ()
                   ]
             });
 			
-			
-		//bat su kien select de lay ma don vi va ma tai san trong table taisanthuocdonvi
 		$('#jqxgrid').bind('rowselect', function (event) 
 		{
 			var args = event.args;
 			var row = args.rowindex;
-			madonvi = $('#jqxgrid').jqxGrid('getcellvalue', row, "MSDV");
 			mataisan = $('#jqxgrid').jqxGrid('getcellvalue', row, "MaTaiSan");
-		});
-			
+			madonvi = $('#jqxgrid').jqxGrid('getcellvalue', row, "MSDV");
+		});	
         // delete row.
         $("#deleterowbutton").bind('click', function () 
 		{
 				//xoa du lieu co mataisan va mathuoctinh bang cothuoctinh
-				var data = "delete=true&MaTaiSan=" +mataisan +"&MSDV=" + madonvi; 
-				alert(data);					
+				var data = "delete=true&MaTaiSan=" +mataisan +"&MSDV=" + madonvi; 					
 				$.ajax
 				({
 					dataType: 'json',
@@ -151,7 +159,7 @@ function taobangtaisan ()
 		{
             $('#save').jqxButton({ theme: theme, height: '25px', width: '65px' });
             $('#cancel').jqxButton({ theme: theme, height: '25px', width: '65px' });
-            $('#eventWindow').jqxWindow({ maxHeight: 400, maxWidth:400, minHeight: 30, minWidth: 250, height: 400, width: 400,
+            $('#eventWindow').jqxWindow({ maxHeight: 500, maxWidth:500, minHeight: 30, minWidth: 250, height: 400, width: 500,
                 theme: theme, resizable: false, isModal: true, modalOpacity: 0.3,
                 okButton: $('#save'), cancelButton: $('#cancel')
             });
@@ -166,60 +174,102 @@ function taobangtaisan ()
 				createElements(theme);
                 $('#eventWindow').jqxWindow('show');
 				
-                // fill don vi
-				var source2 =
+					// fill don vi
+					http=GetXmlHttpObject();
+					var params ="";
+					http.open("POST", 'get_list_donvi.php', false);
+					http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					http.onreadystatechange = function()
 					{
-						datatype: "json",
-						datafields: [
-							{ name: 'MSDV' },
-							{ name: 'TenDV' }
-						],
-						id: 'MSDV',
-						url: 'data_donvi.php',             
+						if(http.readyState == 4 && http.status == 200) 
+						{
+							var x=http.responseXML.getElementsByTagName('row');
+							for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+							{
+								var row2 = {};
+								row2["MSDV"] = x[i].getElementsByTagName('column')[0].firstChild.nodeValue;
+								row2["TenDV"] = x[i].getElementsByTagName('column')[1].firstChild.nodeValue;
+								data2[i] = row2;
+							}
+						}
+					}
+					http.send(params);
+					var source2 =
+					{
+						localdata: data2,
+						datatype: "array",
 					};
 					var dataAdapter2 = new $.jqx.dataAdapter(source2);
-					// Create a jqxComboBox
-					$("#jqxWidget2").jqxDropDownList(
-					{ 
-						incrementalSearch: true,				
-						selectedIndex: 0, 
-						source: dataAdapter2, 
-						displayMember: "TenDV", 
-						valueMember: "MSDV", 
-						width: 200, 
+						// Create a jqxComboBox
+						$("#cbodonvi").jqxComboBox(
+						{ 
+							incrementalSearch: true,				
+							selectedIndex: 0, 
+							source: dataAdapter2, 
+							displayMember: "TenDV", 
+							valueMember: "MSDV", 
+							width: 340, 
+							height: 25, 
+							theme: theme 
+						});
+					
+					
+				 	// tìm tài sản
+					http=GetXmlHttpObject();
+					var params ="";
+					http.open("POST", 'get_list_taisan.php', false);
+					http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					http.onreadystatechange = function()
+					{
+						if(http.readyState == 4 && http.status == 200) 
+						{
+							var x=http.responseXML.getElementsByTagName('row');
+							for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+							{
+								var row3 = {};
+								row3["MaTaiSan"] = x[i].getElementsByTagName('column')[0].firstChild.nodeValue;
+								row3["TenTaiSan"] = x[i].getElementsByTagName('column')[1].firstChild.nodeValue;
+								data3[i] = row3;
+							}
+						}
+					}
+					http.send(params);
+					var source3 =
+					{
+						localdata: data3,
+						datatype: "array",
+					};
+					var dataAdapter3 = new $.jqx.dataAdapter(source3);
+					$("#cbotaisan").jqxComboBox(
+					{ 			 
+						source: dataAdapter3, 
+						autocomplete: true,
+						autoDropDownHeight: true,
+						displayMember: "TenTaiSan", 
+						valueMember: "MaTaiSan", 
+						width: 340, 
 						height: 25, 
 						theme: theme 
 					});
-				 // bang taisan
-				var source3 =
+					
+					
+					var dataAdapter4;
+					$("#tabletaisan").jqxGrid(
 					{
-						datatype: "json",
-						datafields: 
-						[
-							{ name: 'MaTaiSan' },
-							{ name: 'TenTaiSan' }
-						],
-						id: 'MaTaiSan',
-						url: 'data_taisan.php',             
-					};
-					var dataAdapter3 = new $.jqx.dataAdapter(source3);
-					$("#jqxWidget3").jqxGrid(
-					{
-						width: 300,
+						width: 340,
 						selectionmode: 'singlerow',
-						source: dataAdapter3,
 						theme: theme,
 						editable: true,
-						autoheight: true,
+						height: 200,
 						columns: [
 							  { text: 'Mã tài sản', editable: false, datafield: 'MaTaiSan', width: 100, cellsalign: 'left' },
-							  { text: 'Tên tài sản', editable: false, datafield: 'TenTaiSan', width: 200, cellsalign: 'left' },
+							  { text: 'Tên tài sản', editable: false, datafield: 'TenTaiSan', width: 240, cellsalign: 'left' },
 						  ]
 					});
             });
         }
         //bat su kien chon don vi de lay ten don vi
-		$("#jqxWidget2").bind('select', function (event) 
+		$("#cbodonvi").bind('select', function (event) 
 		{
                     if (event.args) {
                         var item = event.args.item;
@@ -230,56 +280,94 @@ function taobangtaisan ()
                         }
                     }
           });
+		
 		 
-		 
-		//khi chon 1 row tren bang thuoc tinh, tu dong se addrow vao bang co thuoc tinh
-        $('#jqxWidget3').bind('rowselect', function (event) 
+		//khi chon 1 row tren combo taisan, tu dong se addrow vao bang taisan
+        $('#cbotaisan').bind('change', function (event) 
 		{
 			var args = event.args;
-			var row = args.rowindex;
-			mataisan = $('#jqxWidget3').jqxGrid('getcellvalue', row, "MaTaiSan");
-			tentaisan = $('#jqxWidget3').jqxGrid('getcellvalue', row, "TenTaiSan");
-            var row = {};
+            var item = $('#cbotaisan').jqxComboBox('getItem', args.index);
+			mataisan = item.value;
+			tentaisan =item.label;
+			var row = {};
             row["MaTaiSan"] = mataisan;
             row["TenTaiSan"] = tentaisan;
-            row["MSDV"] = madonvi;
-            row["TenDV"] = tendonvi;
-			row["SoLuongCuaDonVi"] = 1;
-			row["DonGiaTS"] = 1;
-			row["ThanhTien"] = row["SoLuongCuaDonVi"]*row["DonGiaTS"];
+			row["Delete"] = '';
 			
-			var i = 0,them=1;
-	      	var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
-			for(i;i < rowscount;i++) 
+			var item = $("#cbodonvi").jqxComboBox('getSelectedItem');
+						madonvi=item.value; 
+						tendonvi =item.label;
+   
+			var them=1;
+			var rowscount = $("#tabletaisan").jqxGrid('getdatainformation').rowscount;
+			for(var i=0;i < rowscount;i++) 
 			{
-				   var madonvi2 = $('#jqxgrid').jqxGrid('getcellvalue', i, "MSDV");
-				   var mataisan2 = $('#jqxgrid').jqxGrid('getcellvalue', i, "MaTaiSan");
-				   if((madonvi2==madonvi)&&(mataisan2==mataisan))
-				   {
+					var mataisan2 = $('#tabletaisan').jqxGrid('getcellvalue', i, "MaTaiSan");
+					if(mataisan==mataisan2)
+					{
 						them=0;
-				   }
-            }
-
-			// add vao bang co taisan
+					}	
+			}
+			
+			
+			var rowscount2 = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
+			for(var j=0;j < rowscount2;j++) 
+			{
+					var mataisan2 = $('#jqxgrid').jqxGrid('getcellvalue', j, "MaTaiSan");
+					var madonvi2 = $('#jqxgrid').jqxGrid('getcellvalue', j, "MSDV");
+					if((madonvi==madonvi2)&&(mataisan==mataisan2))
+					{
+						them=0;
+					}	
+			}
+			// add vao bang taisan
 			if(them==1)
 			{
-				$('#jqxgrid').jqxGrid('addrow',null, row);
-				//xoa du lieu trong bang taisan
-            	//$("#jqxWidget2").jqxGrid('deleterow', mathuoctinh);
+				$('#tabletaisan').jqxGrid('addrow',null, row);
 				
-				//luu vao bang cotaisan
-				var data = "insert=true&MaTaiSan=" +mataisan + "&MSDV=" + madonvi; 	
-				alert(data);				
-				$.ajax
-				({
-					dataType: 'json',
-					url: 'data_taisanthuocdonvi.php',
-					data: data,
-					success: function (data, status, xhr) {}		
-				})
 			}
-			else{alert('Đã tồn tại mã tài sản và mã đơn vị này.');}
+			
 		});
+		
+		 $("#save").bind('click', function () 
+		 {
+			 		var item = $("#cbodonvi").jqxComboBox('getSelectedItem');
+						madonvi=item.value; 
+						tendonvi =item.label;
+						
+            		var rowscount = $("#tabletaisan").jqxGrid('getdatainformation').rowscount;
+					for(var i=0;i < rowscount;i++) 
+					{
+						   	var mats = $('#tabletaisan').jqxGrid('getcellvalue', i, "MaTaiSan");
+						   	var tents = $('#tabletaisan').jqxGrid('getcellvalue', i, "TenTaiSan");
+						    var row12 = {};
+							row12["MSDV"] = madonvi;
+							row12["TenDV"] = tendonvi;
+							row12["MaTaiSan"] = mats;
+							row12["TenTaiSan"] = tents;
+							$('#jqxgrid').jqxGrid('addrow',null, row12);
+							
+							// luu vao csdl
+							{
+								http=GetXmlHttpObject();
+								var params = "insert=true&MaDonvi=" +madonvi + "&MaTaiSan=" + mats;				
+								http.open("POST", 'data_taisanthuocdonvi2.php', false);
+								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+								http.onreadystatechange = function()
+								{
+									if(http.readyState == 4 && http.status == 200) 
+									{
+										result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+									}
+								}
+								http.send(params);						
+							}	
+
+					}
+					$("#cbotaisan").jqxComboBox('clearSelection'); 
+					$('#tabletaisan').jqxGrid('clear');
+					
+         }); 
 		  
 		  
 		//auto tinh tong tien
@@ -304,6 +392,7 @@ function taobangtaisan ()
 			$('#showWindowButton').jqxButton({ theme: theme, width: '150px', height: '25px' });
 			$("#deleterowbutton").jqxButton({ theme: theme, width: '150px', height: '25px' });
             addEventListeners();
+			$("#cbotaisan").jqxComboBox('clearSelection');
             $("#jqxWidget").css('visibility', 'visible');
         });
 				
