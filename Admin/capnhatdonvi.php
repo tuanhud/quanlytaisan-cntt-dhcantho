@@ -1,113 +1,120 @@
-<?php
+<?php	
 	//khoi dong session
-	/*session_start();
-	
+	session_start();
+
 	//kiem tra quyen truoc khi hien thi trang
-	if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
+	/*if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
 	{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
-	exit;
+	hello exit;
 	}*/
 ?>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật đơn vị</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-
-<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/fill.js"></script>
-<script type="text/javascript" src="js/capnhatdonvi.js"></script>
-<script type="text/javascript" >
-
-$(document).ready(function() { 
-	document.frm_themdonvi.txt_tendonvithem.focus();
-	fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
-	fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);	
-	$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(
-		function(){get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
-	});
-}); 
-</script>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
+    <link rel="stylesheet" href="../styles/site.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../styles/style.css" media="screen" />
+    <script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../scripts/demofunctions.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/jquery.global.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdocking.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnavigationbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmaskedinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxprogressbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../scripts/initwidgets.js"></script>
+    <script type="text/javascript" src="../scripts/gettheme.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/fill.js"></script>
+	<script type="text/javascript" src="js/capnhatdonvi.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            initmenu();
+            $("#parentTable").height(1600);	
+            setTimeout(function()
+            {
+                $("#demoContent").css('visibility', 'visible');		
+                initwidgets();
+                $("#loader").css('display', 'none');
+            }, 1000);
+            var theme = getTheme();
+            $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
+            $("#jqxMenu").css('visibility', 'visible'); 
+			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+			
+			document.frm_themdonvi.txt_tendonvithem.focus();
+			fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
+			fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);	
+			$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(
+				function(){get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
+			});
+            });
+        </script>
 </head>
-<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" class="yui3-skin-sam">
-  
-<table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
-  <tbody>
-  
-  <!--Bắt đầu của HEADER-->
-  <tr> 
-    <td height="26" valign="top"> 
-      <script>
-	
-	function thoat() {
-		if (confirm('Ban co chac chan muon thoat khong ?' )) {
-			document.location = '../logout.php';
-			return;
-		}
-	}
-</script>	 
-
-<!--Thẻ hiển thị thông tin khi đăng nhập-->
-<div style="Z-INDEX: 1; LEFT: 575px; WIDTH: 200px; POSITION: absolute; TOP: 53px; HEIGHT: 30px" align="center">
-<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-	<a class="white" href="javascript:thoat();">Thoát</a>
-    <br>Xin chào, <?=$_SESSION['hotencanbo']?>
-    <br>
-	(<?=$_SESSION['masocanbo']?>)
-    </font>
-    </div>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-   <tbody><tr>
-     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-       <tbody><tr>
-         <td class="tl_header">&nbsp;</td>
-         <td class="tc_header">&nbsp;</td>
-         <td class="tr_header">&nbsp;</td>
-       </tr>
-       <tr>
-         <td class="cl_header">&nbsp;</td>
-         <td class="cm_header"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-           <tbody><tr>
-             
-             <td class="tittle_header">&nbsp;</td>
-             
-           </tr>
-         </tbody></table></td>
-         <td class="cr_header">&nbsp;</td>
-       </tr>
-       
-     </tbody></table></td>
-   </tr>
- </tbody></table>
-    </td>
-    
-  </tr>	
-  <!--Kết thúc của HEADER-->
-  <!--Bắt đàu của MAINPAGE-->
-
-  <tr>
-    <td valign="middle" height="54%">
-    
-        <table width="752" align="center" border="0" cellpadding="0" cellspacing="0">
-        <!--MENU-->
-        <tr height="10">        
-			<td align="center" colspan="3">
-			<?php
-			include_once('node-menunav-3ad.php');
-			?> 
-			</td>    
-        </tr>
-        
-		<tr>
-        <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
-        </tr>                    
-        <!--KET THUC MENU-->
-        <tr>
+<body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
+	<!--begin header-->
+   			 <?php include_once('../header.php');?> 
+    <!--end header-->
+    <!--begin content-->
+    <div class="rc-all" style='margin-right: auto; margin-left: auto; border: 1px solid #d2d2d2; width: 1000px; height: 100%; margin-top: 40px; margin-bottom: 20px; background: #fff;'>
+       <table class="rc-all" id="demostable" style="margin: 0 auto; table-layout: fixed; width: 100%; min-height: 100%; height: auto; height: 100%; border-collapse: collapse; background: #EEEEEE;">
+            <tbody>
+            		<tr valign="top">
+             		<!--menu o day-->
+                    	<?php include_once('menu.php');?> 
+            		</tr>
+                    <tr>
+               		 	<td>
+                        	<table style="table-layout: fixed; margin-left:20px; margin-right:20px; margin-bottom:20px; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+                           		<tbody>                       
+                              		 <tr>
+                            <td width="794" valign="top" class="rc-all content" id="demos">
+                            <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                 <tr>
+                                    <td valign="top">   
+                                    </td>
+                                 </tr>
+    							 <tr>
+                                        <td height="100%"  class="demoContent" valign="middle">
+                                              <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
+                                          <tr height="10">
+                                            <td align="center">&nbsp;</td>       
+                                          </tr> 
+                                          
+                                          <!--noi dung o day-->
+                                          <tr>
     <td height="100%" align="center" valign="middle">   
 		 <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
@@ -140,7 +147,7 @@ $(document).ready(function() {
         </tr>		
         </tbody>
         </table>
-
+		<br />
         <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
@@ -183,7 +190,7 @@ $(document).ready(function() {
       </tr>		
       </tbody>
       </table>
-
+		<br />
         <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
@@ -223,46 +230,29 @@ $(document).ready(function() {
       </table>
 	</td>
 </tr>
-</table>
-
-		
-	</td>
-  </tr>
-  <!--Kết thúc của MAINPAGE-->
-  <!--Bắt đàu của FOOTER-->
-  <tr>
-    <td valign="bottom">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tbody>
-  <tr>
-    <td class="cl_footer">&nbsp;</td>
-    <td class="cm_footer"><div align="right" class="copy"><!--Copyright © 2008 by <a href="http://www.cuscsoft.com" target="_blank" class="white"><strong>CUSC</strong></a>--></div></td>
-    <td class="cr_footer">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="bl_footer">&nbsp;</td>
-    <td class="bc_footer">&nbsp;</td>
-    <td class="br_footer">&nbsp;</td>
-  </tr>
-</tbody></table>
-</td>
-  </tr>
-  <!--Kết thúc của FOOTER-->
-</tbody></table>
+                                          
+                                          
+                                          <tr>
+                                            <td align="center">&nbsp;</td>
+                                          </tr>    
+                                        </table>
+                                        </td>
+  								</tr>
+                                </tbody>
+                             </table>
+                            </td>
+                               </tr>       
+                            	</tbody>
+                         	</table>
+                     	</td>
+                    </tr>
+              </tbody>
+        </table>
+                
+    </div>
+    <!--end content-->
+    <!--begin footer-->
+   		 <?php include_once('../footer.php');?> 
+    <!--end footer-->
 </body>
-<script>
-    //  Call the "use" method, passing in "node-menunav".  This will load the
-    //  script and CSS for the MenuNav Node Plugin and all of the required
-    //  dependencies.
-    YUI().use('node-menunav', function(Y) {
-        //  Retrieve the Node instance representing the root menu
-        //  (<div id="productsandservices">) and call the "plug" method
-        //  passing in a reference to the MenuNav Node Plugin.
-        var menu = Y.one("#admin");
-        menu.plug(Y.Plugin.NodeMenuNav);
-        //  Show the menu now that it is ready
-        menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
-    });
-</script>
 </html>
-
