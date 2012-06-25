@@ -1,133 +1,188 @@
-<html>
+<?php
+	session_start();
+	//if(session_is_registered("maquyen") && $_SESSION['maquyen']=="AD")
+	//{
+	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
+	//echo "<script language=javascript>window.location = 'main.php';</script>"; 
+	
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Hệ thống quản lý tài sản, thiết bị - Khoa Công Nghệ Thông Tin  - Trường Đại Học Cần Thơ</title>
-<link rel="icon" href="favicon.ico">
-<link href="css/style.css" rel="stylesheet" type="text/css"></head>
-<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
-<table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td height="26" valign="top">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-   			<tr>
-		     <td>
-             <table width="100%" border="0" cellspacing="0" cellpadding="0">
-       			<tr>
-		         <td width="20" class="tl_header">&nbsp;</td>
-        		 <td width="738" class="tc_header">&nbsp;</td>
-		         <td width="119" class="tr_header">&nbsp;</td>
-       			</tr>
-       			<tr>	
-		         <td class="cl_header">&nbsp;</td>
-        		 <td class="cm_header">
-                 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-			           <tr>             
-			             <td width="465" class="tittle_header"><img src="images/ctulogo1.gif"></td>            
-			           </tr>	
-         			</table>
-                 </td>
-         		 <td class="cr_header">&nbsp;</td>
-		        </tr>       
-     		 </table>
-             </td>
-		   </tr>
-		 </table>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">   
-    </td>
-    <tr>
-    <td height="100%" valign="middle">
-    <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
-      <tr height="10">
-        <td align="center">&nbsp;</td>       
-        </tr>
-      <tr>       
-        <td align="center" width="44%" valign="middle">
-        <table width="400" height="250" borderColor="#111111" cellSpacing=0 cellPadding=0 align="center" border=0>
-            <tr>
-              <td class="tl_main">&nbsp;</td>
-              <td class="tc_main">&nbsp;</td>
-              <td class="tr_main">&nbsp;</td>
-            </tr>
-            <tr>
-              <td class="cl_main">&nbsp;</td>
-              <td valign="middle"><table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td  align="center">
-        			<a href="CanBoQLBM/loginUI.php">
-                     <img src="images/ctdt.gif" style="border:none; cursor:hand" title="Ban chủ nhiệm Câu lạc bộ"/>
-                    </a>
-                    </td>
-                      <td width="50%" align="center">   
-                    <a href="GiangVien/loginUI.php">
-                    <img src="images/ctdt.gif" style="border:none; cursor:pointer" title="Ban chấp hành Chi hội sinh viên"/>
-                    </a> 
-                    </td>
-                  </tr>
-                  <tr>
-                   	<td>
-                    	<div align="center"><strong>Cán bộ quản lý BM </strong></div>
-                    </td>
-                    <td>
-                    	<div align="center"><strong>Giảng viên </strong></div>
-                    </td>
-                  </tr>
-                  <tr>
-                  			<td colspan="2" class="tc_main">&nbsp;</td>
-                </tr>
-                <tr align="center">
-                  
-                    <td  align="center" colspan="2">
-        			<a href="Admin/loginUI.php">
-                     <img src="images/ctdt.gif" style="border:none; cursor:hand" title="Quản trị hệ thống"/>
-                    </a>
-                    </td>                      
-                  </tr>
-                  <tr>
-                   	<td colspan="2">
-                    	<div align="center"><strong>Admin</strong></div>
-                    </td>                    
-                  </tr>
-                 
-              </table></td>
-              <td class="cr_main">&nbsp;</td>
-            </tr>
-            <tr>
-              <td class="bl_main">&nbsp;</td>
-              <td class="bc_main">&nbsp;</td>
-              <td class="br_main">&nbsp;</td>
-            </tr>
-          </table></td>      
-      </tr>
-      <tr>
-        <td align="center">&nbsp;</td>
-       
-      </tr>    
-    </table></td>
-  </tr>
-  <tr>
-    <td valign="bottom">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-	  <tr>
-     	<td>&nbsp;</td>
-	    <td>&nbsp;</td>
-	    <td>&nbsp;</td>
-  	  </tr>
-  	  <tr>
-	    <td class="cl_footer">&nbsp;</td>
-    	<td class="cm_footer"></td>
-	    <td class="cr_footer">&nbsp;</td>
-	  </tr>
-	  <tr>
-    	<td class="bl_footer">&nbsp;</td>
-	    <td class="bc_footer">&nbsp;</td>
-    	<td class="br_footer">&nbsp;</td>
-	  </tr>
-	</table>
-	</td>
-  </tr>
-</table>
+<title>Hệ thống quản lý tài sản thiết bị khoa Công Nghệ Thông Tin & TT</title>
+<link rel='stylesheet' id='login-css'  href='styles/login.css' type='text/css' media='all' />
+<link rel='stylesheet' id='colors-fresh-css'  href='styles/colors-fresh.css' type='text/css' media='all' />
+<script type='text/javascript' src='scripts/l10n.js'></script>
+<script type='text/javascript' src='scripts/toolbar.js'></script>
+<script type="text/javascript">
+function wp_attempt_focus(){
+setTimeout( function(){ try{
+d = document.getElementById('user_login');
+d.focus();
+d.select();
+} catch(e){}
+}, 200);
+}
+
+wp_attempt_focus();
+if(typeof wpOnload=='function')wpOnload();
+</script>
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin. -->
+</head>
+<body class="login">
+<div id="login">
+
+<form name="loginform" id="loginform" action="" method="post">
+	<p>
+		<label>Tên đăng nhập<br />
+		<input type="text" name="txtDinhDanh" id="txtDinhDanh" class="input" value="" size="20" tabindex="10" /></label>
+	</p>
+	<p>
+		<label>Mật khẩu<br />
+		<input type="password" name="txtMatKhau" id="txtMatKhau" class="input" value="" size="20" tabindex="20" /></label>
+	</p>
+	<p class="forgetmenot"><label><a href="" title="Quên mật khẩu?">Quên mật khẩu?</a></label></p>
+	<p class="submit">
+		<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="Đăng nhập" tabindex="100" />
+	</p>
+    <?php
+	include('database.php');
+	$db=new database();
+    if (isset($_POST['txtDinhDanh']) && isset($_POST['txtMatKhau']))
+	{   		
+		//kiem tra xem co ton tai nguoi voi maso va matkhau duoc cung cap hay khong ?
+			$sql="select * from nguoidung
+					where MSCB ='".$_POST['txtDinhDanh']."'
+					and Matkhau ='".$_POST['txtMatKhau']."'";
+					
+			$db->setQuery($sql);
+		if ($db->numRecord()==1)
+		{
+		 $msclb =$_POST['txtDinhDanh'];
+		 $sql = "Select MaQuyen from coquyen where MSCB = '".$msclb."'";
+			$db->setQuery($sql);
+			
+			$result = $db->fetchAll();
+			
+			if(mysql_num_rows($result)){
+			while($row = mysql_fetch_array($result)){
+				if($row['MaQuyen']=="ADMIN"){
+					//dua maso vao session
+			        $msclb =$_POST['txtDinhDanh'];
+			        session_register("msclb") ;
+			        $sql = "Select TenCB from nguoidung where MSCB = '".$msclb."'";			
+			        $db->setQuery($sql);
+			        $result = $db->fetchAll();
+			        $row = mysql_fetch_array($result);
+			        $hoten = $row['TenCB'];
+			        session_register("hoten");
+			        //dua quyen vao session
+			        $maquyen='ADMIN';
+			        session_register("maquyen");
+			
+			         $sql = "Select MaQuyen from coquyen where MSCB = '".$msclb."'";
+			         $db->setQuery($sql);
+			
+			         $result = $db->fetchAll();
+			
+			         if(mysql_num_rows($result)){
+			             while($row = mysql_fetch_array($result)){
+				             if($row['MaQuyen']=="THEMKK"){
+					            $tkk="THEMKK";
+					            session_register("tkk");
+				              }
+				             if($row['MaQuyen']=="THEMKHMS"){
+					         $tkhms="THEMKHMS";
+					         session_register("tkhms");
+				             }
+				             if($row['MaQuyen']=="SUAKHMS"){
+					         $skhms="SUAKHMS";
+					         session_register("skhms");
+				             }
+				             if($row['MaQuyen']=="SUAKK"){
+					         $skk="SUAKK";
+					         session_register("skk");
+				             }
+				             if($row['MaQuyen']=="THEMVPP"){
+					         $tvpp="THEMVPP";
+					         session_register("tvpp");
+				             }
+				             if($row['MaQuyen']=="SUAVPP"){
+					         $svpp="SUAVPP";
+					         session_register("svpp");
+				             }
+				             if($row['MaQuyen']=="DUYETKK"){
+					         $dkk="DUYETKK";
+					         session_register("dkk");
+				             }
+				             if($row['MaQuyen']=="DUYETKHMS"){
+					         $dkhms="DUYETKHMS";
+					         session_register("dkhms");
+				             }
+				             if($row['MaQuyen']=="DUYETVPP"){
+					         $dvpp="DUYETVPP";
+					         session_register("dvpp");
+				             }
+				
+			             }
+			          }
+					echo "<script language=javascript>window.location = 'Admin/main.php';</script>"; 
+			        exit;
+				}
+			    if($row['MaQuyen']=="CBQLBM"){
+					
+					//dua maso vao session
+			           $msclb =$_POST['txtDinhDanh'];
+			           session_register("msclb") ;
+			           $sql = "Select TenCB from nguoidung where MSCB = '".$msclb."'";			
+			           $db->setQuery($sql);
+			           $result = $db->fetchAll();
+			           $row = mysql_fetch_array($result);
+			           $hoten = $row['TenCB'];
+			           session_register("hoten");
+			        //dua quyen vao session
+			           $maquyen="CBQLBM";
+			           session_register("maquyen");
+			           echo "<script language=javascript>window.location = 'CanBoQLBM/main.php';</script>"; 
+			           exit;
+				}
+				if($row['MaQuyen']=="GV"){
+					
+					//dua maso vao session
+			           $msclb =$_POST['txtDinhDanh'];
+			           session_register("msclb") ;
+			           $sql = "Select TenCB from nguoidung where MSCB = '".$msclb."'";			
+			           $db->setQuery($sql);
+			           $result = $db->fetchAll();
+			           $row = mysql_fetch_array($result);
+			           $hoten = $row['TenCB'];
+			           session_register("hoten");
+			        //dua quyen vao session
+			           $maquyen="GV";
+			           session_register("maquyen");
+			           echo "<script language=javascript>window.location = 'GiangVien/main.php';</script>"; 
+			           exit;
+				}
+				
+			
+			
+			}
+			}
+		}
+	else
+		{
+			echo "<script language=javascript> alert('Tên đăng nhập và mật khẩu không chính xác!.');</script>";  
+		}  
+    }
+	else
+	{
+			echo "<script language=javascript>alert('Bạn phải nhập đầy đủ tên đăng nhập và mật khẩu!.'); </script>";
+	}
+	
+?>
+</form>
+	</div>
 </body>
 </html>

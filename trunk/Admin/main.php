@@ -10,211 +10,213 @@
 	hello exit;
 	}*/
 ?>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Admin</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-<script>	
-	function thoat() {
-		if (confirm('Ban co chac chan muon thoat khong ?' )) {
-			document.location = '../logout.php';
-			return;
-		}
-	}
-</script>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
+    <link rel="stylesheet" href="../styles/site.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../styles/style.css" media="screen" />
+    <script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../scripts/demofunctions.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/jquery.global.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdocking.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnavigationbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmaskedinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxprogressbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../scripts/initwidgets.js"></script>
+    <script type="text/javascript" src="../scripts/gettheme.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            initmenu();
+            $("#parentTable").height(1600);	
+            setTimeout(function()
+            {
+                $("#demoContent").css('visibility', 'visible');		
+                initwidgets();
+                $("#loader").css('display', 'none');
+            }, 1000);
+            var theme = getTheme();
+            $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
+            $("#jqxMenu").css('visibility', 'visible'); 
+			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+            });
+        </script>
 </head>
-<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" ondragstart="return false" onselectstart="return false" class="yui3-skin-sam">  
-<table width="778" height="100%" border="0" cellpadding="0" cellspacing="0">
-  <tbody>  
-  <!--Bắt đầu của HEADER-->
-  <tr> 
-    <td height="26" valign="middle">       	 
-	<!--Thẻ hiển thị thông tin khi đăng nhập-->
-	<div style="Z-INDEX: 1; LEFT: 550px; WIDTH: 200px; POSITION: absolute; TOP: 46px; HEIGHT: 30px" align="center">
-		<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-			<a class="white" href="capnhatthongtincanhan.php">Cập nhật thông tin cá nhân</a> | <a class="white" href="javascript:thoat();">Thoát</a>
-      <br>Xin chào, <?=$_SESSION['hoten']?>
-    		<br>
-    		(<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-    		<?=$_SESSION['msclb']?>
-    		</font>)    	</font>    </div>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-   <tbody><tr>
-     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-       <tbody><tr>
-         <td class="tl_header">&nbsp;</td>
-         <td class="tc_header">&nbsp;</td>
-         <td class="tr_header">&nbsp;</td>
-       </tr>
-       <tr>
-         <td class="cl_header">&nbsp;</td>
-         <td class="cm_header">
-         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-         <tbody>
-           <tr>            
-             <td class="tittle_header"><img src="../images/ctulogo1.gif"></td>             
-           </tr>
-         </tbody>
-         </table>         </td>
-         <td class="cr_header">&nbsp;</td>
-       </tr>       
-     </tbody></table></td>
-   </tr>
- </tbody></table>    </td>    
-  </tr>
-  <!--Kết thúc của HEADER--> 
-  <!--Bắt đàu của MAINPAGE-->
-  
-  <tr>
-	<td height="54%" valign="middle">
-    	<table align="center" border="0" cellpadding="0" cellspacing="0" width="752">      
-	    <tbody>
-        <tr height="10">        
-	   	<td align="center" colspan="3">
-        <?php
-		include_once('node-menunav-3ad.php');
-		//include_once('nhan.php');
-		?> 
-</script>        </td>
-	    <!--<td align="center" >&nbsp;</td>
-	    <td align="center">&nbsp;</td>-->
-	    </tr>
-        <tr>
-        <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
-        </tr>                        
-      <tr>
-      <!--BẮT ĐẦU LEFT MAIN INFO-->
-      <td align="center" width="100%">
-      <table width="56%" height="280" border="0" align="center" cellpadding="0" cellspacing="0">
-          <tbody><tr>
-            <td class="tl_main">&nbsp;</td>
-            <td class="tc_main">&nbsp;</td>
-            <td class="tr_main">&nbsp;</td>
+<body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
+	<!--begin header-->
+   			 <?php include_once('../header.php');?> 
+    <!--end header-->
+    <!--begin content-->
+    <div class="rc-all" style='margin-right: auto; margin-left: auto; border: 1px solid #d2d2d2; width: 1000px; height: 100%; margin-top: 40px; margin-bottom: 20px; background: #fff;'>
+       <table class="rc-all" id="demostable" style="margin: 0 auto; table-layout: fixed; width: 100%; min-height: 100%; height: auto; height: 100%; border-collapse: collapse; background: #EEEEEE;">
+            <tbody>
+            		<tr valign="top">
+             		<!--menu o day-->
+                    	<?php include_once('menu.php');?> 
+            		</tr>
+                    <tr>
+               		 	<td>
+                        	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+                           		<tbody>                       
+                              		 <tr>
+                           
+                           				 <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                
+    							 <tr>
+                                        <td height="100%"  class="demoContent" valign="middle">
+                                              <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
+                                          <tr height="10">
+                                            <td align="center">&nbsp;</td>       
+                                          </tr> 
+                                          
+                                          <!--noi dung o day-->
+                                          <tr>       
+                                              <td align="center" width="44%" valign="middle">
+                                             
+                                             
+                                            	 <table width="56%" height="280" border="0" align="center" cellpadding="0" cellspacing="0">
+          											<tbody>
+        												  <tr>
+                                                                <td class="tl_main">&nbsp;</td>
+                                                                <td class="tc_main">&nbsp;</td>
+                                                                <td class="tr_main">&nbsp;</td>
+                                                          </tr>
+          <tr>
+                <td class="cl_main">&nbsp;</td>
+                <td style="font-family:Arial, Helvetica, sans-serif; font-size:12px">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">                
+                         <tbody >
+                        <tr>
+                            <td colspan="2"><div align="center" class="textbold">THÔNG TIN CÁN BỘ ADMIN </div></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td width="26%" class="bordersv"><div class="bg" align="right">Mã CB </div></td>
+                          <td width="74%" class="bordersv"><div class="bold" align="left"><?=$_SESSION['msclb']?></div></td>
+                        </tr>
+                        <tr>
+                    <? 
+                    //Select thong tin nguoi dung				
+                    include('../database.php');				
+                    $user = new database();
+                    $sql = "Select * from nguoidung where MSCB = '".$_SESSION['msclb']."'";
+                    $msclb =$_SESSION['msclb'];
+                    session_register("msclb") ;
+                    $user->setQuery($sql);
+                    $result = $user->fetchAll();
+                    $row = mysql_fetch_array($result);
+                    ?>
+                      <td class="bordersv"><div class="bg" align="right">Họ tên</div></td>
+                      <td class="bordersv"><div class="bold" align="left"><?=$row['TenCB']?></div></td>
+                    </tr>
+                         <tr>
+                      <td class="bordersv"><div class="bg" align="right">Ngày sinh</div></td>
+                      <td class="bordersv"><div class="bold" align="left"><?=$row['NgaySinh']?>/<?=$row['ThangSinh']?>/<?=$row['NamSinh']?></div></td>
+                    </tr>
+                     <tr>
+                      <td class="bordersv"><div class="bg" align="right">Giới tính</div></td>
+                      <td class="bordersv"><div class="bold" align="left"><?=$row['Gioitinh']?></div></td>
+                    </tr>
+                    <tr>
+                      <td class="bordersv"><div class="bg" align="right">Email</div></td>
+                      <td class="bordersv"><div class="bold" align="left"><?=$row['Email']?></div></td>
+                    </tr>
+                    <tr>
+                      <td class="bordersv"><div class="bg" align="right">Địa chỉ</div></td>
+                     
+                      <td class="bordersv"><div class="bold" align="left"><?=$row['Diachi']?></div></td>
+                    </tr>
+                        <tr>
+                          <td class="bordersv"><div class="bg" align="right">Số ĐT</div></td>
+                          <td class="bordersv"><div class="bold" align="left"><?=$row['SDT']?></div></td>
+                        </tr>
+                        <tr>
+                          <td class="bordersv"><div class="bg" align="right">Đơn vị</div></td>                  
+                          <?
+                          //hien thi ten khoa
+                          $sql = "Select * from nguoidung, donvi  where nguoidung.MSDV = donvi.MSDV  and nguoidung.MSCB = '".$_SESSION['msclb']."'";
+                          $user->setQuery($sql);
+                          $result = $user->fetchAll();
+                          $row = mysql_fetch_array($result);
+                          ?>
+                          <td class="bordersv"><div class="bold" align="left"><?=$row['TenDV']?></div></td>
+                        </tr>                
+                        <tr>
+                      <td class="bordersv"><div class="bg" align="right">Khoa</div></td>                  
+                      <td class="bordersv"><div class="bold" align="left">Công nghệ thông tin &amp; TT </div></td>
+                    </tr>
+                    <tr>
+                      <td class="bordersv">&nbsp;</td>
+                      <td class="bordersv">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                </td>
+                <td class="cr_main">&nbsp;</td>
           </tr>
           <tr>
-            <td class="cl_main">&nbsp;</td>
-            <td style="font-family:Arial, Helvetica, sans-serif; font-size:12px">
-            	<table width="100%" border="0" cellspacing="0" cellpadding="0">                
-                <tbody ><tr>
-                  <td colspan="2"><div align="center" class="textbold">THÔNG TIN CÁN BỘ ADMIN </div></td>
-                </tr>
-        
-                <tr>
-                  <td colspan="2">&nbsp;</td>
-                  </tr>
-                <tr>
-                  <td width="26%" class="bordersv"><div class="bg" align="right">Mã CB </div></td>
-                  <td width="74%" class="bordersv"><div class="bold" align="left"><?=$_SESSION['msclb']?></div></td>
-                </tr>
-                <tr>
-                <? 
-				//Select thong tin nguoi dung				
-				include('../database.php');				
-				$user = new database();
-				$sql = "Select * from nguoidung where MSCB = '".$_SESSION['msclb']."'";
-				$msclb =$_SESSION['msclb'];
-			    session_register("msclb") ;
-				$user->setQuery($sql);
-				$result = $user->fetchAll();
-				$row = mysql_fetch_array($result);
-				?>
-                  <td class="bordersv"><div class="bg" align="right">Họ tên</div></td>
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['TenCB']?></div></td>
-                </tr>
-                <tr>
-                  <td class="bordersv"><div class="bg" align="right">Ngày sinh</div></td>
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['NgaySinh']?>/<?=$row['ThangSinh']?>/<?=$row['NamSinh']?></div></td>
-                </tr>
-                 <tr>
-                  <td class="bordersv"><div class="bg" align="right">Giới tính</div></td>
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['Gioitinh']?></div></td>
-                </tr>
-                <tr>
-                  <td class="bordersv"><div class="bg" align="right">Email</div></td>
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['Email']?></div></td>
-                </tr>
-                <tr>
-                  <td class="bordersv"><div class="bg" align="right">Địa chỉ</div></td>
-                 
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['Diachi']?></div></td>
-                </tr>
-                <tr>
-                  <td class="bordersv"><div class="bg" align="right">Số ĐT</div></td>
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['SDT']?></div></td>
-                </tr>
-                <tr>
-                  <td class="bordersv"><div class="bg" align="right">Đơn vị</div></td>                  
-                  <?
-				  //hien thi ten khoa
-				  $sql = "Select * from nguoidung, donvi  where nguoidung.MSDV = donvi.MSDV  and nguoidung.MSCB = '".$_SESSION['msclb']."'";
-				  $user->setQuery($sql);
-                  $result = $user->fetchAll();
-				  $row = mysql_fetch_array($result);
-				  ?>
-                  <td class="bordersv"><div class="bold" align="left"><?=$row['TenDV']?></div></td>
-                </tr>                
-                <tr>
-                  <td class="bordersv"><div class="bg" align="right">Khoa</div></td>                  
-                  <td class="bordersv"><div class="bold" align="left">Công nghệ thông tin &amp; TT </div></td>
-                </tr>
-                <tr>
-                  <td class="bordersv">&nbsp;</td>
-                  <td class="bordersv">&nbsp;</td>
-                </tr>
-            </tbody></table></td>
-            <td class="cr_main">&nbsp;</td>
+                <td class="bl_main">&nbsp;</td>
+                <td class="bc_main">&nbsp;</td>
+                <td class="br_main">&nbsp;</td>
           </tr>
-          <tr>
-            <td class="bl_main">&nbsp;</td>
-            <td class="bc_main">&nbsp;</td>
-            <td class="br_main">&nbsp;</td>
-          </tr>
-        </tbody>        
-        </table>        </td>
-      <!--KẾT THÚC LEFT MAIN INFO-->            
-      </tr>   
-    </tbody></table>    </td>
-  </tr>
-  <!--Kết thúc của MAINPAGE-->
-  <!--Bắt đàu của FOOTER-->
-  <tr>
-    <td valign="bottom">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tbody><tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="cl_footer">&nbsp;</td>
-    <td class="cm_footer"><div align="right" class="copy"><!--Copyright © 2008 by <a href="http://www.cuscsoft.com" target="_blank" class="white"><strong>CUSC</strong></a>--></div></td>
-    <td class="cr_footer">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="bl_footer">&nbsp;</td>
-    <td class="bc_footer">&nbsp;</td>
-    <td class="br_footer">&nbsp;</td>
-  </tr>
-</tbody></table></td>
-  </tr>
-  <!--Kết thúc của FOOTER-->
-</tbody></table>
+       												</tbody>        
+        										 </table>
+                                                 
+                                                 <!--het noi dung-->
+                                              </td>      
+                                          </tr>
+                                          <tr>
+                                            <td align="center">&nbsp;</td>
+                                          </tr>    
+                                        </table>
+                                        </td>
+  								</tr>
+                                </tbody>
+                             </table>
+                               			</tr>       
+                            	</tbody>
+                         	</table>
+                     	</td>
+                    </tr>
+              </tbody>
+        </table>
+                
+    </div>
+    <!--end content-->
+    <!--begin footer-->
+   		 <?php include_once('../footer.php');?> 
+    <!--end footer-->
 </body>
-<script>
-    //  Call the "use" method, passing in "node-menunav".  This will load the
-    //  script and CSS for the MenuNav Node Plugin and all of the required
-    //  dependencies.
-    YUI().use('node-menunav', function(Y) {
-        //  Retrieve the Node instance representing the root menu
-        //  (<div id="productsandservices">) and call the "plug" method
-        //  passing in a reference to the MenuNav Node Plugin.
-        var menu = Y.one("#admin");
-        menu.plug(Y.Plugin.NodeMenuNav);
-        //  Show the menu now that it is ready
-        menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
-    });
-</script>
 </html>
