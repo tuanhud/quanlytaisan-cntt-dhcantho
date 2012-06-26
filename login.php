@@ -126,7 +126,7 @@
 		{
 			echo "<script language=javascript> alert('Tên đăng nhập và mật khẩu không chính xác!.');</script>";  
 		}  
-    }
+	}
 	else
 	{
 			echo "<script language=javascript>alert('Bạn phải nhập đầy đủ tên đăng nhập và mật khẩu!.'); </script>";

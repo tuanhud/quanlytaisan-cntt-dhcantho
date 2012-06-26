@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
     <link rel="stylesheet" href="../styles/site.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../styles/style.css" media="screen" />
-    <script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="../scripts/demofunctions.js"></script>
     <script type="text/javascript" src="../jqwidgets/globalization/jquery.global.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
@@ -53,9 +53,19 @@
     <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../scripts/initwidgets.js"></script>
-    <script type="text/javascript" src="../scripts/gettheme.js"></script>
+        <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    
+    	
+    <script type="text/javascript" src="js/gettheme.js"></script>
+    
+    <script type="text/javascript" src="js/table-khmsam.js"></script>
+    
+	<script type="text/javascript" src="js/ajax.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
+			
             initmenu();
             $("#parentTable").height(1600);	
             setTimeout(function()
@@ -67,7 +77,8 @@
             var theme = getTheme();
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
             $("#jqxMenu").css('visibility', 'visible'); 
-			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+			$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+			taobang();
             });
         </script>
 </head>
@@ -105,99 +116,84 @@
                                               <td align="center" width="44%" valign="middle">
                                              
                                               <!--noi dung o day-->
-                                            	 <table width="56%" height="280" border="0" align="center" cellpadding="0" cellspacing="0">
-          											<tbody>
-        												  <tr>
-                                                                <td class="tl_main">&nbsp;</td>
-                                                                <td class="tc_main">&nbsp;</td>
-                                                                <td class="tr_main">&nbsp;</td>
-                                                          </tr>
-          <tr>
-                <td class="cl_main">&nbsp;</td>
-                <td style="font-family:Arial, Helvetica, sans-serif; font-size:12px">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">                
-                         <tbody >
-                        <tr>
-                            <td colspan="2"><div align="center" class="textbold">THÔNG TIN CÁN BỘ ADMIN </div></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">&nbsp;</td>
-                        </tr>
-                        <tr>
-                          <td width="26%" class="bordersv"><div class="bg" align="right">Mã CB </div></td>
-                          <td width="74%" class="bordersv"><div class="bold" align="left"><?=$_SESSION['msclb']?></div></td>
-                        </tr>
-                        <tr>
-                    <? 
-
-                    //Select thong tin nguoi dung				
-                    include('../database.php');				
-                    $user = new database();
-                    $sql = "Select * from nguoidung where MSCB = '".$_SESSION['msclb']."'";
-                    $msclb =$_SESSION['msclb'];
-                    session_register("msclb") ;
-                    $user->setQuery($sql);
-                    $result = $user->fetchAll();
-                    $row = mysql_fetch_array($result);
-                    ?>
-                      <td class="bordersv"><div class="bg" align="right">Họ tên</div></td>
-                      <td class="bordersv"><div class="bold" align="left"><?=$row['TenCB']?></div></td>
-                    </tr>
-                         <tr>
-                      <td class="bordersv"><div class="bg" align="right">Ngày sinh</div></td>
-                      <td class="bordersv"><div class="bold" align="left"><?=$row['NgaySinh']?>/<?=$row['ThangSinh']?>/<?=$row['NamSinh']?></div></td>
-                    </tr>
-                     <tr>
-                      <td class="bordersv"><div class="bg" align="right">Giới tính</div></td>
-                      <td class="bordersv"><div class="bold" align="left"><?=$row['Gioitinh']?></div></td>
-                    </tr>
-                    <tr>
-                      <td class="bordersv"><div class="bg" align="right">Email</div></td>
-                      <td class="bordersv"><div class="bold" align="left"><?=$row['Email']?></div></td>
-                    </tr>
-                    <tr>
-                      <td class="bordersv"><div class="bg" align="right">Địa chỉ</div></td>
-                     
-                      <td class="bordersv"><div class="bold" align="left"><?=$row['Diachi']?></div></td>
-                    </tr>
-                        <tr>
-                          <td class="bordersv"><div class="bg" align="right">Số ĐT</div></td>
-                          <td class="bordersv"><div class="bold" align="left"><?=$row['SDT']?></div></td>
-                        </tr>
-                        <tr>
-                          <td class="bordersv"><div class="bg" align="right">Đơn vị</div></td>                  
-                          <?
-                          //hien thi ten khoa
-                          $sql = "Select * from nguoidung, donvi  where nguoidung.MSDV = donvi.MSDV  and nguoidung.MSCB = '".$_SESSION['msclb']."'";
-                          $user->setQuery($sql);
-                          $result = $user->fetchAll();
-                          $row = mysql_fetch_array($result);
-						  $madv =$_SESSION['MSDV'];
-                           session_register("madv") ;
-                          ?>
-                          <td class="bordersv"><div class="bold" align="left"><?=$row['TenDV']?></div></td>
-                        </tr>                
-                        <tr>
-                      <td class="bordersv"><div class="bg" align="right">Khoa</div></td>                  
-                      <td class="bordersv"><div class="bold" align="left">Công nghệ thông tin &amp; TT </div></td>
-                    </tr>
-                    <tr>
-                      <td class="bordersv">&nbsp;</td>
-                      <td class="bordersv">&nbsp;</td>
-                    </tr>
-                    </tbody>
-                    </table>
-                </td>
-                <td class="cr_main">&nbsp;</td>
-          </tr>
-          <tr>
-                <td class="bl_main">&nbsp;</td>
-                <td class="bc_main">&nbsp;</td>
-                <td class="br_main">&nbsp;</td>
-          </tr>
-       												</tbody>        
-        										 </table>
-                                                 
+                                            	 <table width="650" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr class="main_1">
+          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
+          <td width="419" align="center">Thêm yêu cầu thiết bị</td>
+          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
+        </tr>
+        <tr>
+          <td colspan="3" align="left">
+          	<form name="frm_themkehoachmuasam" id="frm_themkehoachmuasam">
+            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+              <tbody>
+              <tr>
+                <td height="22" class="level_1_1"></td>
+              		<td class="level_1_1"></td>
+              </tr>
+			  
+           <!--bang thuoc tinh dat o day-->
+             <tr>
+					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
+                     <div style="margin-top: 10px;" id="jqthem"></div>
+                            <span> <strong>Tổng thành tiền:</strong></span> <span id="tongtien"></span>
+                            </span> <span><strong>VNĐ</strong></span>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                 
+                           <div style="margin-left: 30px; float: left;">
+                                <div style="margin-top: 5px;">
+                                    <input type="button" value="Thêm thiết bị yêu cầu" id="showWindowButton" />
+                                </div> 
+                                <div style="margin-top: 5px;">
+                                    <input id="deleterowbutton" type="button" value="Xóa thiết bị yêu cầu" />
+                                </div>
+                               
+                                
+                         
+                         <div style="width:600px; border: 0px solid #ccc; margin-top: 10px;"
+                            id="mainDemoContainer">
+                            </div>
+                            <div id="eventWindow" style="display:none">
+                                <div>
+                                    <img width="14" height="14" src="../images/help.png" alt="" />
+                                    Bảng chi tiết các tài sản thiết bị
+                                </div>
+                                <div style="width:550px">
+                                
+                                	<div style="margin-top: 10px;" id="jqxWidget3"></div>
+                                    <div style="margin-top: 30px;">
+                                        <div id="cellbegineditevent"></div>
+                                        <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                                   </div>
+                                    <div style="float: right; margin-top: 10px;">
+                                        <input type="button" id="cancel" value="Thoát" />
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                         
+                        
+                    </td>
+			</tr>             
+              <tr>
+              		<td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_luu" id="btn_luu" type="button" class="button_1" value="Lưu"></td>
+              </tr>
+			  
+			  <tr>
+              		<td colspan="2" height="22" align="center" class="level_1_2">
+					</td>
+              </tr>
+              </tbody>
+           </table>
+           </form>
+          </td>
+        </tr>		
+        </tbody>
+        </table>
                                                  <!--het noi dung-->
                                               </td>      
                                           </tr>
