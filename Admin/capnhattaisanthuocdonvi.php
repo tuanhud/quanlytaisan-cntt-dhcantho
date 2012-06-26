@@ -50,17 +50,12 @@
     <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript" src="js/table-taisanthuocdonvi.js"></script>
     <script type="text/javascript" src="js/gettheme.js"></script>
     
-    <script type="text/javascript" >
-	$(document).ready(function() 
-	{ 
-		taobangtaisan();
-	}); 
-	</script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#parentTable").height(1600);	
@@ -73,6 +68,7 @@
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+			taobangtaisan();
             });
         </script>
 </head>
