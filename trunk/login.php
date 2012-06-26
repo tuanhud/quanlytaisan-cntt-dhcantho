@@ -1,4 +1,5 @@
-    <?php
+<?php
+session_start();
 	include('database.php');
 	$db=new database();
     if (isset($_POST['txtDinhDanh']) && isset($_POST['txtMatKhau']))
@@ -14,9 +15,7 @@
 		 $msclb =$_POST['txtDinhDanh'];
 		 $sql = "Select MaQuyen from coquyen where MSCB = '".$msclb."'";
 			$db->setQuery($sql);
-			
 			$result = $db->fetchAll();
-			
 			if(mysql_num_rows($result)){
 			while($row = mysql_fetch_array($result)){
 				if($row['MaQuyen']=="ADMIN"){
@@ -113,7 +112,7 @@
 			        //dua quyen vao session
 			           $maquyen="GV";
 			           session_register("maquyen");
-			           echo "<script language=javascript>window.location = 'GiangVien/main.php';</script>"; 
+			           echo "<script language=javascript>window.location = 'GiangVien/index.php';</script>"; 
 			           exit;
 				}
 				
