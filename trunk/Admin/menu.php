@@ -6,11 +6,11 @@
                         <ul style='width: 150px;'>
                            	<li>Văn phòng phẩm
                                 <ul style='width: 300px;'>
-                                    <li><a href="capnhatnhasanxuat.php">Cập nhật nhà sản xuất</a></li>
-                                    <li><a href="capnhatnhacungcap.php">Cập nhật nhà cung ứng</a></li>
-									<li><a href="capnhatloaivanphongpham.php">Cập nhật loại văn phòng phẩm</a></li>  
-                                    <li><a href="capnhatvppduoccungcap.php">Cập nhật văn phòng phẩm được cung cấp</a></li>
-									<li><a href="capnhatvanphongpham.php">Cập nhật văn phòng phẩm</a></li>  
+                                    <li><a href="capnhatnsx.php">Cập nhật nhà sản xuất</a></li>
+                                    <li><a href="capnhatnhacc.php">Cập nhật nhà cung ứng</a></li>
+									<li><a href="capnhatloaivpp.php">Cập nhật loại văn phòng phẩm</a></li>  
+                                    <li><a href="capnhatvppduoccc.php">Cập nhật văn phòng phẩm được cung cấp</a></li>
+									<li><a href="capnhatvpp.php">Cập nhật văn phòng phẩm</a></li>  
 									<li><a href="capnhatdonvitinh.php">Cập nhật đơn vị tính</a></li>   
 									<li><a href="capnhatdacdiemvpp.php">Cập nhật đặc điểm của văn phòng phẩm</a></li>  
 									<li><a href="duyetphieudutruvpp.php">Duyệt phiếu dự toán văn phòng phẩm</a></li> 
@@ -18,8 +18,8 @@
                             </li>
                             <li>Tài sản cố định
                             	<ul style='width: 300px;'>
-                            		<li><a href="capnhatsotiencap.php">Cập nhật số tiền cấp</a></li>
-                            		<li><a href="capnhatkehoachmuasam.php">Cập nhật kế hoạch mua sắm</a></li>
+                            		<li><a href="capnhatstiencap.php">Cập nhật số tiền cấp</a></li>
+                            		
                             		<li><a href="duyetkhms.php">Duyệt kế hoạch mua sắm</a></li>
                                 </ul>
                             </li> 
@@ -36,7 +36,7 @@
                     </li>
                     <li><img style='float: left; margin-right: 5px;' src='../images/thanhly.png' />Thanh lý
                         <ul style='width: 200px;'>
-                           <li><a href="capnhatthanhly.php">Cập nhật tài sản thanh lý</a></li>
+                           <li><a href="capnhatthanhli.php">Cập nhật tài sản thanh lý</a></li>
                         </ul>
                     </li>
                     <li><img style='float: left; margin-right: 5px;' src='../images/calendar2.png' />Quý - Năm
