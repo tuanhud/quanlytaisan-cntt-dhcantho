@@ -14,13 +14,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật thiết bị thuộc đơn vị</title>
-     <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
+<title>Cập nhật tài sản - thiết bị thuộc đơn vị</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
     <link rel="stylesheet" href="../styles/site.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../styles/style.css" media="screen" />
     <script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="../scripts/demofunctions.js"></script>
     <script type="text/javascript" src="../jqwidgets/globalization/jquery.global.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
@@ -50,14 +49,9 @@
     <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
-    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
-    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
-   
-    <script type="text/javascript" src="../scripts/gettheme.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/fill.js"></script>
-	<script type="text/javascript" src="js/capnhatdonvi.js"></script>
     <script type="text/javascript" src="js/table-taisanthuocdonvi.js"></script>
     <script type="text/javascript" src="js/gettheme.js"></script>
     
@@ -69,12 +63,10 @@
 	</script>
     <script type="text/javascript">
         $(document).ready(function () {
-            initmenu();
             $("#parentTable").height(1600);	
             setTimeout(function()
             {
                 $("#demoContent").css('visibility', 'visible');		
-                initwidgets();
                 $("#loader").css('display', 'none');
             }, 1000);
             var theme = getTheme();
@@ -98,7 +90,7 @@
             		</tr>
                     <tr>
                		 	<td>
-                        	<table style="table-layout: fixed; margin-left:20px; margin-right:20px; margin-bottom:20px; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+                        	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
                             <td width="794" valign="top" class="rc-all content" id="demos">
@@ -122,7 +114,7 @@
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Cập nhật thuộc tính tài sản - thiết bị </td>
+          <td width="419" align="center">Cập nhật tài sản - thiết bị thuộc đơn vị</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
@@ -133,7 +125,7 @@
             <tr>
             		
                     <td align="left" class="level_1_1" colspan="2">
-					  <div style="margin-top: 80px;" id="jqxgrid"></div>
+					  <div style="margin-top: 20px;" id="jqxgrid"></div>
                                     <div style="margin-top: 30px;">
                                         <div id="cellbegineditevent"></div>
                                         <div style="margin-top: 10px;" id="cellendeditevent"></div>
@@ -146,7 +138,7 @@
                                                 <input id="deleterowbutton" type="button" value="Xóa tài sản" />
                                             </div>   
                                       </div>
-                                        <div style="width:600px; height: 650px; border: 0px solid #ccc; margin-top: 10px;"
+                                        <div style="width:600px; height: 150px; border: 0px solid #ccc; margin-top: 10px;"
                                     id="mainDemoContainer">
                                         </div>
                                         <div id="eventWindow" style="display:none">
@@ -198,9 +190,7 @@
   </tr>
                                           
                                           
-                                          <tr>
-                                            <td align="center">&nbsp;</td>
-                                          </tr>    
+                                         
                                         </table>
                                         </td>
   								</tr>

@@ -96,22 +96,17 @@
             		</tr>
                     <tr>
                		 	<td>
-                        	<table style="table-layout: fixed; margin-left:20px; margin-right:20px; margin-bottom:20px; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+                        	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
                             <td width="794" valign="top" class="rc-all content" id="demos">
                             <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                                 <tbody>
-                                 <tr>
-                                    <td valign="top">   
-                                    </td>
-                                 </tr>
+                                 
     							 <tr>
                                         <td height="100%"  class="demoContent" valign="middle">
-                                              <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
-                                          <tr height="10">
-                                            <td align="center">&nbsp;</td>       
-                                          </tr> 
+                                              <table width="752" border="0" cellpadding="0" cellspacing="0" align="center" style="margin-top:50px">      
+                                         
                                           
                                           <!--noi dung o day-->
                                           <tr>
@@ -241,6 +236,7 @@
                                 </tbody>
                              </table>
                             </td>
+                            <!--âfgajf-->
                                </tr>       
                             	</tbody>
                          	</table>

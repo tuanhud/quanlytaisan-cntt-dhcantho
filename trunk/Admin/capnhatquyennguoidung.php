@@ -15,13 +15,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cập nhật quyền - người dùng</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-
-	 <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
     <link rel="stylesheet" href="../styles/site.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../styles/style.css" media="screen" />
-    <script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+  	<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
 	<script type="text/javascript" src="../scripts/demofunctions.js"></script>
     <script type="text/javascript" src="../jqwidgets/globalization/jquery.global.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
@@ -55,60 +54,55 @@
     <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
-    <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
-
 	<script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
-    <script type="text/javascript" src="js/table-quyen-nguoidung.js"></script>
+    <script src="../js/yui-min_3.5.js"></script> 
+	<script src="../js/intl-min.js"></script>
+    <script type="text/javascript" src="js/capnhatdonvi.js"></script>
+    <script type="text/javascript" src="js/table_quyen_nguoidung.js"></script>
     <script type="text/javascript" src="js/check_quyen_nguoidung.js"></script>
-    <script type="text/javascript" src="js/quyen_nguoidung.js"></script>s
-</script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            initmenu();
-            $("#parentTable").height(1600);	
-            setTimeout(function()
-            {
-                $("#demoContent").css('visibility', 'visible');		
-                initwidgets();
-                $("#loader").css('display', 'none');
-            }, 1000);
-            var theme = getTheme();
-            $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
-            $("#jqxMenu").css('visibility', 'visible'); 
-			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+    <script type="text/javascript" src="js/quyen_nguoidung.js"></script>
+    
+<script type="text/javascript" >
+$(document).ready(function() 
+{ 
+	createTable_nguoidung();
+	fillcombo('get_list_donvi2.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
+	//Create table after loading page
+	$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function()
+	{		
 			
-			/*document.frm_themdonvi.txt_tendonvithem.focus();
+			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
+			checkbox_themvpp();
+			checkbox_suavpp();
+			checkbox_themkk();
+			checkbox_suakk();
+			checkbox_themkhms();
+			checkbox_suakhms();
+			checkbox_duyetvpp();
+			checkbox_duyetkk();
+			checkbox_duyetkhms();
+			
+		});
+	$('form[name="frm_capnhatquyen_nguoidung"] input[name="btn_capnhat"]').click(function(){		
+		update_quyen_nguoidung(document.frm_capnhatquyen_nguoidung);
+	});
 	
-			fillcombo('get_list_donvi.php',document.frm_xoadonvi.cbo_tendonvixoa);	
-			$('form[name="frm_suadonvi"] select[name="cbo_tendonvisua"]').change(function(){
-				get_info_donvi('get_info_donvi.php',document.frm_suadonvi);
-			});*/
-			taobangquyen ()
-			fillcombo('get_list_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
-			//Create table after loading page
-			/*$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function(){		
-					
-					getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
-					checkbox_themvpp();
-					checkbox_suavpp();
-					checkbox_themkk();
-					checkbox_suakk();
-					checkbox_themkhms();
-					checkbox_suakhms();
-					checkbox_duyetvpp();
-					checkbox_duyetkk();
-					checkbox_duyetkhms();
-					
-				});*/
-			$('form[name="frm_capnhatquyen_nguoidung"] input[name="btn_capnhat"]').click(function(){		
-				update_quyen_nguoidung(document.frm_capnhatquyen_nguoidung);
-			});
-		})
-        </script>
+    $("#parentTable").height(1600);	
+    setTimeout(function()
+    {
+       $("#demoContent").css('visibility', 'visible');		
+       $("#loader").css('display', 'none');
+     }, 1000);
+    var theme = getTheme();
+    $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
+    $("#jqxMenu").css('visibility', 'visible'); 
+			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+})
+ </script>
 </head>
-<body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
+<body style='background: #fff url(../images/background.png) left top scroll repeat-x;' >
 	<!--begin header-->
    			 <?php include_once('../header.php');?> 
     <!--end header-->
@@ -122,7 +116,7 @@
             		</tr>
                     <tr>
                		 	<td>
-                        	<table style="table-layout: fixed; margin-left:20px; margin-right:20px; margin-bottom:20px; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+                        	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
                             <td width="794" valign="top" class="rc-all content" id="demos">
@@ -169,48 +163,9 @@
               <!--bang thuoc tinh dat o day-->
                
                     <tr>
-                        <td align="center" height="400"  class="level_1_1" colspan="2" valign="top">
-                       			<div style="visibility: hidden;" id='jqxWidget'>
-                            <div id="jqxgrid"></div>
-                            <div style="margin-top: 30px;">
-                                <div id="cellbegineditevent"></div>
-                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
-                           </div>
-                           <div style="margin-left: 30px; float: left;">
-                                <div style="margin-top: 5px;">
-                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton" />
-                                </div> 
-                                <div style="margin-top: 5px;">
-                                    <input id="deleterowbutton" type="button" value="Xóa thuộc tính" />
-                                </div>
-                               
-                                
-                         </div>
-                         <div style="width:600px; border: 0px solid #ccc; margin-top: 10px;"
-                            id="mainDemoContainer">
-                            </div>
-                            <div id="eventWindow" style="display:none">
-                                <div>
-                                    <img width="14" height="14" src="../jqwidgets/resources/drag.png" alt="" />
-                                    Thêm thuộc tính cho tài sản
-                                </div>
-                                <div>
-                                  <div style="margin: 10px">
-                                    Chọn tài sản
-                                    <div id='jqxWidget3'>
-        							</div>
-                                    Chọn thuộc tính
-                                    <div id='jqxWidget2'>
-        							</div>
-                                </div>
-                                <div>
-                                    <div style="float: right; margin-top: 10px; margin-right:38px">
-                                       
-                                        <input type="button" id="cancel" value="Thoát" />
-                                    </div>
-                                </div>
-                             </div>
-                          </div>
+                        <td align="center" height="400"  class="level_1_1" colspan="4" valign="top">
+                        <div class="yui3-skin-sam">                    
+                        <div id="mytable"></div>                    
                         </div>
                         </td>
                 </tr>
