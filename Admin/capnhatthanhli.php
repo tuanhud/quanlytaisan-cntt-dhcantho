@@ -64,7 +64,21 @@
 			fillcombo('get_list_taisan.php',document.frm_themthanhly.cbo_tentaisanthanhlythem);
 	        fillcombo('get_list_taisan.php',document.frm_suathanhly.cbo_tentaisanthanhlysua);
 	        fillcombo('get_list_taisan.php',document.frm_xoathanhly.cbo_tentaisanthanhlyxoa);
-			
+			$('form[name="frm_themthanhly"] select[name="cbo_tentaisanthanhlythem"]').change(function(){
+		get_info_ma_soluong_taisan('get_info_ma_soluong_taisan.php',document.frm_themthanhly);
+	});
+	$('form[name="frm_suathanhly"] select[name="cbo_namthanhlysua"]').change(function(){
+		fillcombo2cbo('get_list_mathanhly.php',document.frm_suathanhly.cbo_namthanhlysua,document.frm_suathanhly.cbo_mathanhlysua);
+	});
+	$('form[name="frm_xoathanhly"] select[name="cbo_namthanhlyxoa"]').change(function(){
+		fillcombo2cbo('get_list_mathanhly.php',document.frm_xoathanhly.cbo_namthanhlyxoa,document.frm_xoathanhly.cbo_mathanhlyxoa);
+	});
+	$('form[name="frm_suathanhly"] select[name="cbo_mathanhlysua"]').change(function(){
+		get_info_thanhlysua('get_info_thanhlysua.php',document.frm_suathanhly);
+	});
+	$('form[name="frm_xoathanhly"] select[name="cbo_mathanhlyxoa"]').change(function(){
+		get_info_thanhlyxoa('get_info_thanhlysua.php',document.frm_xoathanhly);
+	});
             $("#parentTable").height(1600);	
             setTimeout(function()
             {
