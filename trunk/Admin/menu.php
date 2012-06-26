@@ -9,7 +9,7 @@
                                     <li><a href="capnhatnsx.php">Cập nhật nhà sản xuất</a></li>
                                     <li><a href="capnhatnhacc.php">Cập nhật nhà cung ứng</a></li>
 									<li><a href="capnhatloaivpp.php">Cập nhật loại văn phòng phẩm</a></li>  
-                                    <li><a href="capnhatvppduoccc.php">Cập nhật văn phòng phẩm được cung cấp</a></li>
+                                    <li><a href="capnhatvppduoccungcap.php">Cập nhật văn phòng phẩm được cung cấp</a></li>
 									<li><a href="capnhatvpp.php">Cập nhật văn phòng phẩm</a></li>  
 									<li><a href="capnhatdonvitinh.php">Cập nhật đơn vị tính</a></li>   
 									<li><a href="capnhatdacdiemvpp.php">Cập nhật đặc điểm của văn phòng phẩm</a></li>  
