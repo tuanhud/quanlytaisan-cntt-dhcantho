@@ -55,22 +55,16 @@
     <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/fill.js"></script>
-<script type="text/javascript" src="js/date.js"></script>
-<script type="text/javascript" src="js/capnhatthanhly.js"></script>
+    <script type="text/javascript" src="js/fill.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
+    <script type="text/javascript" src="js/capnhatthanhly.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             initmenu();
 			fillcombo('get_list_taisan.php',document.frm_themthanhly.cbo_tentaisanthanhlythem);
 	        fillcombo('get_list_taisan.php',document.frm_suathanhly.cbo_tentaisanthanhlysua);
 	        fillcombo('get_list_taisan.php',document.frm_xoathanhly.cbo_tentaisanthanhlyxoa);
-	// Load ngay thang nam  cho nguoi dung chon them
-	nam(document.frm_themthanhly.cbo_namthem);
-	nam(document.frm_suathanhly.cbo_namsua);
-	nam(document.frm_xoathanhly.cbo_namxoa);
-	$('form[name="frm_themthanhly"] select[name="cbo_tentaisanthanhlythem"]').change(function(){
-		get_info_mataisan('get_info_mataisan.php',document.frm_themthanhly);
-	});
+			
             $("#parentTable").height(1600);	
             setTimeout(function()
             {
@@ -83,6 +77,12 @@
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
             });
+			
+	// Load ngay thang nam  cho nguoi dung chon them
+	
+	$('form[name="frm_themthanhly"] select[name="cbo_tentaisanthanhlythem"]').change(function(){
+		get_info_mataisan('get_info_mataisan.php',document.frm_themthanhly);
+	});
         </script>
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
@@ -115,7 +115,7 @@
                                           
                                           <!--noi dung o day-->
                                           <tr>       
-                                              <td align="center" width="100%"><table width="500" border="0" cellpadding="0" cellspacing="0">
+                      <td align="center" width="100%"><table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
           <tr class="main_1">
             <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -136,17 +136,17 @@
                     </select></td>
                   <tr>
                     <td height="22" align="right" class="level_1_2">Mã tài sản:</td>
-                    <td width="50%" align="left" class="level_1_2"><input name="txt_mataisanthem" type="text" disabled class="txtbox" id="txt_mataisanthem"  onKeyPress="return keypress(event)" value="" maxlength="31" readonly="readonly"></td>
+                    <td width="50%" align="left" class="level_1_2"><input name="txt_mataisanthem" type="text" class="txtbox" id="txt_mataisanthem"  onKeyPress="return keypress(event)" value="" maxlength="31" readonly="readonly"></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_1">Số lượng tài sản:</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_donvitinh" type="text" class="txtbox" id="txt_soluongtaisan" onKeyPress="return keypress(event)"  value="" maxlength="31"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Năm thanh lý: </td>
-                    <td width="50%" align="left" class="level_1_1"><label for="cbonamtl"></label>
-                      <select name="cbo_namthem" id="cbo_namthem" style="width:40%">
-                      </select></td>
+                    <td height="22" align="right" class="level_1_1">Số lượng tài sản thanh lý:</td>
+                    <td width="50%" align="left" class="level_1_1"><p>
+                      <input name="txt_soluongtaisan" type="text" class="txtbox" id="txt_soluongtaisan" onKeyPress="return keypress(event)"  value="" maxlength="31" style="width:30%">
+                    
+                        SLTS hiện có:
+                        <label for="txt_sltshienco"></label>
+                        <input name="txt_sltshienco" type="text" id="txt_sltshienco" style="width:20%" readonly="readonly">
+                      </p></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Diễn giải thanh lý:</td>
@@ -182,35 +182,44 @@
                     <td class="level_1_1"></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_2">Chọn tài sản cần sửa thanh lý:</td>
-                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tentaisanthanhlysua" class="cbo" id="cbo_tentaisanthanhlysua" style="width:100%;">
-                    </select></td>
-                  <tr>
-                    <td height="22" align="right" class="level_1_2">Mã tài sản:</td>
-                    <td width="50%" align="left" class="level_1_2"><input name="txt_mataisansua" type="text" disabled class="txtbox" id="txt_mataisansua" onKeyPress="return keypress(event)" value="" maxlength="31" readonly="readonly"></td>
+                    <td height="22" align="right" class="level_1_1">Năm thanh lý: </td>
+                    <td align="left" class="level_1_1"><label for="cbonamtl2"></label>
+                      <label for="txt_nasua2"></label>
+                      <label for="cbo_namsua"></label>
+                      <select name="cbo_namthanhlysua" id="cbo_namthanhlysua" style="width:40%">
+                      </select></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Mã thanh lý:</td>
-                    <td align="left" class="level_1_1"><label for="txtmatl"></label>
-                      <input name="txt_mathanhlysua" type="text" disabled id="txt_mathanhlysua" readonly="readonly"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Số lượng tài sản:</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_donvitinh" type="text" class="txtbox" id="txt_soluongtaisan" onKeyPress="return keypress(event)" value="" maxlength="31"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Năm thanh lý: </td>
-                    <td width="50%" align="left" class="level_1_1"><label for="cbonamtl"></label>
-                      <select name="cbo_namsua" id="cbo_namsua" style="width:40%">
+                    <td align="left" class="level_1_1"><label for="txtmatl3"></label>
+                      <label for="cbo_mathanhlysua"></label>
+                      <select name="cbo_mathanhlysua" id="cbo_mathanhlysua" style="width:40%">
                       </select></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_2">Tên tài sản  thanh lý:</td>
+                    <td width="50%" align="left" class="level_1_2"><label for="txt_tentaisanthanhlysua"></label>
+                      <input name="txt_tentaisanthanhlysua" type="text" id="txt_tentaisanthanhlysua" style="width:100%" readonly="readonly"></td>
+                  <tr>
+                    <td height="22" align="right" class="level_1_2">Mã tài sản:</td>
+                    <td width="50%" align="left" class="level_1_2"><input name="txt_mataisansua" type="text" class="txtbox" id="txt_mataisansua" onKeyPress="return keypress(event)" value="" maxlength="31" readonly="readonly" style="width:40%"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_1">Số lượng tài sản thanh lý:</td>
+                    <td width="50%" align="left" class="level_1_1"><p>
+                      <input name="txt_soluongtaisansua" type="text" class="txtbox" id="txt_soluongtaisansua" onKeyPress="return keypress(event)" value="" maxlength="31" style="width:30%">
+                      SLTS hiện có: 
+                      <label for="txt_sltshiencosua"></label>
+                      <input name="txt_sltshiencosua" type="text" id="txt_sltshiencosua" style="width:20%" readonly="readonly">
+                      </p></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Diễn giải thanh lý:</td>
                     <td width="50%" align="left" class="level_1_1"><label for="txt_diengiai"></label>
-                      <textarea name="txt_diengiai" id="txt_diengiai" style="width:100%"></textarea></td>
+                      <textarea name="txt_diengiaisua" id="txt_diengiaisua" style="width:100%"></textarea></td>
                   </tr>
                   <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Lưu">
+                    <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_luuthanhly" type="button" class="button_1" id="btn_luuthanhly" value="Lưu">
                       <input name="btn_huy" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
                   </tr>
                   <tr>
@@ -222,7 +231,7 @@
           </tr>
         </tbody>
       </table>
-     <br />
+      <br />
       <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
           <tr class="main_1">
@@ -239,34 +248,38 @@
                     <td class="level_1_1"></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_2">Chọn tài sản cần xóa thanh lý:</td>
-                    <td width="50%" align="left" class="level_1_2"><select name="cbo_tentaisanthanhlyxoa" id="cbo_tentaisanthanhlyxoa" class="cbo" style="width:100%;">
-                    </select></td>
-                  <tr>
-                    <td height="22" align="right" class="level_1_2">Mã tài sản:</td>
-                    <td width="50%" align="left" class="level_1_2"><input name="txt_tenthietbi" type="text" disabled class="txtbox" id="txt_mataisanxoa" onKeyPress="return keypress(event)" value="" maxlength="31" readonly="readonly"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Mã thanh lý:</td>
-                    <td align="left" class="level_1_1"><label for="txtmatl"></label>
-                      <input name="txtmatl" type="text" disabled id="txt_mathanhlyxoa" readonly="readonly"></td>
-                  </tr>
-                  <tr>
-                    <td height="22" align="right" class="level_1_1">Số lượng tài sản:</td>
-                    <td width="50%" align="left" class="level_1_1"><input name="txt_donvitinh" type="text" disabled class="txtbox"  onKeyPress="return keypress(event)" value="" maxlength="31" readonly="readonly"></td>
-                  </tr>
-                  <tr>
                     <td height="22" align="right" class="level_1_1">Năm thanh lý: </td>
-                    <td width="50%" align="left" class="level_1_1"><label for="cbonamtl"></label>
-                      <select name="cbo_namxoa" id="cbo_namxoa" style="width:40%">
+                    <td align="left" class="level_1_1"><label for="cbonamtl3"></label>
+                      <label for="txt_namxoa2"></label>
+                      <label for="cbo_namthanhlyxoa"></label>
+                      <select name="cbo_namthanhlyxoa" id="cbo_namthanhlyxoa" style="width:40%">
                       </select></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_1">Diễn giải thanh lý:</td>
-                    <td width="50%" align="left" class="level_1_1"><textarea name="txt_diengiai" disabled readonly="readonly" class="txtbox" id="txt_diengiai" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+                    <td height="22" align="right" class="level_1_1">Mã thanh lý:</td>
+                    <td align="left" class="level_1_1"><label for="txtmatl4"></label>
+                      <label for="cbo_mathanhlyxoa"></label>
+                      <select name="cbo_mathanhlyxoa" id="cbo_mathanhlyxoa" style="width:40%">
+                      </select></td>
                   </tr>
                   <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" value="Xóa">
+                    <td height="22" align="right" class="level_1_2">Tên tài sản cần xóa thanh lý:</td>
+                    <td width="50%" align="left" class="level_1_2"><label for="txt_tentaisanthanhlyxoa"></label>
+                      <input name="txt_tentaisanthanhlyxoa" type="text" id="txt_tentaisanthanhlyxoa" style="width:100%" readonly="readonly"></td>
+                  <tr>
+                    <td height="22" align="right" class="level_1_2">Mã tài sản:</td>
+                    <td width="50%" align="left" class="level_1_2"><input name="txt_mataisanxoa" type="text" class="txtbox" id="txt_mataisanxoa" onKeyPress="return keypress(event)" value="" maxlength="31" readonly="readonly"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_1">Số lượng tài sản thanh lý:</td>
+                    <td width="50%" align="left" class="level_1_1"><input name="txt_soluongtaisanxoa" type="text" class="txtbox" id="txt_soluongtaisanxoa" style="width:30%"  onKeyPress="return keypress(event)" value="" maxlength="31" readonly="readonly"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" align="right" class="level_1_1">Diễn giải thanh lý:</td>
+                    <td width="50%" align="left" class="level_1_1"><textarea name="txt_diengiaixoa" readonly="readonly" class="txtbox" id="txt_diengiaixoa" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_xoathanhly" type="button" class="button_1" id="btn_xoathanhly" value="Xóa">
                       <input name="btn_huy" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
                   </tr>
                   <tr>
@@ -277,7 +290,9 @@
             </form></td>
           </tr>
         </tbody>
-    </table></td>
+  </table></td>
+    
+    
                                           </tr>
                                           <tr>
                                             <td align="center">&nbsp;</td>
