@@ -49,11 +49,11 @@ function taobangsua()
                  datafields: 
 				 [
 				 	//{ name: 'stt' },
-                    { name: 'mand' },
-                    { name: 'tennd' },
-                    { name: 'ghichu' },
+                    { name: 'mandsua' },
+                    { name: 'tenndsua' },
+                    { name: 'ghichusua' },
                 ],				
-				id: 'mand',    
+				id: 'mandsua',    
 				root: 'Rows',
 				//url: url,
 				beforeprocessing: function(data)
@@ -64,7 +64,7 @@ function taobangsua()
 			
  		    var dataadapter = new $.jqx.dataAdapter(source);
            // initialize jqxGrid
-            $("#jqthem").jqxGrid(
+            $("#jqsua").jqxGrid(
             {
                 width: 550,
 				selectionmode: 'singlecell',
@@ -80,21 +80,21 @@ function taobangsua()
 					  return dataadapter.records;     
 				},
                 columns: [
-					  { text: 'Mã nội dung', editable: false, datafield: 'mand', width: 150, cellsalign: 'center' },
-					  { text: 'Tên nội dung', editable: false, datafield: 'tennd', width: 150, cellsalign: 'center' },
-                      { text: 'Ghi chú', editable: false, datafield: 'ghichu', width: 250, cellsalign: 'center' },
+					  { text: 'Mã nội dung', editable: false, datafield: 'mandsua', width: 150, cellsalign: 'center' },
+					  { text: 'Tên nội dung', editable: false, datafield: 'tenndsua', width: 150, cellsalign: 'center' },
+                      { text: 'Ghi chú', editable: false, datafield: 'ghichusua', width: 250, cellsalign: 'center' },
                   ]
             });
 			//chon 1 dong
-			 $("#jqthem").jqxGrid('selectionmode', 'singlerow');
+			 $("#jqsua").jqxGrid('selectionmode', 'singlerow');
 // delete row.********************************************************************************************************************************
-          $("#deleterowbutton").bind('click', function () 
+          $("#deleterowbutton2").bind('click', function () 
 			{
-				var selectedrowindex = $("#jqthem").jqxGrid('getselectedrowindex');
-                var rowscount = $("#jqthem").jqxGrid('getdatainformation').rowscount;
+				var selectedrowindex = $("#jqsua").jqxGrid('getselectedrowindex');
+                var rowscount = $("#jqsua").jqxGrid('getdatainformation').rowscount;
                 if (selectedrowindex >= 0 && selectedrowindex < rowscount) {
-                    var id = $("#jqthem").jqxGrid('getrowid', selectedrowindex);
-                    $("#jqthem").jqxGrid('deleterow', id);
+                    var id = $("#jqsua").jqxGrid('getrowid', selectedrowindex);
+                    $("#jqsua").jqxGrid('deleterow', id);
 				}
 				else{
 					alert("Bạn chưa chọn nội dung cần xóa!");
@@ -102,26 +102,26 @@ function taobangsua()
 					
             });		
 			
-	function capitaliseFirstLetter(string) 
+	function capitaliseFirstLetter2(string) 
 		{
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
 		
 //tao popup hiện thị data trong bang noidung de chọn *******************************************************************************************
-		function createElements(theme)
+		function createElements2(theme)
 		{
-            $('#cancel').jqxButton({ theme: theme, height: '25px', width: '65px' });
-            $('#eventWindow').jqxWindow({ maxHeight: 400, maxWidth:400, minHeight: 30, minWidth: 150, height: 300, width: 400,
-                theme: theme, resizable: false, isModal: true, modalOpacity: 0.3,
-                okButton: $('#save'), cancelButton: $('#cancel')
+            $('#cancel2').jqxButton({ theme: theme, height: '25px', width: '65px' });
+            $('#eventWindow2').jqxWindow({ maxHeight: 400, maxWidth:400, minHeight: 30, minWidth: 150, height: 300, width: 400,
+                theme: theme, resizable: false,  modalOpacity: 0.3,
+                okButton: $('#save'), cancelButton: $('#cancel2')
             });
         }
-        function addEventListeners() 
+        function addEventListeners2() 
 		{
-            $('#showWindowButton').mousedown(function () 
+            $('#showWindowButton2').mousedown(function () 
 			{
-				createElements(theme);
-                $('#eventWindow').jqxWindow('show');
+				createElements2(theme);
+                $('#eventWindow2').jqxWindow('show');
 // lấy dữ liệu tử bang noidung đưa lên bảng trong popup  ***************************************************************************************
 				var source2 =
 					{
@@ -129,15 +129,15 @@ function taobangsua()
 						datafields: 
 						[
 							//{ name: 'stt' },
-                    		{ name: 'mand' },
-                  			{ name: 'tennd' },
-                    		{ name: 'ghichu' },
+                    		{ name: 'mandsua' },
+                  			{ name: 'tenndsua' },
+                    		{ name: 'ghichusua' },
 						],
-						id: 'mand',
+						id: 'mandsua',
 						url: 'get_info_noidung_phieumau.php',             
 					};
 					var dataAdapter3 = new $.jqx.dataAdapter(source2);
-					$("#jqxWidget3").jqxGrid(
+					$("#jqxWidget2").jqxGrid(
 					{
 						width: 350,
 						selectionmode: 'singlerow',
@@ -146,25 +146,25 @@ function taobangsua()
 						editable: true,
 						autoheight: true, 
 						columns: [
-					 			{ text: 'Mã nội dung', editable: false, datafield: 'mand', width: 100, cellsalign: 'center' },
-							 	{ text: 'Tên nội dung', editable: false, datafield: 'tennd', width: 100, cellsalign: 'center' },
-                     			{ text: 'Ghi chú', editable: false, datafield: 'ghichu', width: 180, cellsalign: 'center' },
+					 			{ text: 'Mã nội dung', editable: false, datafield: 'mandsua', width: 100, cellsalign: 'center' },
+							 	{ text: 'Tên nội dung', editable: false, datafield: 'tenndsua', width: 100, cellsalign: 'center' },
+                     			{ text: 'Ghi chú', editable: false, datafield: 'ghichusua', width: 180, cellsalign: 'center' },
 						  ]
 					});
             });
         } 
 // Select 1 dong tren popup roi đổ qua bảng lớn*************************************************************************************************
- 		$('#jqxWidget3').bind('rowclick', function (event) 
+ 		$('#jqxWidget2').bind('rowclick', function (event) 
 		{
 			var args = event.args;
 			var row = args.rowindex;
-			var data = $('#jqxWidget3').jqxGrid('getrowdata',row);
-			manoidung = $('#jqxWidget3').jqxGrid('getcellvalue', row, "mand");
+			var data = $('#jqxWidget2').jqxGrid('getrowdata',row);
+			manoidung = $('#jqxWidget2').jqxGrid('getcellvalue', row, "mandsua");
 			var i = 0,them=1;
-	      	var rowscount = $("#jqthem").jqxGrid('getdatainformation').rowscount;
+	      	var rowscount = $("#jqsua").jqxGrid('getdatainformation').rowscount;
 			for(i;i < rowscount;i++) 
 			{
-				   var manoidung2 = $('#jqthem').jqxGrid('getcellvalue', i, "mand");
+				   var manoidung2 = $('#jqsua').jqxGrid('getcellvalue', i, "mandsua");
 				   if(manoidung2==manoidung)
 				   {
 						them=0;
@@ -173,7 +173,7 @@ function taobangsua()
 // add vao bang co lớn (Không phải popup)*******************************************************************************************************
 			if(them==1)
 			{
-				$('#jqthem').jqxGrid('addrow',null, data);
+				$('#jqsua').jqxGrid('addrow',null, data);
 			}
 			else{alert('Đã tồn tại tên nội dung này!!!.');}
 		});
@@ -181,15 +181,15 @@ function taobangsua()
 	$(document).ready(function () {
             var theme = $.data(document.body, 'theme', theme);
             if (theme == undefined) theme = '';
-            addEventListeners();
-			$('#showWindowButton').jqxButton({ theme: theme, width: '150px', height: '25px' });
-			$("#deleterowbutton").jqxButton({ theme: theme, width: '150px', height: '25px' });
-            $("#jqxWidget").css('visibility', 'visible');
+            addEventListeners2();
+			$('#showWindowButton2').jqxButton({ theme: theme, width: '150px', height: '25px' });
+			$("#deleterowbutton2").jqxButton({ theme: theme, width: '150px', height: '25px' });
+            $("#jqxWidget3").css('visibility', 'visible');
         });
 // su kiện khi click vao nút thêm phiếu mẫu *****************************************************************************************************
-		$("#btn_themphieumau").unbind("click").click(function()
+		$("#btn_them").unbind("click").click(function()
 		{
-			var rowcount4 = $("#jqthem").jqxGrid('getdatainformation').rowscount;
+			var rowcount4 = $("#jqsua").jqxGrid('getdatainformation').rowscount;
 			 if($("#txt_tenphieumau").val()=="") {
 					alert("Bạn chưa nhập tên phiếu mẫu!"),
 					FocusAndSelect("#txt_tenphieumau");
@@ -213,19 +213,19 @@ function taobangsua()
 				$.ajax
 					({
 						dataType: 'json',
-						url: 'themphieumau.php',//them phiếu mẫu mới vào bảng phiếu mẫu
+						//url: 'themphieumau.php',//them phiếu mẫu mới vào bảng phiếu mẫu
 						data: data1,
 						success: function (data, status, xhr)
 						{}
 				});	
 					
 				for(var m=0;m<rowcount4;m++){
-						var mand = $('#jqthem').jqxGrid('getcellvalue', m,'mand');
+						var mand = $('#jqsua').jqxGrid('getcellvalue', m,'mandsua');
 						var data = "insert=true&mand=" + mand ;
 					$.ajax
 					({
 						dataType: 'json',
-						url: 'them_noidung.php',//them nội dung vào bảng thuocphieumau
+						//url: 'them_noidung.php',//them nội dung vào bảng thuocphieumau
 						data: data,
 						success: function (data, status, xhr)
 						{

@@ -14,9 +14,9 @@
 					while($row=mysql_fetch_array($result))
 					{	
 					$data[]=array(														
-						'mand'=>$row['MaND'],
-						'tennd'=>$row['TenND'],
-						'ghichu'=>$row['GhiChuND'],
+						'mandsua'=>$row['MaND'],
+						'tenndsua'=>$row['TenND'],
+						'ghichusua'=>$row['GhiChuND'],
 						);
 					}					
 				echo json_encode($data);
