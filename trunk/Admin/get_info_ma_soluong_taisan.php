@@ -5,33 +5,26 @@
 	header( "content-type: text/xml" );
 	//kiem tra đã đăng nhập
 	//if (session_is_registered('maquyen') && $_SESSION['maquyen']=="AD")
-	//{
+	{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT MaTaiSan, TenTaiSan FROM `taisan`');
+					$db->setQuery(('SELECT taisan.mataisan, soluongcuadonvi FROM taisan, taisanthuocdonvi where taisan.mataisan=taisanthuocdonvi.mataisan and taisan.mataisan =\''.$_POST['mataisan'].'\''));
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
-							$xml.="<row>";
-							$xml.="<column>";
-							$xml.=-1;							
-							$xml.="</column>";
-							$xml.="<column>";
-							$xml.='-Chọn tên tài sản-';							
-							$xml.="</column>";
-					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
 					{
 						$xml.="<row>";
-						for($i = 0; $i < count($row); $i++) {
+						for($i = 0; $i < count($row); $i++) {														
 							$xml.="<column>";
-							$xml.="<![CDATA[".$row[$i]."]]>";								
-							$xml.="</column>";
+							$xml.="<![CDATA[".$row[$i]."]]>";						
+							$xml.="</column>";							
 						}
 						$xml.="</row>";
 					}
 					$xml.="</table>";
 					mysql_free_result($result);
 					echo $xml;
-	//}
+					
+	}
 ?>

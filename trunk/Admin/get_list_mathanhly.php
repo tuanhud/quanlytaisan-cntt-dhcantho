@@ -8,16 +8,14 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT MaTaiSan, TenTaiSan FROM `taisan`');
+					$db->setQuery(('SELECT mathanhly FROM `thanhlytaisan` WHERE nam=\''.$_POST['id'].'\''));
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
-							$xml.="<row>";
+					$xml.="<row>";
+					
 							$xml.="<column>";
-							$xml.=-1;							
-							$xml.="</column>";
-							$xml.="<column>";
-							$xml.='-Chọn tên tài sản-';							
+							$xml.="-Chọn mã-";							
 							$xml.="</column>";
 					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
