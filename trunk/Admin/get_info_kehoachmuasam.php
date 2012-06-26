@@ -8,30 +8,21 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-			        $sql="Select MaTaiSan,TenTaiSan,TenDonViTinh,GiaTriThuocTinh from taisan a, cothuoctinh b where a.MaTaiSan= b.MaTaiSan ";
+			        $sql="Select a.MaTaiSan,TenTaiSan,TenDonViTinh,Soluong,DonGiaMuaSam from thuockhms a, taisan b where a.MaTaiSan= b.MaTaiSan";
 					$db->setQuery($sql);
 					$result=$db->fetchAll();
-					$xml="";
-					$xml.="<INFO>";					
 					while($row=mysql_fetch_array($result))
-					{												
-						$xml.="<RESULT>";
-							$xml.="<MA>";
-								$xml.=$row['TenTaiSan'];							
-							$xml.="</MA>";
-							$xml.="<TEN>";
-								$xml.=$row['TenTaiSan'];							
-							$xml.="</TEN>";
-							$xml.="<DVT>";
-								$xml.=$row['TenDonViTinh'];							
-							$xml.="</DVT>";
-							$xml.="<dongia>";
-								$xml.=$row['GiaTriThuocTinh'];							
-							$xml.="</dongia>";
-						$xml.="</RESULT>";
-					}
-					$xml.="</INFO>";
-				echo $xml;
+					{	
+					$data[]=array(														
+						'mats'=>$row['MaTaiSan'],
+						'ten'=>$row['TenTaiSan'],
+						'dvt'=>$row['TenDonViTinh'],
+						'soluong'=>$row['Soluong'],
+						'dongia'=>$row['DonGiaMuaSam'],
+						'tong'=>$row['Soluong']*$row['DonGiaMuaSam'],
+						);
+					}					
+				echo json_encode($data);
 				exit;
 	//}
 ?>
