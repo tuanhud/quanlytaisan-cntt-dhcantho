@@ -7,7 +7,7 @@
 			$isExist = 0;
 			include_once('../database.php');
 			$db=new database();
-			$sql = "Select * from loaikiemke";
+/*			$sql = "Select * from loaikiemke";
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			while($row = mysql_fetch_array($result))
@@ -17,15 +17,26 @@
 					$isExist = 1;
 			}
 			if($isExist==0)
-			{
-					$sql = "Select max(maloaikk) from loaikiemke";
+			{*/
+					$sltsthanhly=$_POST['txt_soluongtaisan'];
+					$sltshienco=$_POST['txt_sltshienco'];
+					$sltsconlai=$sltshienco - $sltsthanhly;
+					$sql = "Select max(mathanhly) from taisanduocthanhly";
 					$db->setQuery($sql);
 					$result = $db->fetchAll();
 					$row = mysql_fetch_array($result,MYSQL_NUM);
 					$ma = $row[0]+1;
 					
-					$sql = "insert into loaikiemke values('".$ma."', '".$_POST['txt_tenloaikiemke']."')";
+					$sql = "insert into taisanduocthanhly values('".$ma."', '".$_POST['txt_mataisanthem']."','".$_POST['txt_soluongtaisan']."')";
 					$db->setQuery($sql);
+					$db->executeQuery();
+					$current = getdate(); 
+					$current_date = $current['year']; 
+					$sql2="insert into thanhlytaisan values('".$ma."','".$current_date."','".$_POST['txt_diengiai']."')";
+					$db->setQuery($sql2);
+					$db->executeQuery();
+					$sql3="update taisanthuocdonvi set soluongcuadonvi='".$sltsconlai."' where mataisan='".$_POST['txt_mataisanthem']."'";
+					$db->setQuery($sql3);
 					if($db->executeQuery()!=1)
 					{
 						echo 0;
@@ -36,11 +47,11 @@
 						echo 1;
 						exit;
 					}
-			}
+			/*}
 			else
 			{
 						echo 2;
 						exit;
-				}
+				}*/
 	}
 ?>

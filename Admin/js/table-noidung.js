@@ -112,8 +112,8 @@ function taobang()
 		{
             $('#cancel').jqxButton({ theme: theme, height: '25px', width: '65px' });
             $('#eventWindow').jqxWindow({ maxHeight: 400, maxWidth:400, minHeight: 30, minWidth: 150, height: 300, width: 400,
-                theme: theme, resizable: false, isModal: true, modalOpacity: 0.3,
-                okButton: $('#save'), cancelButton: $('#cancel')
+                theme: theme, resizable: false, modalOpacity: 0.3,
+                okButton: $('#save'), cancelButton: $('#cancel'),location: $("#mainDemoContainer"),
             });
         }
         function addEventListeners() 
@@ -134,7 +134,7 @@ function taobang()
                     		{ name: 'ghichu' },
 						],
 						id: 'mand',
-						url: 'get_info_noidung_phieumau.php',             
+						url: 'get_info_noidung_phieumauthem.php',           
 					};
 					var dataAdapter3 = new $.jqx.dataAdapter(source2);
 					$("#jqxWidget3").jqxGrid(
@@ -232,8 +232,8 @@ function taobang()
 						}
 					});		
                 }
-				alert("Lập phiếu mẫu thành công!");
-				window.location.reload(true);		
+					alert("Lập phiếu mẫu thành công!");
+					window.location.reload(true);		
 			}
 		});
 		/*$(document).ready(function () {

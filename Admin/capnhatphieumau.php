@@ -36,12 +36,12 @@
     <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/fill.js"></script>
-<script type="text/javascript" src="js/capnhatphieumau.js"></script>
-<script type="text/javascript" src="js/table-noidung.js"></script>
-<script type="text/javascript" src="js/table-noidungsua.js"></script>
-<script type="text/javascript" src="js/date.js"></script>
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/fill.js"></script>
+	<script type="text/javascript" src="js/capnhatphieumau.js"></script>
+	<script type="text/javascript" src="js/table-noidung.js"></script>
+	<script type="text/javascript" src="js/table-noidungsua.js"></script>
+	<script type="text/javascript" src="js/date.js"></script>
 
 
 <script type="text/javascript" >
@@ -232,7 +232,7 @@ $(document).ready(function() {
                                 <div>
                                   <div style="margin: 10px">
                                     Chọn nội dung:
-                                    <div id='jqxWidget3'>
+                                    <div id='jqxWidgeft3'>
         							</div>
                                    <!-- Chọn thuộc tính
                                     <div id='jqxWidget2'>
@@ -308,8 +308,8 @@ $(document).ready(function() {
                   <label for="txtghichu"></label>
                   <textarea name="txt_ghichusua" rows="5" id="txt_ghichusua" style="width:100%"></textarea></td>
               <tr>
-                <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
-                    <div style="visibility: hidden;" id='jqxWidget'>
+             <td align="center" height="400"  class="level_1_1" colspan="2" valign="top">
+                       <div style="visibility:visible;" id='jqxWidget3'>
                             <div id="jqsua"></div>
                           
                             <div style="margin-top: 30px;">
@@ -318,18 +318,18 @@ $(document).ready(function() {
                            </div>
                            <div style="margin-left: 30px; float: left;">
                                 <div style="margin-top: 5px;">
-                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton" width="70" />
+                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton2" width="70" />
                                 </div> 
                                 <div style="margin-top: 5px;">
-                                    <input id="deleterowbutton" type="button" value="Xóa thuộc tính" width="70" />
+                                    <input id="deleterowbutton2" type="button" value="Xóa thuộc tính" width="70" />
                                 </div>
                                
                                 
                          </div>
                          <div style="width:400px; border: 0px solid #ccc; margin-top: 10px;"
-                            id="mainDemoContainer">
+                            id="mainDemoContainer2">
                             </div>
-                            <div id="eventWindow" style="display:none">
+                            <div id="eventWindow2" style="display:none">
                                 <div>
                                     <img width="14" height="14" src="../jqwidgets/resources/drag.png" alt="" />
                                     Thêm nội dung cho phiếu mẫu:
@@ -337,7 +337,7 @@ $(document).ready(function() {
                                 <div>
                                   <div style="margin: 10px">
                                     Chọn nội dung:
-                                    <div id='jqxWidget3'>
+                                    <div id='jqxWidget2'>
         							</div>
                                    <!-- Chọn thuộc tính
                                     <div id='jqxWidget2'>
@@ -346,13 +346,13 @@ $(document).ready(function() {
                                 <div>
                                     <div style="float: right; margin-top: 10px; margin-right:38px">
                                        
-                                        <input type="button" id="cancel" value="Thoát" />
+                                        <input type="button" id="cancel2" value="Thoát" />
                                    	 </div>
                                 	</div>
                       			</div>
                        		 </div>
                             </div>
-                    </td>
+                        </td>
              </tr>
              <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
