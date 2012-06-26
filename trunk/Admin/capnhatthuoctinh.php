@@ -138,11 +138,11 @@
               </tr>
 			  <tr>
 					<td height="22" align="right" class="level_1_2">Tên thuộc tính </td>
-					<td width="70%" align="left" class="level_1_2"><input name="txt_tenthuoctinhthem" id="txt_tenthuoctinhthem" type="text" class="txtbox" style="width:100%"></td>
+					<td width="70%" align="left" class="level_1_2"><input name="txt_tenthuoctinhthem" id="txt_tenthuoctinhthem" type="text" class="txtbox" style="width:90%"></td>
 			</tr>    
              <tr>
 					<td height="22" align="right" class="level_1_2">Ghi chú</td>
-					<td width="70%" align="left" class="level_1_2"><input name="txt_ghichuthem" id="txt_ghichuthem" type="text" class="txtbox" style="width:100%"></td>
+					<td width="70%" align="left" class="level_1_2"><input name="txt_ghichuthem" id="txt_ghichuthem" type="text" class="txtbox" style="width:90%"></td>
 			</tr>    
 				<tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_themthuoctinh" id="btn_themthuoctinh" type="button" class="button_1" value="Thêm"></td>
@@ -174,18 +174,18 @@
              <tr>
 					<td height="22" align="right" class="level_1_2">Chọn tên thuộc tính</td>
 					<td width="70%" align="left" class="level_1_2">
-                    	<select name="cbo_tenthuoctinhsua" id="cbo_tenthuoctinhsua" class="cbo" style="width:100%;"> </select>
+                    	<select name="cbo_tenthuoctinhsua" id="cbo_tenthuoctinhsua" class="cbo" style="width:90%;"> </select>
 					</td>
 			</tr>
 			<tr>
 					<td height="22" align="right" class="level_1_1">Tên mới</td>
 					<td width="57%" align="left" class="level_1_1">
-                    	<input name="txt_tenthuoctinhsua" id="txt_tenthuoctinhsua" type="text" class="txtbox" style="width:100%"></td>
+                    	<input name="txt_tenthuoctinhsua" id="txt_tenthuoctinhsua" type="text" class="txtbox" style="width:90%"></td>
 			</tr>    
 			 <tr>
 					<td height="22" align="right" class="level_1_1">Ghi chú</td>
 					<td width="57%" align="left" class="level_1_1">
-                    	<input name="txt_ghichusua" id="txt_ghichusua" type="text" class="txtbox" style="width:100%"></td>
+                    	<input name="txt_ghichusua" id="txt_ghichusua" type="text" class="txtbox" style="width:90%"></td>
 			</tr>       
             <tr>
 						<td colspan="2" height="22" align="center" class="level_1_1">
@@ -220,7 +220,7 @@
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn tên thuộc tính </td>
 					<td width="70%" align="left" class="level_1_1">
-                    	<select name="cbo_tenthuoctinhxoa" id="cbo_tenthuoctinhxoa" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenthuoctinhxoa" id="cbo_tenthuoctinhxoa" class="cbo" style="width:90%;">
                         </select>                       
                     </td>
 					

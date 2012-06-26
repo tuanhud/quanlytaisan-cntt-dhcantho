@@ -53,19 +53,16 @@
     <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
-    <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript" src="js/capnhattaisan.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            initmenu();
             $("#parentTable").height(1600);	
             setTimeout(function()
             {
                 $("#demoContent").css('visibility', 'visible');		
-                initwidgets();
                 $("#loader").css('display', 'none');
             }, 1000);
             var theme = getTheme();
@@ -158,7 +155,7 @@
                <tr>
 					<td height="22" align="right" class="level_1_1">Tên thiết bị</td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tentaisanthem" id="txt_tentaisanthem" type="text" class="txtbox" style="width:100%"></td>
+                    	<input name="txt_tentaisanthem" id="txt_tentaisanthem" type="text" class="txtbox" style="width:90%"></td>
 			</tr>
 			 <tr>
 					<td height="22" align="right" class="level_1_2">Chọn đơn vị tính</td>
@@ -170,26 +167,41 @@
 			<tr>
 					<td height="22" align="right" class="level_1_1">Tình trạng</td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tinhtrangthem" id="txt_tinhtrangthem" type="text" class="txtbox" style="width:100%"></td>
-			</tr>
-           <!--   <tr>
-					<td height="22" align="right" class="level_1_1">Thêm bằng file Excel</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="file_ecxel" type="file" style="width:80%">
-                        <input name="btn_submit" id="btn_submit" type="button" class="button_1" value="Import">
-                        </td>
-				</tr>    -->     
+                    	<input name="txt_tinhtrangthem" id="txt_tinhtrangthem" type="text" class="txtbox" style="width:90%"></td>
+			</tr>  
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_themtaisan" id="btn_themtaisan" type="button" class="button_1" value="Thêm"></td>
               </tr>
-			  
-			  <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2">
-					</td>
+              </tbody>
+           </table>
+           </form>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" align="left">
+            	<form name="frm_importtaisan" id="frm_importtaisan" action="importtaisanUI.php" enctype="multipart/form-data" method="post" target="export" onSubmit="return isValid();window.open('', 'export', 'width=1350,height=660,status=yes,resizable=yes,scrollbars=yes')">
+            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+              <tbody>
+              <tr>
+              		<td height="22" class="level_1_1" colspan="2"></td>
               </tr>
-			  
-			 
-				 
+			  <tr>
+					<td height="22" align="right" class="level_1_2">Chọn file Excel</td>
+					<td width="70%" align="left" class="level_1_2"><input name="file_import" id="file_import" type="file" style="width:100%"><input type="hidden" name="MAX_FILE_SIZE" value="100000"></td>
+			  </tr>
+               <tr>
+					<td height="22" align="right" class="level_1_1">Chọn Sheet cần lưu</td>
+					<td width="70%" align="left" class="level_1_1">
+                    <select name="cbo_chonsheet" id="cbo_chonsheet" style="width:60">
+                      <option value="0">1</option>
+                      <option value="1">2</option>
+                      <option value="2">3</option>
+                   </select>
+                    </td>
+			  </tr>
+              <tr>
+              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="submit" name="btn_importtaisan" class="button_1" value="Xem trước"></td>
+              </tr>
               </tbody>
            </table>
            </form>
@@ -218,22 +230,22 @@
 					<td height="22" align="right" class="level_1_2">Chọn loại thiết bị</td>
 					<td width="70%" align="left" class="level_1_2">
                     	<select name="cbo_tenloaitaisansua"
-                        id="cbo_tenloaitaisansua" class="cbo" style="width:100%;">
+                        id="cbo_tenloaitaisansua" class="cbo" style="width:90%;">
                         </select></td>
                <tr>
 					<td height="22" align="right" class="level_1_1">Tên thiết bị</td>
 					<td width="57%" align="left" class="level_1_1">
-                    	<select name="cbo_tentaisansua" id="cbo_tentaisansua" class="cbo" style="width:100%;">
+                    	<select name="cbo_tentaisansua" id="cbo_tentaisansua" class="cbo" style="width:90%;">
                         </select></td>
 			</tr>
             <tr>
 					<td height="22" align="right" class="level_1_1">Tên mới</td>
 					<td width="57%" align="left" class="level_1_1">
-                    	<input name="txt_tentaisansua" id="txt_tentaisansua" type="text" class="txtbox" style="width:100%"></td>
+                    	<input name="txt_tentaisansua" id="txt_tentaisansua" type="text" class="txtbox" style="width:90%"></td>
 			</tr>
 			 <tr>
 					<td height="22" align="right" class="level_1_2">Chọn đơn vị tính</td>
-					<td width="57%" align="left" class="level_1_2"><select name="cbo_donvitinhsua" id="cbo_donvitinhsua" class="cbo" style="width:100%;">
+					<td width="57%" align="left" class="level_1_2"><select name="cbo_donvitinhsua" id="cbo_donvitinhsua" class="cbo" style="width:90%;">
                         </select></td>
 			</tr> 
 			 
@@ -241,7 +253,7 @@
 			<tr>
 					<td height="22" align="right" class="level_1_1">Tình trạng</td>
 					<td width="57%" align="left" class="level_1_1">
-                    	<input name="txt_tinhtrangsua" id="txt_tinhtrangsua" type="text" class="txtbox" style="width:100%"></td>
+                    	<input name="txt_tinhtrangsua" id="txt_tinhtrangsua" type="text" class="txtbox" style="width:90%"></td>
 			</tr>           
             <tr>
 						<td colspan="2" height="22" align="center" class="level_1_1">
@@ -276,7 +288,7 @@
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn tên loại thiết bị </td>
 					<td width="70%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaitaisanxoa" id="cbo_tenloaitaisanxoa" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenloaitaisanxoa" id="cbo_tenloaitaisanxoa" class="cbo" style="width:90%;">
                         </select>                       
                     </td>
 					
@@ -284,7 +296,7 @@
              <tr>
 					<td height="22" align="right" class="level_1_2">Chọn tên thiết bị </td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_tentaisanxoa" id="cbo_tentaisanxoa" class="cbo" style="width:100%;">
+                    	<select name="cbo_tentaisanxoa" id="cbo_tentaisanxoa" class="cbo" style="width:90%;">
                         </select>                       
                     </td>
 					
