@@ -62,8 +62,9 @@
         $(document).ready(function () {
             initmenu();
 			fillcombo('get_list_taisan.php',document.frm_themthanhly.cbo_tentaisanthanhlythem);
-	        fillcombo('get_list_taisan.php',document.frm_suathanhly.cbo_tentaisanthanhlysua);
-	        fillcombo('get_list_taisan.php',document.frm_xoathanhly.cbo_tentaisanthanhlyxoa);
+	//fillcombo('get_list_taisan.php',document.frm_suathanhly.cbo_tentaisanthanhlysua);
+	fillcombo2('get_list_namthanhly.php',document.frm_xoathanhly.cbo_namthanhlyxoa);
+	fillcombo2('get_list_namthanhly.php',document.frm_suathanhly.cbo_namthanhlysua);
 			$('form[name="frm_themthanhly"] select[name="cbo_tentaisanthanhlythem"]').change(function(){
 		get_info_ma_soluong_taisan('get_info_ma_soluong_taisan.php',document.frm_themthanhly);
 	});
