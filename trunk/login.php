@@ -129,7 +129,7 @@
 	}
 	else
 	{
-			echo "<script language=javascript>alert('Bạn phải nhập đầy đủ tên đăng nhập và mật khẩu!.'); </script>";
+			//echo "<script language=javascript>alert('Bạn phải nhập đầy đủ tên đăng nhập và mật khẩu!.'); </script>";
 	}
 	
 ?>
