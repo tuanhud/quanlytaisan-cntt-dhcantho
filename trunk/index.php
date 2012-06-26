@@ -46,11 +46,13 @@ if(typeof wpOnload=='function')wpOnload();
 	<p class="forgetmenot"><label><a href="" title="Quên mật khẩu?">Quên mật khẩu?</a></label></p>
 	<p class="submit">
 		<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="Đăng nhập" tabindex="100" />
+         
 	</p>
-    <?php
+   <?php
 include_once('login.php');
 ?>
 </form>
+
 	</div>
 </body>
 </html>
