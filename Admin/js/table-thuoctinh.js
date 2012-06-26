@@ -52,7 +52,7 @@ function taobangthuoctinh ()
            	// initialize jqxGrid
             $("#jqxgrid").jqxGrid(
            	 {
-                width: 660,
+                width: 900,
 				selectionmode: 'singlerow',
                 source: dataadapter,
                 theme: theme,
@@ -66,10 +66,10 @@ function taobangthuoctinh ()
 				},
                 columns: [
 					  { text: 'Mã tài sản', editable: false, datafield: 'MaTaiSan', width: 100, cellsalign: 'left' },
-					  { text: 'Tên tài sản', editable: false, datafield: 'TenTaiSan', width: 150, cellsalign: 'left' },
+					  { text: 'Tên tài sản', editable: false, datafield: 'TenTaiSan', width: 250, cellsalign: 'left' },
                       { text: 'Mã thuộc tính', editable: false, datafield: 'MaThuocTinh', width: 100, cellsalign: 'left' },
-                      { text: 'Tên thuộc tính',editable: false, datafield: 'TenThuocTinh', width: 180 },
-					  { text: 'Giá trị thuộc tính', datafield: 'GiaTriThuocTinh', width: 130 }
+                      { text: 'Tên thuộc tính',editable: false, datafield: 'TenThuocTinh', width: 250 },
+					  { text: 'Giá trị thuộc tính', datafield: 'GiaTriThuocTinh', width: 200 }
                   ]
             });
 	

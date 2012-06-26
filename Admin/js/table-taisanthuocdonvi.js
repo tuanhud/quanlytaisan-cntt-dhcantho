@@ -96,8 +96,8 @@ function taobangtaisan ()
            // initialize jqxGrid
             $("#jqxgrid").jqxGrid(
             {
-                width: 740,
-				selectionmode: 'singlerow',
+                width: 900,
+				selectionmode: 'singlecell',
                 source: dataadapter,
                 theme: theme,
 				editable: true,
@@ -110,11 +110,11 @@ function taobangtaisan ()
 				},
                 columns: [
 					  { text: 'Mã đơn vị', editable: false, datafield: 'MSDV', width: 70, cellsalign: 'left' },
-					  { text: 'Tên đơn vị', editable: false, datafield: 'TenDV', width: 150, cellsalign: 'left' },
+					  { text: 'Tên đơn vị', editable: false, datafield: 'TenDV', width: 200, cellsalign: 'left' },
                       { text: 'Mã thiết bị', editable: false, datafield: 'MaTaiSan', width: 80, cellsalign: 'left' },
-                      { text: 'Tên thiết bị',editable: false, datafield: 'TenTaiSan', width: 180 },
-					  { text: 'Số Lượng', datafield: 'SoLuongCuaDonVi', width: 80 },
-					  { text: 'Đơn giá (VNĐ)', datafield: 'DonGiaTS', width: 100 },
+                      { text: 'Tên thiết bị',editable: false, datafield: 'TenTaiSan', width: 270 },
+					  { text: 'Số Lượng',editable: true ,datafield: 'SoLuongCuaDonVi', width: 80 },
+					  { text: 'Đơn giá (VNĐ)',editable: true, datafield: 'DonGiaTS', width: 100 },
 					  { text: 'Thành tiền',editable: false, datafield: 'ThanhTien', width: 100 },
                   ]
             });

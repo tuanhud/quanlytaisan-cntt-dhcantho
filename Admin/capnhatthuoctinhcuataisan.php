@@ -14,7 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật đơn vị</title>
+<title>Cập nhật thuộc tính của tài sản</title>
 	
      <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
@@ -61,8 +61,7 @@
 	<script type="text/javascript" src="js/table-thuoctinh.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            initmenu();
-            $("#parentTable").height(1600);	
+           // $("#parentTable").height(1600);	
             setTimeout(function()
             {
                 $("#demoContent").css('visibility', 'visible');		
@@ -120,7 +119,7 @@ $(document).ready(function() {
             		</tr>
                     <tr>
                		 	<td>
-                        	<table style="table-layout: fixed; margin-left:20px; margin-right:20px; margin-bottom:20px; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+                        	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
                             <td width="794" valign="top" class="rc-all content" id="demos">
@@ -219,9 +218,7 @@ $(document).ready(function() {
   </tr>
                                           
                                           
-                                          <tr>
-                                            <td align="center">&nbsp;</td>
-                                          </tr>    
+                                            
                                         </table>
                                         </td>
   								</tr>

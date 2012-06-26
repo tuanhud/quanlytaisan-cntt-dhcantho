@@ -449,12 +449,7 @@ body
 
 .content
 {
-    margin-right: 10px;
-    height: 670px;
-    width: 716px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background: #eeeeee;
+   
 }
 
 .navigation
@@ -475,7 +470,7 @@ body
     left: 0px;
     padding: 8px;
 	height:auto;
-	min-height:670px;
+	min-height:650px;
     vertical-align: top;
     border: 1px solid #CCCCCC;
     margin-left:5px;

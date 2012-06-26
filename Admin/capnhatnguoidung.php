@@ -156,7 +156,7 @@
             		</tr>
                     <tr>
                		 	<td>
-                        	<table style="table-layout: fixed; margin-left:20px; margin-right:20px; margin-bottom:20px; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+                        	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
                             <td width="794" valign="top" class="rc-all content" id="demos">
@@ -254,11 +254,6 @@
 			  <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themcanbo" id="btn_themcanbo" class="button_1" value="Thêm"></td>
               </tr>
-			  
-			  <tr>
-			  		<td height="44" class="level_1_1" colspan="2"></td>
-			  </tr>
-              
               
               </tbody>
            </table>

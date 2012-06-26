@@ -78,12 +78,7 @@ function createTable_nguoidung(){
         	o.value = cell;
 	        o.className += 'align-center';
     }
-/*	var fmttextbox = function(o)
-	{
-    	var cell = '<input type="text" class="textbox" />';
-        	o.value = cell;
-	        o.className += 'align-center';
-    }*/
+
 	//Cac Column cua Bang
 	var cols = [
 				{name:'canbo', label:'Cán bộ',className:'align-center',
@@ -132,7 +127,7 @@ function createTable_nguoidung(){
     columns: cols,
     data   : records, 
 	summary: 'Danh sách người dùng - quyền ',
-    caption: 'Danh sách người dùng - quyền(Chưa hoàn chỉnh)',
+    caption: 'Danh sách người dùng - quyền',
     render : '#mytable'
 });	
 	
