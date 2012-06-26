@@ -140,12 +140,12 @@
                <tr>
 					<td height="22" align="right" class="level_1_2">Tên loại thiết bị</td>
 					<td width="70%" align="left" class="level_1_2">
-                    	<input name="txt_tenloaitaisanthem" id="txt_tenloaitaisanthem" type="text" class="txtbox" style="width:100%"></td>
+                    	<input name="txt_tenloaitaisanthem" id="txt_tenloaitaisanthem" type="text" class="txtbox" style="width:90%"></td>
 			</tr>
 			 <tr>
 					<td height="22" align="right" class="level_1_1">Diễn giải</td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<textarea name="txt_diengiaithem" id="txt_diengiaithem" rows="5" style="width:100%"></textarea></td>
+                    	<textarea name="txt_diengiaithem" id="txt_diengiaithem" rows="5" style="width:90%"></textarea></td>
 			</tr>                
 				<tr>
               		<td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_themloaitaisan" id="btn_themloaitaisan" type="button" class="button_1" value="Thêm"></td>
@@ -178,20 +178,20 @@
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn tên loại thiết bị </td>
 					<td width="70%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaitaisansua" id="cbo_tenloaitaisansua" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenloaitaisansua" id="cbo_tenloaitaisansua" class="cbo" style="width:90%;">
                         </select>                       
                     </td>
 			</tr>
             <tr>
 					<td height="22" align="right" class="level_1_1">Tên mới </td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tenloaitaisansua" id="txt_tenloaitaisansua" maxlength="31" type="text" class="txtbox" style="width:100%" value="" onKeyPress="return keypress(event)">
+                    	<input name="txt_tenloaitaisansua" id="txt_tenloaitaisansua" type="text" class="txtbox" style="width:90%">
 					</td>
 			</tr>              
              <tr>
 					<td height="22" align="right" class="level_1_2">Diễn giải</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<textarea name="txt_diengiaisua" id="txt_diengiaisua" rows="5" style="width:100%"></textarea>
+                    	<textarea name="txt_diengiaisua" id="txt_diengiaisua" rows="5" style="width:90%"></textarea>
 					</td>
 			</tr> 
             <tr>
@@ -228,14 +228,14 @@
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn tên loại thiết bị </td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tenloaitaisanxoa" id="cbo_tenloaitaisanxoa" class="cbo" style="width:100%;">
+                    	<select name="cbo_tenloaitaisanxoa" id="cbo_tenloaitaisanxoa" class="cbo" style="width:90%;">
                         </select>                       
                     </td>
 			</tr> 
              <tr>
 					<td height="22" align="right" class="level_1_1">Diễn giải</td>
 					<td width="70%" align="left" class="level_1_1">
-                    	<textarea name="txt_diengiaixoa" id="txt_diengiaixoa" rows="5" style="width:100%"></textarea>                       
+                    	<textarea name="txt_diengiaixoa" id="txt_diengiaixoa" rows="5" style="width:90%"></textarea>                       
                     </td>
 			</tr>                 
               <tr>
