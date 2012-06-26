@@ -9,9 +9,9 @@
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
 	exit;
-		*/
 		
-	//}
+		
+	}*/
 ?>
 <html>
 <head>
@@ -118,7 +118,7 @@ $(document).ready(function() {
         <tr height="10">        
 			<td align="center" colspan="3">
 			<?php
-			include_once('node-menunav-3ad.php');
+			include_once('node-menunav-3.php');
 			?> 
 			</td>    
         </tr>

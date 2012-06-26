@@ -34,7 +34,7 @@ $(document).ready(function() {
 	fillcombo('get_list_donvi.php',document.frm_xoakehoachmuasam.cbo_chondonvixoa);
 	fillcombo2('get_list_nam.php',document.frm_suakehoachmuasam.cbo_namsua);
 	fillcombo('get_list_donvi.php',document.frm_suakehoachmuasam.cbo_chondonvisua);
-	createTable();
+	//createTable();
 	//createTable2();
 			
 			
@@ -156,10 +156,46 @@ $(document).ready(function() {
            <!--bang thuoc tinh dat o day-->
              <tr>
 					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
-                    <div class="yui3-skin-sam">                    
-                    <div id="mytable"></div>                    
-                    </div>
-                    </td>
+                    <table class="border_1" bordercolor="#111111" width="645" border="0">
+                      <tr class="level_1_2">
+                        <th width="31"><input type="checkbox"></th>
+                        <th width="190">Tên tài sản</th>
+                        <th width="84">Đơn vị tính</th>
+                        <th width="119">Số lượng</th>
+                        <th width="66">Đơn giá</th>
+                        <th width="129">Thành tiền</th>
+                        <th width="129">Thuyết minh sử dụng</th>
+                      </tr>
+                      <?php
+include("../database.php");
+$db=new database();
+/*$sql="select a.mavpp,a.tenvpp,a.tendonvitinh, b.tennsx from vanphongpham a, nhasanxuat b where a.mansx=b.mansx";
+$db->setQuery($sql);
+$list=$db->fetchAll();*/
+$sql="Select a.MaTaiSan,TenTaiSan,TenDonViTinh,GiaTriThuocTinh from taisan a, cothuoctinh b where a.MaTaiSan= b.MaTaiSan ";
+					$db->setQuery($sql);
+					$list=$db->fetchAll();
+$count=0;
+$btn_lap;
+while($row=mysql_fetch_array($list))
+	{
+		$count=$count+1;
+	if($count%2!=0)
+	echo "<tr class='level_1_1'>";
+	else
+	echo "<tr class='level_1_2'>";
+	echo "<td align=\"center\"><input type='checkbox' name='checkbox[]' id='checkbox[]' value='$row[MaTaiSan]'</td>";
+	echo "<td>$row[TenTaiSan]</td>";
+	echo "<td align=\"center\">$row[TenDonViTinh]</td>";
+	echo "<td><input type='text' style='width:100%' name='sl$row[MaTaiSan]' id='sl$row[MaTaiSan]' onKeyPress='return keypress(event)'></td>";
+	echo "<td align=\"center\">$row[GiaTriThuocTinh]</td>";
+	echo "<td><input type='text' name='tt$row[mavpp]' id='tt$row[mavpp]'></td>";
+	echo "<td><input type='text' name='tmsd$row[mavpp]' id='tmsd$row[mavpp]' onKeyPress='return keypress(event)'></td>";
+	echo "</tr>";
+	}
+?>
+                    </table>
+                    <p>&nbsp;</p></td>
 			</tr>             
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_themtaisan" id="btn_themtaisan" type="button" class="button_1" value="Thêm"></td>

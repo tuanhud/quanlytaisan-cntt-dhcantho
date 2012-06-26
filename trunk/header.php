@@ -3,7 +3,7 @@
         <table style='table-layout: fixed; width: 1000px; height: 100%; margin: 0 auto;'>
             <tr style="height: 50px;">
                 <td align="left">
-                    <a href=""><img style='margin: 0px; text-align: left; border: 0 none;' src="" alt="jqWidgets" /></a>       
+                    <a href=""><img src="../images/banner.png"/></a>       
                 </td> 
             </tr>
         </table>

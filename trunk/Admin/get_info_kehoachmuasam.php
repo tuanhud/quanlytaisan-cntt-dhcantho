@@ -8,7 +8,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-			        $sql="Select TenTaiSan,TenDonViTinh,GiaTriThuocTinh from taisan a, cothuoctinh b where a.MaTaiSan= b.MaTaiSan ";
+			        $sql="Select MaTaiSan,TenTaiSan,TenDonViTinh,GiaTriThuocTinh from taisan a, cothuoctinh b where a.MaTaiSan= b.MaTaiSan ";
 					$db->setQuery($sql);
 					$result=$db->fetchAll();
 					$xml="";
@@ -16,7 +16,9 @@
 					while($row=mysql_fetch_array($result))
 					{												
 						$xml.="<RESULT>";
-							
+							$xml.="<MA>";
+								$xml.=$row['TenTaiSan'];							
+							$xml.="</MA>";
 							$xml.="<TEN>";
 								$xml.=$row['TenTaiSan'];							
 							$xml.="</TEN>";
