@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 3.3.9.2
 -- http://www.phpmyadmin.net
 --
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `codd` (
   `ChiTietVPP` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaVPP`,`MoTaDD`),
   KEY `FK_CoDD2` (`MoTaDD`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `codd`
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `conoidung` (
   PRIMARY KEY (`MaPhieuKiemKe`,`MaND`,`MaTaiSan`),
   KEY `FK_CoNoiDung2` (`MaND`),
   KEY `FK_CoNoiDung3` (`MaTaiSan`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `conoidung`
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `cophieumau` (
   `MaPhieu` char(10) NOT NULL,
   PRIMARY KEY (`MaPhieuKiemKe`,`MaPhieu`),
   KEY `FK_CoPhieuMau2` (`MaPhieu`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cophieumau`
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `coquyen` (
   `MaQuyen` char(10) NOT NULL,
   PRIMARY KEY (`MSCB`,`MaQuyen`),
   KEY `FK_CoQuyen2` (`MaQuyen`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `coquyen`
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `cothuoctinh` (
   `GiaTriThuocTinh` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`MaTaiSan`,`MaThuocTinh`),
   KEY `FK_CoThuocTinh2` (`MaThuocTinh`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cothuoctinh`
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `covpp` (
   `DonGia` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`MaPhieuDuToan`,`MaVPP`),
   KEY `FK_CoVPP2` (`MaVPP`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `covpp`
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `dacdiem` (
   `MoTaDD` varchar(100) NOT NULL,
   `GhiChuDD` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MoTaDD`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `dacdiem`
@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `donvi` (
   `MSDV` char(10) NOT NULL,
   `TenDV` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`MSDV`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `donvi`
@@ -222,7 +222,7 @@ INSERT INTO `donvi` (`MSDV`, `TenDV`) VALUES
 CREATE TABLE IF NOT EXISTS `donvitinh` (
   `TenDonViTinh` char(10) NOT NULL,
   PRIMARY KEY (`TenDonViTinh`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `donvitinh`
@@ -245,7 +245,7 @@ CREATE TABLE IF NOT EXISTS `duoccc` (
   `MaNCC` char(10) NOT NULL,
   PRIMARY KEY (`MaVPP`,`MaNCC`),
   KEY `FK_DuocCC2` (`MaNCC`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `duoccc`
@@ -270,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `kehoachmuasam` (
   `DuyetKhoa` int(11) DEFAULT NULL,
   PRIMARY KEY (`MaKHMS`),
   KEY `FK_LapKHMS` (`MSCB`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `kehoachmuasam`
@@ -288,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `lapkiemke` (
   `MaPhieuKiemKe` char(10) NOT NULL,
   PRIMARY KEY (`MSCB`,`MaPhieuKiemKe`),
   KEY `FK_LapKiemKe2` (`MaPhieuKiemKe`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `lapkiemke`
@@ -305,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `loaikiemke` (
   `MaLoaiKK` char(10) NOT NULL,
   `TenLoaiKK` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`MaLoaiKK`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `loaikiemke`
@@ -323,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `loaitaisan_thietbi` (
   `TenLoai` varchar(30) DEFAULT NULL,
   `DienGiaiTB` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaLoai`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `loaitaisan_thietbi`
@@ -346,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `loaivanphongpham` (
   `TenLoaiVPP` varchar(30) DEFAULT NULL,
   `DienGiaiVPP` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaLoaiVPP`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `loaivanphongpham`
@@ -365,7 +365,7 @@ INSERT INTO `loaivanphongpham` (`MaLoaiVPP`, `TenLoaiVPP`, `DienGiaiVPP`) VALUES
 CREATE TABLE IF NOT EXISTS `nam` (
   `Nam` varchar(20) NOT NULL,
   PRIMARY KEY (`Nam`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nam`
@@ -387,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `nammuasam` (
   `Nam` varchar(20) NOT NULL,
   PRIMARY KEY (`MaKHMS`,`Nam`),
   KEY `FK_NamMuaSam2` (`Nam`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nammuasam`
@@ -414,7 +414,7 @@ CREATE TABLE IF NOT EXISTS `nguoidung` (
   `Matkhau` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`MSCB`),
   KEY `FK_ThuocDonVi` (`MSDV`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nguoidung`
@@ -440,7 +440,7 @@ CREATE TABLE IF NOT EXISTS `nhacungcap` (
   `DiaChiNCC` varchar(50) DEFAULT NULL,
   `SoDTNCC` char(12) DEFAULT NULL,
   PRIMARY KEY (`MaNCC`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nhacungcap`
@@ -460,7 +460,7 @@ CREATE TABLE IF NOT EXISTS `nhasanxuat` (
   `MaNSX` char(10) NOT NULL,
   `TenNSX` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`MaNSX`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nhasanxuat`
@@ -485,7 +485,7 @@ CREATE TABLE IF NOT EXISTS `noidung` (
   `GhiChuND` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaND`),
   KEY `FK_DonViTinhCuaBangKiemKe` (`TenDonViTinh`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `noidung`
@@ -503,7 +503,7 @@ CREATE TABLE IF NOT EXISTS `noidungcon` (
   `MaND` char(10) NOT NULL,
   PRIMARY KEY (`Noi_MaND`,`MaND`),
   KEY `FK_NoiDungCon2` (`MaND`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `noidungcon`
@@ -524,7 +524,7 @@ CREATE TABLE IF NOT EXISTS `phieudutoanvpp` (
   PRIMARY KEY (`MaPhieuDuToan`),
   KEY `FK_DTVPPNam` (`Nam`),
   KEY `FK_PhieuDTThuocDonVi` (`MSDV`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `phieudutoanvpp`
@@ -551,7 +551,7 @@ CREATE TABLE IF NOT EXISTS `phieukiemke` (
   PRIMARY KEY (`MaPhieuKiemKe`),
   KEY `FK_KiemKeThuocNam` (`Nam`),
   KEY `FK_ThuocLoaiKK` (`MaLoaiKK`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `phieukiemke`
@@ -572,7 +572,7 @@ CREATE TABLE IF NOT EXISTS `phieumau` (
   `CapNhatMoiNhat` date DEFAULT NULL,
   `KhoaCapNhat` int(11) DEFAULT NULL,
   PRIMARY KEY (`MaPhieu`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `phieumau`
@@ -588,7 +588,7 @@ CREATE TABLE IF NOT EXISTS `phieumau` (
 CREATE TABLE IF NOT EXISTS `quy` (
   `Quy` char(10) NOT NULL,
   PRIMARY KEY (`Quy`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `quy`
@@ -611,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `quyen` (
   `TenQuyen` varchar(30) DEFAULT NULL,
   `DienGiaiQuyen` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaQuyen`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `quyen`
@@ -643,7 +643,7 @@ CREATE TABLE IF NOT EXISTS `sotiencap` (
   `SoTien` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`Nam`,`MSDV`),
   KEY `FK_SoTienCap2` (`MSDV`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sotiencap`
@@ -665,7 +665,7 @@ CREATE TABLE IF NOT EXISTS `taisan` (
   PRIMARY KEY (`MaTaiSan`),
   KEY `FK_CoDonViTinh` (`TenDonViTinh`),
   KEY `FK_ThuocLoaiTaiSan` (`MaLoai`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `taisan`
@@ -691,7 +691,7 @@ CREATE TABLE IF NOT EXISTS `taisanduocthanhly` (
   `SLThanhLy` int(11) DEFAULT NULL,
   PRIMARY KEY (`MaThanhLy`,`MaTaiSan`),
   KEY `FK_TaiSanDuocThanhLy2` (`MaTaiSan`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `taisanduocthanhly`
@@ -709,7 +709,7 @@ CREATE TABLE IF NOT EXISTS `taisankiemke` (
   `MaPhieuKiemKe` char(10) NOT NULL,
   PRIMARY KEY (`MaTaiSan`,`MaPhieuKiemKe`),
   KEY `FK_TaiSanKiemKe2` (`MaPhieuKiemKe`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `taisankiemke`
@@ -728,7 +728,7 @@ CREATE TABLE IF NOT EXISTS `taisanthuocdonvi` (
   `SoLuongCuaDonVi` int(11) DEFAULT NULL,
   `DonGiaTS` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`MSDV`,`MaTaiSan`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `taisanthuocdonvi`
@@ -767,7 +767,7 @@ CREATE TABLE IF NOT EXISTS `temp` (
   `Năng Khiếu` varchar(100) DEFAULT NULL,
   `Dân tộc` varchar(100) DEFAULT NULL,
   `Tôn giáo` varchar(100) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `temp`
@@ -863,7 +863,7 @@ INSERT INTO `temp` (`STT`, `Họ và Tên`, `MSSV`, `Email`, `Chuyên ngành`, `
 CREATE TABLE IF NOT EXISTS `temp2` (
   `ma` varchar(100) DEFAULT NULL,
   `tentruong` varchar(100) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `temp2`
@@ -898,7 +898,7 @@ CREATE TABLE IF NOT EXISTS `thanhlytaisan` (
   `DienGiaiThanhLy` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaThanhLy`),
   KEY `FK_ThuocNam` (`Nam`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thanhlytaisan`
@@ -916,7 +916,7 @@ CREATE TABLE IF NOT EXISTS `thuocdonvimuasam` (
   `MaKHMS` char(10) NOT NULL,
   PRIMARY KEY (`MSDV`,`MaKHMS`),
   KEY `FK_ThuocDonViMuaSam2` (`MaKHMS`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thuocdonvimuasam`
@@ -937,7 +937,7 @@ CREATE TABLE IF NOT EXISTS `thuockhms` (
   `DonGiaMuaSam` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`MaTaiSan`,`MaKHMS`),
   KEY `FK_ThuocKHMS2` (`MaKHMS`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thuockhms`
@@ -955,7 +955,7 @@ CREATE TABLE IF NOT EXISTS `thuocphieumau` (
   `MaND` char(10) NOT NULL,
   PRIMARY KEY (`MaPhieu`,`MaND`),
   KEY `FK_ThuocPhieuMau2` (`MaND`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thuocphieumau`
@@ -973,7 +973,7 @@ CREATE TABLE IF NOT EXISTS `thuocquyvpp` (
   `Quy` char(10) NOT NULL,
   PRIMARY KEY (`MaPhieuDuToan`,`Quy`),
   KEY `FK_ThuocQuyVPP2` (`Quy`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thuocquyvpp`
@@ -995,7 +995,7 @@ CREATE TABLE IF NOT EXISTS `thuoctinh` (
   `TenThuocTinh` varchar(30) DEFAULT NULL,
   `GhiChu` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`MaThuocTinh`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thuoctinh`
@@ -1027,7 +1027,7 @@ CREATE TABLE IF NOT EXISTS `vanphongpham` (
   KEY `FK_DonViTinhVPP` (`TenDonViTinh`),
   KEY `FK_ThuocLoaiVPP` (`MaLoaiVPP`),
   KEY `FK_ThuocNSX` (`MaNSX`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vanphongpham`
@@ -1038,3 +1038,4 @@ INSERT INTO `vanphongpham` (`MaVPP`, `MaLoaiVPP`, `TenDonViTinh`, `MaNSX`, `TenV
 ('2', '3', 'Kg', '2', 'Giấy In', '40000'),
 ('3', '4', 'Cái', '2', 'Keo dán', '5000'),
 ('4', '3', 'Cái', '3', 'Bút Bi', '3000');
+
