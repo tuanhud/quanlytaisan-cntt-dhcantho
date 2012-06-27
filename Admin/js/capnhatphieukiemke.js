@@ -48,9 +48,9 @@ function check_date_month_year(day,month,year){
 var _admin;
 	$(function()
 	{
-			_admin:themphieukiemke(),
-			_admin:suaphieukiemke(),
-			_admin:xoaphieukiemke()
+			//_admin:themphieukiemke()
+			//_admin:suaphieukiemke(),
+			//_admin:xoaphieukiemke()
 		}),
 		
 			_admin=
