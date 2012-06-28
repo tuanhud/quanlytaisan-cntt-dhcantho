@@ -24,7 +24,11 @@
                             <div class="yui3-menu-content">
                                 <ul>
                                     <li class="yui3-menuitem">
+<<<<<<< .mine
+										<a class="yui3-menuitem-content" href="duyetyeucaumuasam.php">Duyệt yêu cầu mua sắm</a>
+=======
 										<a class="yui3-menuitem-content" href="capnhatlchsv.php">Duyệt yêu cầu mua sắm</a>
+>>>>>>> .r152
 									</li>
                                     <li class="yui3-menuitem">
 										<a class="yui3-menuitem-content" href="capnhatlchsv.php">Báo cáo tài sản bị hư hỏng</a>
