@@ -193,9 +193,9 @@
                 </tr>
                 <tr>
                 <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
-                    <div class="yui3-skin-sam">                    
+                  <!--  <div class="yui3-skin-sam">                    
                     <div id="mytable"></div>                    
-                    </div>
+                    </div>-->
                     </td>
                   </tr>
                 <tbody>
