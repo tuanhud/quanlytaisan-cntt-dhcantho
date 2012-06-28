@@ -1,8 +1,10 @@
 <?php
 session_start();
+
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	include('database.php');
 	$db=new database();
+	
     if (isset($_POST['txtDinhDanh']) && isset($_POST['txtMatKhau']))
 	{   		
 		//kiem tra xem co ton tai nguoi voi maso va matkhau duoc cung cap hay khong ?
@@ -13,13 +15,14 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 			$db->setQuery($sql);
 		if ($db->numRecord()==1)
 		{
-		 $msclb =$_POST['txtDinhDanh'];
-		 $sql = "Select MaQuyen from coquyen where MSCB = '".$msclb."'";
+		if($_POST['radio']=='admin'){
+		   $msclb =$_POST['txtDinhDanh'];
+		   $sql = "Select MaQuyen from coquyen where MSCB = '".$msclb."'";
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			if(mysql_num_rows($result)){
 			while($row = mysql_fetch_array($result)){
-				if($row['MaQuyen']=="ADMIN"){
+				if($row['MaQuyen']=="ADMIN" ){
 					//dua maso vao session
 			        $msclb =$_POST['txtDinhDanh'];
 			        session_register("msclb") ;
@@ -82,7 +85,21 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 					echo "<script language=javascript>window.location = 'Admin/main.php';</script>"; 
 			        exit;
 				}
-			    if($row['MaQuyen']=="CBQLBM"){
+				
+			
+			}
+			}
+			echo "<script language=javascript> alert('Tên đăng nhập và mật khẩu không chính xác!.');</script>";  
+			echo "<script language=javascript>window.location = 'index.php';</script>";
+		}
+  else if($_POST['radio']=='cbql'){
+		   $msclb =$_POST['txtDinhDanh'];
+		   $sql = "Select MaQuyen from coquyen where MSCB = '".$msclb."'";
+			$db->setQuery($sql);
+			$result = $db->fetchAll();
+			if(mysql_num_rows($result)){
+			while($row = mysql_fetch_array($result)){
+				if($row['MaQuyen']=="CBQLBM"){
 					
 					//dua maso vao session
 			           $msclb =$_POST['txtDinhDanh'];
@@ -99,6 +116,21 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 			           echo "<script language=javascript>window.location = 'CanBoQLBM/main.php';</script>"; 
 			           exit;
 				}
+				}
+				
+				
+		}
+		echo "<script language=javascript> alert('Tên đăng nhập và mật khẩu không chính xác!.');</script>";  
+			echo "<script language=javascript>window.location = 'index.php';</script>";
+       
+  }
+  else if($_POST['radio']=='gv'){
+		   $msclb =$_POST['txtDinhDanh'];
+		   $sql = "Select MaQuyen from coquyen where MSCB = '".$msclb."'";
+			$db->setQuery($sql);
+			$result = $db->fetchAll();
+			if(mysql_num_rows($result)){
+			while($row = mysql_fetch_array($result)){
 				if($row['MaQuyen']=="GV"){
 					
 					//dua maso vao session
@@ -117,11 +149,20 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 			           exit;
 				}
 				
-			
-			
-			}
-			}
+				}
+				
+				
 		}
+       echo "<script language=javascript> alert('Tên đăng nhập và mật khẩu không chính xác!.');</script>";  
+			echo "<script language=javascript>window.location = 'index.php';</script>";
+  }
+  else 
+  {
+	   echo "<script language=javascript> alert('Bạn phải chọn quyền đăng nhập chứ!.');</script>";  
+			echo "<script language=javascript>window.location = 'index.php';</script>";
+  }
+  }
+	
 	else
 		{
 			echo "<script language=javascript> alert('Tên đăng nhập và mật khẩu không chính xác!.');</script>";  
@@ -130,7 +171,6 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	}
 	else
 	{
-			//echo "<script language=javascript>alert('Bạn phải nhập đầy đủ tên đăng nhập và mật khẩu!.'); </script>";
+		echo "<script language=javascript> alert('Bạn phải nhập tên dăng nhập và mật khẩu!.');</script>"; 
 	}
-	
 ?>

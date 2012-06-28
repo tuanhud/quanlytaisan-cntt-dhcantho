@@ -56,6 +56,8 @@
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
+         <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
     	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/fill.js"></script>
 	<script type="text/javascript" src="js/capnhatphieumau.js"></script>
@@ -166,7 +168,7 @@
               </tr>
               <tr>
 					<td align="center" height="400"  class="level_1_1" colspan="2" valign="top">
-                       <div style="visibility: hidden;" id='jqxWidget'>
+                       
                             <div id="jqthem"></div>
                           
                             <div style="margin-top: 30px;">

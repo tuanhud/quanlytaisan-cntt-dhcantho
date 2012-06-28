@@ -46,6 +46,20 @@ if(typeof wpOnload=='function')wpOnload();
 		<label>Mật khẩu<br />
 		<input type="password" name="txtMatKhau" id="txtMatKhau" class="input" value="" size="20" tabindex="20" /></label>
 	</p>
+	<p>
+	  <input type="radio" name="radio" id="admin" value="admin" />
+	  <label for="admin"></label>
+Quản trị
+<input type="radio" name="radio" id="cbql" value="cbql" />
+<label for="cbql"></label>
+<label for="checkbox2"></label>
+<label for="checkbox"></label>
+	Cán bộ quản lý 
+	<input type="radio" name="radio" id="gv" value="gv" />
+	<label for="gv"></label>
+<label for="checkbox3"></label>
+	Giảng viên</p>
+	<p>&nbsp;</p>
 	
 	<p class="submit">
 		<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="Đăng nhập" tabindex="100" />
