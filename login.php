@@ -1,5 +1,6 @@
 <?php
 session_start();
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	include('database.php');
 	$db=new database();
     if (isset($_POST['txtDinhDanh']) && isset($_POST['txtMatKhau']))
@@ -124,6 +125,7 @@ session_start();
 	else
 		{
 			echo "<script language=javascript> alert('Tên đăng nhập và mật khẩu không chính xác!.');</script>";  
+			echo "<script language=javascript>window.location = 'index.php';</script>"; 
 		}  
 	}
 	else

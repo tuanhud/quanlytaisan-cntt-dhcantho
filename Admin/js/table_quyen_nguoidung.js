@@ -18,6 +18,24 @@ function createTable_nguoidung(){
      }          
 	
 	//Tao checkbox
+	 var fmtChkBoxad = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtrad" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
+	 var fmtChkBoxcbql = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtrcbql" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
+	 var fmtChkBoxgv = function(o)
+	{
+    	var cell = '<input type="checkbox" class="myCheckboxFmtrgv" />';
+        	o.value = cell;
+	        o.className += 'align-center';
+    }
     var fmtChkBox = function(o)
 	{
     	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
@@ -87,6 +105,14 @@ function createTable_nguoidung(){
 						{key: "id",label:'Mã cán bộ', sortable: true},
 						{key: "ten",label:"Họ tên", sortable: true},
 				]},
+				{name:'quyendn', label:'Quyền đăng nhập',className:'align-center',
+				children:
+				[
+				  {name:'ad', label:'ADMIN',formatter: fmtChkBoxad,allowHTML:true},
+				  {name:'cbqlbm',label:'CBQLBM',formatter: fmtChkBoxcbql,allowHTML:true},
+				  {name:'gv',label:'GV',formatter: fmtChkBoxgv,allowHTML:true},
+				]
+				},
 				{name:'donvi', label:'Đơn vị',className:'align-center',
 				children:
 				[

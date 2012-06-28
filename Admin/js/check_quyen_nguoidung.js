@@ -1,4 +1,109 @@
 // JavaScript Document
+function checkbox_admin()
+{
+	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtrad");
+			chks.each( function(item)
+			{
+								var rec = dt.getRecord( item.ancestor().ancestor() );
+								http=GetXmlHttpObject();
+								var params ="macanbo="+rec.get('id');
+								//mo ket noi bang phuong thuc post
+								http.open("POST",'get_list_quyen_canbo.php', false);
+								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+								//http.setRequestHeader("Content-length", params.length);
+								//http.setRequestHeader("Connection", "close");
+								//ham xu li du lieu tra ve cua ajax send thanh cong
+								http.onreadystatechange = function() 
+								{
+									if(http.readyState == 4 && http.status == 200) 
+									   {											
+												var x=http.responseXML.getElementsByTagName('RESULT');
+												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+											   {
+													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='ADMIN')
+													{
+																	item.set('checked', true);
+																	//alert(macanbo);
+								
+													}
+											   }
+												
+									   }
+								}
+								http.send(params);
+			})	
+}
+function checkbox_cbqlbm()
+{
+	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtrcbql");
+			chks.each( function(item)
+			{
+								var rec = dt.getRecord( item.ancestor().ancestor() );
+								http=GetXmlHttpObject();
+								var params ="macanbo="+rec.get('id');
+								//mo ket noi bang phuong thuc post
+								http.open("POST",'get_list_quyen_canbo.php', false);
+								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+								//http.setRequestHeader("Content-length", params.length);
+								//http.setRequestHeader("Connection", "close");
+								//ham xu li du lieu tra ve cua ajax send thanh cong
+								http.onreadystatechange = function() 
+								{
+									if(http.readyState == 4 && http.status == 200) 
+									   {											
+												var x=http.responseXML.getElementsByTagName('RESULT');
+												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+											   {
+													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='CBQLBM')
+													{
+																	item.set('checked', true);
+																	//alert(macanbo);
+								
+													}
+											   }
+												
+									   }
+								}
+								http.send(params);
+			})	
+}
+function checkbox_gv()
+{
+	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtrgv");
+			chks.each( function(item)
+			{
+								var rec = dt.getRecord( item.ancestor().ancestor() );
+								http=GetXmlHttpObject();
+								var params ="macanbo="+rec.get('id');
+								//mo ket noi bang phuong thuc post
+								http.open("POST",'get_list_quyen_canbo.php', false);
+								//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+								//http.setRequestHeader("Content-length", params.length);
+								//http.setRequestHeader("Connection", "close");
+								//ham xu li du lieu tra ve cua ajax send thanh cong
+								http.onreadystatechange = function() 
+								{
+									if(http.readyState == 4 && http.status == 200) 
+									   {											
+												var x=http.responseXML.getElementsByTagName('RESULT');
+												for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+											   {
+													if(x[i].getElementsByTagName('MAQUYEN')[0].firstChild.nodeValue=='GV')
+													{
+																	item.set('checked', true);
+																	//alert(macanbo);
+								
+													}
+											   }
+												
+									   }
+								}
+								http.send(params);
+			})	
+}
 function checkbox_themvpp()
 {
 	var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr2");
