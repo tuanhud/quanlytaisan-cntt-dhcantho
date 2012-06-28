@@ -32,6 +32,60 @@ function capnhat_quyen_nguoidung(filephp,frm,macanbo,maquyen)
 //Them danh sach hoi vien duoc khen thuong
 function update_quyen_nguoidung(frm){
 
+   try
+	{
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtrad");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'ADMIN')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'ADMIN');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtrcbql");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'CBQLBM')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'CBQLBM');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtrgv");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'GV')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'GV');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
 	try
 	{
 		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr2");

@@ -74,6 +74,9 @@ $(document).ready(function()
 	{		
 			
 			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
+			checkbox_admin();
+			checkbox_cbqlbm();
+			checkbox_gv();
 			checkbox_themvpp();
 			checkbox_suavpp();
 			checkbox_themkk();
