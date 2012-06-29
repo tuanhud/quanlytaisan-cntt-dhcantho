@@ -8,16 +8,10 @@
 	//{
 			include_once('../database.php');
 			$db=new database();	
-			$query ='select MaKHMS from kehoachmuasam where MSCB = "'.$_SESSION['msclb'].'"';
-				$result = mysql_query($query) or die("SQL Error 1: " . mysql_error());
-				$row = mysql_fetch_row($result);
-				$ma = $row[0];
-				
-				
 				$sql = "UPDATE `thuockhms` SET
 					`SoLuong`='".$_POST['SoLuong']."',
 					`DonGiaMuaSam`='".$_POST['DonGia']."',
-					`ThuyetMinhSuDung`='".$_POST['ThuyetMinh']."' WHERE `MaTaiSan`='".$_POST['MaTaiSan']."' and `MaKHMS`='".$ma."'";
+					`ThuyetMinhSuDung`='".$_POST['ThuyetMinh']."' WHERE `MaTaiSan`='".$_POST['MaTaiSan']."' and `MaKHMS`='".$_POST['MaKHMS']."'";
 				$db->setQuery($sql);
 					if($db->executeQuery()!=1)
 					{

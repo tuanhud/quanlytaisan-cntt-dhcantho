@@ -128,3 +128,41 @@ var _admin;
 						})
 				},
 			}
+			
+			
+			
+function get_info_phieukiemke(filephp, frm)
+{
+	if(frm.chonphieu.value==-1)
+	{
+		frm.ngaylap.value='';
+		frm.capnhat.value='';
+		frm.ghichu.value='';
+	}
+	else
+	{
+		var maphieu = frm.chonphieu.value;
+		http=GetXmlHttpObject();
+		var params = "maphieu="+maphieu;
+		//mo ket noi bang phuong thuc post
+		http.open("POST", filephp, false);
+		//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		//http.setRequestHeader("Content-length", params.length);
+		//http.setRequestHeader("Connection", "close");
+		//ham xu li du lieu tra ve cua ajax send thanh cong
+		http.onreadystatechange = function()
+		{
+			if(http.readyState == 4 && http.status == 200) 
+			{
+				frm.ghichu.value=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+				frm.capnhat.value=http.responseXML.getElementsByTagName('RESULT')[2].firstChild.nodeValue;
+				frm.ngaylap.value=http.responseXML.getElementsByTagName('RESULT')[1].firstChild.nodeValue;
+				
+				
+			}
+		}
+		http.send(params);
+		
+		}
+	}

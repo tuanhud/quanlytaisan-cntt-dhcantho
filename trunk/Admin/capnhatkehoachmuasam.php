@@ -20,7 +20,7 @@
 <script type="text/javascript" src="js/yui.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/fill.js"></script>
-<script type="text/javascript" src=""></script>
+<script type="text/javascript" src="js/capnhattaisan.js"></script>
 <script type="text/javascript" src="js/table-khms.js"></script>
 
 <script type="text/javascript" >
@@ -35,14 +35,11 @@ $(document).ready(function() {
 	fillcombo2('get_list_nam.php',document.frm_suakehoachmuasam.cbo_namsua);
 	fillcombo('get_list_donvi.php',document.frm_suakehoachmuasam.cbo_chondonvisua);
 	//createTable();
-	//createTable2();
-			
-			
-			
-		
-		 //getRecord('get_list_kehoachmuasam.php');
-	
-	
+	createTable2();
+	/*$('form[name="frm_themtaisan"] select[name="cbo_tenthuoctinh"]').change(function(){		
+		 ('get_list_hoivien_chsv.php', this.value);
+	});
+	*/
 }); 
 </script>
 </head>

@@ -15,27 +15,18 @@ session_start();
 	if (isset($_GET['update']))
 	{
 		// UPDATE COMMAND 
-		$query ='select MaKHMS from kehoachmuasam where MSCB = "'.$_SESSION['msclb'].'"';
-		$result = mysql_query($query) or die("SQL Error 1: " . mysql_error());
-		$row = mysql_fetch_row($result);
-		$ma = $row[0];
 		
 		$update_query = "UPDATE `thuockhms` SET
 		`SoLuong`='".$_GET['SoLuong']."',
 		`DonGiaMuaSam`='".$_GET['DonGia']."'
-		 WHERE `MaTaiSan`='".$_GET['MaTaiSan']."' and `MaKHMS`='".$ma."'";
+		 WHERE `MaTaiSan`='".$_GET['MaTaiSan']."' and `MaKHMS`='".$_GET['MaKHMS']."'";
 		 $result = mysql_query($update_query) or die("SQL Error 1: " . mysql_error());
 		 echo $result;
 	}
 	else if (isset($_GET['delete']))
 	{
 		// DELETE COMMAND 
-		$query ='select MaKHMS from kehoachmuasam where MSCB = "'.$_SESSION['msclb'].'"';
-		$result = mysql_query($query) or die("SQL Error 1: " . mysql_error());
-		$row = mysql_fetch_row($result);
-		$ma = $row[0];
-		
-		$delete_query = "DELETE FROM `thuockhms` WHERE `MaTaiSan`='".$_GET['MaTaiSan']."' AND `MaKHMS`='".$ma."'";
+		$delete_query = "DELETE FROM `thuockhms` WHERE `MaTaiSan`='".$_GET['MaTaiSan']."' AND `MaKHMS`='".$_GET['MaKHMS']."'";
 		$result = mysql_query($delete_query) or die("SQL Error 1: " . mysql_error());
 		 echo $result;
 	}

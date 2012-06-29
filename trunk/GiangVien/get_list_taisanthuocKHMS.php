@@ -7,7 +7,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('CREATE VIEW taisanmuasam AS SELECT a.MaTaiSan, a.TenTaiSan, a.TenDonViTinh, b.SoLuong, b.DonGiaMuaSam, b.ThuyetMinhSuDung FROM taisan a, thuockhms b, kehoachmuasam c where b.MaKHMS=c.MaKHMS and a.MaTaiSan=b.MaTaiSan and c.MSCB="'.$_SESSION['msclb'].'"');			
+					$db->setQuery('CREATE VIEW taisanmuasam AS SELECT a.MaTaiSan, a.TenTaiSan, a.TenDonViTinh, b.SoLuong, b.DonGiaMuaSam, b.ThuyetMinhSuDung FROM taisan a, thuockhms b where a.MaTaiSan=b.MaTaiSan and b.MaKHMS="'.$_POST['makhms'].'"');			
 					$result=$db->fetchAll();
 					
 					$db->setQuery('CREATE VIEW dongia AS SELECT a.GiaTriThuocTinh, a.MaTaiSan  from cothuoctinh a, thuoctinh b where a.MaThuocTinh=b.MaThuocTinh and b.MaThuocTinh=7');

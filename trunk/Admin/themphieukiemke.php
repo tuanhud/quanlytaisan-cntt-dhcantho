@@ -1,34 +1,50 @@
 <?php
 	//khoi dong sesion
     session_start();
+	//dinh dang file thanh file xml
+	header( "content-type: text/xml" );
 	//kiem tra đã đăng nhập
 	//if (session_is_registered('maquyen') && $_SESSION['maquyen']=="AD")
-	{
-			$isExist = 0;
+	//{
 			include_once('../database.php');
-			$db=new database();
-			$sql = "Select MSCB from nguoidung";			
-			$db->setQuery($sql);
-			$result = $db->fetchAll();
-			while($row = mysql_fetch_array($result))
-			{
-				if($row[1]==$_POST['txt_masocanbo'])
+			$db=new database();	
+			// INSERT COMMAND 
+							 
+				 $query = "SELECT max(MaPhieuKiemKe) FROM phieukiemke";
+				 $db->setQuery($query);
+				 $result = $db->fetchAll();
+				 $row = mysql_fetch_array($result,MYSQL_NUM);
+				 $maphieu = $row[0]+1;
+				
+				$sql= "insert into `phieukiemke` values('".$maphieu."','".$_POST['Nam']."','".$_POST['MaLoaiKK']."','".$_POST['DienGiaiKiemKe']."','".$_POST['NgayKiemKe']."','".$_POST['NgayKetThucKiemKe']."')";
+				
+				$db->Execute($sql);
+				
+				$sql2 = "insert into `cophieumau` values('".$maphieu."','".$_POST['MaPhieu']."')";
+				$db->setQuery($sql2);
+				if($db->executeQuery()!=1)
 				{
-					echo 2;
-					exit;	
+						$xml="";
+						$xml.="<INFO>";
+						$xml.="<RESULT>";
+						$xml.="Thất bại";
+						$xml.="</RESULT>";
+						$xml.="</INFO>";
+						echo $xml;
+						exit;
 				}
-			}
-			$sql = "insert into nguoidung values('".$_POST['txt_masocanbo']."', '".$_POST['cbo_tendonvithem']."', '".$_POST['txt_tencanbo']."', '".$_POST['cbo_gioitinh']."', '".$_POST['cbo_ngaysinh']."', '".$_POST['cbo_thangsinh']."', '".$_POST['cbo_namsinh']."','".$_POST['txt_email']."', '".$_POST['txt_diachi']."', '".$_POST['txt_sodienthoai']."', '".$_POST['txt_matkhau']."')";
-					$db->setQuery($sql);
-					if($db->executeQuery()!=1)
-					{
-						echo 0;
+				else
+				{
+						$xml="";
+						$xml.="<INFO>";
+						$xml.="<RESULT>";
+						$xml.="Thành công";
+						$xml.="</RESULT>";
+						$xml.="</INFO>";
+						echo $xml;
 						exit;
-					}
-					else
-					{
-						echo 1;
-						exit;
-					}
-	}
+				}
+					
+
+	//}
 ?>
