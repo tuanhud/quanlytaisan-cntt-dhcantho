@@ -75,6 +75,12 @@
 			
 		
             });
+			function thoat() {
+		if (confirm('Ban có thật sự muốn thoát không?' )) {
+			document.location = '../logout.php';
+			return;
+		}
+	}
         </script>
          <script type="text/javascript" >
 //Không cho nhập ký tự
@@ -108,6 +114,13 @@ $(document).ready(function() {
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
 	<!--begin header-->
+   			 <div style="Z-INDEX: 1; LEFT: 1031px; WIDTH: 200px; POSITION: absolute; TOP: 9px; HEIGHT: 30px" align="center"> <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF"><a href="capnhatthongtincanhanad.php">Cập nhật thông tin cá nhân</a>| <a class="white" href="javascript:thoat();">Thoát</a> <br />
+   			   Xin chào,
+   			   <?=$_SESSION['hoten']?>
+   			   <br />
+   			   (<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
+  <?=$_SESSION['msclb']?>
+</font>) </font></div>
    			 <?php include_once('../header.php');?> 
     <!--end header-->
     <!--begin content-->
