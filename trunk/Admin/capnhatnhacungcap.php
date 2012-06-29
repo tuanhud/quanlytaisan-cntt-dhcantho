@@ -56,8 +56,28 @@
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
-    <script type="text/javascript" src="js/capnhatnhasanxuat.js"></script>
+    <script type="text/javascript" src="js/capnhatnhacungcap.js"></script>
     <script type="text/javascript">
+	function keypress(e){
+    var keypressed = null;
+    if (window.event)
+	keypressed = window.event.keyCode; //IE
+    else 
+	keypressed = e.which; //NON-IE, Standard
+
+    if (keypressed < 48 || keypressed > 57)
+    { 
+	//CharCode của 0 là 48 (Theo bảng mã ASCII)
+	//CharCode của 9 là 57 (Theo bảng mã ASCII)
+	if (keypressed == 8 || keypressed == 127)
+	{
+	//Phím Delete và Phím Back
+	return;
+	}
+	alert("Bạn chỉ được phép nhập số!");
+	return false;
+}
+}
         $(document).ready(function () {
             initmenu();
             $("#parentTable").height(1600);	
@@ -71,20 +91,27 @@
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
-			document.frm_themnsx.txt_tennsxthem.focus();
-	        fillcombo('get_list_nhasanxuat.php',document.frm_suansx.cbo_mansxsua);
-	         fillcombo('get_list_nhasanxuat.php',document.frm_xoansx.cbo_mansxxoa);	
-	        $('form[name="frm_suansx"] select[name="cbo_mansxsua"]').change(function(){
-		    get_info_nhasanxuat('get_info_nhasanxuat.php',document.frm_suansx);
+			document.frm_themncc.txt_tennccthem.focus();
+	        fillcombo('get_list_nhacungcap.php',document.frm_suancc.cbo_manccsua);
+	        fillcombo('get_list_nhacungcap.php',document.frm_xoancc.cbo_manccxoa);	
+	        $('form[name="frm_suancc"] select[name="cbo_manccsua"]').change(function(){
+		    get_info_nhacungcap('get_info_nhacungcap.php',document.frm_suancc);
 	        });
-	        $('form[name="frm_xoansx"] select[name="cbo_mansxxoa"]').change(function(){
-		    get_info_nhasanxuat2('get_info_nhasanxuat.php',document.frm_xoansx);
-	});
+	        $('form[name="frm_xoancc"] select[name="cbo_manccxoa"]').change(function(){
+		    get_info_nhacungcap2('get_info_nhacungcap.php',document.frm_xoancc);
+	        });
             });
         </script>
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
 	<!--begin header-->
+   			 <div style="Z-INDEX: 1; LEFT: 1031px; WIDTH: 200px; POSITION: absolute; TOP: 9px; HEIGHT: 30px" align="center"> <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF"><a href="capnhatthongtincanhanad.php">Cập nhật thông tin cá nhân</a>| <a class="white" href="javascript:thoat();">Thoát</a> <br />
+   			   Xin chào,
+   			   <?=$_SESSION['hoten']?>
+   			   <br />
+   			   (<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
+  <?=$_SESSION['msclb']?>
+</font>) </font></div>
    			 <?php include_once('../header.php');?> 
     <!--end header-->
     <!--begin content-->
@@ -120,12 +147,12 @@
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm nhà sản xuất</td>
+          <td width="419" align="center">Thêm nhà cung cấp</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themnsx" id="frm_themnsx">
+          	<form name="frm_themncc" id="frm_themncc">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -133,15 +160,25 @@
                     <td class="level_1_1"></td>
               </tr>
                <tr>
-					<td height="22" align="right" class="level_1_2">Tên nhà sản xuất</td>
+					<td height="22" align="right" class="level_1_2">Tên nhà cung cấp</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tennsxthem" id="txt_tennsxthem" type="text" class="txtbox" style="width:100%"></td>
-			</tr>                
+                    	<input name="txt_tennccthem" id="txt_tennccthem" type="text" class="txtbox" style="width:100%"></td>
+			</tr>     
+            <tr>
+					<td height="22" align="right" class="level_1_1">Địa chỉ nhà cung cấp</td>
+					<td width="50%" align="left" class="level_1_2">
+                    	<input name="txt_diachinccthem" id="txt_diachinccthem" type="text" class="txtbox" style="width:100%"></td>
+			</tr>    
+            <tr>
+					<td height="22" align="right" class="level_1_2">SĐT nhà cung cấp</td>
+					<td width="50%" align="left" class="level_1_2">
+                    	<input name="txt_sdtnccthem" id="txt_sdtnccthem" type="text" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></td>
+			</tr>               
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" name="btn_themnsx" id="btn_themnsx" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" name="btn_themncc" id="btn_themncc" value="Thêm"></td>
               </tr>
 			  
-			   
+			  
               </tbody>
            </table>
            </form>
@@ -154,12 +191,12 @@
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa nhà sản xuất</td>
+          <td width="419" align="center">Sửa nhà cung cấp</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suansx" id="frm_suansx">
+          	<form name="frm_suancc" id="frm_suancc">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -167,21 +204,33 @@
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn nhà sản xuất </td>
+					<td height="22" align="right" class="level_1_1">Chọn nhà cung cấp cần sửa</td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_mansxsua" id="cbo_mansxsua" class="cbo" style="width:100%;">
+                    	<select name="cbo_manccsua" id="cbo_manccsua" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
 			</tr>
             <tr>
-					<td height="22" align="right" class="level_1_2">Tên nhà sản xuất mới </td>
+					<td height="22" align="right" class="level_1_2">Tên nhà cung cấp mới </td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tennsxsua" id="txt_tennsxsua" type="text" class="txtbox" style="width:100%">
+                    	<input name="txt_tennccsua" id="txt_tennccsua" type="text" class="txtbox" style="width:100%">
+					</td>
+			</tr> 
+            <tr>
+					<td height="22" align="right" class="level_1_1">Địa chỉ nhà cung cấp mới </td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<input name="txt_diachinccsua" id="txt_diachinccsua" type="text" class="txtbox" style="width:100%">
+					</td>
+			</tr> 
+            <tr>
+					<td height="22" align="right" class="level_1_2">SĐT nhà cung cấp mới </td>
+					<td width="50%" align="left" class="level_1_1">
+                    	<input name="txt_sdtnccsua" id="txt_sdtnccsua" type="text" class="txtbox" style="width:100%" onKeyPress="return keypress(event)">
 					</td>
 			</tr> 
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_1">
-                <input type="button" name="btn_suansx" id="btn_suansx" class="button_1" value="Lưu">
+                <input type="button" class="button_1" name="btn_suancc" id="btn_suancc" value="Lưu">
                 </td>
             </tr>
 				  						  
@@ -197,12 +246,12 @@
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa nhà sản xuất</td>
+          <td width="419" align="center">Xóa nhà cung cấp</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_xoansx" id="frm_xoansx">
+          	<form name="frm_xoancc" id="frm_xoancc">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -210,15 +259,28 @@
                     <td class="level_1_2"></td>
               </tr>
              <tr>
-					<td height="22" align="right" class="level_1_1">Chọn nhà sản xuất cần xóa</td>
+					<td height="22" align="right" class="level_1_1">Chọn nhà cung cấp cần xóa</td>
 					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_mansxxoa" id="cbo_mansxxoa" class="cbo" style="width:100%;">
+                    	<select name="cbo_manccxoa" id="cbo_manccxoa" class="cbo" style="width:100%;">
                         </select>                       
                     </td>
-			</tr>
+			</tr>   
+            <tr>
+					<td height="22" align="right" class="level_1_2">Tên nhà cung cấp cần xóa</td>
+					<td width="50%" align="left" class="level_1_1"><input name="txt_tennccxoa" id="txt_tennccxoa" type="text" disabled class="txtbox"style="width:100%"></td>
+			</tr> 
              <tr>
-						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" name="btn_xoansx" id="btn_xoansx" class="button_1" value="Xóa">
+					<td height="22" align="right" class="level_1_1">Địa chỉ nhà cung cấp  cần xóa</td>
+					<td width="50%" align="left" class="level_1_2"><input name="txt_diachinccxoa" id="txt_diachinccxoa" type="text" disabled class="txtbox"style="width:100%"></td>
+			</tr>  
+             <tr>
+					<td height="22" align="right" class="level_1_2">SĐT nhà cung cấp cần xóa</td>
+					<td width="50%" align="left" class="level_1_1"><input name="txt_sdtnccxoa" id="txt_sdtnccxoa" type="text" disabled class="txtbox"style="width:100%"></td>
+			</tr>              
+              <tr>
+            <tr>
+						<td colspan="2" height="22" align="center" class="level_1_1">
+                        <input type="button" class="button_1" name="btn_xoancc" id="btn_xoancc" value="Xóa">
                         </td>
 			</tr>
 				  						  

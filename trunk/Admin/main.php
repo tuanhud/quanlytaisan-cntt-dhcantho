@@ -71,6 +71,13 @@
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
             });
+			//chuc nang thoat
+		function thoat() {
+		if (confirm('Ban có thật sự muốn thoát không?' )) {
+			document.location = '../logout.php';
+			return;
+		}
+	}
         </script>
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
@@ -78,6 +85,13 @@
    			 <?php include_once('../header.php');?> 
     <!--end header-->
     <!--begin content-->
+    <div style="Z-INDEX: 1; LEFT: 1031px; WIDTH: 200px; POSITION: absolute; TOP: 9px; HEIGHT: 30px" align="center"> <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF"><a href="capnhatthongtincanhanad.php">Cập nhật thông tin cá nhân</a>| <a class="white" href="javascript:thoat();">Thoát</a> <br />
+         Xin chào,
+         <?=$_SESSION['hoten']?>
+         <br />
+         (<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
+  <?=$_SESSION['msclb']?>
+</font>) </font></div>
     <div class="rc-all" style='margin-right: auto; margin-left: auto; border: 1px solid #d2d2d2; width: 1000px; height: 100%; margin-top: 40px; margin-bottom: 20px; background: #fff;'>
        <table class="rc-all" id="demostable" style="margin: 0 auto; table-layout: fixed; width: 100%; min-height: 100%; height: auto; height: 100%; border-collapse: collapse; background: #EEEEEE;">
             <tbody>
@@ -86,8 +100,8 @@
                     	<?php include_once('menu.php');?> 
             		</tr>
                     <tr>
-               		 	<td>
-                        	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+           		 	  <td>
+                   	    <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
                            
@@ -205,13 +219,13 @@
   								</tr>
                                 </tbody>
                              </table>
-                               			</tr>       
+                       			  </tr>       
                             	</tbody>
-                         	</table>
-                     	</td>
+                       	</table></td>
                     </tr>
               </tbody>
         </table>
+       
                 
     </div>
     <!--end content-->
