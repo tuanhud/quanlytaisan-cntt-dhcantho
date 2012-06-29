@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
     <link rel="stylesheet" href="../styles/site.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../styles/style.css" media="screen" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.summer.css" type="text/css"/>
     <script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="../scripts/demofunctions.js"></script>
     <script type="text/javascript" src="../jqwidgets/globalization/jquery.global.js"></script>
@@ -59,6 +60,7 @@
 	<script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <script type="text/javascript" src="js/capnhatphieukiemke.js"></script>
+    <script type="text/javascript" src="js/table-kiemke.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -73,35 +75,36 @@
             var theme = getTheme();
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
             $("#jqxMenu").css('visibility', 'visible'); 
-			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+			$("#ngaybdkk").jqxDateTimeInput({ width: '250px', height: '25px',formatString: 'dd/MM/yyyy', theme: 'summer' });
+			$("#ngayktkk").jqxDateTimeInput({ width: '250px', height: '25px',formatString: 'dd/MM/yyyy', theme: 'summer' });
+			
+			//var getDate= $('#DateTimeInput').jqxDateTimeInput('getDate'); 
+			//$("#ngayktkk").jqxDateTimeInput('setMinDate', getDate);
+          	//$("#ngayktkk").jqxDateTimeInput('setMaxDate', new Date(2013, 0, 1));
 			
 			fillcombo('get_list_loaikiemke.php',document.frm_themphieukiemke.cbo_loaikiemkethem);
 			fillcombo('get_list_loaikiemke.php',document.frm_suaphieukiemke.cbo_loaikiemkesua);
-			// Load ngay thang nam  cho nguoi dung chon them
-			init_date_input(document.frm_themphieukiemke.cbo_ngaythem1,document.frm_themphieukiemke.cbo_thangthem1,document.frm_themphieukiemke.cbo_namthem1);
-			init_date_input(document.frm_themphieukiemke.cbo_ngaythem2,document.frm_themphieukiemke.cbo_thangthem2,document.frm_themphieukiemke.cbo_namthem2);	
-			//load ngay thang nam cho nguoi dung chon sua
+			
 		
-		init_date_input(document.frm_suaphieukiemke.cbo_ngaysua1,document.frm_suaphieukiemke.cbo_thangsua1,document.frm_suaphieukiemke.cbo_namsua1);
-			init_date_input(document.frm_suaphieukiemke.cbo_ngaysua2,document.frm_suaphieukiemke.cbo_thangsua2,document.frm_suaphieukiemke.cbo_namsua2);
-			//load ngay thang nam cho nguoi dung chon xoa
-			init_date_input(document.frm_xoaphieukiemke.cbo_ngayxoa1,document.frm_xoaphieukiemke.cbo_thangxoa1,document.frm_xoaphieukiemke.cbo_namxoa1);
-			init_date_input(document.frm_xoaphieukiemke.cbo_ngayxoa2,document.frm_xoaphieukiemke.cbo_thangxoa2,document.frm_xoaphieukiemke.cbo_namxoa2);
-			//su kien nhan button them
-			/*$('form[name="frm_themban"] input[type="button"]').click(function(){
-				themban('../themban.php',document.frm_themban);	
+			fillcombo('get_list_phieumau.php',document.frm_themphieukiemke.chonphieu);
+			fillcombo('get_list_donvi2.php',document.frm_themphieukiemke.cbo_donvi);
+			$('form[name="frm_themphieukiemke"] select[name="cbo_donvi"]').change(function()
+			{
+				if(document.frm_themphieukiemke.cbo_donvi.value!=-1)
+				{
+					//$('#tablephieumau').jqxGrid('destroy');
+					//$('#tablephieumau').jqxGrid('refreshdata');
+					//$('#tablephieumau').jqxGrid('clear');
+					taobangkiemke(document.frm_themphieukiemke.chonphieu.value,document.frm_themphieukiemke.cbo_donvi.value,document.frm_themphieukiemke);
+				}
 			});
 			
-			//su kien nhan button sua
-			$('form[name="frm_suaban"] input[type="button"]').click(function(){
-				suaban('../suaban.php',document.frm_suaban);	
-			});	
-			//su kien click button xoa
-			$('form[name="frm_xoaban"] input[type="button"]').click(function(){
-				if (confirm('Bạn có chắc chắn muốn xóa không ?' )) {
-					xoaban('../xoaban.php',document.frm_xoaban);	
-				}		
-			});*/
+			$('form[name="frm_themphieukiemke"] select[name="chonphieu"]').change(function()
+			{
+				get_info_phieukiemke('get_info_phieukiemke.php',document.frm_themphieukiemke);
+			});
+			
+			
             });
         </script>
 </head>
@@ -128,13 +131,13 @@
                                  
     							 <tr>
                                         <td height="100%"  class="demoContent" valign="middle">
-                                              <table width="752" border="0" cellpadding="0" cellspacing="0" align="center" style="margin-top:50px">      
+                                              <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
                                          
                                           
                                           <!--noi dung o day-->
                                           <tr>
     <td height="100%" align="center" valign="middle">   
-		 <table width="513" border="0" cellpadding="0" cellspacing="0">
+		 <table width="960" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -147,50 +150,86 @@
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-              		<td height="22" class="level_1_1"></td>
+              		<td width="30%" height="22" class="level_1_1"></td>
                     <td class="level_1_1"></td>
               </tr>
 			  <tr>
 			    <td height="22" align="right" class="level_1_2">Chọn loại kiểm kê:</td>
 			    <td align="left" class="level_1_2"><label for="loaikk"></label>
-			      <select name="cbo_loaikiemkethem" id="cbo_loaikiemkethem" style="width:100%">
+			      <select name="cbo_loaikiemkethem" id="cbo_loaikiemkethem" style="width:90%">
 			        </select></td>
+                </tr>
 			    <tr>
-                 <td height="22" align="right" class="level_1_2">Ngày kiểm kê:</td>
-                 <td align="left" class="level_1_2"><select name="cbo_ngaythem1" id="cbo_ngaythem1" style="width:60">
-                 </select>
-                   <label for="thktkk4">/</label>
-                   <select name="cbo_thangthem1" id="cbo_thangthem1" style="width:70">
-                   </select>
-                   /
-                   <select name="cbo_namthem1" id="cbo_namthem1" style="width:70">
-                   </select></td>
+                 <td height="22" align="right" class="level_1_1">Ngày kiểm kê:</td>
+                 <td align="left" class="level_1_1">
+                 <div id="ngaybdkk"></div>
+                 </td>
                </tr>
                <tr>
-                 <td height="22" align="right" class="level_1_1">Ngày kết thúc kiểm kê:</td>
-                 <td align="left" class="level_1_1"><select name="cbo_ngaythem2" id="cb_ngaythem2" style="width:60">
-                 </select>
-                   <label for="thktkk5">/</label>
-                   <select name="cbo_thangthem2" id="cbo_thangthem2" style="width:70">
-                    
-                   </select>
-                   /<label for="namktkk5"></label>
-                   <select name="cbo_namthem2" id="cbo_namthem2" style="width:70">
-                   </select></td>
+                 <td height="22" align="right" class="level_1_2">Ngày kết thúc kiểm kê:</td>
+                 <td align="left" class="level_1_2">
+                 <div id="ngayktkk"></div>
+                 </td>
                </tr>
                <tr>
-					<td height="22" align="right" class="level_1_2">Diễn giải:</td>
-					<td width="50%" align="left" class="level_1_2"><textarea name="txt_diengiai" rows="5" class="txtbox" id="txt_diengiai" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
-			</tr>
-               <tr>
-                 <td height="22" align="right" class="level_1_2">Chọn  mẫu có sẵng hoặc lập phiếu mới:</td>
-                 <td height="22" align="left" class="level_1_2"><select name="select4" id="select3" style="width:100%">
-                 </select></td>
+					<td height="22" align="right" class="level_1_1">Diễn giải:</td>
+					<td width="70%" align="left" class="level_1_1"><textarea name="txt_diengiai" rows="5" class="txtbox" id="txt_diengiai" style="width:90%"></textarea></td>
+				</tr>
+                 <tr>
+                 <td height="22" align="right" class="level_1_2">Chọn phiếu mẫu:</td>
+                 <td height="22" align="left" class="level_1_2">
+                 <select name="chonphieu" id="chonphieu" style="width:90%;"></select> 
+                 </td>
                </tr>
+           		 <tr>
+			    <td height="22" align="right" class="level_1_1">Chọn đơn vị:</td>
+			    <td align="left" class="level_1_1"><label for="loaikk"></label>
+			      <select name="cbo_donvi" id="cbo_donvi" style="width:90%">
+			        </select></td>
+                </tr>
                <tr>
                  <td height="22" align="right" class="level_1_2">&nbsp;</td>
                  <td height="22" align="left" class="level_1_2">&nbsp;</td>
                </tr>
+                <tr>
+                 <td height="22" align="right" class="level_1_1">Ngày lập</td>
+                 <td height="22" align="left" class="level_1_1">
+                 <input type="text" name="ngaylap" id="ngaylap" style="width:90%;" disabled="disabled" />
+                 </td>
+               </tr>
+                <tr>
+                 <td height="22" align="right" class="level_1_2">Cập nhật mới nhất</td>
+                 <td height="22" align="left" class="level_1_2">
+                 <input type="text" name="capnhat" id="capnhat" style="width:90%;" disabled="disabled" />
+                 </td>
+               </tr>
+                <tr>
+                 <td height="22" align="right" class="level_1_1">Ghi chú</td>
+                 <td height="22" align="left" class="level_1_1">
+                  <input type="text" name="ghichu" id="ghichu" style="width:90%;" disabled="disabled" />
+                 </td>
+               </tr>
+               <tr>
+					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
+                     <div style="margin-top: 10px;" id="tablephieumau"></div>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                 
+                               <div style="margin-left: 10px; float: left;">
+                                    <div id="buttondk" style="margin-top: 5px; display:none">
+                                        <input type="button" value="Thêm thiết bị yêu cầu" id="showWindowButton" />
+                                        <input id="deleterowbutton" style="margin-left:10" type="button" value="Xóa thiết bị yêu cầu" />
+                                        <input id="import" style="margin-left:10" type="submit" value="Import Excel/ Word/ PDF" />
+                                        <input id="delete" style="margin-left:10" type="button" value="Xóa yêu cầu" />
+                                    </div> 
+                                   
+                        </div>
+                   </div>
+                         
+                        
+                    </td>
+			</tr> 
                <tr>
                  <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" id="btn_themphieukiemke" value="Thêm">
                    <input type="button" class="button_1" id="btn_themphieukiemke2" value="Export phiếu"></td>
@@ -207,7 +246,8 @@
         </tr>		
         </tbody>
         </table>
-
+		<br />
+        <br />
         <table width="515" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
@@ -226,13 +266,13 @@
               </tr>
               <tr>
               		<td height="22" class="level_1_2" align="right">Chọn phiếu kiểm kê: </td>
-                    <td width="50%" class="level_1_2"><select name="cbo_phieukiemkesua" id="cbo_phieukiemkesua"  style="width:100%">
+                    <td width="70%" class="level_1_2"><select name="cbo_phieukiemkesua" id="cbo_phieukiemkesua"  style="width:90%">
                     </select></td>
               </tr>   
               <tr>
                 <td height="22" align="right" class="level_1_1">Chọn loại kiểm kê:</td>
                 <td height="22" align="center" class="level_1_1"><label for="select2"></label>
-                  <select name="cbo_loaikiemkesua" id="cbo_loaikiemkesua" style="width:100%">
+                  <select name="cbo_loaikiemkesua" id="cbo_loaikiemkesua" style="width:90%">
                   </select></td>
               </tr>
               <tr>
@@ -248,7 +288,8 @@
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Ngày kết thúc kiểm kê:</td>
-                <td align="left" class="level_1_2"><select name="cbo_ngaysua2" id="cbo_ngaysua2" style="width:60">
+                <td align="left" class="level_1_2">
+                <select name="cbo_ngaysua2" id="cbo_ngaysua2" style="width:60">
                 </select>
                   /<label for="thktkk2"></label>
                   <select name="cbo_thangsua2" id="cbo_thangsua2" style="width:70">
@@ -259,11 +300,11 @@
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_1">Diễn giải:</td>
-                <td height="22" align="center" class="level_1_1"><textarea name="txt_tenthietbi2" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
+                <td height="22" align="center" class="level_1_1"><textarea name="txt_tenthietbi2" rows="5" class="txtbox" style="width:90%"></textarea></td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Chọn  mẫu có sẵng hoặc lập phiếu mới:</td>
-                <td height="22" align="left" class="level_1_2"><select name="select3" id="cbochonmau" style="width:100%">
+                <td height="22" align="left" class="level_1_2"><select name="select3" id="cbochonmau" style="width:90%">
                 </select></td>
               </tr>
               <tr>

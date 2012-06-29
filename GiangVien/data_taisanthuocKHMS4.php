@@ -8,18 +8,20 @@
 	//{
 			include_once('../database.php');
 			$db=new database();	
-			if (isset($_POST['insert']))
-			{
-				// INSERT COMMAND 
+			$sql = "Select max(MaKHMS) from kehoachmuasam";
+					$db->setQuery($sql);
+					$result = $db->fetchAll();
+					$row = mysql_fetch_array($result,MYSQL_NUM);
+					$ma = $row[0]+1;
 					
-					$insert_query = "insert into `thuockhms`(MaTaiSan, MaKHMS, SoLuong, ThuyetMinhSuDung, DonGiaMuaSam) values('".$_POST['MaTaiSan']."','".$_POST['MaKHMS']."', '".$_POST['SoLuong']."', '".$_POST['ThuyetMinh']."', '".$_POST['DonGia']."')";
+					$insert_query = "insert into `kehoachmuasam`(MaKHMS, MSCB, DuyetBM, DuyetKhoa) values('".$ma."','".$_SESSION['msclb']."',0,0)";
 					$db->setQuery($insert_query);
 					if($db->executeQuery()!=1)
 					{
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
-						$xml.="Thất bại.";
+						$xml.=$ma;
 						$xml.="</RESULT>";
 						$xml.="</INFO>";
 					}
@@ -28,13 +30,13 @@
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
-						$xml.="Thành công";
+						$xml.=$ma;
 						$xml.="</RESULT>";
 						$xml.="</INFO>";
 					}
 					
 					echo $xml;
 					exit;
-		}
+		
 	//}
 ?>
