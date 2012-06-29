@@ -6,8 +6,8 @@
                         <ul style='width: 150px;'>
                            	<li>Văn phòng phẩm
                                 <ul style='width: 300px;'>
-                                    <li><a href="capnhatnsx.php">Cập nhật nhà sản xuất</a></li>
-                                    <li><a href="capnhatnhacc.php">Cập nhật nhà cung ứng</a></li>
+                                    <li><a href="capnhatnhasanxuat.php">Cập nhật nhà sản xuất</a></li>
+                                    <li><a href="capnhatnhacungcap.php">Cập nhật nhà cung ứng</a></li>
 									<li><a href="capnhatloaivpp.php">Cập nhật loại văn phòng phẩm</a></li>  
                                     <li><a href="capnhatvppduoccungcap.php">Cập nhật văn phòng phẩm được cung cấp</a></li>
 									<li><a href="capnhatvpp.php">Cập nhật văn phòng phẩm</a></li>  
