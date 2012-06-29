@@ -47,7 +47,7 @@ if(typeof wpOnload=='function')wpOnload();
 		<input type="password" name="txtMatKhau" id="txtMatKhau" class="input" value="" size="20" tabindex="20" /></label>
 	</p>
 	<p>
-	  <input type="radio" name="radio" id="admin" value="admin" />
+	  <input type="radio" name="radio" id="admin" value="admin" checked="checked" />
 	  <label for="admin"></label>
 Quản trị
 <input type="radio" name="radio" id="cbql" value="cbql" />
