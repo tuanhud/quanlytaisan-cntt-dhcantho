@@ -78,7 +78,7 @@
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
 			fillcombo2('get_list_nam.php',document.frm_duyetkhms.cbo_nam);
-	        fillcombo('get_list_donvi2.php',document.frm_duyetkhms.cbo_chondonvi);
+	        fillcombo('get_list_donvi.php',document.frm_duyetkhms.cbo_chondonvi);
 			//taobang();
 			$('form[name="frm_duyetkhms"] select[name="cbo_nam"]').change(function()
 	{		
@@ -150,7 +150,7 @@
                                               <td align="center" width="44%" valign="middle">
                                              
                                               <!--noi dung o day-->
-                                            	 <table width="900" border="0" cellpadding="0" cellspacing="0">
+                                            	 <table width="960" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
