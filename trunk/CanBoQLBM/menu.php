@@ -4,7 +4,7 @@
                     <li><a href="#"><img style='float: left; margin-right: 5px;' src='../images/home.png' />Trang chủ</a></li>
                     <li><img style='float: left; margin-right: 5px;' src='../images/shoping.png' />Văn phòng phẩm
                         <ul style='width: 250px;'>
-                           	<li><a href="capnhatphieudutru.php">Cập nhật phiếu dự trù thiết bị </a>
+                           	<li><a href="capnhatphieudutru1.php">Cập nhật phiếu dự trù thiết bị </a>
                                 
                             </li>
                            
