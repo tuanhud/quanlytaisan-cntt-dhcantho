@@ -45,7 +45,8 @@ var _admin;
 	{		
 			
 			fillcombo2bien('get_list_makhms.php',document.frm_duyetkhms.cbo_chondonvi,document.frm_duyetkhms.cbo_nam,document.frm_duyetkhms.cbo_makhms);
-	       
+	       //document.frm_duyetkhms.refesh;
+		   taobangtaisan(document.frm_duyetkhms.cbo_makhms);
 			
 		});
 								}
