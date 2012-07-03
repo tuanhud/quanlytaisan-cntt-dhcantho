@@ -57,16 +57,15 @@
     <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
     <script type="text/javascript" src="js/table-vpp.js"></script>
-    
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
     <script type="text/javascript" src="js/taopopupvpp.js"></script>
-    <script type="text/javascript" src="js/table-vppsua.js"></script>
 	<script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             
 			taobangvpp();
-	taopopup()
+			taopopup()
 			
 	
             $("#parentTable").height(1600);	
@@ -89,7 +88,7 @@
 		$btn=0; 
 	fillcombo2('get_list_nam.php',document.frm_lapphieudutru.cbo_namthem);
 	fillcombo2('get_list_quy.php',document.frm_lapphieudutru.cbo_quythem);
-	//sau nay bo don vi, vi su dung session khi can bo dang nhap
+//	sau nay bo don vi, vi su dung session khi can bo dang nhap
 	fillcombo('get_list_donvi.php',document.frm_lapphieudutru.cbo_donvithem);
 	
 	fillcombo('get_list_donvi.php',document.frm_huyphieudutruvpp.cbo_donvihuy);

@@ -11,7 +11,7 @@ function taobangvpp ()
                     { name: 'ten' },
                     { name: 'dvt' },
                     { name: 'nsx' },
-					{ name: 'soluong',type: 'int' },
+					{ name: 'soluong',type: 'int'},
                     { name: 'dongia',type: 'float' },
 					{ name: 'tong',type: 'float' },
                 ],
@@ -47,7 +47,7 @@ function taobangvpp ()
 					  { text: 'Tên văn phòng phẩm', editable: false, datafield: 'ten', width: 150, cellsalign: 'left' },
                       { text: 'ĐVT', editable: false, datafield: 'dvt', width: 50, cellsalign: 'left' },
                       { text: 'Nhà sản xuất',columntype: 'dropdownlist',editable: false, datafield: 'nsx', width: 120 },
-					  { text: 'Số Lượng', datafield: 'soluong',cellsalign: 'right',columntype: 'numberinput', width: 70, 
+					  { text: 'Số Lượng', datafield: 'soluong',editable: true,cellsalign: 'right',columntype: 'numberinput', width: 70, 
 						  validation: function (cell, value) {
 							  if(value > 0)
 							  return true;
@@ -88,7 +88,6 @@ function taobangvpp ()
 				else{
 					alert("Bạn chưa chọn chi tiết VPP!");
 					}	
-					
             });
            $("#jqxgrid").bind('cellvaluechanged', function (event) {
 			   //gan gia tri cho cot thanh tien
@@ -141,6 +140,7 @@ function taobangvpp ()
             addEventListeners();
             $("#jqxWidget").css('visibility', 'visible');
         });
+		// them vao csdl
 		$("#btn_lap").unbind("click").click(function()
 		{
 			var rowcount4 = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
