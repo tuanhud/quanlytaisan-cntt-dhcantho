@@ -65,7 +65,9 @@
                      <li><img style='float: left; margin-right: 5px;' src='../images/baocao.png' />Report
                         <ul style='width: 250px;'>
                              <li><a href="#">In danh sách yêu cầu thiết bị</a></li>
-                             <li><a href="#">In danh sách thiết bị hiện có</a></li>                                    
+                             <li><a href="#">In danh sách thiết bị hiện có</a></li>
+                              <li><a href="thongkesotienbomon.php" target="_blank">Thống kê số tiền cấp cho đơn vị</a></li>              
+                                    <li><a href="thongkesoluongnguoidung.php" target="_blank">Thống kê số lượng người dùng</a></li>                                    
                         </ul>
                     </li>
                 </ul>
