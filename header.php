@@ -2,8 +2,8 @@
         font-size: 12px; line-height: 16px; width: 100%;">
         <table style='table-layout: fixed; width: 1000px; height: 100%; margin: 0 auto;'>
             <tr style="height: 50px;">
-                <td align="left">
-                    <a href=""><img src="../images/banner.png"/></a>       
+                <td align="center">
+                    <a href=""><img src="../images/banner2.png"/></a>       
                 </td> 
             </tr>
         </table>
