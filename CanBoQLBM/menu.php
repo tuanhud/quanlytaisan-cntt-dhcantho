@@ -13,14 +13,15 @@
                     <li><img style='float: left; margin-right: 5px;' src='../images/thongke.png' />Duyệt cấp bộ môn
                         <ul style='width: 250px;'>
                             <li><a href="duyetkhms.php">Duyệt yêu cầu mua sắm</a></li>
-                            <li ><a href="#">Báo cáo tài sản bị hư hỏng</a></li>                                  
+                                                              
 							                       
                         </ul>
                     </li>
                      <li><img style='float: left; margin-right: 5px;' src='../images/baocao.png' />Report
                         <ul style='width: 250px;'>
-                             <li><a href="#">In danh sách yêu cầu đã duyệt</a></li>
-                             <li><a href="#">In danh sách yêu cầu trao đổi thêm</a></li>                                    
+                             <li><a href="#">In danh sách yêu cầu thiết bị đã duyệt</a></li>
+                             <li><a href="#">In danh sách yêu cầu thiết bị chưa duyệt</a></li>
+                             <li><a href="#">In yêu cầu thiết bị của giảng viên</a></li>                                    
                         </ul>
                     </li>
                 </ul>
