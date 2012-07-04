@@ -13,12 +13,12 @@
 			$db->setQuery($sql);
 			$result = $db->fetchAll();
 			$row = mysql_fetch_array($result);
+			$sltshienco=(int)$row[0];
 			$sql3 = "Select slthanhly from taisanduocthanhly where mathanhly='".$_POST['cbo_mathanhlysua']."'";
 			$db->setQuery($sql3);
 			$result3 = $db->fetchAll();
 			$row3 = mysql_fetch_array($result3);
-			$sltsthanhly=(int)$row3[0];
-			$sltshienco=(int)$row[0];
+			$sltsthanhly=(int)$row3[0];		
 			$sltssua=(int)$_POST['txt_soluongtaisansua'];
 			if($sltssua > $sltshienco){
 				if($sltssua <= $sltsthanhly){
@@ -40,13 +40,15 @@
 						$kiemtra=1;
 					}
 			if($kiemtra==1){
-				$db->setQuery("update taisanthuocdonvi set soluongcuadonvi='".$sltschuathanhly."' where mataisan= '".$_POST['txt_matasansua']."' ");
+				$db->setQuery("update `taisanthuocdonvi` set soluongcuadonvi='".$sltschuathanhly."' where mataisan= '".$_POST['txt_mataisansua']."' ");
 				$db->executeQuery();
-				$db->setQuery("update taisanduocthanhly set slthanhly='".$_POST['txt_soluongtaisansua']."' where mathanhly= '".$_POST['cbo_mathanhlysua']."' ");
+				$db->setQuery("update `taisanduocthanhly` set slthanhly='".$_POST['txt_soluongtaisansua']."' where mathanhly= '".$_POST['cbo_mathanhlysua']."' ");
 				$db->executeQuery();
-				$db->setQuery("update thanhlytaisan set diengiaithanhly='".$_POST['txt_diengiaisua']."' where mathanhly= '".$_POST['cbo_mathanhlysua']."' ");
+				$db->setQuery("update `thanhlytaisan` set diengiaithanhly='".$_POST['txt_diengiaisua']."' where mathanhly= '".$_POST['cbo_mathanhlysua']."' ");
+				//$db->executeQuery();
 				if($db->executeQuery()!=1)
 				{
+							echo mysql_error();
 							echo 0;//sua that bai
 							exit;
 				}

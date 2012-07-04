@@ -169,11 +169,11 @@
                 <td width="50%" align="center" class="level_1_2"><label for="txtghichund"></label>
                   <textarea name="txt_ghichu" id="txt_ghichu" style="width:100%"></textarea></td>
               </tr>
-              <tr>
+             <!-- <tr>
                 <td height="22" align="right" class="level_1_2">Thêm nội dung từ file:</td>
                 <td align="left" class="level_1_2"><label for="textfield"></label>
                   <input type="file" name="txt_browse" id="txt_browse"></td>
-              </tr>
+              </tr>-->
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_1"><input name="btn_themnoidungkiemke" type="button" class="button_1" id="btn_themnoidungkiemke" value="Thêm">
                   <input name="btn_huynoidungkiemke" type="reset" class="button_1" id="btn_huynoidungkiemke" value="Hủy"></td>
