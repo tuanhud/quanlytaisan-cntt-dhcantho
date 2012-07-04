@@ -27,7 +27,7 @@
 					$row = mysql_fetch_array($result,MYSQL_NUM);
 					$ma = $row[0]+1;
 					
-					$sql = "insert into taisanduocthanhly values('".$ma."', '".$_POST['txt_mataisanthem']."','".$_POST['txt_soluongtaisan']."')";
+					$sql = "insert into taisanduocthanhly values('".$ma."', '".$_POST['cbo_tendonvithem']."','".$_POST['txt_mataisanthem']."','".$_POST['txt_soluongtaisan']."')";
 					$db->setQuery($sql);
 					$db->executeQuery();
 					$current = getdate(); 

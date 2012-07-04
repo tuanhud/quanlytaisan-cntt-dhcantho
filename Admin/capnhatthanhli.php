@@ -60,12 +60,44 @@
     <script type="text/javascript" src="js/capnhatthanhly.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+	function keypress(e){
+			var keypressed = null;
+			if (window.event)
+				keypressed = window.event.keyCode; //IE
+			else 
+				keypressed = e.which; //NON-IE, Standard
+			
+			if (keypressed < 48 || keypressed > 57)
+			{ 
+				//CharCode của 0 là 48 (Theo bảng mã ASCII)
+				//CharCode của 9 là 57 (Theo bảng mã ASCII)
+				if (keypressed == 8 || keypressed == 127)
+				{
+				//Phím Delete và Phím Back
+				return;
+				}
+				return false;
+			}
+	}
             initmenu();
-	fillcombo('get_list_taisan.php',document.frm_themthanhly.cbo_tentaisanthanhlythem);
-	//fillcombo('get_list_taisan.php',document.frm_suathanhly.cbo_tentaisanthanhlysua);
-	fillcombo2('get_list_namthanhly.php',document.frm_xoathanhly.cbo_namthanhlyxoa);
-	fillcombo2('get_list_namthanhly.php',document.frm_suathanhly.cbo_namthanhlysua);
-			$('form[name="frm_themthanhly"] select[name="cbo_tentaisanthanhlythem"]').change(function(){
+/*	$('form[name="frm_themthanhly"] select[name="cbo_tendonvithem"]').change(function(){
+		_fillcombo('get_list_donvi2.php',document.frm_themthanhly.cbo_tendonvithem,document.frm_themthanhly.cbo_tentaisanthanhlythem);
+		});*/
+	fillcombo('get_list_donvi2.php',document.frm_themthanhly.cbo_tendonvithem);
+	fillcombo('get_list_donvi2.php',document.frm_suathanhly.cbo_tendonvisua);
+	fillcombo('get_list_donvi2.php',document.frm_xoathanhly.cbo_tendonvixoa);
+	//fillcombo2('get_list_namthanhly.php',document.frm_xoathanhly.cbo_namthanhlyxoa);
+	//fillcombo2('get_list_namthanhly.php',document.frm_suathanhly.cbo_namthanhlysua);
+	$('form[name="frm_themthanhly"] select[name="cbo_tendonvithem"]').change(function(){
+		_fillcombo('get_list_taisan_cuadonvi.php',document.frm_themthanhly.cbo_tendonvithem,document.frm_themthanhly.cbo_tentaisanthanhlythem);
+	});
+	$('form[name="frm_suathanhly"] select[name="cbo_tendonvisua"]').change(function(){
+		fillcombo2cbo('get_list_namthanhly.php',document.frm_suathanhly.cbo_tendonvisua,document.frm_suathanhly.cbo_namthanhlysua);
+	});
+	$('form[name="frm_xoathanhly"] select[name="cbo_tendonvixoa"]').change(function(){
+		fillcombo2cbo('get_list_namthanhly.php',document.frm_xoathanhly.cbo_tendonvixoa,document.frm_xoathanhly.cbo_namthanhlyxoa);
+	});
+	$('form[name="frm_themthanhly"] select[name="cbo_tentaisanthanhlythem"]').change(function(){
 		    get_info_ma_soluong_taisan('get_info_ma_soluong_taisan.php',document.frm_themthanhly);
 	});
 	$('form[name="frm_suathanhly"] select[name="cbo_namthanhlysua"]').change(function(){
@@ -130,13 +162,13 @@
                         	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
-                           
+                           <td>
                            				 <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                                 <tbody>
                                 
     							 <tr>
                                         <td height="100%"  class="demoContent" valign="middle">
-                                              <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
+                                            <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
                                           <tr height="10">
                                             <td align="center">&nbsp;</td>       
                                           </tr> 
@@ -157,6 +189,12 @@
                   <tr>
                     <td height="22" class="level_1_1"></td>
                     <td class="level_1_1"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" class="level_1_1" align="right">Chọn đơn vị:</td>
+                    <td class="level_1_1"><label for="cbo_tendonvithem"></label>
+                      <select name="cbo_tendonvithem" id="cbo_tendonvithem" style="width:100%">
+                      </select></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_2">Chọn tài sản cần thanh lý:</td>
@@ -194,7 +232,7 @@
         </tbody>
       </table>
       <br />
-      <table width="500" border="0" cellpadding="0" cellspacing="0">
+     <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
           <tr class="main_1">
             <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -208,6 +246,12 @@
                   <tr>
                     <td height="22" class="level_1_1"></td>
                     <td class="level_1_1"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" class="level_1_1" align="right">Chọn đơn vị:</td>
+                    <td class="level_1_1"><label for="cbo_tendonvisua"></label>
+                      <select name="cbo_tendonvisua" id="cbo_tendonvisua" style="width:100%">
+                      </select></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Năm thanh lý: </td>
@@ -235,7 +279,7 @@
                   <tr>
                     <td height="22" align="right" class="level_1_1">Số lượng tài sản thanh lý:</td>
                     <td width="50%" align="left" class="level_1_1"><p>
-                      <input name="txt_soluongtaisansua" type="text" class="txtbox" id="txt_soluongtaisansua" onKeyPress="return keypress(event)" value="" maxlength="31" style="width:30%">
+                      <input name="txt_soluongtaisansua" type="text" class="txtbox" id="txt_soluongtaisansua"  value="" maxlength="31" style="width:30%">
                       SLTS hiện có: 
                       <label for="txt_sltshiencosua"></label>
                       <input name="txt_sltshiencosua" type="text" id="txt_sltshiencosua" style="width:20%" readonly="readonly">
@@ -260,7 +304,7 @@
         </tbody>
       </table>
       <br />
-      <table width="500" border="0" cellpadding="0" cellspacing="0">
+     <table width="500" border="0" cellpadding="0" cellspacing="0">
         <tbody>
           <tr class="main_1">
             <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -274,6 +318,12 @@
                   <tr>
                     <td height="22" class="level_1_1"></td>
                     <td class="level_1_1"></td>
+                  </tr>
+                  <tr>
+                    <td height="22" class="level_1_1" align="right">Chọn đơn vị:</td>
+                    <td class="level_1_1"><label for="cbo_tendonvixoa"></label>
+                      <select name="cbo_tendonvixoa" id="cbo_tendonvixoa" style="width:100%">
+                      </select></td>
                   </tr>
                   <tr>
                     <td height="22" align="right" class="level_1_1">Năm thanh lý: </td>
@@ -324,12 +374,14 @@
                                           </tr>
                                           <tr>
                                             <td align="center">&nbsp;</td>
-                                          </tr>    
+                                          </tr>
+                                         <!-- </tbody>-->   <!--sadhaskjfhsadjfsadjkf--> 
                                         </table>
                                         </td>
   								</tr>
-                                </tbody>
+                               <!-- </tbody>-->
                              </table>
+                             </td><!--sdafasdfasdfasdfasdfasdfasdf-->
                                			</tr>       
                             	</tbody>
                          	</table>

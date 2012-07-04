@@ -1,0 +1,213 @@
+﻿body {
+	margin:0;
+	background:url(../images/giaodienchung/bg.gif) repeat-y left;
+	}
+/*------------- HEADER  ---------------*/
+
+
+.tl_header {background:url(../images/giaodienchung/tl_header.gif) no-repeat left top; width:20px; height:20px;}
+
+.tl2_header {width:20px; height:20px;}
+
+.tc_header {background:url(../images/giaodienchung/tc_header.gif) repeat-x;}
+
+.tc2_header {repeat-x;}
+
+.tr_header {background:url(../images/giaodienchung/tr_header.gif) no-repeat right top; width:20px; height:20px;}
+
+.tr2_header {width:20px; height:20px;}
+
+.cl_header {background:url(../images/giaodienchung/cl_header.gif) left top; width:20px;}
+
+.cl2_header {width:20px;}
+
+.cr_header {background:url(../images/giaodienchung/cr_header.gif) right top; width:20px;}
+
+.cr2_header { width:20px;}
+
+.cm_header {background:url(../images/giaodienchung/cm_header.gif) repeat-x; height:100px;}
+
+.cm2_header { height:100px;}
+
+.tittle_header {background:url(../images/giaodienchung/BANNER.png) no-repeat left top; width:100%; height:100px;}
+
+
+A.white:visited 
+{
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.white:link 
+{
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.white:hover 
+{
+	COLOR: #ffff00;
+	text-decoration:underline;
+}
+
+/*-------------- END HEADER -----------------*/
+
+
+/*-------------  LOGIN  ---------------*/
+
+.tl {background:url(../images/giaodienchung/padlock.gif) no-repeat left top; width:60px; height:50px;}
+
+.tc {background:url(../images/giaodienchung/tc_login.gif) repeat-x;}
+
+.tr {background:url(../images/giaodienchung/tr_login.gif) no-repeat right top; width:20px;}
+
+.cl {background:url(../images/giaodienchung/cl_login.gif) repeat-y left top; width:20px;}
+
+.cr {background:url(../images/giaodienchung/cr_login.gif) repeat-y right top; width:20px;}
+
+.bl {background:url(../images/giaodienchung/bl_login.gif) no-repeat left bottom; width:20px; height:20px;}
+
+.bc {background:url(../images/giaodienchung/bc_login.gif) repeat-x}
+
+.br {background:url(../images/giaodienchung/br_login.gif) no-repeat right bottom; width:20px; height:20px;}
+
+/*    TEXT     */
+
+.textlogin { font-family:Verdana,sans-serif; font-size:11px; font-weight:bold; color:#666666; padding-left:5px; line-height:22px;}
+
+.headerlogin {font-family:Verdana,sans-serif; font-size:14px; font-weight:bold; color:#FFFFFF;}
+
+.inputlogin { margin:1px; font-family:Verdana,sans-serif; font-size:11px; color:#333333;}
+
+/*------------- END LOGIN  ---------------*/
+
+/*Định dang button*/
+.button_1
+{
+	BORDER-RIGHT: #80b5d7 1px solid;
+	BORDER-TOP: #80b5d7 1px solid;
+	FONT-WEIGHT: bolder;
+	FONT-SIZE: 9pt;
+	BORDER-LEFT: #80b5d7 1px solid;
+	COLOR: #ffffff;
+	BORDER-BOTTOM: #80b5d7 1px solid;
+	FONT-FAMILY: Arial;
+	BACKGROUND-COLOR: #3872b2
+}
+
+/*------------- FOOTER  ---------------*/
+
+.cl_footer {background:url(../images/giaodienchung/cl_footer.gif) left top; height:30px; width:20px;}
+
+.cr_footer {background:url(../images/giaodienchung/cr_footer.gif) right top; width:20px;}
+
+.bl_footer {background: url(../images/giaodienchung/bl_footer.gif) no-repeat left bottom; width:20px; height:20px;}
+
+.bc_footer {background:url(../images/giaodienchung/bc_footer.gif) repeat-x}
+
+.br_footer {background: url(../images/giaodienchung/br_footer.gif) no-repeat right bottom; width:20px; height:20px;}
+
+.cm_footer {background:url(../images/giaodienchung/cm_footer.gif) repeat-x; height:30px;}
+
+.copy {
+	font-size:8pt;
+	color:#FFFFFF;
+}
+/*-------------- END FOOTER -----------------*/
+
+/*------------- BEGIN MAIN INFO ---------------*/
+
+.tl_main {background:url(../images/maininfo/tl_main.gif) no-repeat left top; width:20px; height:20px;}
+
+.tc_main {background:url(../images/maininfo/tc_main.gif) repeat-x;}
+
+.tr_main {background: url(../images/maininfo/tr_main.gif) no-repeat right top; width:20px; height:20px;}
+
+.cl_main {background:url(../images/maininfo/cl_main.gif) left top; width:10px;}
+
+.cr_main {background:url(../images/maininfo/cr_main.gif) right top; width:20px;}
+
+.bl_main {background: url(../images/maininfo/bl_main.gif) no-repeat left bottom; width:20px; height:20px;}
+
+.bc_main {background:url(../images/maininfo/bc_main.gif) repeat-x}
+
+.br_main {background: url(../images/maininfo/br_main.gif) no-repeat right bottom; width:20px; height:20px;}
+
+.textbold {
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 0px;
+    FONT-WEIGHT: bold;  
+    FONT-SIZE: 12pt;
+    PADDING-BOTTOM: 2px;
+    COLOR: #0e4a92;
+    PADDING-TOP: 2px;
+    FONT-FAMILY: Arial; 
+}
+.bordersv{
+    border-top:1px #CCCCCC dashed;
+    font-size:10pt;
+    line-height:22px;
+}
+.bordersv .bg{
+    background-color:#f0f0f0;
+    padding-right:10px;
+}
+.bordersv .bold{
+    font-weight:bold;
+    padding-left:10px;
+}
+tbody {
+display: table-row-group;
+vertical-align: middle;
+border-color: inherit;
+}
+tr {
+display: table-row;
+vertical-align: inherit;
+border-color: inherit;
+}
+.border_1 {
+	border:1px solid #007EBB; PADDING-RIGHT: 0; PADDING-LEFT: 0; FONT-SIZE: 10pt; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; FONT-FAMILY: Arial
+}
+.main_1 
+{
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10pt;
+	BACKGROUND-IMAGE: url(../images/giaodienchung/bg_main_tbl.gif);
+	PADDING-BOTTOM: 0px;
+	COLOR: #ffffff;
+	PADDING-TOP: 0px;
+	FONT-FAMILY: Arial;
+	HEIGHT: 25px;
+}
+.main_3 {
+	border-right:1px solid #80B5D7; border-bottom:1px solid #80B5D7; FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR:#03F; FONT-FAMILY: Arial; border-left:1px solid #80B5D7; border-top:1px solid #80B5D7; background-color:#DAE9F3; padding-left:0; padding-right:0; padding-top:2px; padding-bottom:2px
+}
+.level_1_1 {
+	border-right:1px solid #E5E5E5; border-top:1px solid #FFFFFF; FONT-SIZE: 10pt; MARGIN: 0px; WORD-SPACING: 0px; TEXT-INDENT: 0px; BORDER-BOTTOM: 1px solid #E5E5E5; FONT-FAMILY: Arial; padding-left:2px; padding-right:2px; padding-top:3px; padding-bottom:3px 
+}
+.level_1_2 
+{
+	BORDER-RIGHT: #e5e5e5 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 10pt; PADDING-BOTTOM: 0px; MARGIN: 0px; WORD-SPACING: 0px; TEXT-INDENT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: #e5e5e5 1px solid; FONT-FAMILY: Arial; BACKGROUND-COLOR: #f7f7f7;HEIGHT: 22px;
+}
+/*-------------- END MAIN INFO -----------------*/
+
+
+/*----------------BEGIN EDIT---------------------*/
+.fieldsCollection{
+position: relative;
+border: 0;
+margin: 2.3em 1.5em;
+position: relative;
+}
+/*----------------END EDIT-----------------------*/
+
+/*popup them tai san thuoc don vi*/
+.forgotform{float:left;width:100%}
+.forgot-item{float:left;width:100%;margin-bottom:5px}
+.forgot-item-title{float:left;width:100px;text-align:right;margin-top:6px}
+.forgot-item-input{float:left;margin-left:5px}
+.forgot-item-input input{border:solid 1px #cdcdcd;height:22px}
+.cpt_img{float:left;margin-left:5px;margin-top:2px}
+.cpt_img img{float:left}
+.forgot-item-btn{float:left;height:23px;width:75px;background:url("images/BtnGreenBlue.png") no-repeat center top}
+.forgot-item-btn:hover{background-position:0 -23px;cursor:pointer}
+.forgot-item-btn a{float:left;width:100%;text-align:center;line-height:20px;font-size:14px;font-weight:bold;color:#fff}

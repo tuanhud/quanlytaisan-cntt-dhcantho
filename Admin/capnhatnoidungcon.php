@@ -64,7 +64,16 @@
     <script type="text/javascript">
         $(document).ready(function () {
             initmenu();
-            $("#parentTable").height(1600);	
+		$('#updaterowbutton').jqxButton({ theme: theme, width: '160px', height: '25px' });
+		$("#deleterowbutton").jqxButton({ theme: theme, width: '160px', height: '25px' });
+        $("#jqxWidget").css('visibility', 'visible')
+		$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidunglonsua"]').change(function(){
+		if($("#cbo_tennoidunglonsua").val()!=-1){
+		$('#jqsua').jqxGrid('refreshdata');	
+		taobang();
+		}
+			});
+           $("#parentTable").height(1600);	
             setTimeout(function()
             {
                 $("#demoContent").css('visibility', 'visible');		
@@ -75,18 +84,17 @@
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
-            });
-			fillcombo('get_list_noidunglon.php',document.frm_themnoidungcon.cbo_tennoidunglon);
-	fillcombo('get_list_noidunglon.php',document.frm_suanoidungcon.cbo_tennoidunglon);
+	fillcombo('get_list_noidunglon.php',document.frm_themnoidungcon.cbo_tennoidunglon);
+	fillcombo('get_list_noidunglon.php',document.frm_suanoidungcon.cbo_tennoidunglonsua);
 	fillcombo('get_list_noidunglon.php',document.frm_themnoidungcon.cbo_tennoidungcon);
 	//fillcombo('get_list_noidungcon.php',document.frm_suanoidungcon.cbo_tennoidungcon);
 	$('form[name="frm_themnoidungcon"] select[name="cbo_tennoidunglon"]').change(function(){
 		get_info_manoidunglonthem('get_info_manoidunglon.php',document.frm_themnoidungcon);
 	});
-	$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidunglon"]').change(function(){
-		get_info_noidungconsua('get_info_noidungcon.php',document.frm_suanoidungcon.cbo_tennoidunglon.value);
+	//list_noidungcon(document.frm_suanoidungcon);
+	
 	});
-	createTable();
+	//createTable();
 	function thoat() {
 		if (confirm('Ban có thật sự muốn thoát không?' )) {
 			document.location = '../logout.php';
@@ -119,7 +127,7 @@
                         	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
-                           
+                           				<td><!--asdfasdfasdfasdfasdfasdfasdf-->
                            				 <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                                 <tbody>
                                 
@@ -163,11 +171,6 @@
                       </select></td>
                   </tr>
                   <tr>
-                    <td height="22" align="right" class="level_1_1">Thêm nội dung con từ file:</td>
-                    <td height="22" align="left" class="level_1_1"><label for="textfield"></label>
-                      <input type="file" name="txt_browse" id="txt_browse"></td>
-                  </tr>
-                  <tr>
                     <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" id="btn_themnoidungcon" value="Thêm">
                       <input name="Reset" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
                   </tr>
@@ -198,23 +201,39 @@
                   <td width="50%" height="22" align="center" class="level_1_1">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td height="22" align="right" class="level_1_1">Chọn tên nội dung:</td>
+                  <td height="22" align="right" class="level_1_1">Chọn tên nội dung lớn:</td>
                   <td height="22" align="center" class="level_1_1"><label for="txttendc3"></label>
                     <label for="cbo_tennoidungconsua"></label>
-                    <select name="cbo_tennoidunglon" id="cbo_tennoidunglon" style="width:100%">
+                    <select name="cbo_tennoidunglonsua" id="cbo_tennoidunglonsua" style="width:100%">
                     </select></td>
                 </tr>
                 <tr>
                 <td align="center" height="200" class="level_1_1" colspan="4" valign="top">
-                  <!--  <div class="yui3-skin-sam">                    
+                   <!-- <div class="yui3-skin-sam">                    
                     <div id="mytable"></div>                    
                     </div>-->
+                    <div style="visibility: visible;" id='jqxWidget'>
+                            <div id="jqsua"></div>
+                          
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                               <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                           </div>
+                           <div style="margin-left: 30px; float: left;">
+                        		 <div style="margin-top: 5px;">
+                                    <input id="updaterowbutton" type="button" value="Cập nhật nội dung con" width="70" />
+                                </div>
+                                <div style="margin-top: 5px;">
+                                    <input id="deleterowbutton" type="button" value="Xóa nội dung con" width="70" />
+                                </div>
+                               
+                                
+                         </div>
                     </td>
                   </tr>
                 <tbody>
                   <tr>
-                    <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_luunoidungcon" type="button" class="button_1" id="btn_luunoidungcon" value="Lưu">
-                      <input name="Reset" type="reset" class="button_1" id="btn_huy" value="Hủy"></td>
+                    <td colspan="2" height="22" align="center" class="level_1_2">&nbsp;</td>
                   </tr>
                   <tr>
                     <td colspan="2" height="22" align="center" class="level_1_1"></td>
@@ -231,11 +250,12 @@
                                                  <!--het noi dung-->
                                                  
                                           </tr>
+                                          <!--</tbody>--><!--dfsdfsdfasffffffffffffffffffffff-->
                                           <tr>
                                             <td align="center">&nbsp;</td>
                                           </tr>    
                                         </table>
-                                        </td>
+                                        </td><!--fadsfasdfasadsfadfasdfasdf-->
   								</tr>
                                 </tbody>
                              </table>

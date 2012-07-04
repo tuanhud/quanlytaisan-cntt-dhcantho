@@ -113,7 +113,7 @@ function taobang()
             $('#cancel').jqxButton({ theme: theme, height: '25px', width: '65px' });
             $('#eventWindow').jqxWindow({ maxHeight: 400, maxWidth:400, minHeight: 30, minWidth: 150, height: 300, width: 400,
                 theme: theme, resizable: false, modalOpacity: 0.3,
-                okButton: $('#save'), cancelButton: $('#cancel'),location: $("#mainDemoContainer"),
+                okButton: $('#save'), cancelButton: $('#cancel')
             });
         }
         function addEventListeners() 
