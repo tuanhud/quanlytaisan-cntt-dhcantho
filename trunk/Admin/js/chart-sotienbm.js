@@ -3,15 +3,6 @@ function taochartsotien() {
 				var tunam=$("#cbo_tunam").val();
 				var dennam=$("#cbo_dennam").val();
 				var data = "donvi=" + donvi + "&tunam=" + tunam + "&dennam=" + dennam;
-			/*$.ajax
-				({
-					//dataType: 'json',
-					type: "POST",
-					url: 'data_thongkesotien.php',
-					data: data,
-					success: function (data, status, xhr)
-					{}
-				});	*/
 		var data = {};
 	 	var params= "donvi=" + donvi + "&tunam=" + tunam + "&dennam=" + dennam;
 		http=GetXmlHttpObject();

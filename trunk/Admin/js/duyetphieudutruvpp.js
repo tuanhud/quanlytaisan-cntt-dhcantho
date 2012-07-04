@@ -38,6 +38,8 @@ var _admin;
 								else if(n==1) 
 								{
 									alert("Thành công."),
+									$('#detail_vppduyet').jqxGrid('clear');
+									$("#tongtienduyet").html(0);
 									fillcombo('get_list_donvi.php',document.frm_duyetphieudutruvpp.cbo_donviduyet);
 	fillcombo2('get_list_nam.php',document.frm_duyetphieudutruvpp.cbo_namduyet);
 	fillcombo2('get_list_quy.php',document.frm_duyetphieudutruvpp.cbo_quyduyet);
@@ -79,6 +81,8 @@ var _admin;
 								else if(n==1) 
 								{
 									alert("Thành công.")
+									$('#detail_vpphuy').jqxGrid('clear');
+									$("#tongtienhuy").html(0);
 									fillcombo('get_list_donvi.php',document.frm_duyetphieudutruvpp.cbo_donviduyet);
 	fillcombo2('get_list_nam.php',document.frm_duyetphieudutruvpp.cbo_namduyet);
 	fillcombo2('get_list_quy.php',document.frm_duyetphieudutruvpp.cbo_quyduyet);
