@@ -132,7 +132,7 @@
      <div id='jqxTabs'>
             <ul>
                 <li style="margin-left: 30px;">Thêm phiếu kiểm kê</li>
-                <li>Sửa phiếu kiểm kê</li>
+                <li>Sửa, xóa phiếu kiểm kê</li>
             </ul> 
          <div> 
 		 <table width="950" border="0" cellpadding="0" cellspacing="0" align="center">
@@ -215,7 +215,7 @@
 			</tr> 
                <tr>
                  <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" id="btn_themphieukiemke" value="Thêm">
-                   <input type="button" class="button_1" id="btn_themphieukiemke2" value="Export phiếu"></td>
+                 </td>
                </tr>
               </tbody>
            </table>
@@ -226,13 +226,13 @@
         </table>
          </div>
 		 <div> 
-		 <table width="950" border="0" cellpadding="0" cellspacing="0" align="center">
+		 <table width="950" height="100%" border="0" cellpadding="0" cellspacing="0" align="center">
         <tbody>
        
         <tr>
           <td colspan="3" align="left">
           	<form name="frm_suaphieukiemke" id="frm_suaphieukiemke">
-            <table width="100%" cellspacing="0" cellpadding="0" align="center" border="0">             		
+            <table width="100%" height="100%" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
               		<td width="30%" height="22" class="level_1_1" colspan="2"></td>
@@ -280,8 +280,8 @@
 			</tr> 
                <tr>
                  <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" id="btn_suaphieukiemke" value="Cập nhật">
-                   <input type="button" class="button_1" id="btn_suaphieukiemke2" value="Export phiếu">
-                   <input type="button" class="button_1" id="" value="Xóa">
+                 <input type="button" class="button_1" id="btn_xoaphieukiemke" value="Xóa">
+                   
                  </td>
                </tr>
               </tbody>

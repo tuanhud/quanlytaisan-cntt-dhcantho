@@ -103,7 +103,10 @@ function taobangkiemkethem(frm,donvi,loaikiemke,phieumau)
 						var x=http.responseXML.getElementsByTagName('row');
 						for(var k=0;k<x.length;k++)
 						{	
-							row2[len+k]= { text: x[k].getElementsByTagName('column')[1].firstChild.nodeValue, editable: true, datafield: x[k].getElementsByTagName('column')[0].firstChild.nodeValue, columntype: 'checkbox', width: 100};
+							if(x[k].getElementsByTagName('column')[0].firstChild.nodeValue!='GHICHU')
+							{
+								row2[len+k]= { text: x[k].getElementsByTagName('column')[1].firstChild.nodeValue, editable: true, datafield: x[k].getElementsByTagName('column')[0].firstChild.nodeValue, columntype: 'checkbox', width: 100};
+							}
 						}
 						row2[len+x.length]= { text:'Ghi Chú', editable: true, datafield:'GhiChu', width:300};
 					}
@@ -406,24 +409,27 @@ function taocombothem(frm)
 	
 								for(var k=0;k<x.length;k++)
 								{	
-									var manoidung = x[k].getElementsByTagName('column')[0].firstChild.nodeValue;
-									var tennoidung = x[k].getElementsByTagName('column')[1].firstChild.nodeValue;				
-									var mats = $('#tablephieumau').jqxGrid('getcellvalue', i, "MaTaiSan");
-									var chitietnoidung = $('#tablephieumau').jqxGrid('getcellvalue', i, manoidung);
-									
-									http=GetXmlHttpObject();
-									var params12 = "mataisan=" +mats+"&maphieukiemke=" +maphieukiemke+"&manoidung=" +manoidung+"&chitietnoidung=" +chitietnoidung;
-								
-									http.open("POST",'themconoidungkiemke.php', false);
-									http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-									http.onreadystatechange = function()
+									if(x[k].getElementsByTagName('column')[0].firstChild.nodeValue!='GHICHU')
 									{
-										if(http.readyState == 4 && http.status == 200) 
+										var manoidung = x[k].getElementsByTagName('column')[0].firstChild.nodeValue;
+										var tennoidung = x[k].getElementsByTagName('column')[1].firstChild.nodeValue;				
+										var mats = $('#tablephieumau').jqxGrid('getcellvalue', i, "MaTaiSan");
+										var chitietnoidung = $('#tablephieumau').jqxGrid('getcellvalue', i, manoidung);
+										
+										http=GetXmlHttpObject();
+										var params12 = "mataisan=" +mats+"&maphieukiemke=" +maphieukiemke+"&manoidung=" +manoidung+"&chitietnoidung=" +chitietnoidung;
+									
+										http.open("POST",'themconoidungkiemke.php', false);
+										http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+										http.onreadystatechange = function()
 										{
-											result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+											if(http.readyState == 4 && http.status == 200) 
+											{
+												result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+											}
 										}
+										http.send(params12);
 									}
-									http.send(params12);
 								}
 							}
 						}
