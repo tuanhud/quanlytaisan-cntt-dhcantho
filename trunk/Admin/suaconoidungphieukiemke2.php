@@ -9,23 +9,10 @@
 			include_once('../database.php');
 			$db=new database();	
 			
-			$chitiet='';
-			if($_POST['ChiTietND']=='0')
+			$sql="update conoidung set `ChiTietND` = '".$_POST['chitietnoidung']."' where `MaPhieuKiemKe` = '".$_POST['maphieukiemke']."' and `MaTaiSan` = '".$_POST['mataisan']."' and `MaND` = '".$_POST['manoidung']."'";
+			$db->setQuery($sql);
+			if($db->executeQuery()!=1)
 			{
-				$chitiet='false';
-			}
-			else if($_POST['ChiTietND']==1)
-			{
-				$chitiet='true';
-			}
-			else 
-			{
-				$chitiet=$_POST['ChiTietND'];
-			}
-					$sql="update conoidung set `ChiTietND` = '".$chitiet."' where `MaPhieuKiemKe` = '".$_POST['MaPhieuKiemKe']."' and `MaTaiSan` = '".$_POST['MaTaiSan']."' and `MaND` = '".$_POST['MaND']."'";
-					$db->setQuery($sql);
-					if($db->executeQuery()!=1)
-					{
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
@@ -34,9 +21,9 @@
 						$xml.="</INFO>";
 						echo $xml;
 						exit;
-					}
-					else
-					{
+			}
+			else
+			{
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
@@ -45,6 +32,6 @@
 						$xml.="</INFO>";
 						echo $xml;
 						exit;
-					}
+			}
 	}
 ?>

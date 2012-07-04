@@ -82,7 +82,7 @@ function taobangkiemkesua(frm,loaikiemkesua,phieukiemkesua)
 													else if((w[m].getElementsByTagName('column')[0].firstChild.nodeValue)=='false')
 														row[manoidung]=0 ;
 													else
-														row[manoidung]=w[m].getElementsByTagName('column')[0].firstChild.nodeValue ;
+														row["GhiChu"]=w[m].getElementsByTagName('column')[0].firstChild.nodeValue ;
 												}
 											}
 										}
@@ -145,9 +145,12 @@ function taobangkiemkesua(frm,loaikiemkesua,phieukiemkesua)
 					if(http.readyState == 4 && http.status == 200) 
 					{
 						var x=http.responseXML.getElementsByTagName('row');
-						for(var k=0;k<x.length;k++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+						for(var k=0;k<x.length;k++)
 						{	
-							row2[len+k]= { text: x[k].getElementsByTagName('column')[1].firstChild.nodeValue, editable: true, datafield: x[k].getElementsByTagName('column')[0].firstChild.nodeValue, columntype: 'checkbox', width: 100};
+							if(x[k].getElementsByTagName('column')[0].firstChild.nodeValue!='GHICHU')
+							{
+								row2[len+k]= { text: x[k].getElementsByTagName('column')[1].firstChild.nodeValue, editable: true, datafield: x[k].getElementsByTagName('column')[0].firstChild.nodeValue, columntype: 'checkbox', width: 100};
+							}
 						}
 						row2[len+x.length]= { text:'Ghi Chú', editable: true, datafield:'GhiChu', width:300};
 					}
@@ -309,7 +312,7 @@ function taocombosua(frm)
 			// su kien click nut them
 			$("#btn_suaphieukiemke").bind('click', function () 
 			{
-				//if((loaikiemkesua!=-1)&&(phieukiemkesua!=-1))
+				if((loaikiemkesua!=-1)&&(phieukiemkesua!=-1))
 				{
 					//update phieu kiem ke + cophieumausua
 					var now = new Date(); 
@@ -355,7 +358,7 @@ function taocombosua(frm)
 							http.send(params);
 					}
 					*/
-					//insert conoidung
+					//update conoidung
 					var result;
 					var rowscount = $("#tablephieumausua").jqxGrid('getdatainformation').rowscount;
 					for(var i=0;i < rowscount;i++) 
@@ -371,32 +374,81 @@ function taocombosua(frm)
 								var x=http.responseXML.getElementsByTagName('row');
 								for(var k=0;k<x.length;k++)
 								{	
-									var manoidung = x[k].getElementsByTagName('column')[0].firstChild.nodeValue;
-									var tennoidung = x[k].getElementsByTagName('column')[1].firstChild.nodeValue;				
-									var mats = $('#tablephieumausua').jqxGrid('getcellvalue', i, "MaTaiSan");
-									var chitietnoidung = $('#tablephieumausua').jqxGrid('getcellvalue', i, manoidung);
-									
-									http=GetXmlHttpObject();
-									var params12 = "MaTaiSan=" +mats+"&MaPhieuKiemKe=" +phieukiemkesua+"&MaND=" +manoidung+"&ChiTietND=" +chitietnoidung;
-									http.open("POST",'suaconoidungphieukiemke.php', false);
-									http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-									http.onreadystatechange = function()
+									if(x[k].getElementsByTagName('column')[0].firstChild.nodeValue!='GHICHU')
 									{
-										if(http.readyState == 4 && http.status == 200) 
+										var manoidung = x[k].getElementsByTagName('column')[0].firstChild.nodeValue;
+										var tennoidung = x[k].getElementsByTagName('column')[1].firstChild.nodeValue;				
+										var mats = $('#tablephieumausua').jqxGrid('getcellvalue', i, "MaTaiSan");
+										var chitietnoidung = $('#tablephieumausua').jqxGrid('getcellvalue', i, manoidung);
+										
+										http=GetXmlHttpObject();
+										var params12 = "MaTaiSan=" +mats+"&MaPhieuKiemKe=" +phieukiemkesua+"&MaND=" +manoidung+"&ChiTietND=" +chitietnoidung;
+										http.open("POST",'suaconoidungphieukiemke.php', false);
+										http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+										http.onreadystatechange = function()
 										{
-											result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-											
+											if(http.readyState == 4 && http.status == 200) 
+											{
+												result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+											}
 										}
+										http.send(params12);
 									}
-									http.send(params12);
 								}
 							}
 						}
 						http.send(params);
+						
+						//luu conoidung ghichu				
+						var mats = $('#tablephieumausua').jqxGrid('getcellvalue', i, "MaTaiSan");
+						var ctnd = $('#tablephieumausua').jqxGrid('getcellvalue', i, "GhiChu");
+						http=GetXmlHttpObject();
+						var params14 = "mataisan=" +mats+"&maphieukiemke=" +phieukiemkesua+"&manoidung=" +'GHICHU'+"&chitietnoidung=" +ctnd;
+						http.open("POST",'suaconoidungphieukiemke2.php', false);
+						http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+						http.onreadystatechange = function()
+						{
+							if(http.readyState == 4 && http.status == 200) 
+							{
+								result14=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+								
+							}
+						}
+						http.send(params14);
 					 }
-					 alert(result);
+					alert(result14); 
 				}
-				//alert('Chưa đầy đủ dữ liệu.');
+				else
+				{
+					alert('Chưa đầy đủ dữ liệu.');
+				}
+			});	
+			
+			
+			//xoa phieu kiem ke
+			$("#btn_xoaphieukiemke").bind('click', function () 
+			{
+				if(phieukiemkesua!=-1)
+				{
+					//xoa phieu kiem ke va cophieumau , taisankiemke
+					http=GetXmlHttpObject();
+					var params = "MaPhieu=" +phieukiemkesua;
+					http.open("POST",'xoaphieukiemke.php', false);
+					http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					http.onreadystatechange = function()
+					{
+						if(http.readyState == 4 && http.status == 200) 
+						{
+							//gui lai ma phieu kiem ke
+							alert(http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue);
+						}
+					}
+					http.send(params);
+				}
+				else
+				{
+					alert('Chưa đầy đủ dữ liệu.');
+				}
 			});	
 			
 }

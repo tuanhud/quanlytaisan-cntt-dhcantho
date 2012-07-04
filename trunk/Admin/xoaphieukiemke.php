@@ -8,24 +8,19 @@
 	{
 			include_once('../database.php');
 			$db=new database();	
+					
+			$sql="delete from `cophieumau` where MaPhieuKiemKe='".$_POST['MaPhieu']."'";
+			$db->Execute($sql);
 			
-			$chitiet='';
-			if($_POST['ChiTietND']=='0')
+			$sql2="delete from `taisankiemke` where MaPhieuKiemKe='".$_POST['MaPhieu']."'";
+			$db->Execute($sql2);
+			
+			$sql3="delete from `conoidung` where MaPhieuKiemKe='".$_POST['MaPhieu']."'";
+			$db->Execute($sql4);
+			
+			$db->setQuery("delete from `phieukiemke` where MaPhieuKiemKe='".$_POST['MaPhieu']."'");
+			if($db->executeQuery()!=1)
 			{
-				$chitiet='false';
-			}
-			else if($_POST['ChiTietND']==1)
-			{
-				$chitiet='true';
-			}
-			else 
-			{
-				$chitiet=$_POST['ChiTietND'];
-			}
-					$sql="update conoidung set `ChiTietND` = '".$chitiet."' where `MaPhieuKiemKe` = '".$_POST['MaPhieuKiemKe']."' and `MaTaiSan` = '".$_POST['MaTaiSan']."' and `MaND` = '".$_POST['MaND']."'";
-					$db->setQuery($sql);
-					if($db->executeQuery()!=1)
-					{
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
@@ -34,9 +29,9 @@
 						$xml.="</INFO>";
 						echo $xml;
 						exit;
-					}
-					else
-					{
+			}
+			else
+			{
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
@@ -45,6 +40,7 @@
 						$xml.="</INFO>";
 						echo $xml;
 						exit;
-					}
+			}
 	}
+		
 ?>
