@@ -38,9 +38,7 @@ function check_date_ngaysinh(day,month,year)
 //Tao bang hien thi noi dung phieu mau************************************************************************************************************
 function taobang(makhms)
 {
-	if(makhms!='-Chọn mã yêu cầu thiết bị-')
-	{
-	 		var data = {};
+			var data = {};
 			var data2 = {};
 			var data3 = {};
 			var theme = '';
@@ -644,5 +642,12 @@ function taobang(makhms)
 			$("#cbotaisan").jqxComboBox('clearSelection');
             $("#jqxWidget").css('visibility', 'visible');
         });
-	}
+	/*else
+	{
+		$('#jqthem').jqxGrid('clear');
+		document.getElementById('tienmuasam').style.display = 'none';
+		document.getElementById('buttondk').style.display = 'none';	
+		
+	}*/
 }
+
