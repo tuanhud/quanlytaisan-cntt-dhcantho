@@ -1,5 +1,4 @@
 <?php
-	//khoi dong sesion
     session_start();
 	//dinh dang file thanh file xml
 	header( "content-type: text/xml" );
@@ -8,18 +7,11 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT MaPhieuKiemKe FROM `phieukiemke`');
+					
+					$db->setQuery('SELECT DISTINCT d.MaThuocTinh, d.TenThuocTinh from taisanthuocdonvi a, taisan b, cothuoctinh c, thuoctinh d, donvi e, phieukiemke f where a.MaTaiSan=b.MaTaiSan and b.MaTaiSan=c.MaTaiSan and c.MaThuocTinh=d.MaThuocTinh and a.MSDV=e.MSDV and e.MSDV and f.MSDV   and f.MaPhieuKiemKe="'.$_POST['MaPhieuKiemKe'].'"');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
-					$xml.="<row>";
-							$xml.="<column>";
-							$xml.=-1;							
-							$xml.="</column>";
-							$xml.="<column>";
-							$xml.='-Chọn phiếu kiểm kê-';							
-							$xml.="</column>";
-					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
 					{
 						$xml.="<row>";
@@ -27,14 +19,11 @@
 							$xml.="<column>";
 							$xml.="<![CDATA[".$row[$i]."]]>";								
 							$xml.="</column>";
-							$xml.="<column>";
-							$xml.="<![CDATA[".$row[$i]."]]>";								
-							$xml.="</column>";
 						}
 						$xml.="</row>";
 					}
 					$xml.="</table>";
-					mysql_free_result($result);
 					echo $xml;
+					
 	//}
 ?>

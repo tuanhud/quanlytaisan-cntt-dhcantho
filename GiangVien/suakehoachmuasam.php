@@ -84,17 +84,6 @@
 			$("#import").jqxButton({ theme: theme, width: '160px', height: '25px' });
 			$("#delete").jqxButton({ theme: theme, width: '160px', height: '25px' });
 			
-			$('form[name="frm_suakehoachmuasam"] select[name="cbo_yeucau"]').change(function()
-			{
-					taobang(document.frm_suakehoachmuasam.cbo_yeucau.value);
-					document.getElementById('tienmuasam').style.display = 'block';
-					document.getElementById('buttondk').style.display = 'block';
-			});
-			function kt()
-			{
-				alert(document.frm_suakehoachmuasam.cbo_yeucau.value);
-				
-				}
         });
    </script>
 </head>

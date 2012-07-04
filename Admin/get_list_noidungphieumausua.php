@@ -1,5 +1,4 @@
 <?php
-	//khoi dong sesion
     session_start();
 	//dinh dang file thanh file xml
 	header( "content-type: text/xml" );
@@ -8,18 +7,10 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT MaPhieuKiemKe FROM `phieukiemke`');
+					$db->setQuery('SELECT d.MaND, d.TenND FROM cophieumau a, phieumau b, thuocphieumau c, noidung d where a.MaPhieu=b.MaPhieu and b.MaPhieu = c.MaPhieu and c.MaND = d.MaND and a.MaPhieuKiemKe="'.$_POST['MaPhieuKiemKe'].'"');			
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
-					$xml.="<row>";
-							$xml.="<column>";
-							$xml.=-1;							
-							$xml.="</column>";
-							$xml.="<column>";
-							$xml.='-Chọn phiếu kiểm kê-';							
-							$xml.="</column>";
-					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
 					{
 						$xml.="<row>";
@@ -27,14 +18,12 @@
 							$xml.="<column>";
 							$xml.="<![CDATA[".$row[$i]."]]>";								
 							$xml.="</column>";
-							$xml.="<column>";
-							$xml.="<![CDATA[".$row[$i]."]]>";								
-							$xml.="</column>";
 						}
 						$xml.="</row>";
 					}
 					$xml.="</table>";
-					mysql_free_result($result);
 					echo $xml;
+			
+					
 	//}
 ?>

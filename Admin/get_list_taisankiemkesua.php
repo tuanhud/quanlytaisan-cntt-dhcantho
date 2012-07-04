@@ -8,25 +8,14 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT MaPhieuKiemKe FROM `phieukiemke`');
+					$db->setQuery('SELECT b.MaTaiSan, b.TenTaiSan, a.SoLuongCuaDonVi, a.DonGiaTS FROM `taisanthuocdonvi` a, taisan b,  phieukiemke c, donvi d where c.MSDV=d.MSDV and d.MSDV=a.MSDV and a.MaTaiSan=b.MaTaiSan and c.MaPhieuKiemKe="'.$_POST['MaPhieuKiemKe'].'"');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
-					$xml.="<row>";
-							$xml.="<column>";
-							$xml.=-1;							
-							$xml.="</column>";
-							$xml.="<column>";
-							$xml.='-Chọn phiếu kiểm kê-';							
-							$xml.="</column>";
-					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
 					{
 						$xml.="<row>";
 						for($i = 0; $i < count($row); $i++) {
-							$xml.="<column>";
-							$xml.="<![CDATA[".$row[$i]."]]>";								
-							$xml.="</column>";
 							$xml.="<column>";
 							$xml.="<![CDATA[".$row[$i]."]]>";								
 							$xml.="</column>";

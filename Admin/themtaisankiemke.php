@@ -9,25 +9,15 @@
 			include_once('../database.php');
 			$db=new database();	
 			// INSERT COMMAND 
-							 
-				 $query = "SELECT max(MaPhieuKiemKe) FROM phieukiemke";
-				 $db->setQuery($query);
-				 $result = $db->fetchAll();
-				 $row = mysql_fetch_array($result,MYSQL_NUM);
-				 $maphieu = $row[0]+1;
-				
-				$sql= "insert into `phieukiemke` values('".$maphieu."','".$_POST['MSDV']."','".$_POST['TenPhieuKiemKe']."','".$_POST['Nam']."','".$_POST['MaLoaiKK']."','".$_POST['DienGiaiKiemKe']."','".$_POST['NgayKiemKe']."','".$_POST['NgayKetThucKiemKe']."')";
-				
-				$db->Execute($sql);
-				
-				$sql2 = "insert into `cophieumau` values('".$maphieu."','".$_POST['MaPhieu']."')";
+
+				$sql2 = "insert into `taisankiemke` values('".$_POST['mataisan']."','".$_POST['maphieukiemke']."')";
 				$db->setQuery($sql2);
 				if($db->executeQuery()!=1)
 				{
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
-						$xml.="<![CDATA[".$maphieu."]]>";
+						$xml.="Thất bại";
 						$xml.="</RESULT>";
 						$xml.="</INFO>";
 						echo $xml;
@@ -38,7 +28,7 @@
 						$xml="";
 						$xml.="<INFO>";
 						$xml.="<RESULT>";
-						$xml.="<![CDATA[".$maphieu."]]>";
+						$xml.="Thành công";
 						$xml.="</RESULT>";
 						$xml.="</INFO>";
 						echo $xml;

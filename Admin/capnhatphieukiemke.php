@@ -14,7 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật đơn vị</title>
+<title>Cập nhật phiếu kiểm kê</title>
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
     <link rel="stylesheet" href="../styles/site.css" media="screen" />
@@ -56,55 +56,47 @@
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+     <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <script type="text/javascript" src="js/capnhatphieukiemke.js"></script>
-    <script type="text/javascript" src="js/table-kiemke.js"></script>
-
+    <script type="text/javascript" src="js/table-themkiemke.js"></script>
+	<script type="text/javascript" src="js/table-suakiemke.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            initmenu();
             $("#parentTable").height(1600);	
             setTimeout(function()
             {
                 $("#demoContent").css('visibility', 'visible');		
-                initwidgets();
                 $("#loader").css('display', 'none');
             }, 1000);
             var theme = getTheme();
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
+			$('#jqxTabs').jqxTabs({ width: 970,enabledHover: true, height:'auto', position: 'top', theme: '' });
             $("#jqxMenu").css('visibility', 'visible'); 
 			$("#ngaybdkk").jqxDateTimeInput({ width: '250px', height: '25px',formatString: 'dd/MM/yyyy', theme: 'summer' });
 			$("#ngayktkk").jqxDateTimeInput({ width: '250px', height: '25px',formatString: 'dd/MM/yyyy', theme: 'summer' });
 			
-			//var getDate= $('#DateTimeInput').jqxDateTimeInput('getDate'); 
-			//$("#ngayktkk").jqxDateTimeInput('setMinDate', getDate);
-          	//$("#ngayktkk").jqxDateTimeInput('setMaxDate', new Date(2013, 0, 1));
+			var ngay = ($('#ngaybdkk').jqxDateTimeInput('getDate')).getDate();
+			var thang =($('#ngaybdkk').jqxDateTimeInput('getDate')).getMonth();
+			var nam =($('#ngaybdkk').jqxDateTimeInput('getDate')).getFullYear();
 			
-			fillcombo('get_list_loaikiemke.php',document.frm_themphieukiemke.cbo_loaikiemkethem);
-			fillcombo('get_list_loaikiemke.php',document.frm_suaphieukiemke.cbo_loaikiemkesua);
-			
-		
-			fillcombo('get_list_phieumau.php',document.frm_themphieukiemke.chonphieu);
-			fillcombo('get_list_donvi2.php',document.frm_themphieukiemke.cbo_donvi);
-			$('form[name="frm_themphieukiemke"] select[name="cbo_donvi"]').change(function()
-			{
-				if(document.frm_themphieukiemke.cbo_donvi.value!=-1)
-				{
-					//$('#tablephieumau').jqxGrid('destroy');
-					//$('#tablephieumau').jqxGrid('refreshdata');
-					//$('#tablephieumau').jqxGrid('clear');
-					taobangkiemke(document.frm_themphieukiemke.chonphieu.value,document.frm_themphieukiemke.cbo_donvi.value,document.frm_themphieukiemke);
-				}
-			});
-			
-			$('form[name="frm_themphieukiemke"] select[name="chonphieu"]').change(function()
-			{
-				get_info_phieukiemke('get_info_phieukiemke.php',document.frm_themphieukiemke);
-			});
+			$('#ngayktkk').jqxDateTimeInput({ minDate: new $.jqx._jqxDateTimeInput.getDateTime(new Date(nam, thang, ngay-1)) });
 			
 			
+			$("#ngaybdkksua").jqxDateTimeInput({ width: '250px', height: '25px',formatString: 'dd/MM/yyyy', theme: 'summer' });
+			$("#ngayktkksua").jqxDateTimeInput({ width: '250px', height: '25px',formatString: 'dd/MM/yyyy', theme: 'summer' });
+			
+			var ngay = ($('#ngaybdkksua').jqxDateTimeInput('getDate')).getDate();
+			var thang =($('#ngaybdkksua').jqxDateTimeInput('getDate')).getMonth();
+			var nam =($('#ngaybdkksua').jqxDateTimeInput('getDate')).getFullYear();
+			
+			$('#ngayktkksua').jqxDateTimeInput({ minDate: new $.jqx._jqxDateTimeInput.getDateTime(new Date(nam, thang, ngay-1)) });
+			taocombothem(document.frm_themphieukiemke);
+			taocombosua(document.frm_suaphieukiemke);
             });
         </script>
 </head>
@@ -134,58 +126,59 @@
                                               <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
                                          
                                           
-                                          <!--noi dung o day-->
+                                          <!--noi dung o day-->	
                                           <tr>
-    <td height="100%" align="center" valign="middle">   
-		 <table width="960" border="0" cellpadding="0" cellspacing="0">
+    <td height="100%" align="center" valign="middle"> 
+     <div id='jqxTabs'>
+            <ul>
+                <li style="margin-left: 30px;">Thêm phiếu kiểm kê</li>
+                <li>Sửa phiếu kiểm kê</li>
+            </ul> 
+         <div> 
+		 <table width="950" border="0" cellpadding="0" cellspacing="0" align="center">
         <tbody>
-        <tr class="main_1">
-          <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="275" align="center">Thêm phiếu kiểm kê</td>
-          <td width="133" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
+       
         <tr>
           <td colspan="3" align="left">
           	<form name="frm_themphieukiemke" id="frm_themphieukiemke">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+            <table width="100%" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-              		<td width="30%" height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
+              		<td width="30%" height="22" class="level_1_1" colspan="2"></td>
               </tr>
 			  <tr>
-			    <td height="22" align="right" class="level_1_2">Chọn loại kiểm kê:</td>
-			    <td align="left" class="level_1_2"><label for="loaikk"></label>
-			      <select name="cbo_loaikiemkethem" id="cbo_loaikiemkethem" style="width:90%">
-			        </select></td>
+			    <td height="22" align="right" class="level_1_2">Chọn loại kiểm kê</td>
+			    <td align="left" class="level_1_2">
+                <div id="loaikiemke"></div>
+                </td>
                 </tr>
 			    <tr>
-                 <td height="22" align="right" class="level_1_1">Ngày kiểm kê:</td>
+                 <td height="22" align="right" class="level_1_1">Ngày kiểm kê</td>
                  <td align="left" class="level_1_1">
                  <div id="ngaybdkk"></div>
                  </td>
                </tr>
                <tr>
-                 <td height="22" align="right" class="level_1_2">Ngày kết thúc kiểm kê:</td>
+                 <td height="22" align="right" class="level_1_2">Ngày kết thúc kiểm kê</td>
                  <td align="left" class="level_1_2">
                  <div id="ngayktkk"></div>
                  </td>
                </tr>
                <tr>
-					<td height="22" align="right" class="level_1_1">Diễn giải:</td>
+					<td height="22" align="right" class="level_1_1">Diễn giải</td>
 					<td width="70%" align="left" class="level_1_1"><textarea name="txt_diengiai" rows="5" class="txtbox" id="txt_diengiai" style="width:90%"></textarea></td>
 				</tr>
                  <tr>
-                 <td height="22" align="right" class="level_1_2">Chọn phiếu mẫu:</td>
+                 <td height="22" align="right" class="level_1_2">Chọn phiếu mẫu</td>
                  <td height="22" align="left" class="level_1_2">
-                 <select name="chonphieu" id="chonphieu" style="width:90%;"></select> 
+                 <div id="chonphieu"></div>
                  </td>
                </tr>
            		 <tr>
-			    <td height="22" align="right" class="level_1_1">Chọn đơn vị:</td>
-			    <td align="left" class="level_1_1"><label for="loaikk"></label>
-			      <select name="cbo_donvi" id="cbo_donvi" style="width:90%">
-			        </select></td>
+			    <td height="22" align="right" class="level_1_1">Chọn đơn vị</td>
+			    <td align="left" class="level_1_1">
+               	<div name="donvi" id="donvi" style="width:200" ></div>
+			      </td>
                 </tr>
                <tr>
                  <td height="22" align="right" class="level_1_2">&nbsp;</td>
@@ -206,7 +199,7 @@
                 <tr>
                  <td height="22" align="right" class="level_1_1">Ghi chú</td>
                  <td height="22" align="left" class="level_1_1">
-                  <input type="text" name="ghichu" id="ghichu" style="width:90%;" disabled="disabled" />
+                  <textarea name="ghichu" rows="5" class="txtbox" id="ghichu" style="width:90%" disabled="disabled"></textarea>
                  </td>
                </tr>
                <tr>
@@ -215,16 +208,6 @@
                             <div style="margin-top: 30px;">
                                 <div id="cellbegineditevent"></div>
                                 <div style="margin-top: 10px;" id="cellendeditevent"></div>
-                 
-                               <div style="margin-left: 10px; float: left;">
-                                    <div id="buttondk" style="margin-top: 5px; display:none">
-                                        <input type="button" value="Thêm thiết bị yêu cầu" id="showWindowButton" />
-                                        <input id="deleterowbutton" style="margin-left:10" type="button" value="Xóa thiết bị yêu cầu" />
-                                        <input id="import" style="margin-left:10" type="submit" value="Import Excel/ Word/ PDF" />
-                                        <input id="delete" style="margin-left:10" type="button" value="Xóa yêu cầu" />
-                                    </div> 
-                                   
-                        </div>
                    </div>
                          
                         
@@ -234,11 +217,6 @@
                  <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" id="btn_themphieukiemke" value="Thêm">
                    <input type="button" class="button_1" id="btn_themphieukiemke2" value="Export phiếu"></td>
                </tr>
-			  
-			  <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2">
-					</td>
-              </tr>  
               </tbody>
            </table>
            </form>
@@ -246,171 +224,80 @@
         </tr>		
         </tbody>
         </table>
-		<br />
-        <br />
-        <table width="515" border="0" cellpadding="0" cellspacing="0">
+         </div>
+		 <div> 
+		 <table width="950" border="0" cellpadding="0" cellspacing="0" align="center">
         <tbody>
-        <tr class="main_1">
-          <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="275" align="center">Sửa phiếu kiểm kê</td>
-          <td width="135" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
+       
         <tr>
           <td colspan="3" align="left">
           	<form name="frm_suaphieukiemke" id="frm_suaphieukiemke">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+            <table width="100%" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-                <td height="22" class="level_1_1"></td>
-                <td class="level_1_1"></td>
+              		<td width="30%" height="22" class="level_1_1" colspan="2"></td>
               </tr>
-              <tr>
-              		<td height="22" class="level_1_2" align="right">Chọn phiếu kiểm kê: </td>
-                    <td width="70%" class="level_1_2"><select name="cbo_phieukiemkesua" id="cbo_phieukiemkesua"  style="width:90%">
-                    </select></td>
-              </tr>   
-              <tr>
-                <td height="22" align="right" class="level_1_1">Chọn loại kiểm kê:</td>
-                <td height="22" align="center" class="level_1_1"><label for="select2"></label>
-                  <select name="cbo_loaikiemkesua" id="cbo_loaikiemkesua" style="width:90%">
-                  </select></td>
-              </tr>
-              <tr>
-                <td height="22" align="right" class="level_1_1">Ngày kiểm kê:</td>
-                <td align="left" class="level_1_1"><select name="cbo_ngaysua1" id="cbo_ngaysua1" style="width:60">
-                  </select>
-                  <label for="thktkk6">/</label>
-                  <select name="cbo_thangsua1" id="cbo_thangsua1" style="width:70">
-                    </select>
-                  <label for="namktkk6">/</label>
-                  <select name="cbo_namsua1" id="cbo_namsua1" style="width:70">
-                    </select></td>
-              </tr>
-              <tr>
-                <td height="22" align="right" class="level_1_2">Ngày kết thúc kiểm kê:</td>
-                <td align="left" class="level_1_2">
-                <select name="cbo_ngaysua2" id="cbo_ngaysua2" style="width:60">
-                </select>
-                  /<label for="thktkk2"></label>
-                  <select name="cbo_thangsua2" id="cbo_thangsua2" style="width:70">
-                  </select>
-                  /<label for="namktkk2"></label>
-                  <select name="cbo_namsua2" id="cbo_namsua2" style="width:70">
-                  </select></td>
-              </tr>
-              <tr>
-                <td height="22" align="right" class="level_1_1">Diễn giải:</td>
-                <td height="22" align="center" class="level_1_1"><textarea name="txt_tenthietbi2" rows="5" class="txtbox" style="width:90%"></textarea></td>
-              </tr>
-              <tr>
-                <td height="22" align="right" class="level_1_2">Chọn  mẫu có sẵng hoặc lập phiếu mới:</td>
-                <td height="22" align="left" class="level_1_2"><select name="select3" id="cbochonmau" style="width:90%">
-                </select></td>
-              </tr>
-              <tr>
-                <td height="22" align="right" class="level_1_2">&nbsp;</td>
-                <td height="22" align="left" class="level_1_2">&nbsp;</td>
-              </tr>
-              <tr>
-              <td colspan="2" height="22" align="center" class="level_1_2">
-                <input type="button" class="button_1" id="btn_suaphieukiemke" value="Lưu"> 
-                <input type="button" class="button_1" id="btn_suaphieukiemke2" value="Export phiếu"></td>
-            </tr>
-            <tr>
-              <td colspan="2" height="22" align="center" class="level_1_1">&nbsp;</td>
-            </tr>
-				  						  
-              </tbody>
-        </table>
-        	</form>
-       </td>
-      </tr>		
-      </tbody>
-      </table>
-
-        <table width="515" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-        <tr class="main_1">
-          <td width="105" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="275" align="center">Xóa phiếu kiểm kê</td>
-          <td width="135" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
-        <tr>
-          <td colspan="3" align="left">
-          	<form name="frm_xoaphieukiemke" id="frm_xoaphieukiemke">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-              <tbody>
-              <tr>
-              		<td height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
-              </tr>
-             <tr>
-					<td height="22" align="right" class="level_1_2">Chọn phiếu kiểm kê: </td>
-					<td width="50%" align="left" class="level_1_2">
-                    	<select name="cbo_phieukiemkexoa" class="cbo" id="cbo_phieukiemkexoa" style="width:100%;">
-                        </select>                       
-                    </td>
-					
-			</tr>
-             <tr >
-               <td height="22" align="right" class="level_1_1">Tên phiếu kiểm kê: </td>
-               <td align="left" class="level_1_1"><label for="txttenpkk"></label>
-                 <input type="text" name="txttenpkk2" id="txttenpkk" style="width:100%"></td>
-             <tr>
-               <td height="22" align="right" class="level_1_2">Ngày kiểm kê:</td>
-               <td align="left" class="level_1_2"><label for="ngktkk7"></label>
-                 <select name="cbo_ngayxoa1" id="cbo_ngayxoa1" style="width:60">
-                   
-                 </select>
-                 <label for="thktkk7">/</label>
-                 <select name="cbo_thangxoa1" id="cbo_thangxoa1" style="width:70">
-                
-                 </select>
-                 <label for="namktkk7">/</label>
-                 <select name="cbo_namxoa1" id="cbo_namxoa1" style="width:70">
-                 </select></td>
-             </tr>
-             <tr>
-               <td height="22" align="right" class="level_1_1">Ngày kết thúc kiểm kê:</td>
-               <td align="left" class="level_1_1"><label for="ngktkk8"></label>
-                 <select name="cbo_ngayxoa2" id="cbo_ngayxoa2" style="width:60">
-                 
-                 </select>
-                 <label for="thktkk8">/</label>
-                 <select name="cbo_thangxoa2" id="cbo_thangxoa2" style="width:70">
-                 
-                 </select>
-                 <label for="namktkk8">/</label>
-                 <select name="cbo_namxoa2" id="cbo_namxoa2" style="width:70">
-                  </select></td>
-             </tr>
-             <tr>
-               <td height="22" align="right" class="level_1_2">Diễn giải:</td>
-               <td align="left" class="level_1_2"><textarea name="txt_tenthietbi2" rows="5" class="txtbox" style="width:100%" onKeyPress="return keypress(event)"></textarea></td>
-             </tr>
-             <tr>
-               <td colspan="2" height="22" align="center" class="level_1_1">
-                 <input type="button" class="button_1" id="btn_xoaphieukiemke" value="Xóa">
+               <tr>
+			    <td height="22" align="right" class="level_1_1">Chọn phiếu kiểm kê</td>
+			    <td align="left" class="level_1_1">
+               	<div name="phieukiemkesua" id="phieukiemkesua" style="width:200" ></div>
+			      </td>
+                </tr>
+			  <tr>
+			    <td height="22" align="right" class="level_1_2">Chọn loại kiểm kê</td>
+			    <td align="left" class="level_1_2">
+                <div id="loaikiemkesua"></div>
+                </td>
+                </tr>
+			    <tr>
+                 <td height="22" align="right" class="level_1_2">Ngày kiểm kê</td>
+                 <td align="left" class="level_1_1">
+                 <div id="ngaybdkksua"></div>
                  </td>
-             </tr>
-            <tr>
-              <td colspan="2" height="22" align="center" class="level_1_2">&nbsp;</td>
-            </tr>
-				  						  
+               </tr>
+               <tr>
+                 <td height="22" align="right" class="level_1_1">Ngày kết thúc kiểm kê</td>
+                 <td align="left" class="level_1_1">
+                 <div id="ngayktkksua"></div>
+                 </td>
+               </tr>
+               <tr>
+					<td height="22" align="right" class="level_1_2">Diễn giải</td>
+					<td width="70%" align="left" class="level_1_2"><textarea name="txt_diengiaisua" rows="5" class="txtbox" id="txt_diengiaisua" style="width:90%"></textarea></td>
+				</tr>
+           		
+              
+               <tr>
+					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
+                     <div style="margin-top: 10px;" id="tablephieumausua"></div>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                   </div>
+                         
+                        
+                    </td>
+			</tr> 
+               <tr>
+                 <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" class="button_1" id="btn_suaphieukiemke" value="Cập nhật">
+                   <input type="button" class="button_1" id="btn_suaphieukiemke2" value="Export phiếu">
+                   <input type="button" class="button_1" id="" value="Xóa">
+                 </td>
+               </tr>
               </tbody>
+           </table>
+           </form>
+          </td>
+        </tr>		
+        </tbody>
         </table>
-        	</form>
-       </td>
-      </tr>		
-      </tbody>
-      </table>
+         </div>
+    </div>
 	</td>
 </tr>
+                                      <!--ket thuc noi dung-->    
                                           
                                           
-                                          <tr>
-                                            <td align="center">&nbsp;</td>
-                                          </tr>    
                                         </table>
                                         </td>
   								</tr>
