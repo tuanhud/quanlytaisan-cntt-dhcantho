@@ -57,9 +57,12 @@
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript" src="js/duyetphieudutruvpp.js"></script>
+    <script type="text/javascript" src="js/table-huyvpp.js"></script>
+    <script type="text/javascript" src="js/table-vppduyet.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             initmenu();
+			taopopupvppduyet();
 			fillcombo('get_list_donvi.php',document.frm_duyetphieudutruvpp.cbo_donviduyet);
 	fillcombo2('get_list_nam.php',document.frm_duyetphieudutruvpp.cbo_namduyet);
 	fillcombo2('get_list_quy.php',document.frm_duyetphieudutruvpp.cbo_quyduyet);
@@ -72,7 +75,15 @@
 	$('form[name="frm_duyetphieudutruvpp"] select[name="cbo_donviduyet"]').change(function(){
 		fillcombo3bien('get_list_maphieudutruvpp.php',document.frm_duyetphieudutruvpp.cbo_donviduyet,document.frm_duyetphieudutruvpp.cbo_namduyet,document.frm_duyetphieudutruvpp.cbo_quyduyet, document.frm_duyetphieudutruvpp.cbo_maphieuduyet);
 	});
+	$('form[name="frm_duyetphieudutruvpp"] select[name="cbo_maphieuduyet"]').change(function(){
+		if($("#cbo_maphieuduyet").val()!=-1)
+		taopopupvppduyet();
+	});
 	
+	$('form[name="frm_huyphieudutruvpp"] select[name="cbo_maphieuhuy"]').change(function(){
+		if($("#cbo_maphieuhuy").val()!=-1)
+		taopopupvpphuy();
+	});
 	fillcombo('get_list_donvi.php',document.frm_huyphieudutruvpp.cbo_donvihuy);
 	fillcombo2('get_list_nam.php',document.frm_huyphieudutruvpp.cbo_namhuy);
 	fillcombo2('get_list_quy.php',document.frm_huyphieudutruvpp.cbo_quyhuy);
@@ -144,7 +155,7 @@
                                           <tr>       
                                               <td align="center" width="44%" valign="middle">
                                              
-                                              <table width="500" border="0" cellpadding="0" cellspacing="0">
+                                              <table width="710" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -182,7 +193,24 @@
 					<td height="22" align="right" class="level_1_1">Chọn mã phiếu dự trù</td>
 					<td width="50%" align="left" class="level_1_1"><select name="cbo_maphieuduyet" id="cbo_maphieuduyet" class="cbo" style="width:100%;">
                         </select></td>
-			</tr>               
+			</tr>
+                     <tr>
+					<td height="22" align="left" colspan="2" class="level_1_2"><strong><i>Chi tiết văn phòng phẩm:</i></strong></td>
+			</tr>
+            <tr>
+					<td colspan="2" align="center">
+              
+                            <div style="margin-top: 10px;" id="detail_vppduyet"></div>
+                            <span> <strong>Tổng thành tiền:</strong></span> <span id="tongtienduyet"></span>
+                            </span> <span><strong>VNĐ</strong></span>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                 
+                           <div style="margin-left: 30px; float: left;">
+                    
+                    </td>
+			</tr>                
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_duyet" id="btn_duyet" class="button_1" value="Duyệt"></td>
               </tr>
@@ -196,7 +224,7 @@
         </tbody>
         </table>
 <br/>
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
+        <table width="710" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -235,6 +263,28 @@
 					<td height="22" align="right" class="level_1_1">Chọn mã phiếu dự trù</td>
 					<td width="50%" align="left" class="level_1_1"><select name="cbo_maphieuhuy" id="cbo_maphieuhuy" class="cbo" style="width:100%;">
                         </select></td>
+			</tr> 
+             <tr>
+					<td height="22" align="left" colspan="2" class="level_1_2"><strong><i>Chi tiết văn phòng phẩm:</i></strong></td>
+			</tr>
+            <tr>
+					<td colspan="2" align="center">
+              
+                            <div style="margin-top: 10px;" id="detail_vpphuy"></div>
+                            <span> <strong>Tổng thành tiền:</strong></span> <span id="tongtienhuy"></span>
+                            </span> <span><strong>VNĐ</strong></span>
+                            <div style="margin-top: 30px;">
+                                <div id="cellbegineditevent"></div>
+                                <div style="margin-top: 10px;" id="cellendeditevent"></div>
+                 
+                           <div style="margin-left: 30px; float: left;">
+                    
+                    </td>
+			</tr>       
+             <tr>
+					<td height="22" align="left" colspan="2" class="level_1_1">
+                    
+                    </td>
 			</tr>         
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">
