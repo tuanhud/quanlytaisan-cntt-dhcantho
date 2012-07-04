@@ -45,7 +45,7 @@
                            <li><a href="capnhatnam.php">Cập nhật năm</a></li>
                         </ul>
                     </li>
-                    <li><img style='float: left; margin-right: 5px;' src='../images/office.png' />Đơn vị - Người dùng - Quyền
+                    <li><img style='float: left; margin-right: 5px;' src='../images/office.png' />Quản lý Người dùng
                         <ul style='width: 250px;'>
                             <li><a href="capnhatdonvi.php">Cập nhật đơn vị</a></li>
                             <li><a href="capnhatnguoidung.php">Cập nhật người dùng</a></li> 
@@ -65,7 +65,11 @@
                      <li><img style='float: left; margin-right: 5px;' src='../images/baocao.png' />Report
                         <ul style='width: 250px;'>
                              <li><a href="#">In danh sách yêu cầu thiết bị</a></li>
-                             <li><a href="#">In danh sách thiết bị hiện có</a></li>
+                             <li><a href="#">In danh sách thiết bị hiện có</a></li>                            
+                        </ul>
+                    </li>
+                                         <li><img style='float: left; margin-right: 5px;' src='../images/thongke2.png' />Thống kê
+                        <ul style='width: 250px;'>
                               <li><a href="thongkesotienbomon.php" target="_blank">Thống kê số tiền cấp cho đơn vị</a></li>              
                                     <li><a href="thongkesoluongnguoidung.php" target="_blank">Thống kê số lượng người dùng</a></li>                                    
                         </ul>
