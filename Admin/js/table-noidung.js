@@ -137,7 +137,7 @@ function taobang()
 						url: 'get_info_noidung_phieumauthem.php',           
 					};
 					var dataAdapter3 = new $.jqx.dataAdapter(source2);
-					$("#jqxWidget3").jqxGrid(
+					$("#jqxWidget4").jqxGrid(
 					{
 						width: 350,
 						selectionmode: 'singlerow',
@@ -154,12 +154,12 @@ function taobang()
             });
         } 
 // Select 1 dong tren popup roi đổ qua bảng lớn*************************************************************************************************
- 		$('#jqxWidget3').bind('rowclick', function (event) 
+ 		$('#jqxWidget4').bind('rowclick', function (event) 
 		{
 			var args = event.args;
 			var row = args.rowindex;
-			var data = $('#jqxWidget3').jqxGrid('getrowdata',row);
-			manoidung = $('#jqxWidget3').jqxGrid('getcellvalue', row, "mand");
+			var data = $('#jqxWidget4').jqxGrid('getrowdata',row);
+			manoidung = $('#jqxWidget4').jqxGrid('getcellvalue', row, "mand");
 			var i = 0,them=1;
 	      	var rowscount = $("#jqthem").jqxGrid('getdatainformation').rowscount;
 			for(i;i < rowscount;i++) 
