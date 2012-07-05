@@ -48,6 +48,7 @@ function taochartnguoidung() {
                             valueAxis:
                             {
                                 unitInterval: 5,
+								minValue: 0,
                                 displayValueAxis: true,
                                 description: 'Số người'
                             },
