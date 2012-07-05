@@ -28,7 +28,6 @@ function taochartsotien() {
 							};
 							var ten=x[0].getElementsByTagName('column')[3].firstChild.nodeValue;
 							var dataAdapter = new $.jqx.dataAdapter(source);
-							// prepare jqxChart settings
 							var settings =
 							 {
                 title: "Thống Kê Kinh Phí Cấp Cho Đơn Vị " + ten,
@@ -53,6 +52,7 @@ function taochartsotien() {
                             valueAxis:
                             {
                                 unitInterval: 10,
+								minValue: 0,
                                 displayValueAxis: true,
                                 description: 'Số tiền (triệu đồng)'
                             },
@@ -78,8 +78,7 @@ function batsukienbtn_tk(){
 				if($("#cbo_tunam").val()>$("#cbo_dennam").val())
 				alert("Năm bắt đầu phải nhỏ hơn năm kết thúc thống kê");
 				else{
-				
-				taochartsotien();	
+					taochartsotien();	
 			}
 			}
 			});
