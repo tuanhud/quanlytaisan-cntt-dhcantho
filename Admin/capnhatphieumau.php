@@ -56,13 +56,10 @@
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
-<<<<<<< .mine
     <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
-=======
          <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
->>>>>>> .r177
     	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/fill.js"></script>
 	<script type="text/javascript" src="js/capnhatphieumau.js"></script>
@@ -129,7 +126,7 @@
                         	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
-                           
+                           <td>
                            				 <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                                 <tbody>
                                 
@@ -186,11 +183,7 @@
               </tr>
               <tr>
 					<td align="center" height="400"  class="level_1_1" colspan="2" valign="top">
-<<<<<<< .mine
                        <div style="visibility: visible;" id='jqxWidget'>
-=======
-                       
->>>>>>> .r177
                             <div id="jqthem"></div>
                           
                             <div style="margin-top: 30px;">
@@ -218,7 +211,7 @@
                                 <div>
                                   <div style="margin: 10px">
                                     Chọn nội dung:
-                                    <div id='jqxWidgeft3'>
+                                    <div id='jqxWidget4'>
         							</div>
                                    <!-- Chọn thuộc tính
                                     <div id='jqxWidget2'>
@@ -309,9 +302,7 @@
                                 </div> 
                                 <div style="margin-top: 5px;">
                                     <input id="deleterowbutton2" type="button" value="Xóa thuộc tính" width="70" />
-                                </div>
-                               
-                                
+                                </div>       
                          </div>
                          <div style="width:400px; border: 0px solid #ccc; margin-top: 10px;"
                             id="mainDemoContainer2">
