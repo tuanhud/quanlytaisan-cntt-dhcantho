@@ -31,7 +31,8 @@
                             <li ><a href="capnhatphieukiemke1.php">Cập nhật phiếu kiểm kê</a></li>                                  
 							<li><a href="capnhatnoidungkiemke.php">Cập nhật nội dung kiểm kê</a></li>                     
 							<li><a href="capnhatnoidungcon.php">Cập nhật nội dung con</a></li>                     
-							<li><a href="capnhatphieumau.php">Cập nhật phiếu mẩu</a></li>                              
+							<li><a href="capnhatphieumau.php">Cập nhật phiếu mẩu</a></li>
+                            <li><a href="khoaphieumau.php">Khóa cập nhật phiếu mẫu</a></li>                              
                         </ul>
                     </li>
                     <li><img style='float: left; margin-right: 5px;' src='../images/thanhly.png' />Thanh lý
