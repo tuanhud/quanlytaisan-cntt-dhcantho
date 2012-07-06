@@ -73,10 +73,10 @@
 			fillcombo('get_list_donvi.php',document.frm_inkhms.cbo_donviin);
 			fillcombo2('get_list_nam.php',document.frm_inkhms.cbo_namin);
 			$('form[name="frm_inkhms"] select[name="cbo_namin"]').change(function(){
-		    fillcombo2bien('get_list_makhms.php',document.frm_inkhms.cbo_donviin,document.frm_inkhms.cbo_namin,document.frm_inkhms.cbo_makhms);	 
+		    fillcombo2bien('get_list_makhms_report.php',document.frm_inkhms.cbo_donviin,document.frm_inkhms.cbo_namin,document.frm_inkhms.cbo_makhms);	 
 	         });
 			 $('form[name="frm_inkhms"] select[name="cbo_donviin"]').change(function(){
-		    fillcombo2bien('get_list_makhms.php',document.frm_inkhms.cbo_donviin,document.frm_inkhms.cbo_namin,document.frm_inkhms.cbo_makhms);	 
+		    fillcombo2bien('get_list_makhms_report.php',document.frm_inkhms.cbo_donviin,document.frm_inkhms.cbo_namin,document.frm_inkhms.cbo_makhms);	 
 	         });
 			       
             });
