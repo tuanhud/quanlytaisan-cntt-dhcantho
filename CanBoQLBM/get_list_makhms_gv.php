@@ -8,7 +8,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('select makhms from kehoachmuasam where mscb="'.$_POST['id'].'"');
+					$db->setQuery('select makhms,mscb from kehoachmuasam where mscb="'.$_POST['id'].'"');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
