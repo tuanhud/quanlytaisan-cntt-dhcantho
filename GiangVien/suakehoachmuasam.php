@@ -56,19 +56,14 @@
     <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
-     <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
-     <script type="text/javascript" src="js/gettheme.js"></script>
-    
-    	
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
     <script type="text/javascript" src="js/gettheme.js"></script>
     <script type="text/javascript" src="js/table-suakhmsam.js"></script>
 	<script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-			
-			document.frm_suakehoachmuasam.cbo_yeucau.focus();
-			fillcombo2('get_list_yeucau.php',document.frm_suakehoachmuasam.cbo_yeucau);
+        $(document).ready(function () 
+		{
             $("#parentTable").height(1600);	
             setTimeout(function()
             {
@@ -83,6 +78,8 @@
 			$("#deleterowbutton").jqxButton({ theme: theme, width: '160px', height: '25px' });
 			$("#import").jqxButton({ theme: theme, width: '160px', height: '25px' });
 			$("#delete").jqxButton({ theme: theme, width: '160px', height: '25px' });
+			
+			taocombo();
 			
         });
    </script>
@@ -124,7 +121,7 @@
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suakehoachmuasam" id="frm_suakehoachmuasam" action="VPP_export.php" method="post" onsubmit="return kt()">
+          	<form name="frm_suakehoachmuasam" id="frm_suakehoachmuasam" action="exportKHMS.php" method="post" target="export" onSubmit="window.open('', 'export', 'width=1350,height=660,status=yes,resizable=yes,scrollbars=yes')">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
            <!--bang thuoc tinh dat o day-->
@@ -137,8 +134,7 @@
               		
 					<td height="22" align="right" class="level_1_1">Chọn mã yêu cầu thiết bị </td>
 					<td  align="left" class="level_1_1" colspan="3">
-                    	<select id="cbo_yeucau" name="cbo_yeucau" class="cbo" style="width:60%">
-                        </select>	
+                    	 <div id="mayeucauthietbi"></div>
                     </td>
 			</tr> 
              <tr>
@@ -153,11 +149,12 @@
                                 <div style="margin-top: 10px;" id="cellendeditevent"></div>
                  
                            <div style="margin-left: 10px; float: left;">
-                                <div id="buttondk" style="margin-top: 5px; display:none">
-                                    <input type="button" value="Thêm thiết bị yêu cầu" id="showWindowButton" />
-                                    <input id="deleterowbutton" style="margin-left:10" type="button" value="Xóa thiết bị yêu cầu" />
-                                    <input id="import" style="margin-left:10" type="submit" value="Import Excel/ Word/ PDF" />
-                                     <input id="delete" style="margin-left:10" type="button" value="Xóa yêu cầu" />
+                                <div id="buttondk" style="margin-top: 5px;">
+                                	<input type="hidden" name="makhms" id="makhms">
+                                    <input type="button" class="button_1" value="Thêm thiết bị yêu cầu" id="showWindowButton" />
+                                    <input id="deleterowbutton" class="button_1" style="margin-left:10" type="button" value="Xóa thiết bị yêu cầu" />
+                                    <input id="import" class="button_1" style="margin-left:10" type="submit" value="Import Excel/ Word/ PDF" />
+                                     <input id="delete" class="button_1" style="margin-left:10" type="button" value="Xóa yêu cầu" />
                                 </div> 
                                
                          
