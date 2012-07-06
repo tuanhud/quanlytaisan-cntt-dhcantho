@@ -63,8 +63,11 @@
 <tr align="center">
   <td width="4%"><div align="center"><strong>TT</strong></div></td>
   <td width="17%"><div align="center"><strong>Tên thiết bị</strong></div></td>
+  <td width="auto"><div align="center"><strong>Số lượng</strong></div></td>
+  <td width="auto"><div align="center"><strong>Đơn giá</strong></div></td>
+  <td width="auto"><div align="center"><strong>Thành tiền</strong></div></td>
   <?php		
-	$db->setQuery('SELECT DISTINCT d.MaThuocTinh, d.TenThuocTinh from taisanthuocdonvi a, taisan b, cothuoctinh c, thuoctinh d, donvi e, phieukiemke f where a.MaTaiSan=b.MaTaiSan and b.MaTaiSan=c.MaTaiSan and c.MaThuocTinh=d.MaThuocTinh and a.MSDV=e.MSDV and e.MSDV and f.MSDV   and f.MaPhieuKiemKe="'.$maphieukiemke.'" ORDER BY TenThuocTinh');
+	$db->setQuery('SELECT DISTINCT d.MaThuocTinh, d.TenThuocTinh from taisanthuocdonvi a, taisan b, cothuoctinh c, thuoctinh d, donvi e, phieukiemke f where a.MaTaiSan=b.MaTaiSan and b.MaTaiSan=c.MaTaiSan and c.MaThuocTinh=d.MaThuocTinh and a.MSDV=e.MSDV and e.MSDV and f.MSDV   and f.MaPhieuKiemKe="'.$maphieukiemke.'"');
 	$result=$db->fetchAll();
 	while($row=mysql_fetch_array($result,MYSQL_NUM))
 	{
@@ -85,29 +88,60 @@
 			<td>
 					<div align="center"><strong>'.$row2[1].'</strong></div>		
 			</td>';
-		}/*?>$query="SELECT noi_mand FROM noidung, noidungcon where noidungcon.mand=noidung.mand and noidung.mand ='".$row2[0]."'";			
-					$db->setQuery($query);
-					$result3=$db->fetchAll();
-					while($row3=mysql_fetch_array($result3,MYSQL_NUM))
-					{
-							$db->setQuery('SELECT TenND FROM noidung where mand='.$row3[0].'');
-							$kq=$db->fetchAll();
-							$row4=mysql_fetch_array($kq);
-							echo' 
-								<td width="auto">
-									<div align="center"><strong>'.$row4[0].'</strong></div>
-								</td>
-								';		
-					}<?php */
+		}
 	}
   ?>
-  <td width="auto"><div align="center"><strong>Thuyết minh yêu cầu sử dụng</strong></div></td>
    <td width="200"><div align="center"><strong>Ghi chú</strong></div></td>
 </tr>
+<tr>
 <?php
-					
-					
-					
+				
+	$db->setQuery('SELECT b.MaTaiSan, b.TenTaiSan, a.SoLuongCuaDonVi, a.DonGiaTS FROM `taisanthuocdonvi` a, taisan b,  phieukiemke c, donvi d where c.MSDV=d.MSDV and d.MSDV=a.MSDV and a.MaTaiSan=b.MaTaiSan and c.MaPhieuKiemKe="'.$maphieukiemke.'"');
+	$result3=$db->fetchAll();
+					while($mataisan=mysql_fetch_array($result3,MYSQL_NUM))
+					{
+						echo"<tr align='center'>";	
+						$stt+=1;
+						   echo'  <td>'.$stt.'</td>
+								  <td>'.$mataisan[1].'</td>
+								  <td>'.$mataisan[2].'</td>
+								  <td>'.$mataisan[3].'</td>
+								  <td>'.$mataisan[2]*$mataisan[3].'</td>
+							';
+							
+							//fill gia tri thuoc tinh
+							$db->setQuery('SELECT b.MaThuocTinh, b.GiaTriThuocTinh FROM taisan a, cothuoctinh b where a.MaTaiSan=b.MaTaiSan and a.MaTaiSan="'.$mataisan[0].'"');
+							$result4=$db->fetchAll();
+							while($thuoctinh=mysql_fetch_array($result4,MYSQL_NUM))
+							{
+								echo '<td>' .$thuoctinh[1]. '</td>';
+							}
+							
+							// fill noi dung phieu mau
+							$db->setQuery('SELECT d.MaND, d.TenND FROM cophieumau a, phieumau b, thuocphieumau c, noidung d where a.MaPhieu=b.MaPhieu and b.MaPhieu = c.MaPhieu and c.MaND = d.MaND and a.MaPhieuKiemKe="'.$maphieukiemke.'"');			
+							$resultabc=$db->fetchAll();
+							while($manoidung=mysql_fetch_array($resultabc,MYSQL_NUM))
+							{
+								$db->setQuery('SELECT ChiTietND, MaND  FROM conoidung where MaPhieuKiemKe="'.$maphieukiemke.'" and MaTaiSan="'.$mataisan[0].'" and MaND="'.$manoidung[0].'" ');			
+								$resultasd=$db->fetchAll();
+								$ghichu;
+								while($chitietnd=mysql_fetch_array($resultasd,MYSQL_NUM))
+								{
+									if($chitietnd[1]=='GHICHU')
+									{
+											$ghichu = $chitietnd[0];
+									}
+									else
+									{
+										echo '<td>' .$chitietnd[0]. '</td>';	
+									}
+								}
+								
+							}
+							echo '<td>' .$ghichu. '</td>';
+							echo "</tr>";	
+					}	
+						
 ?>
 </table>
 </td>
