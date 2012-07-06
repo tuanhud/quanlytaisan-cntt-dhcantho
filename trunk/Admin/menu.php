@@ -67,10 +67,10 @@
                         <ul style='width: 250px;'>
                              <li><a href="#">In danh mục kiểm kê của bộ môn</a></li>
 
-<li><a href="#">In yêu cầu tài sản của giảng viên</a></li>                             <li><a href="#">In kế hoạch mua sắm của bộ môn</a></li>
-                             <li><a href="#">In kế hoạch mua sắm của  khoa</a></li>
-                             <li><a href="#">In phiếu dự trù VPP của bộ môn</a></li>
-                             <li><a href="#">In danh sách tài sản hiện có của bộ môn</a></li>                      
+                             <li><a href="#">In kế hoạch mua sắm của bộ môn</a></li>
+                             
+                             <li><a href="report-dutruvppchoBM.php">In phiếu dự trù VPP của bộ môn</a></li>
+                                                   
                        </ul>
                     </li>
                                          <li><img style='float: left; margin-right: 5px;' src='../images/thongke2.png' />Thống kê
