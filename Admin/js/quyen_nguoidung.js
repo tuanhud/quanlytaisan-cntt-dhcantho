@@ -1,19 +1,13 @@
 var numofSus = numofFai = 0;
 
-//Them hoi vien duoc khen thuong
 function capnhat_quyen_nguoidung(filephp,frm,macanbo,maquyen)
 {
 	http=GetXmlHttpObject();
 	
 	var params ="macanbo="+macanbo;
 	params+="&maquyen="+maquyen;
-	//mo ket noi bang phuong thuc post
 	http.open("POST", filephp, false);
-	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	//http.setRequestHeader("Content-length", params.length);
-	//http.setRequestHeader("Connection", "close");
-	//ham xu li du lieu tra ve cua ajax send thanh cong
 	http.onreadystatechange = function() 
 	{
 		if(http.readyState == 4 && http.status == 200) 
@@ -29,12 +23,12 @@ function capnhat_quyen_nguoidung(filephp,frm,macanbo,maquyen)
 	http.send(params);
 }
 
-//Them danh sach hoi vien duoc khen thuong
+
 function update_quyen_nguoidung(frm){
 
    try
 	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtrad");
+		var chks = dt.get('srcNode').all("tbody input.ADMIN");
 		chks.each( function(item){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
@@ -52,7 +46,7 @@ function update_quyen_nguoidung(frm){
 	}
 	try
 	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtrcbql");
+		var chks = dt.get('srcNode').all("tbody input.CBQLBM");
 		chks.each( function(item){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
@@ -70,7 +64,7 @@ function update_quyen_nguoidung(frm){
 	}
 	try
 	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtrgv");
+		var chks = dt.get('srcNode').all("tbody input.GV");
 		chks.each( function(item){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
@@ -88,118 +82,7 @@ function update_quyen_nguoidung(frm){
 	}
 	try
 	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr2");
-		chks.each( function(item){
-			var rec = dt.getRecord( item.ancestor() );
-			if ( !item.get('checked') )
-			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'THEMVPP')
-			}
-			else
-			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'THEMVPP');
-			}
-		   	});
-	}
-	catch(ex){
-		alert("Có lỗi xảy ra: " + ex.message);
-	}
-	try
-	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr3");
-		chks.each( function(item){
-			var rec = dt.getRecord( item.ancestor() );
-			if ( !item.get('checked') )
-			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'SUAVPP')
-			}
-			else
-			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'SUAVPP');
-			}
-		   	});
-	}
-	catch(ex){
-		alert("Có lỗi xảy ra: " + ex.message);
-	}
-	
-	try
-	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr4");
-		chks.each( function(item){
-			var rec = dt.getRecord( item.ancestor() );
-			if ( !item.get('checked') )
-			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'THEMKK')
-			}
-			else
-			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'THEMKK');
-			}
-		   	});
-	}
-	catch(ex){
-		alert("Có lỗi xảy ra: " + ex.message);
-	}
-	try
-	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr5");
-		chks.each( function(item){
-			var rec = dt.getRecord( item.ancestor() );
-			if ( !item.get('checked') )
-			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'SUAKK')
-			}
-			else
-			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'SUAKK');
-			}
-		   	});
-	}
-	catch(ex){
-		alert("Có lỗi xảy ra: " + ex.message);
-	}
-	
-	try
-	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr6");
-		chks.each( function(item){
-			var rec = dt.getRecord( item.ancestor() );
-			if ( !item.get('checked') )
-			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'THEMKHMS')
-			}
-			else
-			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'THEMKHMS');
-			}
-		   	});
-	}
-	catch(ex){
-		alert("Có lỗi xảy ra: " + ex.message);
-	}
-	try
-	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr7");
-		chks.each( function(item){
-			var rec = dt.getRecord( item.ancestor() );
-			if ( !item.get('checked') )
-			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'SUAKHMS')
-			}
-			else
-			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'SUAKHMS');
-			}
-		   	});
-	}
-	catch(ex){
-		alert("Có lỗi xảy ra: " + ex.message);
-	}
-	
-	try
-	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr8");
+		var chks = dt.get('srcNode').all("tbody input.DUYETVPP");
 		chks.each( function(item){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
@@ -215,30 +98,9 @@ function update_quyen_nguoidung(frm){
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);
 	}
-	
-	
 	try
 	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr9");
-		chks.each( function(item){
-			var rec = dt.getRecord( item.ancestor() );
-			if ( !item.get('checked') )
-			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'DUYETKK')
-			}
-			else
-			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'DUYETKK');
-			}
-		   	});
-	}
-	catch(ex){
-		alert("Có lỗi xảy ra: " + ex.message);
-	}
-	
-	try
-	{
-		var chks = dt.get('srcNode').all("tbody input.myCheckboxFmtr10");
+		var chks = dt.get('srcNode').all("tbody input.DUYETKHMS");
 		chks.each( function(item){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
@@ -254,6 +116,120 @@ function update_quyen_nguoidung(frm){
 	catch(ex){
 		alert("Có lỗi xảy ra: " + ex.message);
 	}
+	
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.QLKK");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'QLKK')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'QLKK');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.LOCKKK");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'LOCKKK')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'LOCKKK');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.QLVPP");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'QLVPP')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'QLVPP');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.QLKHMS");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'QLKHMS')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'QLKHMS');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.PDTVPP");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'PDTVPP')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'PDTVPP');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	
+	
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.DUYETKHMSBM");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'DUYETKHMSBM')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'DUYETKHMSBM');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	
 	alert("Cập nhật thành công : " + numofSus+ " quyền.");
 	document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value=-1;
 	dt.reset();

@@ -18,69 +18,69 @@ function createTable_nguoidung(){
      }          
 	
 	//Tao checkbox
-	 var fmtChkBoxad = function(o)
+	 var ADMIN = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtrad" />';
+    	var cell = '<input type="checkbox" class="ADMIN" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	 var fmtChkBoxcbql = function(o)
+	 var CBQLBM = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtrcbql" />';
+    	var cell = '<input type="checkbox" class="CBQLBM" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	 var fmtChkBoxgv = function(o)
+	 var GV = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtrgv" />';
+    	var cell = '<input type="checkbox" class="GV" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-    var fmtChkBox = function(o)
+    var DUYETVPP = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr" />';
+    	var cell = '<input type="checkbox" class="DUYETVPP" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	var fmtChkBox2 = function(o)
+	var DUYETKHMS = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr2"/>';
+    	var cell = '<input type="checkbox" class="DUYETKHMS"/>';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	var fmtChkBox3 = function(o)
+	var QLKK = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr3" />';
+    	var cell = '<input type="checkbox" class="QLKK" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	var fmtChkBox4 = function(o)
+	var LOCKKK = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr4" />';
+    	var cell = '<input type="checkbox" class="LOCKKK" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	var fmtChkBox5 = function(o)
+	var QLVPP = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr5" />';
+    	var cell = '<input type="checkbox" class="QLVPP" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	var fmtChkBox6 = function(o)
+	var QLKHMS = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr6" />';
+    	var cell = '<input type="checkbox" class="QLKHMS" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	var fmtChkBox7 = function(o)
+	var PDTVPP = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr7" />';
+    	var cell = '<input type="checkbox" class="PDTVPP" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
-	var fmtChkBox8 = function(o)
+	var DUYETKHMSBM = function(o)
 	{
-    	var cell = '<input type="checkbox" class="myCheckboxFmtr8" />';
+    	var cell = '<input type="checkbox" class="DUYETKHMSBM" />';
         	o.value = cell;
 	        o.className += 'align-center';
     }
@@ -99,53 +99,49 @@ function createTable_nguoidung(){
 
 	//Cac Column cua Bang
 	var cols = [
-				{name:'canbo', label:'Cán bộ',className:'align-center',
+				{name:'canbo', label:'<p align="center">Cán bộ</p>',className:'align-center',
 				children:
 				[
 						{key: "id",label:'Mã cán bộ', sortable: true},
 						{key: "ten",label:"Họ tên", sortable: true},
 				]},
-				{name:'quyendn', label:'Quyền đăng nhập',className:'align-center',
+				{name:'quyendn', label:'<p align="center">Quyền đăng nhập</p>',className:'align-center',
 				children:
 				[
-				  {name:'ad', label:'ADMIN',formatter: fmtChkBoxad,allowHTML:true},
-				  {name:'cbqlbm',label:'CBQLBM',formatter: fmtChkBoxcbql,allowHTML:true},
-				  {name:'gv',label:'GV',formatter: fmtChkBoxgv,allowHTML:true},
+				  {name:'ADMIN', label:'ADMIN',formatter:ADMIN,allowHTML:true},
+				  {name:'CBQLBM',label:'CBQLBM',formatter:CBQLBM,allowHTML:true},
+				  {name:'GV',label:'GV',formatter:GV,allowHTML:true},
 				]
 				},
-				{name:'donvi', label:'Đơn vị',className:'align-center',
+				{name:'donvi', label:'<p align="center">Quyền Admin</p>',className:'align-center',
 				children:
 				[
-					{name:'vpp', label:'VPP',
+					{name:'vpp', label:'<p align="center">Duyệt</p>',
 					children:
 					[
-						{name:'themvpp', label:'Thêm', formatter: fmtChkBox2,allowHTML:true},
-						{name:'suavpp', label:'Sửa', formatter: fmtChkBox3,allowHTML:true},
+						{name:'DUYETVPP', label:'VPP', formatter:DUYETVPP,allowHTML:true},
+						{name:'DUYETKHMS', label:'KHMS', formatter: DUYETKHMS,allowHTML:true},
 					]},
-					{name:'kk', label:'KK',
-					children:
-					[
-						{name:'themkk', label:'Thêm', formatter: fmtChkBox4,allowHTML:true},
-						{name:'suakk', label:'Sửa', formatter: fmtChkBox5,allowHTML:true},
-					]},
-					{name:'khms',label:'KHMS',
-					children:
-					[
-						{name:'themkhms', label:'Thêm', formatter: fmtChkBox6,allowHTML:true},
-						{name:'suakhms', label:'Sửa', formatter: fmtChkBox7,allowHTML:true},
-					]},
-
-				]},
-				{name:'khoa', label:'Khoa',className:'align-center',
-				children:
-				[
-					{name:'khoa', label:'Duyệt',className:'align-center',
+					{name:'QLKK', label:'<p align="center">QLKK</p>',
 						children:
 						[
-							{name:'duyetvpp', label:'VPP',formatter: fmtChkBox8,allowHTML:true},
-							{name:'duyetkk', label:'KK', formatter: fmtChkBox9, allowHTML:true},
-							{name:'duyetkhms',label:'KHMS',formatter: fmtChkBox10, allowHTML:true},
-						]},
+							{name:'QLKK', label:'Quản lý kiểm kê', formatter: QLKK,allowHTML:true},
+							{name:'KHOAKK', label:'LOCK KK', formatter: LOCKKK,allowHTML:true},
+						]
+					},
+					{name:'QLVPP', label:'QLVPP',formatter: QLVPP,allowHTML:true},
+					{name:'QLKHMS',label:'QLKHMS',formatter: QLKHMS,allowHTML:true},
+					
+				]},
+				{name:'khoa', label:'<p align="center">Quyền cán bộ quản lý</p>',className:'align-center',
+				children:
+				[
+					{name:'DUYET', label:'<p align="center">Duyệt</p>',
+					children:
+					[
+						{name:'PDTVPP', label:'Lập phiếu dự trù VPP',formatter:PDTVPP,allowHTML:true},
+						{name:'DUYETKHMSBM', label:'Duyệt KHMS', formatter: DUYETKHMSBM, allowHTML:true},
+					]},
 				]},
 		
 		];

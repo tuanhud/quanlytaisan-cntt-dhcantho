@@ -28,7 +28,7 @@
                     <li><img style='float: left; margin-right: 5px;' src='../images/thongke.png' />Kiểm kê
                         <ul style='width: 250px;'>
                             <li><a href="capnhatloaikiemke.php">Cập nhật loại kiểm kê</a></li>
-                            <li ><a href="capnhatphieukiemke1.php">Cập nhật phiếu kiểm kê</a></li>                                  
+                            <li ><a href="capnhatphieukiemke.php">Cập nhật phiếu kiểm kê</a></li>                                  
 							<li><a href="capnhatnoidungkiemke.php">Cập nhật nội dung kiểm kê</a></li>                     
 							<li><a href="capnhatnoidungcon.php">Cập nhật nội dung con</a></li>                     
 							<li><a href="capnhatphieumau.php">Cập nhật phiếu mẩu</a></li>
@@ -65,7 +65,7 @@
                     </li>
                      <li><img style='float: left; margin-right: 5px;' src='../images/baocao.png' />Report
                         <ul style='width: 250px;'>
-                             <li><a href="#">In danh mục kiểm kê của bộ môn</a></li>
+                             <li><a href="ExportKK_UI.php">In phiếu kiểm kê</a></li>
 
                              <li><a href="report-khms.php">In kế hoạch mua sắm của bộ môn</a></li>
                              
