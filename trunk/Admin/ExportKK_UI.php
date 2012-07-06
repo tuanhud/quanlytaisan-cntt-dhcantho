@@ -14,13 +14,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cập nhật quyền - người dùng</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
+<title>Cập nhật phiếu kiểm kê</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
     <link rel="stylesheet" href="../styles/site.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../styles/style.css" media="screen" />
-  	<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.summer.css" type="text/css"/>
+    <script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="../scripts/demofunctions.js"></script>
     <script type="text/javascript" src="../jqwidgets/globalization/jquery.global.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
@@ -54,73 +54,33 @@
     <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
-	<script type="text/javascript" src="js/ajax.js"></script>
-    <script type="text/javascript" src="js/fill.js"></script>
-    <script src="../js/yui-min_3.5.js"></script> 
-	<script src="../js/intl-min.js"></script>
-    <script type="text/javascript" src="js/capnhatdonvi.js"></script>
-    <script type="text/javascript" src="js/table_quyen_nguoidung.js"></script>
-    <script type="text/javascript" src="js/check_quyen_nguoidung.js"></script>
-    <script type="text/javascript" src="js/quyen_nguoidung.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+     <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/fill.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
     
-<script type="text/javascript" >
-$(document).ready(function() 
-{ 
-	createTable_nguoidung();
-	fillcombo('get_list_donvi2.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi);
-	//Create table after loading page
-	$('form[name="frm_capnhatquyen_nguoidung"] select[name="cbo_tendonvi"]').change(function()
-	{		
-			
-			getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
-			
-			
-			checkbox_duyetvpp();
-			checkbox_duyetkhms();
-			checkbox_qlkk();
-			checkbox_lockkk();
-			checkbox_qlvpp();
-			checkbox_qlkhms();
-			checkbox_pdtvpp();
-			checkbox_duyetkhmsbm();
-			checkbox_admin();
-			checkbox_cbqlbm();
-			checkbox_gv();
-			
-		});
-	$('form[name="frm_capnhatquyen_nguoidung"] input[name="btn_capnhat"]').click(function(){		
-		update_quyen_nguoidung(document.frm_capnhatquyen_nguoidung);
-	});
-	
-    $("#parentTable").height(1600);	
-    setTimeout(function()
-    {
-       $("#demoContent").css('visibility', 'visible');		
-       $("#loader").css('display', 'none');
-     }, 1000);
-    var theme = getTheme();
-    $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
-    $("#jqxMenu").css('visibility', 'visible'); 
-			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
-})
-function thoat() {
-		if (confirm('Ban có thật sự muốn thoát không?' )) {
-			document.location = '../logout.php';
-			return;
-		}
-	}
- </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#parentTable").height(1600);	
+            setTimeout(function()
+            {
+                $("#demoContent").css('visibility', 'visible');		
+                $("#loader").css('display', 'none');
+            }, 1000);
+            var theme = getTheme();
+            $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
+			$('#jqxTabs').jqxTabs({ width: 970,enabledHover: true, height:'auto', position: 'top', theme: '' });
+            $("#jqxMenu").css('visibility', 'visible'); 	
+			fillcombo('get_list_phieukiemkesua.php',document.frm_exportkk.cbo_tenkk);	
+  });
+        </script>
 </head>
-<body style='background: #fff url(../images/background.png) left top scroll repeat-x;' >
+<body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
 	<!--begin header-->
-   			 <div style="Z-INDEX: 1; LEFT: 1031px; WIDTH: 200px; POSITION: absolute; TOP: 9px; HEIGHT: 30px" align="center"> <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF"><a href="capnhatthongtincanhanad.php">Cập nhật thông tin cá nhân</a>| <a class="white" href="javascript:thoat();">Thoát</a> <br />
-   			   Xin chào,
-   			   <?=$_SESSION['hoten']?>
-   			   <br />
-   			   (<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
-  <?=$_SESSION['msclb']?>
-</font>) </font></div>
    			 <?php include_once('../header.php');?> 
     <!--end header-->
     <!--begin content-->
@@ -139,57 +99,45 @@ function thoat() {
                             <td width="794" valign="top" class="rc-all content" id="demos">
                             <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                                 <tbody>
-                                 <tr>
-                                    <td valign="top">   
-                                    </td>
-                                 </tr>
+                                 
     							 <tr>
                                         <td height="100%"  class="demoContent" valign="middle">
                                               <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
-                                          <tr height="10">
-                                            <td align="center">&nbsp;</td>       
-                                          </tr> 
+                                         
                                           
-                                          <!--noi dung o day-->
+                                          <!--noi dung o day-->	
                                           <tr>
-    <td height="100%" align="center" valign="middle">   
-		 <table width="960" border="0" cellpadding="0" cellspacing="0">
+    <td height="100%" align="center" valign="middle"> 
+     <div id='jqxTabs'>
+            <ul>
+                <li style="margin-left: 30px;">Thêm phiếu kiểm kê</li>
+            </ul> 
+		 <div> 
+		 <table width="950" height="100%" border="0" cellpadding="0" cellspacing="0" align="center">
         <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Cập nhật quyền người dùng</td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
+       
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_capnhatquyen_nguoidung" id="frm_capnhatquyen_nguoidung">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+          	<form name="frm_exportkk" id="frm_exportkk" action="exportKK.php" method="post" target="export" onSubmit="window.open('', 'export', 'width=1350,height=660,status=yes,resizable=yes,scrollbars=yes')">
+            <table width="100%" height="100%" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
-              		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
+              		<td height="22" class="level_1_1" colspan="2"></td>
               </tr>
-               <tr>
-					<td height="22" align="right" class="level_1_1">Chọn đơn vị</td>
-					<td width="80%" align="left" class="level_1_1">
-                    	<select id="cbo_tendonvi" name="cbo_tendonvi" class="cbo" style="width:80%;">
-                        </select>
-                        <input type="button" name="btn_themdonvi" id="btn_themdonvi" class="button_1" value="Thêm">
-                        </td>
-			</tr>
-              <!--bang thuoc tinh dat o day-->
-               
-                    <tr>
-                        <td align="center" height="auto"  class="level_1_1" colspan="4" valign="top">
-                        <div class="yui3-skin-sam">                    
-                        <div id="mytable"></div>                    
-                        </div>
-                        </td>
-                </tr>
-                      <p align="center"></p>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_capnhat" id="btn_capnhat" class="button_1" value="Lưu"></td>
-              </tr>
+			    <td height="22" align="right" class="level_1_1">Chọn phiếu kiểm kê</td>
+			    <td align="left" class="level_1_1">
+               	<select id="cbo_tenkk" name="cbo_tenkk" class="cbo" style="width:90%;">
+                        </select>
+			      </td>
+                </tr>
+
+               <tr>
+                 <td colspan="2" height="22" align="center" class="level_1_2">
+                 <input type="submit" class="button_1" id="btn_exportkk" value="Export">
+                   
+                 </td>
+               </tr>
               </tbody>
            </table>
            </form>
@@ -197,22 +145,20 @@ function thoat() {
         </tr>		
         </tbody>
         </table>
-
-
-        
+         </div>
+    </div>
 	</td>
 </tr>
+                                      <!--ket thuc noi dung-->    
                                           
                                           
-                                          <tr>
-                                            <td align="center">&nbsp;</td>
-                                          </tr>    
                                         </table>
                                         </td>
   								</tr>
                                 </tbody>
                              </table>
                             </td>
+                            <!--âfgajf-->
                                </tr>       
                             	</tbody>
                          	</table>

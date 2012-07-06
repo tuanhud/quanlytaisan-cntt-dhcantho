@@ -8,7 +8,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT MaPhieuKiemKe FROM `phieukiemke`');
+					$db->setQuery('SELECT MaPhieuKiemKe, TenPhieuKiemKe FROM `phieukiemke` where MaLoaiKK=2');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
@@ -24,9 +24,6 @@
 					{
 						$xml.="<row>";
 						for($i = 0; $i < count($row); $i++) {
-							$xml.="<column>";
-							$xml.="<![CDATA[".$row[$i]."]]>";								
-							$xml.="</column>";
 							$xml.="<column>";
 							$xml.="<![CDATA[".$row[$i]."]]>";								
 							$xml.="</column>";

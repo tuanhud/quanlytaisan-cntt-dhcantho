@@ -24,14 +24,16 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 			while($row = mysql_fetch_array($result)){
 				if($row['MaQuyen']=="ADMIN" ){
 					//dua maso vao session
-			        $msclb =$_POST['txtDinhDanh'];
-			        session_register("msclb") ;
-			        $sql = "Select TenCB from nguoidung where MSCB = '".$msclb."'";			
-			        $db->setQuery($sql);
-			        $result = $db->fetchAll();
-			        $row = mysql_fetch_array($result);
-			        $hoten = $row['TenCB'];
-			        session_register("hoten");
+			       	$msclb =$_POST['txtDinhDanh'];
+			           session_register("msclb") ;
+			           $sql = "Select TenCB, MSDV from nguoidung where MSCB = '".$msclb."'";			
+			           $db->setQuery($sql);
+			           $result = $db->fetchAll();
+			           $row = mysql_fetch_array($result);
+			           $hoten = $row['TenCB'];
+			           session_register("hoten");
+					   $msdv = $row['MSDV'];
+			           session_register("msdv");
 			        //dua quyen vao session
 			        $maquyen='ADMIN';
 			        session_register("maquyen");
@@ -102,14 +104,16 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 				if($row['MaQuyen']=="CBQLBM"){
 					
 					//dua maso vao session
-			           $msclb =$_POST['txtDinhDanh'];
+			          	$msclb =$_POST['txtDinhDanh'];
 			           session_register("msclb") ;
-			           $sql = "Select TenCB from nguoidung where MSCB = '".$msclb."'";			
+			           $sql = "Select TenCB, MSDV from nguoidung where MSCB = '".$msclb."'";			
 			           $db->setQuery($sql);
 			           $result = $db->fetchAll();
 			           $row = mysql_fetch_array($result);
 			           $hoten = $row['TenCB'];
 			           session_register("hoten");
+					   $msdv = $row['MSDV'];
+			           session_register("msdv");
 			        //dua quyen vao session
 			           $maquyen="CBQLBM";
 			           session_register("maquyen");
@@ -136,12 +140,14 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 					//dua maso vao session
 			           $msclb =$_POST['txtDinhDanh'];
 			           session_register("msclb") ;
-			           $sql = "Select TenCB from nguoidung where MSCB = '".$msclb."'";			
+			           $sql = "Select TenCB, MSDV from nguoidung where MSCB = '".$msclb."'";			
 			           $db->setQuery($sql);
 			           $result = $db->fetchAll();
 			           $row = mysql_fetch_array($result);
 			           $hoten = $row['TenCB'];
 			           session_register("hoten");
+					   $msdv = $row['MSDV'];
+			           session_register("msdv");
 			        //dua quyen vao session
 			           $maquyen="GV";
 			           session_register("maquyen");
