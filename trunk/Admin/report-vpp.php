@@ -383,7 +383,10 @@ mysql_free_result($result);
     <Cell ss:StyleID="s75"/>
     <Cell ss:StyleID="s76"/>
     <Cell ss:StyleID="s74"/>
-    <Cell ss:MergeAcross="2" ss:StyleID="s98"><Data ss:Type="String">Cần Thơ, ngày…..tháng ….. năm 20….</Data></Cell>
+    <?php 
+		$now = getdate();
+		?>
+    <Cell ss:MergeAcross="2" ss:StyleID="s98"><Data ss:Type="String">Cần Thơ, ngày...tháng...năm 20..</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s89"/>

@@ -56,7 +56,6 @@
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
-    <script type="text/javascript" src="js/capnhatnhasanxuat.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             initmenu();
@@ -71,15 +70,15 @@
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
-			document.frm_themnsx.txt_tennsxthem.focus();
-	        fillcombo('get_list_nhasanxuat.php',document.frm_suansx.cbo_mansxsua);
-	         fillcombo('get_list_nhasanxuat.php',document.frm_xoansx.cbo_mansxxoa);	
-	        $('form[name="frm_suansx"] select[name="cbo_mansxsua"]').change(function(){
-		    get_info_nhasanxuat('get_info_nhasanxuat.php',document.frm_suansx);
-	        });
-	        $('form[name="frm_xoansx"] select[name="cbo_mansxxoa"]').change(function(){
-		    get_info_nhasanxuat2('get_info_nhasanxuat.php',document.frm_xoansx);
-	});
+			fillcombo('get_list_donvi.php',document.frm_inkhms.cbo_donviin);
+			fillcombo2('get_list_nam.php',document.frm_inkhms.cbo_namin);
+			$('form[name="frm_inkhms"] select[name="cbo_namin"]').change(function(){
+		    fillcombo2bien('get_list_makhms.php',document.frm_inkhms.cbo_donviin,document.frm_inkhms.cbo_namin,document.frm_inkhms.cbo_makhms);	 
+	         });
+			 $('form[name="frm_inkhms"] select[name="cbo_donviin"]').change(function(){
+		    fillcombo2bien('get_list_makhms.php',document.frm_inkhms.cbo_donviin,document.frm_inkhms.cbo_namin,document.frm_inkhms.cbo_makhms);	 
+	         });
+			       
             });
 			function thoat() {
 		if (confirm('Ban có thật sự muốn thoát không?' )) {
@@ -132,12 +131,12 @@
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm nhà sản xuất</td>
+          <td width="419" align="center">Thông số in kế hoạch mua sắm</td>
           <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_themnsx" id="frm_themnsx">
+          	<form name="frm_inkhms" id="frm_inkhms" action="report-muasambomon.php" method="post">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -145,12 +144,25 @@
                     <td class="level_1_1"></td>
               </tr>
                <tr>
-					<td height="22" align="right" class="level_1_2">Tên nhà sản xuất</td>
+					<td height="22" align="right" class="level_1_2">Chọn đơn vị</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tennsxthem" id="txt_tennsxthem" type="text" class="txtbox" style="width:100%"></td>
-			</tr>                
+                    <select name="cbo_donviin" id="cbo_donviin" class="cbo" style="width:100%;"></select>
+                    </td>
+			</tr>
+            <tr>
+					<td height="22" align="right" class="level_1_1">Chọn năm</td>
+					<td width="50%" align="left" class="level_1_1">
+                    <select name="cbo_namin" id="cbo_namin" class="cbo" style="width:100%;"></select>
+                    </td>
+			</tr>
+            <tr>
+					<td height="22" align="right" class="level_1_1">Chọn mã kế hoạch mua sắm</td>
+					<td width="50%" align="left" class="level_1_1">
+                    <select name="cbo_makhms" id="cbo_makhms" class="cbo" style="width:100%;"></select>
+                    </td>
+			</tr>                       
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_1"><input type="button" class="button_1" name="btn_themnsx" id="btn_themnsx" value="Thêm"></td>
+                <td colspan="2" height="22" align="center" class="level_1_2"><input type="submit" class="button_1" name="btn_export" id="btn_export" value="Xuất File Word"></td>
               </tr>
 			  
 			   
@@ -160,87 +172,7 @@
           </td>
         </tr>		
         </tbody>
-        </table>
-        <br />
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa nhà sản xuất</td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
-        <tr>
-          <td colspan="3" align="left">
-          	<form name="frm_suansx" id="frm_suansx">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-              <tbody>
-              <tr>
-              		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
-              </tr>
-             <tr>
-					<td height="22" align="right" class="level_1_1">Chọn nhà sản xuất </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_mansxsua" id="cbo_mansxsua" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-			</tr>
-            <tr>
-					<td height="22" align="right" class="level_1_2">Tên nhà sản xuất mới </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input name="txt_tennsxsua" id="txt_tennsxsua" type="text" class="txtbox" style="width:100%">
-					</td>
-			</tr> 
-            <tr>
-              <td colspan="2" height="22" align="center" class="level_1_1">
-                <input type="button" name="btn_suansx" id="btn_suansx" class="button_1" value="Lưu">
-                </td>
-            </tr>
-				  						  
-            </tbody>
-        </table>
-        	</form>
-       </td>
-      </tr>		
-      </tbody>
-      </table>
-       <br />
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa nhà sản xuất</td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
-        <tr>
-          <td colspan="3" align="left">
-          	<form name="frm_xoansx" id="frm_xoansx">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
-              <tbody>
-              <tr>
-              		<td height="22" class="level_1_2"></td>
-                    <td class="level_1_2"></td>
-              </tr>
-             <tr>
-					<td height="22" align="right" class="level_1_1">Chọn nhà sản xuất cần xóa</td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_mansxxoa" id="cbo_mansxxoa" class="cbo" style="width:100%;">
-                        </select>                       
-                    </td>
-			</tr>
-             <tr>
-						<td colspan="2" height="22" align="center" class="level_1_2">
-                        <input type="button" name="btn_xoansx" id="btn_xoansx" class="button_1" value="Xóa">
-                        </td>
-			</tr>
-				  						  
-            </tbody>
-        </table>
-        	</form>
-       </td>
-      </tr>		
-      </tbody>
-      </table>
+        </table>        
 	</td>
 </tr>
 </table>
