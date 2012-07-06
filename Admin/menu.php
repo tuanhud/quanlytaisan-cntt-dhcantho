@@ -1,7 +1,7 @@
           <div id='jqxWidget' style='height: 38px; background: #EEEEEE;'>
             <div id='jqxMenu' style='visibility: hidden; margin-left:0px; width:100%'>
                 <ul>
-                    <li><a href="#"><img style='float: left; margin-right: 5px;' src='../images/home.png' />Trang chủ</a></li>
+                    <li><a href="main.php"><img style='float: left; margin-right: 5px;' src='../images/home.png' />Trang chủ</a></li>
                     <li><img style='float: left; margin-right: 5px;' src='../images/shoping.png' />Mua sắm
                         <ul style='width: 150px;'>
                            	<li>Văn phòng phẩm
