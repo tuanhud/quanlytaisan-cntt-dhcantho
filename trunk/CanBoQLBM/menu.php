@@ -21,7 +21,7 @@
                         <ul style='width: 250px;'>
                              <li><a href="#">In danh sách yêu cầu thiết bị đã duyệt</a></li>
                              <li><a href="#">In danh sách yêu cầu thiết bị chưa duyệt</a></li>
-                             <li><a href="#">In yêu cầu thiết bị của giảng viên</a></li>                                    
+                             <li><a href="report-yeucaugv.php">In yêu cầu thiết bị của giảng viên</a></li>                                    
                         </ul>
                     </li>
                 </ul>
