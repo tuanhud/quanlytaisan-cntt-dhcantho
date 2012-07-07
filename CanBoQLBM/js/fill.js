@@ -90,7 +90,6 @@ function fillcombo2bien(filephp, par_combo,par2_combo, chil_combo)
 	http=GetXmlHttpObject();
 	var params = "id="+id;
 	params +="&id2="+id2;
-	
 	//mo ket noi bang phuong thuc post
 	http.open("POST", filephp, false);
 	//gui thong tin header cua phuong thuc post , cac thong so nay la bat buoc

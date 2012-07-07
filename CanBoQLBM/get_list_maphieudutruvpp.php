@@ -8,7 +8,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT a.maphieudutoan FROM phieudutoanvpp a, thuocquyvpp b where a.maphieudutoan=b.maphieudutoan and a.msdv="'.$_POST['id'].'" and a.nam="'.$_POST['id2'].'" and b.quy="'.$_POST['id3'].'" and a.duyet=0');
+					$db->setQuery('SELECT a.maphieudutoan FROM phieudutoanvpp a, thuocquyvpp b where a.maphieudutoan=b.maphieudutoan and a.msdv="'.$_SESSION['msdv'].'" and a.nam="'.$_POST['id'].'" and b.quy="'.$_POST['id2'].'" and a.duyet=0');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";

@@ -1,5 +1,6 @@
 <?php
 	#Include the connect.php file
+	session_start();
 	include('connect.php');
 	include('../database.php');
 	$db=new database();
@@ -19,7 +20,7 @@
 		$ma = $row[0]+1;
 		// INSERT COMMAND 
 		//insert phieu du toan vpp
-		 $insert_query1 = "insert into `phieudutoanvpp` values('".$ma."','".$_GET['nam']."','".$_GET['donvi']."','0')";
+		 $insert_query1 = "insert into `phieudutoanvpp` values('".$ma."','".$_GET['nam']."','".$_SESSION['msdv']."','0')";
 		 $result = mysql_query($insert_query1) or die("SQL Error 1: " . mysql_error());
 		 //insert bang thuocquyvpp
 		  $insert_query2 = "insert into `thuocquyvpp` values('".$ma."','".$_GET['quy']."')";
