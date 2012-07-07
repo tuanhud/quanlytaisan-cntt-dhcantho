@@ -51,16 +51,17 @@
     <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script> 
     <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/getdataedit.js"></script>
     <script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript" src="js/capnhatnoidungcon.js"></script>
     <script type="text/javascript" src="js/table-noidungcon.js"></script>
-    <script type="text/javascript" src="js/yui/yui-min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             initmenu();

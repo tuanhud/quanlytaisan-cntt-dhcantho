@@ -1,3 +1,4 @@
+
 //Kiểm tra ngày tháng năm*********************************************************************************************************************
 function check_date_ngaysinh(day,month,year)
 {
@@ -41,9 +42,39 @@ function taobangsua()
 	 		var data = {};
 			var theme = '';
 			var manoidung='';
-			var tennoidung='';
-			var ghichunoidung='';
-            var source =
+			var ma='';
+			//var data = {};
+			ma = $("#cbo_tenphieumausua").val();
+			var theme = '';
+			var params= "maphieu=" + ma;
+			http=GetXmlHttpObject();
+			http.open("POST",'get_info_noidungsua.php', false);
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			http.onreadystatechange = function()
+			{
+				if(http.readyState == 4 && http.status == 200) 
+				{
+					var x=http.responseXML.getElementsByTagName('INFO');
+					for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+					{
+						var row = {};
+					//	alert(x[i].getElementsByTagName('RESULT2')[1].firstChild.nodeValue);
+						//row["stt"] = i + 1;
+						row["mandsua"] = x[i].getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+						row["tenndsua"] = x[i].getElementsByTagName('RESULT')[1].firstChild.nodeValue;
+						row["ghichusua"] = x[i].getElementsByTagName('RESULT')[2].firstChild.nodeValue;
+						//row["tenndcon"] = x[i].getElementsByTagName('RESULT')[0].firstChild.nodeValue;						
+						data[i] = row;
+					}
+				}
+			}
+			http.send(params);
+			var source =
+            {
+                localdata: data,
+				datatype: "array",
+            };
+           /* var source =
             {
                  datatype: "json",
                  datafields: 
@@ -60,25 +91,19 @@ function taobangsua()
 				{		
 					source.totalrecords = data[0].TotalRows;
 				},						
-            };
+            };*/
 			
  		    var dataadapter = new $.jqx.dataAdapter(source);
            // initialize jqxGrid
             $("#jqsua").jqxGrid(
             {
                 width: 550,
-				selectionmode: 'singlecell',
-				altrows: true,
                 source: dataadapter,
-                theme: theme,
 				editable: true,
+                theme: theme,
 				autoheight: true,
 				pageable: true,
-				virtualmode: true,
-				rendergridrows: function()
-				{
-					  return dataadapter.records;     
-				},
+                columnsresize: true,
                 columns: [
 					  { text: 'Mã nội dung', editable: false, datafield: 'mandsua', width: 150, cellsalign: 'center' },
 					  { text: 'Tên nội dung', editable: false, datafield: 'tenndsua', width: 150, cellsalign: 'center' },
@@ -86,10 +111,24 @@ function taobangsua()
                   ]
             });
 			//chon 1 dong
-			 $("#jqsua").jqxGrid('selectionmode', 'singlerow');
-// delete row.********************************************************************************************************************************
+			$("#jqsua").jqxGrid('selectionmode', 'singlerow');
+			$('#jqsua').bind('rowselect', function (event) 
+			{
+				var args = event.args;
+				var row = args.rowindex;
+				manoidung = $('#jqsua').jqxGrid('getcellvalue', row, "mandsua");
+			});
+// delete row.***************************************************************************************************************************
           $("#deleterowbutton2").bind('click', function () 
 			{
+				var data = "delete=true&MaPhieu=" +ma +"&MaND=" + manoidung; 
+				$.ajax
+				({
+					dataType: 'json',
+					url: 'delete_noidungphieumau.php',
+					data: data,
+					success: function (data, status, xhr) {}		
+				})
 				var selectedrowindex = $("#jqsua").jqxGrid('getselectedrowindex');
                 var rowscount = $("#jqsua").jqxGrid('getdatainformation').rowscount;
                 if (selectedrowindex >= 0 && selectedrowindex < rowscount) {
@@ -186,34 +225,34 @@ function taobangsua()
 			$("#deleterowbutton2").jqxButton({ theme: theme, width: '150px', height: '25px' });
             $("#jqxWidget3").css('visibility', 'visible');
         });
-// su kiện khi click vao nút thêm phiếu mẫu *****************************************************************************************************
-		$("#btn_them").unbind("click").click(function()
+// su kiện khi click vao nút luu phiếu mẫu *****************************************************************************************************
+		$("#btn_luuphieumau").unbind("click").click(function()
 		{
 			var rowcount4 = $("#jqsua").jqxGrid('getdatainformation').rowscount;
-			 if($("#txt_tenphieumau").val()=="") {
-					alert("Bạn chưa nhập tên phiếu mẫu!"),
-					FocusAndSelect("#txt_tenphieumau");
-			}else if($("#cbo_ngay").val()==-1) {
+			 if($("#txt_tenphieumaumoi").val()=="") {
+					alert("Bạn chưa nhập tên phiếu mẫu mới!"),
+					FocusAndSelect("#txt_tenphieumaumới");
+			}else if($("#cbo_ngaysua").val()==-1) {
 					alert("Bạn chưa nhập ngày!"),
-					FocusAndSelect("#cbo_ngay");
-			}else if($("#cbo_thang").val()==-1) {
+					FocusAndSelect("#cbo_ngaysua");
+			}else if($("#cbo_thangsua").val()==-1) {
 					alert("Bạn chưa nhập tháng!"),
-					FocusAndSelect("#cbo_thang");
-			}else if($("#cbo_nam").val()==-1) {
+					FocusAndSelect("#cbo_thangsua");
+			}else if($("#cbo_namsua").val()==-1) {
 					alert("Bạn chưa nhập năm!"),
-					FocusAndSelect("#cbo_nam");
+					FocusAndSelect("#cbo_namsua");
 			}
-			else if(check_date_ngaysinh($("#cbo_ngay option:selected").val(),$("#cbo_thang option:selected").val(),$("#cbo_nam option:selected").val())){
-					alert("Ngày tháng năm không hợp lệ.");FocusAndSelect("#cbo_ngay");
+			else if(check_date_ngaysinh($("#cbo_ngaysua option:selected").val(),$("#cbo_thangsua option:selected").val(),$("#cbo_namsua option:selected").val())){
+					alert("Ngày tháng năm không hợp lệ.");FocusAndSelect("#cbo_ngaysua");
 			}
 			 else if(rowcount4==0){
 					alert("Bạn chưa chọn nội dung cho phiếu mẫu!");
 			}else{			        // synchronize with the server - send update command
-				var data1="&tenphieumau=" +$("#txt_tenphieumau").val() + "&ngay=" + $("#cbo_ngay").val()+ "&thang=" + $("#cbo_thang").val() + "&nam="+ $("#cbo_nam").val() + "&ghichu="+$("#txt_ghichu").val();
+				var data1="&tenphieumaumoi=" +$("#txt_tenphieumaumoi").val() + "&ngay=" + $("#cbo_ngaysua").val()+ "&thang=" + $("#cbo_thangsua").val() + "&nam="+ $("#cbo_namsua").val() + "&ghichu="+$("#txt_ghichusua").val() + "&maphieu="+ma;
 				$.ajax
 					({
 						dataType: 'json',
-						//url: 'themphieumau.php',//them phiếu mẫu mới vào bảng phiếu mẫu
+						url: 'suaphieumau.php',//them phiếu mẫu mới vào bảng phiếu mẫu
 						data: data1,
 						success: function (data, status, xhr)
 						{}
@@ -221,28 +260,19 @@ function taobangsua()
 					
 				for(var m=0;m<rowcount4;m++){
 						var mand = $('#jqsua').jqxGrid('getcellvalue', m,'mandsua');
-						var data = "insert=true&mand=" + mand ;
+						var data = "update=true&mand=" + mand + "&maphieu="+ma;
 					$.ajax
 					({
 						dataType: 'json',
-						//url: 'them_noidung.php',//them nội dung vào bảng thuocphieumau
+						url: 'sua_noidung.php',//them nội dung vào bảng thuocphieumau
 						data: data,
 						success: function (data, status, xhr)
 						{
 						}
 					});		
                 }
-				alert("Lập phiếu mẫu thành công!");
+				alert("Sửa phiếu mẫu thành công!");
 				window.location.reload(true);		
 			}
 		});
-		/*$(document).ready(function () {
-            var theme = $.data(document.body, 'theme', theme);
-            if (theme == undefined) theme = '';
-			 addEventListeners();
-			$('#showWindowButton').jqxButton({ theme: theme, width: '150px', height: '25px' });
-			$("#deleterowbutton").jqxButton({ theme: theme, width: '150px', height: '25px' });
-            $("#jqxWidget").css('visibility', 'visible');
-			
-        });*/
 }

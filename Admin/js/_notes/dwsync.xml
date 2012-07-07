@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="jquery-1.3.1.min.js" server="C:/Program Files/VertrigoServ/www/QLDRL/" local="128880553920000000" remote="128880553920000000" Dst="-1" />
-<file name="jquery-1.3.1.min.js" server="C:/Users/LamTay/Desktop/Nien luan 4/QLDRL/" local="128880553920000000" remote="128880553920000000" Dst="-1" />
-<file name="jquery-1.3.1.min.js" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="128881093920000000" remote="128881093920000000" Dst="-1" />
-<file name="ajax.js" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="129630211000000000" remote="129630211000000000" Dst="-1" />
-<file name="fill.js" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="129667616000000000" remote="129667616000000000" Dst="-1" />
-<file name="date.js" server="C:/Program Files/VertrigoServ/www/nl41.0/" local="129653835820000000" remote="129653835820000000" Dst="-1" />
-<file name="jquery-1.3.1.min.js" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="128881093920000000" remote="128881093920000000" Dst="-1" />
-<file name="ajax.js" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129630211000000000" remote="129630211000000000" Dst="-1" />
-<file name="fill.js" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129763388859609917" remote="129763388850000000" Dst="-1" />
-<file name="date.js" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129763086975456208" remote="129763086970000000" Dst="-1" />
-<file name="autocomplete.js" server="C:/Program Files/VertrigoServ/www/QLHSV/" local="129775598763844086" remote="129775598760000000" Dst="-1" />
+<file name="ajax.js" server="QLTS" local="129824914903730476" remote="129824914900000000" Dst="0" />
+<file name="fill.js" server="QLTS" local="129858382824971070" remote="129858382820000000" Dst="0" />
+<file name="capnhatnoidungcon.js" server="QLTS" local="129858097355163118" remote="129858097350000000" Dst="0" />
+<file name="table-noidungcon.js" server="QLTS" local="129858489502861490" remote="129858489500000000" Dst="0" />
 </dwsync>

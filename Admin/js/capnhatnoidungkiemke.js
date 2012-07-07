@@ -23,9 +23,9 @@ var _admin;
 								alert("Bạn chưa nhập tên nội dung kiểm kê!");
 								FocusAndSelect("#txt_tennoidungkiemke");
 							}
-							else if($("#txt_tendonvitinhthem").val()==""){
+							else if($("#cbo_tendonvitinhthem").val()=="-Chọn đơn vị tính-"){
 								alert("Bạn chưa nhập đơn vị tính!");
-								FocusAndSelect("#txt_tendonvitinhthem");
+								FocusAndSelect("#cbo_tendonvitinhthem");
 							}
 							else{
 									return $.ajax
@@ -42,7 +42,7 @@ var _admin;
 														fillcombo('get_list_noidungkiemke.php',document.frm_suanoidungkiemke.cbo_tennoidungkiemkesua);
 														fillcombo('get_list_noidungkiemke.php',document.frm_xoanoidungkiemke.cbo_tennoidungkiemkexoa);
 														document.frm_themnoidungkiemke.txt_tennoidungkiemke.value='',
-														document.frm_themnoidungkiemke.txt_tendonvitinhthem.value='',
+														document.frm_themnoidungkiemke.cbo_tendonvitinhthem.value='-Chọn đơn vị tính-',
 														document.frm_themnoidungkiemke.txt_ghichu.value='',
 														FocusAndSelect("txt_tennoidungkiemke")
 													}
@@ -63,9 +63,9 @@ var _admin;
 								alert("Bạn chưa nhập tên nội dung kiểm kê mới!");
 								FocusAndSelect("#txt_tennoidungkiemkemoi");
 							}
-							else if($("#txt_tendonvitinhtsua").val()==""){
+							else if($("#cbo_tendonvitinhtsua").val()=="-Chọn đơn vị tính-"){
 								alert("Bạn chưa nhập đơn vị tính!");
-								FocusAndSelect("#txt_tendonvitinhtsua");
+								FocusAndSelect("#cbo_tendonvitinhtsua");
 							}
 							else{
 									return $.ajax
@@ -84,7 +84,7 @@ var _admin;
 														document.frm_suanoidungkiemke.cbo_tennoidungkiemkesua.value=-1,
 														document.frm_suanoidungkiemke.txt_manoidungkiemkesua.value='',
 														document.frm_suanoidungkiemke.txt_tennoidungkiemkemoi.value='',
-														document.frm_suanoidungkiemke.txt_tendonvitinhsua.value='',
+														document.frm_suanoidungkiemke.cbo_tendonvitinhsua.value="-Chọn đơn vị tính-",
 														document.frm_suanoidungkiemke.txt_ghichusua.value='',
 														FocusAndSelect("cbo_tennoidungkiemkesua")
 													}
@@ -120,7 +120,7 @@ var _admin;
 														fillcombo('get_list_noidungkiemke.php',document.frm_xoanoidungkiemke.cbo_tennoidungkiemkexoa);
 														document.frm_xoanoidungkiemke.cbo_tennoidungkiemkexoa.value=-1,
 														document.frm_xoanoidungkiemke.txt_manoidungkiemkexoa.value='',
-														document.frm_xoanoidungkiemke.txt_tendonvitinhxoa.value='',
+														document.frm_xoanoidungkiemke.cbo_tendonvitinhxoa.value="-Chọn đơn vị tính-",
 														document.frm_xoanoidungkiemke.txt_ghichuxoa.value='',
 														FocusAndSelect("cbo_tennoidungkiemkexoa")
 													}
@@ -144,7 +144,7 @@ function get_info_noidungkiemkesua(filephp,frm)
 	{
 		frm.txt_manoidungkiemkesua.value='';
 		frm.txt_tennoidungkiemkemoi.value='';
-		frm.txt_tendonvitinhsua.value='';
+		frm.cbo_tendonvitinhsua.value="-Chọn đơn vị tính-";
 		frm.txt_ghichusua.value='';
 	}
 	else
@@ -165,7 +165,7 @@ function get_info_noidungkiemkesua(filephp,frm)
 		{				
 				var x=http.responseXML.getElementsByTagName('row');							
 			    frm.txt_manoidungkiemkesua.value=x[0].getElementsByTagName('column')[0].firstChild.nodeValue;
-				frm.txt_tendonvitinhsua.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
+				frm.cbo_tendonvitinhsua.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
 				frm.txt_ghichusua.value=x[0].getElementsByTagName('column')[3].firstChild.nodeValue;
 		}
 	}
@@ -177,7 +177,7 @@ function get_info_noidungkiemkexoa(filephp,frm)
 	if(frm.cbo_tennoidungkiemkexoa.value==-1)
 	{
 		frm.txt_manoidungkiemkexoa.value='';
-		frm.txt_tendonvitinhxoa.value='';
+		frm.cbo_tendonvitinhxoa.value="-Chọn đơn vị tính-";
 		frm.txt_ghichuxoa.value='';
 	}
 	else
@@ -198,7 +198,7 @@ function get_info_noidungkiemkexoa(filephp,frm)
 		{				
 				var x=http.responseXML.getElementsByTagName('row');							
 			    frm.txt_manoidungkiemkexoa.value=x[0].getElementsByTagName('column')[0].firstChild.nodeValue;
-				frm.txt_tendonvitinhxoa.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
+				frm.cbo_tendonvitinhxoa.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
 				frm.txt_ghichuxoa.value=x[0].getElementsByTagName('column')[3].firstChild.nodeValue;
 		}
 	}

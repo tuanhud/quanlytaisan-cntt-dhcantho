@@ -64,9 +64,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
             initmenu();
-			$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidunglonsua"]').change(function(){
-		if($("#cbo_tennoidunglonsua").val()!=-1)	
+		$('#updaterowbutton').jqxButton({ theme: theme, width: '160px', height: '25px' });
+		$("#deleterowbutton").jqxButton({ theme: theme, width: '160px', height: '25px' });
+        $("#jqxWidget").css('visibility', 'visible')
+		$('form[name="frm_suanoidungcon"] select[name="cbo_tennoidunglonsua"]').change(function(){
+		if($("#cbo_tennoidunglonsua").val()!=-1){
+		$('#jqsua').jqxGrid('refreshdata');	
 		taobang();
+		}
 			});
            $("#parentTable").height(1600);	
             setTimeout(function()

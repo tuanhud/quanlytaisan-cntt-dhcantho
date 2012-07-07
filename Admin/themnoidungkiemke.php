@@ -24,7 +24,7 @@
 					$row = mysql_fetch_array($result,MYSQL_NUM);
 					$ma = $row[0]+1;
 					
-					$sql = "insert into noidung values('".$ma."', '".$_POST['txt_tendonvitinhthem']."','".$_POST['txt_tennoidungkiemke']."','".$_POST['txt_ghichu']."')";
+					$sql = "insert into noidung values('".$ma."', '".$_POST['cbo_tendonvitinhthem']."','".$_POST['txt_tennoidungkiemke']."','".$_POST['txt_ghichu']."')";
 					$db->setQuery($sql);
 					if($db->executeQuery()!=1)
 					{

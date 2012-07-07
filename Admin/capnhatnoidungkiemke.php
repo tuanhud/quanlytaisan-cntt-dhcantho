@@ -62,7 +62,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
             initmenu();
-			fillcombo('get_list_noidungkiemke.php',document.frm_suanoidungkiemke.cbo_tennoidungkiemkesua);
+	fillcombo2('get_list_donvitinh.php',document.frm_themnoidungkiemke.cbo_tendonvitinhthem);
+	fillcombo2('get_list_donvitinh.php',document.frm_suanoidungkiemke.cbo_tendonvitinhsua);
+	fillcombo2('get_list_donvitinh.php',document.frm_xoanoidungkiemke.cbo_tendonvitinhxoa);
+	fillcombo('get_list_noidungkiemke.php',document.frm_suanoidungkiemke.cbo_tennoidungkiemkesua);
 	fillcombo('get_list_noidungkiemke.php',document.frm_xoanoidungkiemke.cbo_tennoidungkiemkexoa);
 	//su kien nhan button them
 	$('form[name="frm_suanoidungkiemke"] select[name="cbo_tennoidungkiemkesua"]').change(function(){
@@ -162,7 +165,8 @@
               <tr>
                 <td height="22" align="right" class="level_1_1">Tên đơn vị tính:</td>
                 <td width="50%" align="center" class="level_1_1"><label for="txttendvt"></label>
-                  <input type="text" name="txt_tendonvitinhthem" id="txt_tendonvitinhthem" style="width:100%"></td>
+                 <select name="cbo_tendonvitinhthem" id="cbo_tendonvitinhthem" class="cbo" style="width:100%;">
+                        </select> </td>
               </tr>
               <tr>
                 <td height="22" align="right" class="level_1_2">Ghi chú nội dung:</td>
@@ -222,7 +226,8 @@
 			 <tr>
 					<td height="22" align="right" class="level_1_2">Tên đơn vị tính:</td>
 					<td width="50%" align="left" class="level_1_2">
-                    	<input name="txt_tendonvitinhsua" type="text" class="txtbox" id="txt_tendonvitinhsua" style="width:100%"></td>
+                    	<select name="cbo_tendonvitinhsua" id="cbo_tendonvitinhsua" class="cbo" style="width:100%;">
+                        </select></td>
 			</tr> 
 			<tr>
 					<td height="22" align="right" class="level_1_1">Ghi chú nội dung:</td>
@@ -275,7 +280,8 @@
              <tr>
                <td height="22" align="right" class="level_1_2">Tên đơn vị tính:</td>
                <td height="22" align="center" class="level_1_2"><label for="txtxoatendvt"></label>
-                 <input name="txt_tendonvitinhxoa" type="text" disabled id="txt_tendonvitinhxoa" style="width:100%" readonly="readonly"></td>
+                <select name="cbo_tendonvitinhxoa" id="cbo_tendonvitinhxoa" class="cbo" style="width:100%;">
+                        </select> </td>
              </tr>
              <tr>
                <td height="22" align="right" class="level_1_1">Ghi chú nội dung kiểm kê:</td>
