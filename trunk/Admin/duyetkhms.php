@@ -3,12 +3,13 @@
 	session_start();
 
 	//kiem tra quyen truoc khi hien thi trang
-	/*if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
+	if(!session_is_registered("dkhms") && $_SESSION['dkhms']!="DUYETKHMS")
 	{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
-	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
-	hello exit;
-	}*/
+	echo"<script language=javascript>alert('Bạn không có quyền duyệt!');</script>";
+	echo "<script language=javascript>window.location = 'main.php';</script>"; 
+	 exit;
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
