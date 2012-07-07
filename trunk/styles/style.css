@@ -182,11 +182,11 @@ border-color: inherit;
 	border-right:1px solid #80B5D7; border-bottom:1px solid #80B5D7; FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR:#03F; FONT-FAMILY: Arial; border-left:1px solid #80B5D7; border-top:1px solid #80B5D7; background-color:#DAE9F3; padding-left:0; padding-right:0; padding-top:2px; padding-bottom:2px
 }
 .level_1_1 {
-	border-right:1px solid #E5E5E5; border-top:1px solid #FFFFFF; FONT-SIZE: 10pt; MARGIN: 0px; WORD-SPACING: 0px; TEXT-INDENT: 0px; BORDER-BOTTOM: 1px solid #E5E5E5; FONT-FAMILY: Arial; padding-left:2px; padding-right:2px; padding-top:3px; padding-bottom:3px 
+	border-right:1px solid #E5E5E5;border-left:1px solid #E5E5E5;  FONT-SIZE: 10pt; MARGIN: 0px; WORD-SPACING: 0px; TEXT-INDENT: 0px; BORDER-TOP: 1px solid #E5E5E5; FONT-FAMILY: Arial; padding-left:2px; padding-right:2px; padding-top:3px; padding-bottom:3px 
 }
 .level_1_2 
 {
-	BORDER-RIGHT: #e5e5e5 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 10pt; PADDING-BOTTOM: 0px; MARGIN: 0px; WORD-SPACING: 0px; TEXT-INDENT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: #e5e5e5 1px solid; FONT-FAMILY: Arial; BACKGROUND-COLOR: #f7f7f7;HEIGHT: 22px;
+	BORDER-RIGHT: #e5e5e5 1px solid;BORDER-left: #e5e5e5 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 10pt; PADDING-BOTTOM: 0px; MARGIN: 0px; WORD-SPACING: 0px; TEXT-INDENT: 0px; PADDING-TOP: 0px; BORDER-TOP: #e5e5e5 1px solid; FONT-FAMILY: Arial; BACKGROUND-COLOR: #f7f7f7;HEIGHT: 22px;
 }
 /*-------------- END MAIN INFO -----------------*/
 
