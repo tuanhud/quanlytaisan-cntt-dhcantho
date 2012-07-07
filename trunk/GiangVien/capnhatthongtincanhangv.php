@@ -91,9 +91,6 @@
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
 	<!--begin header-->
-   			 <?php include_once('../header.php');?> 
-    <!--end header-->
-    <!--begin content-->
     <div style="Z-INDEX: 1; LEFT: 1031px; WIDTH: 200px; POSITION: absolute; TOP: 9px; HEIGHT: 30px" align="center">     <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF"><a href="capnhatthongtincanhangv.php">Cập nhật thông tin cá nhân</a>| <a class="white" href="javascript:thoat();">Thoát</a> <br />
          Xin chào,
          <?=$_SESSION['hoten']?>
@@ -105,6 +102,10 @@
 			session_register("msclb") ;
 			?>
 </font>) </font></div>
+   			 <?php include_once('../header.php');?> 
+    <!--end header-->
+    <!--begin content-->
+    
     <div class="rc-all" style='margin-right: auto; margin-left: auto; border: 1px solid #d2d2d2; width: 1000px; height: 100%; margin-top: 40px; margin-bottom: 20px; background: #fff;'>
        <table class="rc-all" id="demostable" style="margin: 0 auto; table-layout: fixed; width: 100%; min-height: 100%; height: auto; height: 100%; border-collapse: collapse; background: #EEEEEE;">
             <tbody>
@@ -118,10 +119,7 @@
                            		<tbody>                       
                               		 <tr>
                            
-                           				 <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
-                                <tbody>
-                                
-    							 <tr>
+                           				
                                         <td height="100%"  class="demoContent" valign="middle">
                                               <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
                                           
@@ -216,14 +214,10 @@
                                                  <!--het noi dung-->
                                               </td>      
                                           </tr>
-                                          <tr>
-                                            <td align="center">&nbsp;</td>
-                                          </tr>    
+                                           
                                         </table>
                                         </td>
-  								</tr>
-                                </tbody>
-                             </table>
+  								
                        			  </tr>       
                             	</tbody>
                        	</table></td>
