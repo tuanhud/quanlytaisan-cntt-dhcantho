@@ -77,13 +77,8 @@
 		fillcombo2bien('get_list_maphieudutruvpp.php',document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
 	});
 	
-	/*$('form[name="frm_huyphieudutruvpp"] select[name="cbo_quyhuy"]').change(function(){
-		fillcombo3bien('get_list_maphieudutruvpp.php',document.frm_huyphieudutruvpp.cbo_donvihuy,document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
-	});
-			
-			
 	
-            $("#parentTable").height(1600);	
+	        $("#parentTable").height(1600);	
             setTimeout(function()
             {
                 $("#demoContent").css('visibility', 'visible');		
@@ -94,7 +89,7 @@
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
-            });*/
+       
 			});
 			function thoat() {
 		if (confirm('Bạn có thật sự muốn thoát không?' )) {
