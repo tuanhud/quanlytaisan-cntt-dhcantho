@@ -12,9 +12,7 @@
 	if ($bool === False){
 	   print "can't find $database";
 	}
-	if (isset($_GET['insert']))
-	{
-		//insert phieu du toan vpp
+	//insert phieu du toan vpp
 		$sql = "Select max(maphieudutoan) from phieudutoanvpp";
 		$db->setQuery($sql);
 		$result = $db->fetchAll();
@@ -22,17 +20,6 @@
 		$ma = $row[0];
 		 $insert_query1 = "insert into `covpp` values('".$ma."','".$_GET['id']."','".$_GET['soluong']."','".$_GET['dongia']."')";
 		 $result = mysql_query($insert_query1) or die("SQL Error 1: " . mysql_error());
-		 if($result!=1)
-					{
-						echo 0;
-						exit;
-					}
-					else
-					{
-						echo 1;
-						exit;
-					}
-	}
 /*	else 
 	{
 		$madonvi = $_GET['madonvi'];
