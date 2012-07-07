@@ -82,10 +82,25 @@
 			$("#create").jqxButton({ theme: theme, width: '160px', height: '25px' });
 			taobang();
             });
+			function thoat() 
+			{
+				if (confirm('Bạn có thật sự muốn thoát không?' )) 
+				{
+					document.location = '../logout.php';
+					return;
+				}
+			}
         </script>
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
 	<!--begin header-->
+   <div style="Z-INDEX: 1; LEFT: 1031px; WIDTH: 200px; POSITION: absolute; TOP: 9px; HEIGHT: 30px" align="center"> <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF"><a href="capnhatthongtincanhangv.php">Cập nhật thông tin cá nhân</a>| <a class="white" href="javascript:thoat();">Thoát</a> <br />
+   			   Xin chào,
+   			   <?=$_SESSION['hoten']?>
+   			   <br />
+   			   (<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
+  <?=$_SESSION['msclb']?>
+</font>) </font></div>
    			 <?php include_once('../header.php');?> 
     <!--end header-->
     <!--begin content-->
@@ -136,12 +151,12 @@
                                 <div id="cellbegineditevent"></div>
                                 <div style="margin-top: 10px;" id="cellendeditevent"></div>
                  
-                           <div style="margin-left: 30px; float: left;">
+                           <div style="margin-left: 140px; float: left;">
                                 <div id="buttondk" style="margin-top: 5px">
-                                    <input type="button" value="Thêm thiết bị yêu cầu" id="showWindowButton" />
-                                    <input id="deleterowbutton" style="margin-left:10" type="button" value="Xóa thiết bị yêu cầu" />
-                                    <input id="import" style="margin-left:10" type="button" value="Import Excel/ Word/ PDF" />
-                                     <input id="create" style="margin-left:10" type="button" value="Tạo yêu cầu" />
+                                    <input type="button" class="button_1" value="Thêm thiết bị yêu cầu" id="showWindowButton" />
+                                    <input id="deleterowbutton"class="button_1" style="margin-left:10" type="button" value="Xóa thiết bị yêu cầu" />
+                                    <input id="import" class="button_1" style="margin-left:10" type="button" value="Import Excel/ Word/ PDF" />
+                                     <input id="create" class="button_1" style="margin-left:10" type="button" value="Tạo yêu cầu" />
                                 </div> 
                                
                                

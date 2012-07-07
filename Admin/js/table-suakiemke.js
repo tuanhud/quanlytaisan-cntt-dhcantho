@@ -309,7 +309,7 @@ function taocombosua(frm)
 				}
 			});
 			
-			// su kien click nut them
+			// su kien click nut sua
 			$("#btn_suaphieukiemke").bind('click', function () 
 			{
 				if((loaikiemkesua!=-1)&&(phieukiemkesua!=-1))

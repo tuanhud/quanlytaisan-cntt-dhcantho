@@ -292,11 +292,13 @@ function taobang(makhms)
 					$('#tabletaisan').jqxGrid('clear');
 					
          });
-		  
+		 
+		
  		$("#create").bind('click', function () 
 		 {
             		var rowscount = $("#jqthem").jqxGrid('getdatainformation').rowscount;
 					var id;
+					
 					//them dl vao bang kehoachmuasam
 					{
 								http=GetXmlHttpObject();
@@ -334,8 +336,6 @@ function taobang(makhms)
 					}
 					$('#jqthem').jqxGrid('destroy');
          });
-		 
-		 
 		//update 
 		$("#jqthem").bind('cellendedit', function (event) 
 		{
@@ -393,8 +393,8 @@ function taobang(makhms)
 		var rowscount = $("#jqthem").jqxGrid('getdatainformation').rowscount;
 		for(var i=0;i < rowscount;i++) 
 		{
-					var thanhtien = $('#jqthem').jqxGrid('getcellvalue', i, "ThanhTien");
-					tongtien = tongtien + thanhtien;
+			var thanhtien = $('#jqthem').jqxGrid('getcellvalue', i, "ThanhTien");
+			tongtien = tongtien + thanhtien;
 		}
 		$('#tongtien').html(tongtien);
 		

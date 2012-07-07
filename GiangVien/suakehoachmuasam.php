@@ -82,10 +82,26 @@
 			taocombo();
 			
         });
+		function thoat() 
+			{
+				if (confirm('Bạn có thật sự muốn thoát không?' )) 
+				{
+					document.location = '../logout.php';
+					return;
+				}
+			}
    </script>
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
 	<!--begin header-->
+    
+    <div style="Z-INDEX: 1; LEFT: 1031px; WIDTH: 200px; POSITION: absolute; TOP: 9px; HEIGHT: 30px" align="center"> <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF"><a href="capnhatthongtincanhangv.php">Cập nhật thông tin cá nhân</a>| <a class="white" href="javascript:thoat();">Thoát</a> <br />
+   			   Xin chào,
+   			   <?=$_SESSION['hoten']?>
+   			   <br />
+   			   (<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
+  <?=$_SESSION['msclb']?>
+</font>) </font></div>
    			 <?php include_once('../header.php');?> 
     <!--end header-->
     <!--begin content-->
@@ -101,18 +117,18 @@
                         	<table style="table-layout: fixed;border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
-                            <td width="794" valign="top" class="rc-all content" id="demos">
+                            <td width="970" valign="top" class="rc-all content" id="demos">
                             <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                                 <tbody>
     							 <tr>
                                         <td height="100%"  class="demoContent" valign="middle">
-                                        <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
+                                        <table width="900" border="0" cellpadding="0" cellspacing="0" align="center">      
                                           
                                           <tr>       
                                               <td align="center" width="44%" valign="middle">
                                              
                                               <!--noi dung o day-->
-                                            	 <table width="650" border="0" cellpadding="0" cellspacing="0">
+                                            	 <table width="970" border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr class="main_1">
           <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -148,7 +164,7 @@
                                 <div id="cellbegineditevent"></div>
                                 <div style="margin-top: 10px;" id="cellendeditevent"></div>
                  
-                           <div style="margin-left: 10px; float: left;">
+                           <div style="margin-left:140px; float: left;">
                                 <div id="buttondk" style="margin-top: 5px;">
                                 	<input type="hidden" name="makhms" id="makhms">
                                     <input type="button" class="button_1" value="Thêm thiết bị yêu cầu" id="showWindowButton" />

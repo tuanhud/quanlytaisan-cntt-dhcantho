@@ -151,7 +151,7 @@
         </tr>
         <tr>
           <td colspan="3" align="left">
-           <form method='post' name='frm_lapphieudutru' id='frm_lapphieudutru'> 
+           <form name='frm_lapphieudutru' id='frm_lapphieudutru'> 
 		   <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>

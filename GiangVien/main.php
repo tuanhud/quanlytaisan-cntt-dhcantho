@@ -69,6 +69,14 @@
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
             });
+			function thoat() 
+			{
+				if (confirm('Bạn có thật sự muốn thoát không?' )) 
+				{
+					document.location = '../logout.php';
+					return;
+				}
+			}
         </script>
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
@@ -125,7 +133,7 @@
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">                
                          <tbody >
                         <tr>
-                            <td colspan="2"><div align="center" class="textbold">THÔNG TIN CÁN BỘ ADMIN </div></td>
+                            <td colspan="2"><div align="center" class="textbold">THÔNG TIN CÁN BỘ</div></td>
                         </tr>
                         <tr>
                             <td colspan="2">&nbsp;</td>
