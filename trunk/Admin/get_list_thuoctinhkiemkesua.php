@@ -8,7 +8,7 @@
 			include_once('../database.php');
 			$db=new database();			
 					
-					$db->setQuery('SELECT DISTINCT d.MaThuocTinh, d.TenThuocTinh from taisanthuocdonvi a, taisan b, cothuoctinh c, thuoctinh d, donvi e, phieukiemke f where a.MaTaiSan=b.MaTaiSan and b.MaTaiSan=c.MaTaiSan and c.MaThuocTinh=d.MaThuocTinh and a.MSDV=e.MSDV and e.MSDV and f.MSDV   and f.MaPhieuKiemKe="'.$_POST['MaPhieuKiemKe'].'"');
+					$db->setQuery('SELECT DISTINCT d.MaThuocTinh, d.TenThuocTinh from taisanthuocdonvi a, taisan b, cothuoctinh c, thuoctinh d, donvi e, phieukiemke f where a.MaTaiSan=b.MaTaiSan and b.MaTaiSan=c.MaTaiSan and c.MaThuocTinh=d.MaThuocTinh and a.MSDV=e.MSDV and e.MSDV = f.MSDV   and f.MaPhieuKiemKe="'.$_POST['MaPhieuKiemKe'].'"');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";

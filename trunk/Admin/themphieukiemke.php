@@ -17,8 +17,10 @@
 				 $maphieu = $row[0]+1;
 				
 				$sql= "insert into `phieukiemke` values('".$maphieu."','".$_POST['MSDV']."','".$_POST['TenPhieuKiemKe']."','".$_POST['Nam']."','".$_POST['MaLoaiKK']."','".$_POST['DienGiaiKiemKe']."','".$_POST['NgayKiemKe']."','".$_POST['NgayKetThucKiemKe']."')";
-				
 				$db->Execute($sql);
+				
+				$sql2= "insert into `lapkiemke` values('".$_SESSION['msclb']."', '".$maphieu."')";
+				$db->Execute($sql2);
 				
 				$sql2 = "insert into `cophieumau` values('".$maphieu."','".$_POST['MaPhieu']."')";
 				$db->setQuery($sql2);
