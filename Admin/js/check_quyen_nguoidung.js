@@ -27,7 +27,18 @@ function checkbox_admin()
 															if(rec2.get('id')==rec.get('id'))
 															{
 																item.set('hidden', false);
-																item.set('checked', true);
+																
+															}
+														})
+														
+														var DUYETKHMS = dt.get('srcNode').all("tbody input.DUYETKHMS");
+														DUYETKHMS.each( function(item)
+														{
+															var rec2 = dt.getRecord( item.ancestor().ancestor() );
+															if(rec2.get('id')==rec.get('id'))
+															{
+																item.set('hidden', false);
+																
 															}
 														})
 														
@@ -38,7 +49,7 @@ function checkbox_admin()
 															if(rec2.get('id')==rec.get('id'))
 															{
 																item.set('hidden', false);
-																item.set('checked', true);
+																
 															}
 														})
 														
@@ -49,7 +60,7 @@ function checkbox_admin()
 															if(rec2.get('id')==rec.get('id'))
 															{
 																item.set('hidden', false);
-																item.set('checked', true);
+																
 															}
 														})
 														
@@ -60,7 +71,7 @@ function checkbox_admin()
 															if(rec2.get('id')==rec.get('id'))
 															{
 																item.set('hidden', false);
-																item.set('checked', true);
+															
 															}
 														})
 														
@@ -71,7 +82,7 @@ function checkbox_admin()
 															if(rec2.get('id')==rec.get('id'))
 															{
 																item.set('hidden', false);
-																item.set('checked', true);
+															
 															}
 														})
 													}
@@ -109,7 +120,7 @@ function checkbox_cbqlbm()
 															if(rec2.get('id')==rec.get('id'))
 															{
 																item.set('hidden', false);
-																item.set('checked', true);
+																
 															}
 														})
 														
@@ -120,7 +131,7 @@ function checkbox_cbqlbm()
 															if(rec2.get('id')==rec.get('id'))
 															{
 																item.set('hidden', false);
-																item.set('checked', true);
+															
 															}
 														})
 													}
@@ -193,7 +204,7 @@ function checkbox_duyetkhms()
 	var chks = dt.get('srcNode').all("tbody input.DUYETKHMS");
 			chks.each( function(item)
 			{
-				item.set('hidden', true);
+								item.set('hidden', true);
 								var rec = dt.getRecord( item.ancestor().ancestor() );
 								http=GetXmlHttpObject();
 								var params ="macanbo="+rec.get('id');

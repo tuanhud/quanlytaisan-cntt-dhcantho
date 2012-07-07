@@ -93,6 +93,10 @@ $(document).ready(function()
 		update_quyen_nguoidung(document.frm_capnhatquyen_nguoidung);
 	});
 	
+	$('form[name="frm_capnhatquyen_nguoidung"] input[name="btn_capnhat2"]').click(function(){		
+		update_quyen_nguoidung2(document.frm_capnhatquyen_nguoidung);
+	});
+	
     $("#parentTable").height(1600);	
     setTimeout(function()
     {
@@ -188,9 +192,10 @@ function thoat() {
                 </tr>
                       <p align="center"></p>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_capnhat" id="btn_capnhat" class="button_1" value="Lưu"></td>
+              		<td colspan="2" height="22" align="center" class="level_1_2">
+                    <input type="button" name="btn_capnhat2" id="btn_capnhat2" class="button_1" value="Cập nhật">
+                    <input type="button" name="btn_capnhat" id="btn_capnhat" class="button_1" value="Lưu"></td>
               </tr>
-              </tbody>
            </table>
            </form>
           </td>
