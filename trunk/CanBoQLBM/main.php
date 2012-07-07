@@ -127,7 +127,7 @@
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">                
                          <tbody >
                         <tr>
-                            <td colspan="2"><div align="center" class="textbold">THÔNG TIN CÁN BỘ ADMIN </div></td>
+                            <td colspan="2"><div align="center" class="textbold">THÔNG TIN CÁN BỘ</div></td>
                         </tr>
                         <tr>
                             <td colspan="2">&nbsp;</td>

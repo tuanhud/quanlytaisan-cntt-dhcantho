@@ -23,6 +23,24 @@ function capnhat_quyen_nguoidung(filephp,frm,macanbo,maquyen)
 	http.send(params);
 }
 
+function capnhat_quyen_nguoidung2(filephp,frm,macanbo,maquyen)
+{
+	http=GetXmlHttpObject();
+	
+	var params ="macanbo="+macanbo;
+	params+="&maquyen="+maquyen;
+	http.open("POST", filephp, false);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.onreadystatechange = function() 
+	{
+		if(http.readyState == 4 && http.status == 200) 
+		{
+			var result=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
+		}
+	}
+	http.send(params);
+}
+
 
 function update_quyen_nguoidung(frm){
 
@@ -234,5 +252,59 @@ function update_quyen_nguoidung(frm){
 	document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value=-1;
 	dt.reset();
 	numofSus = numofFai = 0;
+	
+}
+
+function update_quyen_nguoidung2(frm){
+
+   try
+	{
+		var chks = dt.get('srcNode').all("tbody input.ADMIN");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'ADMIN')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'ADMIN');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	try
+	{
+		var chks = dt.get('srcNode').all("tbody input.CBQLBM");
+		chks.each( function(item){
+			var rec = dt.getRecord( item.ancestor() );
+			if ( !item.get('checked') )
+			{
+				capnhat_quyen_nguoidung2('xoaquyen_nguoidung.php', frm, rec.get('id'),'CBQLBM')
+			}
+			else
+			{
+				capnhat_quyen_nguoidung2('themquyen_nguoidung.php', frm, rec.get('id'),'CBQLBM');
+			}
+		   	});
+	}
+	catch(ex){
+		alert("Có lỗi xảy ra: " + ex.message);
+	}
+	getRecord2('get_list_canbo_donvi.php',document.frm_capnhatquyen_nguoidung.cbo_tendonvi.value);
+	checkbox_duyetvpp();
+			checkbox_duyetkhms();
+			checkbox_qlkk();
+			checkbox_lockkk();
+			checkbox_qlvpp();
+			checkbox_qlkhms();
+			checkbox_pdtvpp();
+			checkbox_duyetkhmsbm();
+			checkbox_admin();
+			checkbox_cbqlbm();
+			checkbox_gv();
+
 	
 }
