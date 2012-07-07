@@ -14,7 +14,7 @@ function taobangtaisan (combo)
 			http=GetXmlHttpObject();
 			var params ="id="+id;
 			
-			http.open("POST",'get_list_khms', false);
+			http.open("POST",'get_list_khms.php', false);
 			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			http.onreadystatechange = function()
 			{
