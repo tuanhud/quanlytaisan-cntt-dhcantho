@@ -11,6 +11,8 @@ echo '<?xml version="1.0"?>
 <?mso-application progid="Excel.Sheet"?>';
 
 					include_once('../database.php');
+					$db=new database();
+					$now = getdate();
 
 ?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
@@ -134,13 +136,13 @@ echo '<?xml version="1.0"?>
     <Cell ss:MergeAcross="7" ss:StyleID="s72"><Data ss:Type="String">KẾ HOẠCH MUA SẮM MÁY MÓC THIẾT BỊ LẺ BỔ SUNG</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18.75">
-    <Cell ss:MergeAcross="7" ss:StyleID="s73"><Data ss:Type="String">Năm 2012</Data></Cell>
+    <Cell ss:MergeAcross="7" ss:StyleID="s73"><Data ss:Type="String">Năm <?=$now["year"]?></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
     <Cell ss:MergeAcross="7" ss:StyleID="s75"><Data ss:Type="String">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.25">
-    <Cell ss:MergeAcross="7" ss:StyleID="s62"><Data ss:Type="String">ĐƠN VỊ:</Data></Cell>
+    <Cell ss:MergeAcross="7" ss:StyleID="s62"><Data ss:Type="String">Kính gửi: Phòng Quản trị - Thiết bị.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="17.25">
     <Cell ss:StyleID="s62"/>
@@ -159,8 +161,7 @@ echo '<?xml version="1.0"?>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Thành tiền </Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Thuyết minh nhu cầu sử dụng</Data></Cell>
    </Row>
-    <?php
-	$db=new database();			
+    <?php		
 					$db->setQuery('CREATE VIEW taisanmuasam AS SELECT a.MaTaiSan, a.TenTaiSan, a.TenDonViTinh, b.SoLuong, b.DonGiaMuaSam, b.ThuyetMinhSuDung, c.MaLoai, c.TenLoai FROM taisan a, thuockhms b, loaitaisan_thietbi c where a.MaLoai=c.MaLoai and a.MaTaiSan=b.MaTaiSan and b.MaKHMS="'.$_SESSION['makhms'].'"');			
 					$result=$db->fetchAll();
 					
@@ -206,12 +207,42 @@ ON taisanthuockehoachmuasam.MaTaiSan=tinhnang.MaTaiSan');
 	?>
   
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s77"><Data ss:Type="String">Cần thơ, ngày 15 tháng 01 năm 2011</Data></Cell>
+    <Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s77"><Data ss:Type="String">Cần Thơ, ngày <?=$now["mday"]?> tháng <?=$now["mon"]?> năm <?=$now["year"]?></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String">Trưởng Khoa </Data></Cell>
     <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String">Trưởng Bộ môn</Data></Cell>
     <Cell ss:MergeAcross="1" ss:StyleID="s62"><Data ss:Type="String">Người lập</Data></Cell>
+   </Row>
+    <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+   </Row>
+    <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+   </Row>
+    <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+   </Row>
+    <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="s62">
+    <Data ss:Type="String">
+	<?php 
+        $db->setQuery('SELECT b.TenCB FROM kehoachmuasam a, nguoidung b where a.MSCB=b.MSCB and MaKHMS="'.$_SESSION['makhms'].'"');
+        $str=$db->fetchAll();
+        while($tencanbo=mysql_fetch_array($str,MYSQL_NUM))
+        {
+            echo $tencanbo[0];		
+        }
+    ?>
+    </Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
