@@ -135,7 +135,7 @@
         <tbody>
         <tr class="main_1">
           <td width="66" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="377" align="center">Thông số in kế hoạch mua sắm của GV chưa duyệt</td>
+          <td width="377" align="center">Thông số in kế hoạch mua sắm của GV đã duyệt</td>
           <td width="57" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
         </tr>
         <tr>
