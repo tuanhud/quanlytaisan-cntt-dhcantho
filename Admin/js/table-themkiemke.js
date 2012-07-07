@@ -348,7 +348,7 @@ function taocombothem(frm)
 			{
 				if((loaikiemke!=-1)&&(phieumau!=-1)&&(donvi!=-1))
 				{
-					//insert phieu kiem ke + cophieumau
+					//insert phieu kiem ke + cophieumau va lapkiemke
 					var now = new Date(); 
 					var ngay = ($('#ngaybdkk').jqxDateTimeInput('getDate')).getDate();
 					var thang =($('#ngaybdkk').jqxDateTimeInput('getDate')).getMonth()+1;
@@ -440,7 +440,6 @@ function taocombothem(frm)
 						var ctnd = $('#tablephieumau').jqxGrid('getcellvalue', i, "GhiChu");
 						http=GetXmlHttpObject();
 						var params13 = "mataisan=" +mats+"&maphieukiemke=" +maphieukiemke+"&manoidung=" +'GHICHU'+"&chitietnoidung=" +ctnd;
-						alert(params13);
 						http.open("POST",'themconoidungkiemke2.php', false);
 						http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 						http.onreadystatechange = function()

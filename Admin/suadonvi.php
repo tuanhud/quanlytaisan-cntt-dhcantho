@@ -19,7 +19,7 @@
 				}
 			}
 			$sql="update donvi ";
-			$sql.="set `TenDV` = '".$_POST['txt_tendonvisua']."'";
+			$sql.="set `TenDV` = '".$_POST['txt_tendonvisua']."' ";
 			$sql.="where `MSDV` = '".$_POST['cbo_tendonvisua']."'";
 			$db->setQuery($sql);
 			if($db->executeQuery()!=1)

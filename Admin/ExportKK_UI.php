@@ -74,13 +74,31 @@
             var theme = getTheme();
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
 			$('#jqxTabs').jqxTabs({ width: 970,enabledHover: true, height:'auto', position: 'top', theme: '' });
-            $("#jqxMenu").css('visibility', 'visible'); 	
+            $("#jqxMenu").css('visibility', 'visible'); 
+			fillcombo('get_list_loaikiemke.php',document.frm_exportkk.cbo_loaikk);	
 			fillcombo('get_list_phieukiemkesua.php',document.frm_exportkk.cbo_tenkk);	
+			$('form[name="frm_exportkk"] select[name="cbo_loaikk"]').change(function()
+			{
+				_fillcombo('get_list_phieukiemke.php',document.frm_exportkk.cbo_loaikk,document.frm_exportkk.cbo_tenkk);
+			});
   });
+  function thoat() {
+		if (confirm('Bạn có thật sự muốn thoát không?' )) {
+			document.location = '../logout.php';
+			return;
+		}
+  }
         </script>
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
 	<!--begin header-->
+     <div style="Z-INDEX: 1; LEFT: 1031px; WIDTH: 200px; POSITION: absolute; TOP: 9px; HEIGHT: 30px" align="center"> <font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF"><a href="capnhatthongtincanhanad.php">Cập nhật thông tin cá nhân</a>| <a class="white" href="javascript:thoat();">Thoát</a> <br />
+         Xin chào,
+         <?=$_SESSION['hoten']?>
+         <br />
+         (<font style="FONT-WEIGHT: 700; FONT-SIZE: 8pt; line-height:20px;" face="Tahoma" color="#FFFFFF">
+  <?=$_SESSION['msclb']?>
+</font>) </font></div>
    			 <?php include_once('../header.php');?> 
     <!--end header-->
     <!--begin content-->
@@ -110,7 +128,7 @@
     <td height="100%" align="center" valign="middle"> 
      <div id='jqxTabs'>
             <ul>
-                <li style="margin-left: 30px;">Thêm phiếu kiểm kê</li>
+                <li style="margin-left: 30px;">Export phiếu kiểm kê</li>
             </ul> 
 		 <div> 
 		 <table width="950" height="100%" border="0" cellpadding="0" cellspacing="0" align="center">
@@ -124,6 +142,14 @@
               <tr>
               		<td height="22" class="level_1_1" colspan="2"></td>
               </tr>
+               <tr>
+			    <td height="22" align="right" class="level_1_1">Chọn loại kiểm kê</td>
+			    <td width="70%" align="left" class="level_1_1">
+               	<select id="cbo_loaikk" name="cbo_loaikk" class="cbo" style="width:90%;">
+                        </select>
+			      </td>
+                </tr>
+
               <tr>
 			    <td height="22" align="right" class="level_1_1">Chọn phiếu kiểm kê</td>
 			    <td align="left" class="level_1_1">

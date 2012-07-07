@@ -416,7 +416,7 @@ function taocombosua(frm)
 						}
 						http.send(params14);
 					 }
-					alert(result14); 
+					alert('Thành công.'); 
 				}
 				else
 				{
