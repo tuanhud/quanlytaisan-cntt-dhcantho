@@ -63,9 +63,24 @@
     <script type="text/javascript" src="js/fill.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            
 			taobangvpp();
-			taopopup()
+			taopopup();
+            fillcombo2('get_list_nam.php',document.frm_lapphieudutru.cbo_namthem);
+			fillcombo2('get_list_quy.php',document.frm_lapphieudutru.cbo_quythem);
+//	sau nay bo don vi, vi su dung session khi can bo dang nhap
+	fillcombo2('get_list_nam.php',document.frm_huyphieudutruvpp.cbo_namhuy);
+	fillcombo2('get_list_quy.php',document.frm_huyphieudutruvpp.cbo_quyhuy);
+	$('form[name="frm_huyphieudutruvpp"] select[name="cbo_namhuy"]').change(function(){
+		fillcombo2bien('get_list_maphieudutruvpp.php',document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
+	});
+	$('form[name="frm_huyphieudutruvpp"] select[name="cbo_quyhuy"]').change(function(){
+		fillcombo2bien('get_list_maphieudutruvpp.php',document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
+	});
+	
+	/*$('form[name="frm_huyphieudutruvpp"] select[name="cbo_quyhuy"]').change(function(){
+		fillcombo3bien('get_list_maphieudutruvpp.php',document.frm_huyphieudutruvpp.cbo_donvihuy,document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
+	});
+			
 			
 	
             $("#parentTable").height(1600);	
@@ -79,30 +94,13 @@
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
-            });
+            });*/
+			});
 			function thoat() {
-		if (confirm('Ban có thật sự muốn thoát không?' )) {
+		if (confirm('Bạn có thật sự muốn thoát không?' )) {
 			document.location = '../logout.php';
 			return;
 		}}
-		$btn=0; 
-	fillcombo2('get_list_nam.php',document.frm_lapphieudutru.cbo_namthem);
-	fillcombo2('get_list_quy.php',document.frm_lapphieudutru.cbo_quythem);
-//	sau nay bo don vi, vi su dung session khi can bo dang nhap
-	fillcombo('get_list_donvi.php',document.frm_lapphieudutru.cbo_donvithem);
-	
-	fillcombo('get_list_donvi.php',document.frm_huyphieudutruvpp.cbo_donvihuy);
-	fillcombo2('get_list_nam.php',document.frm_huyphieudutruvpp.cbo_namhuy);
-	fillcombo2('get_list_quy.php',document.frm_huyphieudutruvpp.cbo_quyhuy);
-	$('form[name="frm_huyphieudutruvpp"] select[name="cbo_namhuy"]').change(function(){
-		fillcombo3bien('get_list_maphieudutruvpp.php',document.frm_huyphieudutruvpp.cbo_donvihuy,document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
-	});
-	$('form[name="frm_huyphieudutruvpp"] select[name="cbo_quyhuy"]').change(function(){
-		fillcombo3bien('get_list_maphieudutruvpp.php',document.frm_huyphieudutruvpp.cbo_donvihuy,document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
-	});
-	$('form[name="frm_huyphieudutruvpp"] select[name="cbo_donvihuy"]').change(function(){
-		fillcombo3bien('get_list_maphieudutruvpp.php',document.frm_huyphieudutruvpp.cbo_donvihuy,document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
-	});
         </script>
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
@@ -151,7 +149,11 @@
         </tr>
         <tr>
           <td colspan="3" align="left">
+<<<<<<< .mine
+           <form name="frm_lapphieudutru" id="frm_lapphieudutru"> 
+=======
            <form name='frm_lapphieudutru' id='frm_lapphieudutru'> 
+>>>>>>> .r206
 		   <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -167,13 +169,8 @@
 					<td width="50%" align="left" class="level_1_2"><select name="cbo_quythem" id="cbo_quythem" class="cbo" style="width:100%;">
 					  </select></td>
 			</tr>
-             <tr>
-					<td height="22" align="right" class="level_1_1">Phiếu dự toán của đơn vị</td>
-					<td width="50%" align="left" class="level_1_1"><select name="cbo_donvithem" id="cbo_donvithem" class="cbo" style="width:100%;">
-					  </select></td>
-			</tr>   
-                <tr>
-					<td height="22" colspan="2" align="left" class="level_1_2"><em><strong>Chi tiết văn phòng phẩm:</strong> </em></td>
+            <tr>
+					<td height="22" colspan="2" align="left" class="level_1_1"><em><strong>Chi tiết văn phòng phẩm:</strong> </em></td>
 					</tr>
       				<tr>
                     <td colspan="2" align="center">
@@ -264,17 +261,12 @@
                 </select></td>
 			</tr>
              <tr>
-					<td height="22" align="right" class="level_1_2">Phiếu dự trù của đơn vị</td>
-					<td width="50%" align="left" class="level_1_2"><select name="cbo_donvihuy" id="cbo_donvihuy" class="cbo" style="width:100%;">
-                </select></td>
-			</tr>
-             <tr>
-					<td height="22" align="right" class="level_1_1">Mã phiếu dự trù</td>
-					<td width="50%" align="left" class="level_1_1"><select name="cbo_maphieuhuy" id="cbo_maphieuhuy" class="cbo" style="width:100%;">
+					<td height="22" align="right" class="level_1_2">Mã phiếu dự trù</td>
+					<td width="50%" align="left" class="level_1_2"><select name="cbo_maphieuhuy" id="cbo_maphieuhuy" class="cbo" style="width:100%;">
                 </select></td>
 			</tr>          
             <tr>
-              <td colspan="2" height="22" align="center" class="level_1_2">
+              <td colspan="2" height="22" align="center" class="level_1_1">
                 <input type="button" name="btn_xoa" id="btn_xoa" class="button_1" value="Xóa">
                 </td>
             </tr>
