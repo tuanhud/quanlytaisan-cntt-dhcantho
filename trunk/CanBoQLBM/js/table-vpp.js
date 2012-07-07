@@ -37,11 +37,7 @@ function taobangvpp ()
 				editable: true,
 				autoheight: true,
 				pageable: true,
-				virtualmode: true,
-				rendergridrows: function()
-				{
-					  return dataadapter.records;     
-				},
+                columnsresize: true,
                 columns: [
 					  { text: 'Mã VPP', editable: false, datafield: 'id', width: 60, cellsalign: 'left' },
 					  { text: 'Tên văn phòng phẩm', editable: false, datafield: 'ten', width: 150, cellsalign: 'left' },
@@ -168,7 +164,7 @@ function taobangvpp ()
 						var id = $('#jqxgrid').jqxGrid('getcellvalue', m,'id');
 					var soluong = $('#jqxgrid').jqxGrid('getcellvalue', m,'soluong');
 					var gia = $('#jqxgrid').jqxGrid('getcellvalue', m,'dongia');
-						var data = "insert=true&id=" + id + "&soluong=" + soluong+ "&dongia=" + gia;
+						var data = "id=" + id + "&soluong=" + soluong+ "&dongia=" + gia;
 					$.ajax
 					({
 						dataType: 'json',
@@ -182,5 +178,27 @@ function taobangvpp ()
 				alert("Lập phiếu dự trù thành công!");
 				window.location.reload(true);		
 			}
+		});
+		$("#btn_xoa").unbind("click").click(function()
+		{
+			if($("#cbo_maphieuhuy").val()==-1){
+				alert("Bạn chưa chọn mã phiếu dự trù!");
+			}
+			else{
+				var dataxoa="maphieu=" +$("#cbo_maphieuhuy").val();
+				$.ajax
+					({
+						dataType: 'json',
+						url: 'xoaphieudutru.php',
+						data: dataxoa,
+						success: function (data, status, xhr)
+						{}
+				});	
+					
+			}
+			alert("Xóa phiếu dự trù thành công!");
+			fillcombo2('get_list_nam.php',document.frm_huyphieudutruvpp.cbo_namhuy);
+	fillcombo2('get_list_quy.php',document.frm_huyphieudutruvpp.cbo_quyhuy);
+	fillcombo2bien('get_list_maphieudutruvpp.php',document.frm_huyphieudutruvpp.cbo_namhuy,document.frm_huyphieudutruvpp.cbo_quyhuy, document.frm_huyphieudutruvpp.cbo_maphieuhuy);
 		});
 }
