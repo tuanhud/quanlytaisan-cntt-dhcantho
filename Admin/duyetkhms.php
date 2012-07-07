@@ -78,7 +78,7 @@
             $("#jqxMenu").css('visibility', 'visible'); 
 			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
 			fillcombo2('get_list_nam.php',document.frm_duyetkhms.cbo_nam);
-	        fillcombo('get_list_donvi2.php',document.frm_duyetkhms.cbo_chondonvi);
+	        fillcombo('get_list_donvi.php',document.frm_duyetkhms.cbo_chondonvi);
 			//taobang();
 			$('form[name="frm_duyetkhms"] select[name="cbo_nam"]').change(function()
 	{		

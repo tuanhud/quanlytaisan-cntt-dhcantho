@@ -101,6 +101,7 @@
 	
 			
 		});
+		
             });
 			function thoat() {
 		if (confirm('Ban có thật sự muốn thoát không?' )) {

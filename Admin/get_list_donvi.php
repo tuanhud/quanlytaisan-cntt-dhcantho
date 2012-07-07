@@ -12,6 +12,14 @@
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
+					$xml.="<row>";
+							$xml.="<column>";
+							$xml.=-1;							
+							$xml.="</column>";
+							$xml.="<column>";
+							$xml.='-Chọn đơn vị-';							
+							$xml.="</column>";
+					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
 					{
 						$xml.="<row>";
