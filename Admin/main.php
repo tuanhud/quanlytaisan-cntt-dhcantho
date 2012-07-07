@@ -73,7 +73,7 @@
             });
 			//chuc nang thoat
 		function thoat() {
-		if (confirm('Ban có thật sự muốn thoát không?' )) {
+		if (confirm('Bạn có thật sự muốn thoát không?' )) {
 			document.location = '../logout.php';
 			return;
 		}

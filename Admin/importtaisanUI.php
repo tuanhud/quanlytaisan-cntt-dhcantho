@@ -114,14 +114,14 @@ $(document).ready(function()
 		/*----------------------------------------------
 		/* Lưu dữ liệu vào DB
 		/*---------------------------------------------*/
-	$sql2 ="DROP TABLE `quanlytaisan`.`temp3`"; 	
-	$db = new database;
-	$db->setQuery($sql2);
-	$result2=$db->fetchAll();
-	
-	$sql ="CREATE TABLE `quanlytaisan`.`temp3` (`ma` varchar(100), `tentruong` varchar(100))";
+	$sql ="DROP TABLE `quanlytaisan`.`temp3`"; 	
 	$db = new database;
 	$db->setQuery($sql);
+	$result2=$db->fetchAll();
+	
+	$sql2 ="CREATE TABLE `quanlytaisan`.`temp3` (`ma` varchar(100), `tentruong` varchar(100))";
+	$db = new database;
+	$db->setQuery($sql2);
 	$result=$db->fetchAll();
 	for ($j=1;$j<=$colsnum;$j++) //cot
 	{
@@ -134,42 +134,42 @@ $(document).ready(function()
 	}	
 		
 		
-	$sql2 ="DROP TABLE `quanlytaisan`.`temp4`"; 	
+	$sql3 ="DROP TABLE `quanlytaisan`.`temp4`"; 	
 	$db = new database;
-	$db->setQuery($sql2);
+	$db->setQuery($sql3);
 	$result2=$db->fetchAll();
 	
-	$sql ="CREATE TABLE `quanlytaisan`.`temp4` (";
-	$sql .= "`".$data->val(1,1)."` varchar(100)";
+	$sql4 ="CREATE TABLE `quanlytaisan`.`temp4` (";
+	$sql4 .= "`".$data->val(1,1)."` varchar(100) ";
 	for ($j=2;$j<$colsnum;$j++) //cot
 	{	
-		$sql .= ", `".$data->val(1,$j)."` varchar(100)";
+		$sql4 .= ", `".$data->val(1,$j)."` varchar(100) ";
 	}
-	$sql .= ", `".$data->val(1,$colsnum)."` varchar(100))";
+	$sql4 .= ", `".$data->val(1,$colsnum)."` varchar(100))";
 	$db = new database;
-	$db->setQuery($sql);
+	$db->setQuery($sql4);
 	$result=$db->fetchAll();
 	
 	for ($i=2;$i<=$rowsnum;$i++)//hang
 	{	
 		$temp = $i-1;
-		$sql3  = "insert into temp4 (";
-		$sql3 .= "`".$data->val(1,1)."`";
+		$sql8  = "insert into temp4 (";
+		$sql8 .= "`".$data->val(1,1)."`";
 		for ($j=2;$j<$colsnum;$j++) //cot
 		{	
-			$sql3 .= ", `".$data->val(1,$j)."`";
+			$sql8 .= ", `".$data->val(1,$j)."`";
 		}
-		$sql3 .= ", `".$data->val(1,$colsnum)."`)";
-		$sql3 .= " values (";
-		$sql3 .= "'".$data->val($i,1)."'";
+		$sql8 .= ", `".$data->val(1,$colsnum)."`)";
+		$sql8 .= " values (";
+		$sql8 .= "'".$data->val($i,1)."'";
 		for ($j=2;$j<$colsnum;$j++) //cot
 		{	
-				$sql3 .= ",'".$data->val($i,$j)."'";
+				$sql8 .= ",'".$data->val($i,$j)."'";
 		}
-		$sql3 .= ",'".$data->val($i,$colsnum)."'";
-		$sql3 .= ")";
+		$sql8 .= ",'".$data->val($i,$colsnum)."'";
+		$sql8 .= ")";
 		$db = new database;
-		$db->setQuery($sql3);
+		$db->setQuery($sql8);
 		$result3=$db->fetchAll();
 		
 	}

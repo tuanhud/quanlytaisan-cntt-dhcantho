@@ -312,7 +312,24 @@ function taobang(makhms)
 					
          });
 		  
- 
+ 		//xoa khms
+		$("#delete").bind('click', function () 
+		 {
+            					http=GetXmlHttpObject();
+								var params = "makhms=" +makhms;				
+								http.open("POST", 'data_taisanthuocKHMS5.php', false);
+								http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+								http.onreadystatechange = function()
+								{
+									if(http.readyState == 4 && http.status == 200) 
+									{
+										alert('Thành công.');
+									}
+								}
+								http.send(params);						
+         });
+		
+		
 		//update 
 		$("#jqthem").bind('cellendedit', function (event) 
 		{
@@ -426,7 +443,7 @@ function taocombo()
          	var da = new $.jqx.dataAdapter(source);
 			$("#mayeucauthietbi").jqxDropDownList({ source: da, selectedIndex: 0,displayMember: "Ten", valueMember: "Ma", width: '90%', height: '25px', theme: 'energyblue'});
 			
-			// su kien chon don vi
+			
 			var makhms = '';
 			var item = $("#mayeucauthietbi").jqxDropDownList('getSelectedItem');
 				makhms=item.value;

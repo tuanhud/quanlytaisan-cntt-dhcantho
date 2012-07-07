@@ -12,6 +12,7 @@ echo '<?xml version="1.0"?>
 
 					include_once('../database.php');
 					$db=new database();
+					$now = getdate();
 
 ?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
@@ -205,12 +206,24 @@ echo '<?xml version="1.0"?>
    <Row>
     <Cell ss:Index="5" ss:StyleID="s64"/>
    </Row>
-   <Row ss:Height="22.5">
-    <Cell ss:MergeAcross="13" ss:StyleID="s116"><Data ss:Type="String">DANH MỤC KIỂM KÊ THỰC TẾ TÀI SẢN CÔNG CỤ THỜI ĐIỂM 0 GiỜ NGÀY 01.01.2011</Data></Cell>
+   	<?php 
+        $db->setQuery('SELECT NgayKiemKe,NgayKetThucKiemKe FROM phieukiemke where MaPhieuKiemKe="'.$_SESSION['maphieukiemke'].'"');
+        $result4=$db->fetchAll();
+        while($thuoctinh=mysql_fetch_array($result4,MYSQL_NUM))
+        {
+        echo' 
+		<Row ss:Height="22.5">
+    		<Cell ss:MergeAcross="13" ss:StyleID="s116"><Data ss:Type="String">DANH MỤC KIỂM KÊ THỰC TẾ TÀI SẢN CÔNG CỤ THỜI ĐIỂM 0 GiỜ NGÀY '.$thuoctinh[0].'</Data>
+			</Cell>
+  		</Row>
+		  <Row ss:Height="19.5">
+    <Cell ss:MergeAcross="13" ss:StyleID="s117"><Data ss:Type="String">(Phát sinh tăng, giảm trong năm '.$now["year"].', giai đoạn từ 0 giờ, ngày '.$thuoctinh[0].' đến 0 giờ, ngày '.$thuoctinh[1].')</Data></Cell>
    </Row>
-   <Row ss:Height="19.5">
-    <Cell ss:MergeAcross="13" ss:StyleID="s117"><Data ss:Type="String">(Phát sinh tăng, giảm trong năm 2010, giai đoạn từ 0 giờ, ngày 01.01.2010 đến 0 giờ, ngày 01.01.2011)</Data></Cell>
-   </Row>
+		';
+		}
+        ?>
+  
+ 
    <Row>
     <Cell ss:Index="13" ss:StyleID="s65"><Data ss:Type="String">Đơn vị tính: 1.000 đồng</Data></Cell>
    </Row>
@@ -225,7 +238,9 @@ echo '<?xml version="1.0"?>
 	$result=$db->fetchAll();
 	while($row=mysql_fetch_array($result,MYSQL_NUM))
 	{
-		echo'<Cell ss:MergeDown="1" ss:StyleID="s108"><Data ss:Type="String">'.$row[1].'</Data></Cell>';			
+		echo'
+		<Cell ss:MergeDown="1" ss:StyleID="s108"><Data ss:Type="String">'.$row[1].'</Data></Cell>
+		';			
 	}
 	
 	$db->setQuery('SELECT d.MaND, d.TenND FROM cophieumau a, phieumau b, thuocphieumau c, noidung d where a.MaPhieu=b.MaPhieu and b.MaPhieu = c.MaPhieu and c.MaND = d.MaND and a.MaPhieuKiemKe="'.$_SESSION['maphieukiemke'].'"');			
@@ -234,7 +249,9 @@ echo '<?xml version="1.0"?>
 	{
 		if($row2[0]!='GHICHU')
 		{
-			echo'<Cell ss:MergeDown="1" ss:StyleID="s108"><Data ss:Type="String">'.$row2[1].'</Data></Cell>';
+			echo'
+			<Cell ss:MergeDown="1" ss:StyleID="s108"><Data ss:Type="String">'.$row2[1].'</Data></Cell>
+			';
 		}
 	}
   ?>
@@ -288,12 +305,6 @@ echo '<?xml version="1.0"?>
 								}
 							}
 							echo '<Cell ss:StyleID="s90"><Data ss:Type="String">'.$ghichu.'</Data></Cell>';
-							echo '<Cell ss:StyleID="s90"/>
-									<Cell ss:StyleID="s90"/>
-									<Cell ss:StyleID="s90"/>
-									<Cell ss:StyleID="s90"/>
-									<Cell ss:StyleID="s90"/>
-									<Cell ss:StyleID="s90"/>';
 							echo "</Row>";	
 					}	
 						
@@ -302,22 +313,19 @@ echo '<?xml version="1.0"?>
     <Cell ss:Index="2" ss:StyleID="s69"><Data ss:Type="String">Người lập biểu</Data></Cell>
     <Cell ss:Index="4" ss:MergeAcross="4" ss:StyleID="s112"><Data ss:Type="String">Bộ môn / Tổ công tác</Data></Cell>
     <Cell ss:Index="11" ss:MergeAcross="3" ss:StyleID="s111"><ss:Data
-      ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40"><I>Cần Thơ, ngày 15 tháng 02 năm 2011&#10;</I><B><I>Thủ trưởng đơn vị kiêm Trưởng Ban KK đơn vị</I></B><I>&#10;(ký và ghi rõ họ tên)</I></ss:Data></Cell>
+      ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40"><I>Cần Thơ, ngày <?=$now["mday"]?> tháng <?=$now["mon"]?> năm <?=$now["year"]?></I></ss:Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="2" ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"/>
-    <Cell ss:Index="8" ss:StyleID="s91"/>
-    <Cell ss:StyleID="s91"/>
-    <Cell ss:StyleID="s91"/>
-    <Cell ss:StyleID="s91"/>
-    <Cell ss:StyleID="s91"/>
-    <Cell ss:StyleID="s91"/>
-    <Cell ss:StyleID="s91"/>
-   </Row>
+   
    <Row ss:Index="18" ss:AutoFitHeight="0" ss:Height="14.25"/>
    <Row>
-    <Cell ss:Index="2" ss:StyleID="s92"><Data ss:Type="String">Nguyễn Thanh Hải</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s92"><Data ss:Type="String"> <?php 
+        $db->setQuery('SELECT TenCB FROM lapkiemke a, nguoidung b where a.MSCB=b.MSCB and MaPhieuKiemKe="'.$_SESSION['maphieukiemke'].'"');
+        $str=$db->fetchAll();
+        while($tencanbo=mysql_fetch_array($str,MYSQL_NUM))
+        {
+            echo $tencanbo[0];		
+        }
+        ?></Data></Cell>
     <Cell ss:Index="4" ss:MergeAcross="4" ss:StyleID="s113"/>
    </Row>
    <Row ss:Index="22" ss:AutoFitHeight="0"/>
