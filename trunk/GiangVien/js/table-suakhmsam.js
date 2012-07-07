@@ -87,16 +87,10 @@ function taobang(makhms)
                 width: 960,
 				selectionmode: 'singlerow',
                 source: dataadapter,
-                theme: 'energyblue',
-				editable: true,
+               	editable: true,
 				autoheight: true,
-				pageable: true,
-				virtualmode: true,
-				columnsresize: true,
-				rendergridrows: function()
-				{
-					  return dataadapter.records;     
-				},
+                theme: theme,
+                columnsresize: true,
                 columns: [
 					  { text: 'Mã', editable: false, datafield: 'MaTaiSan', width: 20, cellsalign: 'left' },
 					  { text: 'Tên tài sản', editable: false, datafield: 'TenTaiSan', width: 200, cellsalign: 'left' },
@@ -130,8 +124,7 @@ function taobang(makhms)
         $("#deleterowbutton").bind('click', function () 
 		{
 				//xoa du lieu co mataisan va mathuoctinh bang cothuoctinh
-				var data = "delete=true&MaTaiSan=" +mataisan+"&MaKHMS=" +makhms;
-				alert(data); 					
+				var data = "delete=true&MaTaiSan=" +mataisan+"&MaKHMS=" +makhms; 					
 				$.ajax
 				({
 					dataType: 'json',

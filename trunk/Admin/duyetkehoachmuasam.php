@@ -1,17 +1,24 @@
 <?php
 	//khoi dong session
-	session_start();
+	/*session_start();
 	
 	//kiem tra quyen truoc khi hien thi trang
+<<<<<<< .mine
+	if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
+=======
 	/*if(!session_is_registered("dkhms")|| $_SESSION['dkhms']!="DUYETKHMS")
+>>>>>>> .r147
 	{
-		
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
 	exit;
+<<<<<<< .mine
+	}*/
+=======
 		*/
 		
 	//}
+>>>>>>> .r147
 ?>
 <html>
 <head>
@@ -50,7 +57,7 @@ $(document).ready(function() {
 	fillcombo('get_list_donvi.php',document.frm_duyetkhms.cbo_chondonvi);
 	fillcombo2('get_list_nam.php',document.frm_boduyet.cbo_namboduyet);
 	fillcombo('get_list_donvi.php',document.frm_boduyet.cbo_chondonviboduyet);
-	//createTable();
+	createTable();
 }); 
 </script>
 </head>
@@ -78,7 +85,7 @@ $(document).ready(function() {
 	<a class="white" href="javascript:thoat();">Thoát</a>
     <br>Xin chào, <?=$_SESSION['hoten']?>
     <br>
-	(<?=$_SESSION['msclb']?>)
+	(<?=$_SESSION['msad']?>)
     </font>
     </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
