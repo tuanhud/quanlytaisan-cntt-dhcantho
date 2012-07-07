@@ -8,11 +8,18 @@
 	//{
 			include_once('../database.php');
 			$db=new database();	
+			$now = getdate();
 			$sql = "Select max(MaKHMS) from kehoachmuasam";
 					$db->setQuery($sql);
 					$result = $db->fetchAll();
 					$row = mysql_fetch_array($result,MYSQL_NUM);
 					$ma = $row[0]+1;
+					
+					$sql= "insert into `nammuasam` values('".$ma."','".$now["year"]."')";
+					$db->Execute($sql);
+					
+					$sql2= "insert into `thuocdonvimuasam` values('".$_SESSION['msdv']."','".$ma."')";
+					$db->Execute($sql2);
 					
 					$insert_query = "insert into `kehoachmuasam`(MaKHMS, MSCB, DuyetBM, DuyetKhoa) values('".$ma."','".$_SESSION['msclb']."',0,0)";
 					$db->setQuery($insert_query);
