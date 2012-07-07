@@ -19,7 +19,7 @@
 					exit;
 				}
 			}
-			$sql="update noidung set `tendonvitinh` = '".$_POST['txt_tendonvitinhsua']."', `tennd` = '".$_POST['txt_tennoidungkiemkemoi']."', `ghichund` = '".$_POST['txt_ghichusua']."' where `mand` = '".$_POST['cbo_tennoidungkiemkesua']."'";
+			$sql="update noidung set `tendonvitinh` = '".$_POST['cbo_tendonvitinhsua']."', `tennd` = '".$_POST['txt_tennoidungkiemkemoi']."', `ghichund` = '".$_POST['txt_ghichusua']."' where `mand` = '".$_POST['cbo_tennoidungkiemkesua']."'";
 			$db->setQuery($sql);
 			if($db->executeQuery()!=1)
 			{

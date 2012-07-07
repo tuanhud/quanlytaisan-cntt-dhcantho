@@ -70,18 +70,27 @@
         $(document).ready(function () {
             initmenu();
 			taobang();
-	taobangsua();
-	fillcombo('get_list_phieumau.php',document.frm_suaphieumau.cbo_tenphieumausua);
+	//taobangsua();
+	fillcombo('get_list_phieumau2.php',document.frm_suaphieumau.cbo_tenphieumausua);
 	fillcombo('get_list_phieumau.php',document.frm_xoaphieumau.cbo_tenphieumauxoa);
 	init_date_input(document.frm_themphieumau.cbo_ngay,document.frm_themphieumau.cbo_thang,document.frm_themphieumau.cbo_nam);
 	init_date_input(document.frm_suaphieumau.cbo_ngaysua,document.frm_suaphieumau.cbo_thangsua,document.frm_suaphieumau.cbo_namsua);
 	init_date_input(document.frm_xoaphieumau.cbo_ngayxoa,document.frm_xoaphieumau.cbo_thangxoa,document.frm_xoaphieumau.cbo_namxoa);
-	/*$('form[name="frm_themphieumau"] input[name="btn_themphieumau"]').click(function(){		
-		themnoidung(document.frm_themphieumau);
-	});*/
 	$('form[name="frm_suaphieumau"] select[name="cbo_tenphieumausua"]').change(function(){
 		get_info_phieumausua('get_info_phieumau.php',document.frm_suaphieumau);
 	});
+	$('form[name="frm_xoaphieumau"] select[name="cbo_tenphieumauxoa"]').change(function(){
+		get_info_phieumauxoa('get_info_phieumau.php',document.frm_xoaphieumau);
+	});
+	$('#showWindowButton2').jqxButton({ theme: theme, width: '150px', height: '25px' });
+	$("#deleterowbutton2").jqxButton({ theme: theme, width: '150px', height: '25px' });
+    $("#jqxWidget3").css('visibility', 'visible');
+	$('form[name="frm_suaphieumau"] select[name="cbo_tenphieumausua"]').change(function(){
+		if($("#cbo_tenphieumausua").val()!=-1){
+		$('#jqsua').jqxGrid('refreshdata');	
+		taobangsua();
+		}
+			});
             $("#parentTable").height(1600);	
             setTimeout(function()
             {
@@ -192,10 +201,10 @@
                            </div>
                            <div style="margin-left: 30px; float: left;">
                                 <div style="margin-top: 5px;">
-                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton" width="70" />
+                                    <input type="button" value="Thêm nội dung" id="showWindowButton" width="70" />
                                 </div> 
                                 <div style="margin-top: 5px;">
-                                    <input id="deleterowbutton" type="button" value="Xóa thuộc tính" width="70" />
+                                    <input id="deleterowbutton" type="button" value="Xóa nội dung" width="70" />
                                 </div>
                                
                                 
@@ -298,10 +307,10 @@
 
                            <div style="margin-left: 30px; float: left;">
                                 <div style="margin-top: 5px;">
-                                    <input type="button" value="Thêm thuộc tính" id="showWindowButton2" width="70" />
+                                    <input type="button" value="Thêm nội dung" id="showWindowButton2" width="70" />
                                 </div> 
                                 <div style="margin-top: 5px;">
-                                    <input id="deleterowbutton2" type="button" value="Xóa thuộc tính" width="70" />
+                                    <input id="deleterowbutton2" type="button" value="Xóa nội dung" width="70" />
                                 </div>       
                          </div>
                          <div style="width:400px; border: 0px solid #ccc; margin-top: 10px;"
@@ -391,7 +400,7 @@
                 <td height="22" align="right" class="level_1_2">Ghi chú:: </td>
                 <td align="left" class="level_1_2"><label for="ng4"></label>
                   <label for="txtghichu"></label>
-                  <textarea name="txt_ghichu" rows="5" disabled readonly="readonly" id="txt_ghichu" style="width:100%"></textarea></td>
+                  <textarea name="txt_ghichuxoa" rows="5" disabled readonly="readonly" id="txt_ghichuxoa" style="width:100%"></textarea></td>
                   
             <tr>
               <td colspan="2" height="22" align="center" class="level_1_2">

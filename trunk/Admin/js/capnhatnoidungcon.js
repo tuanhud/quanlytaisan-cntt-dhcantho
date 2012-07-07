@@ -55,7 +55,7 @@ var _admin;
 							})
 					},
 					suanoidungcon:function(){
-						$("#btn_luunoidungcon").unbind("click").click(function()
+						$("#abc").unbind("click").click(function()
 						{
 							if($("#cbo_tennoidungcon").val()==-1) {
 								alert("Bạn chưa chọn tên nội dung con cần sửa!");
@@ -193,3 +193,31 @@ function get_info_noidungconsua(filephp, frm)
 		
 		}
 }
+//function getdata(){
+//			var data = new Array();
+//			http=GetXmlHttpObject();
+//			var params='';
+//			http.open("POST",'get_info_datanoidungcon.php', false);
+//			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//			http.onreadystatechange = function()
+//			{
+//				if(http.readyState == 4 && http.status == 200) 
+//				{
+//					var x=http.responseXML.getElementsByTagName('INFO');
+//					for(var i=0;i<x.length;i++)//lay duoc danh sach cac quyen ma can bo (macanbo) co
+//					{
+//						var row = {};
+//						var noidungcon = Math.floor(Math.random() * x.length);
+//					//	alert(x[i].getElementsByTagName('RESULT2')[1].firstChild.nodeValue);
+//						/*row["stt"] = i + 1;
+//						row["mandlon"] = x[i].getElementsByTagName('RESULT2')[1].firstChild.nodeValue;
+//						row["tenndlon"] = x[i].getElementsByTagName('RESULT2')[2].firstChild.nodeValue;
+//						row["mandcon"] = x[i].getElementsByTagName('RESULT2')[0].firstChild.nodeValue;*/
+//						row["tenndcon"] = x[noidungcon];						
+//						data[i] = row;
+//					}
+//				}
+//			}
+//			http.send(params);
+//			return data;
+//	}

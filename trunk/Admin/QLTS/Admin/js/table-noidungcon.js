@@ -93,7 +93,6 @@ function taobang(){
 			var dongia= '';
 			var thanhtien = '';*/
 			var params= "manoidung=" + ma;
-			alert(params);
 			http=GetXmlHttpObject();
 			http.open("POST",'get_info_noidungcon.php', false);
 			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -121,33 +120,30 @@ function taobang(){
                 localdata: data,
 				datatype: "array",
             };
-			
- 		    var dataadapter = new $.jqx.dataAdapter(source);
+ 		    var dataAdapter = new $.jqx.dataAdapter(source);
             $("#jqsua").jqxGrid(
             {
                 width: 640,
-				selectionmode: 'singlecell',
-				altrows: true,
-                source: dataadapter,
-                theme: theme,
+                source: dataAdapter,
 				editable: true,
-				autoheight: true,
-				pageable: true,
-				virtualmode: true,
-				
-				rendergridrows: function()
-				{
-					  return dataadapter.records;     
-				},
+                theme: theme,
+                columnsresize: true,
 				
                 columns: [
 					  { text: 'STT', datafield: 'stt', width: 60, cellsalign: 'center' },
 					  { text: 'Mã nội dung lớn', datafield: 'mandlon', width: 120, cellsalign: 'center' },
 					  { text: 'Tên nội dung lớn',columntype: 'dropdownlist', datafield: 'tenndlon', width: 170, cellsalign: 'center' },
 					  { text: 'Mã nội dung con', datafield: 'mandcon', width: 120, cellsalign: 'center' },
-					  { text: 'Tên nội dung con',columntype: 'dropdownlist', datafield: 'tenndcon', width: 170, cellsalign: 'center' },
-					  
+					  { text: 'Tên nội dung con',columntype: 'dropdownlist', datafield: 'tenndcon', width: 170, cellsalign: 'center' }	  
                   ]
             });
 			$('#jqsua').jqxGrid({ autoheight: true}); 
+			$(document).ready(function () {
+            var theme = $.data(document.body, 'theme', theme);
+            if (theme == undefined) theme = '';
+            //addEventListeners();
+			$('#updaterowbutton').jqxButton({ theme: theme, width: '160px', height: '25px' });
+			$("#deleterowbutton").jqxButton({ theme: theme, width: '160px', height: '25px' });
+            $("#jqxWidget").css('visibility', 'visible');
+        });
 	}

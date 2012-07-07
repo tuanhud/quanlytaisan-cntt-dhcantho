@@ -86,6 +86,7 @@ function taobang()
                   ]
             });
 			//chon 1 dong
+			$('#jqthem').jqxGrid({ autoheight: true});
 			 $("#jqthem").jqxGrid('selectionmode', 'singlerow');
 // delete row.********************************************************************************************************************************
           $("#deleterowbutton").bind('click', function () 
