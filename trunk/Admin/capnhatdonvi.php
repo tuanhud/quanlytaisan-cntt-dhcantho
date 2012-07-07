@@ -71,7 +71,8 @@
             var theme = getTheme();
             $("#jqxMenu").jqxMenu({height: '36px', theme: theme });
             $("#jqxMenu").css('visibility', 'visible'); 
-			//$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+			$("#jqxMenu").jqxMenu({ showTopLevelArrows: true });
+			$('#jqxTabs').jqxTabs({ width: 970, height:650,height:'auto', position: 'top', theme: '' });
 			
 			document.frm_themdonvi.txt_tendonvithem.focus();
 			fillcombo('get_list_donvi.php',document.frm_suadonvi.cbo_tendonvisua);
@@ -84,6 +85,7 @@
 		if (confirm('Ban có thật sự muốn thoát không?' )) {
 			document.location = '../logout.php';
 			return;
+			
 		}
 	}
         </script>
@@ -118,23 +120,26 @@
                                  
     							 <tr>
                                         <td height="100%"  class="demoContent" valign="middle">
-                                              <table width="752" border="0" cellpadding="0" cellspacing="0" align="center" style="margin-top:50px">      
+                                              <table width="752" border="0" cellpadding="0" cellspacing="0" align="center">      
                                          
                                           
                                           <!--noi dung o day-->
                                           <tr>
-    <td height="100%" align="center" valign="middle">   
-		 <table width="500" border="0" cellpadding="0" cellspacing="0">
+    <td height="100%" align="center" valign="middle">  
+    <div id='jqxTabs'>
+            <ul>
+                <li style="margin-left: 30px;">Thêm đơn vị</li>
+                <li>Sửa đơn vị</li>
+                <li>Xóa đơn vị</li>
+         
+            </ul>
+         <div>
+		 <table width="950" border="0" cellpadding="0" cellspacing="0" align="center">
         <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Thêm đơn vị </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
         <tr>
           <td colspan="3" align="left">
           	<form name="frm_themdonvi" id="frm_themdonvi">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+            <table width="100%" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
               		<td height="22" class="level_1_2"></td>
@@ -142,8 +147,8 @@
               </tr>
                <tr>
 					<td height="22" align="right" class="level_1_1">Nhập tên đơn vị </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<input id="txt_tendonvithem" name="txt_tendonvithem" type="text" class="txtbox" style="width:100%" value=""></td>
+					<td width="70%" align="left" class="level_1_1">
+                    	<input id="txt_tendonvithem" name="txt_tendonvithem" type="text" class="txtbox" style="width:90%" value=""></td>
 			</tr>               
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input type="button" name="btn_themdonvi" id="btn_themdonvi" class="button_1" value="Thêm"></td>
@@ -155,18 +160,14 @@
         </tr>		
         </tbody>
         </table>
-		<br />
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
+		</div>
+        <div>
+        <table width="950" border="0" cellpadding="0" cellspacing="0" align="center">
         <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Sửa đơn vị </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
         <tr>
           <td colspan="3" align="left">
           	<form name="frm_suadonvi" id="frm_suadonvi">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+            <table width="100%" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
               		<td height="22" class="level_1_2"></td>
@@ -174,14 +175,14 @@
               </tr>
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn đơn vị </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select id="cbo_tendonvisua" name="cbo_tendonvisua" class="cbo" style="width:100%;">
+					<td width="70%" align="left" class="level_1_1">
+                    	<select id="cbo_tendonvisua" name="cbo_tendonvisua" class="cbo" style="width:90%;">
                         </select>                       
                     </td>
 			</tr>
             <tr>
 					<td height="22" align="right" class="level_1_2">Nhập tên mới</td>
-					<td width="50%" align="left" class="level_1_2"><input id="txt_tendonvisua" name="txt_tendonvisua" align="left" type="text" class="txtbox" style="width:100%"></td>
+					<td width="50%" align="left" class="level_1_2"><input id="txt_tendonvisua" name="txt_tendonvisua" align="left" type="text" class="txtbox" style="width:90%"></td>
 			</tr>              
               <tr>
             <tr>
@@ -198,18 +199,14 @@
       </tr>		
       </tbody>
       </table>
-		<br />
-        <table width="500" border="0" cellpadding="0" cellspacing="0">
+		</div>
+        <div>
+        <table width="950" border="0" cellpadding="0" cellspacing="0" align="center">
         <tbody>
-        <tr class="main_1">
-          <td width="161" align="left"> <img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
-          <td width="419" align="center">Xóa đơn vị </td>
-          <td width="180" align="right"> <img height="25" src="../images/giaodienchung/tbl_right.gif" width="10" border="0"></td>
-        </tr>
         <tr>
           <td colspan="3" align="left">
           	<form name="frm_xoadonvi" id="frm_xoadonvi">
-            <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
+            <table width="100%" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
               		<td height="22" class="level_1_2"></td>
@@ -217,8 +214,8 @@
               </tr>
              <tr>
 					<td height="22" align="right" class="level_1_1">Chọn đơn vị </td>
-					<td width="50%" align="left" class="level_1_1">
-                    	<select name="cbo_tendonvixoa" id="cbo_tendonvixoa" class="cbo" style="width:100%;">
+					<td width="70%" align="left" class="level_1_1">
+                    	<select name="cbo_tendonvixoa" id="cbo_tendonvixoa" class="cbo" style="width:90%;">
                         </select>                       
                     </td>
 			</tr>              
@@ -236,13 +233,13 @@
       </tr>		
       </tbody>
       </table>
+      	</div>
+    </div>
 	</td>
 </tr>
                                           
                                           
-                                          <tr>
-                                            <td align="center">&nbsp;</td>
-                                          </tr>    
+                                        
                                         </table>
                                         </td>
   								</tr>
