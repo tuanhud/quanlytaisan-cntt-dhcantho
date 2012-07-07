@@ -155,7 +155,7 @@
                                 <div id="buttondk" style="margin-top: 5px">
                                     <input type="button" class="button_1" value="Thêm thiết bị yêu cầu" id="showWindowButton" />
                                     <input id="deleterowbutton"class="button_1" style="margin-left:10" type="button" value="Xóa thiết bị yêu cầu" />
-                                    <input id="import" class="button_1" style="margin-left:10" type="button" value="Import Excel/ Word/ PDF" />
+                                    
                                      <input id="create" class="button_1" style="margin-left:10" type="button" value="Tạo yêu cầu" />
                                 </div> 
                                
