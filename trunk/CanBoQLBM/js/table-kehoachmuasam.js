@@ -33,36 +33,44 @@ function taobangtaisan (combo)
 						row["DonGiaMuaSam"] = x[i].getElementsByTagName('RESULT')[4].firstChild.nodeValue;
 						row["ThanhTien"] = x[i].getElementsByTagName('RESULT')[3].firstChild.nodeValue*x[i].getElementsByTagName('RESULT')[4].firstChild.nodeValue;
 						row["ThuyetMinhSuDung"] = x[i].getElementsByTagName('RESULT')[5].firstChild.nodeValue;
-						if(x[i].getElementsByTagName('RESULT')[6].firstChild.nodeValue!=1){
-						row["DuyetBM"] = "Chưa duyệt";
+						if(x[i].getElementsByTagName('RESULT')[6].firstChild.nodeValue==1){
+						row["DuyetBM"] = "Đã duyệt";
 						}
 						else {
-							row["DuyetBM"] = "Đã duyệt";
+							row["DuyetBM"] = "Chưa duyệt";
 						}
-						if(x[i].getElementsByTagName('RESULT')[7].firstChild.nodeValue!=1){
-						row["DuyetKhoa"] = "Chưa duyệt";
+						if(x[i].getElementsByTagName('RESULT')[7].firstChild.nodeValue==1){
+						row["DuyetKhoa"] = "Đã duyệt";
 						}
 						else {
-							row["DuyetKhoa"] = "Đã duyệt";
+							row["DuyetKhoa"] = "Chưa duyệt";
 						}
 						
 						 d = x[i].getElementsByTagName('RESULT')[6].firstChild.nodeValue;
+						 d1 = x[i].getElementsByTagName('RESULT')[7].firstChild.nodeValue;
 						data[i] = row;
 					}
 				}
 			}
 			http.send(params);
-			if(d==1){
+			if(d==1&& d1==0){
 			 document.getElementById("btn_duyet").style.display='none';	
 			 document.getElementById("btn_boduyet").style.display='inline';	
 			 //document.getElementById("btn_boduyet").disabled = 'false';	
 			}
-			else
+			else if(d==1&& d1==1)
 			{
 			//document.getElementById("btn_duyet").disabled = 'true';	
 			 document.getElementById("btn_boduyet").style.display='none';
-			 document.getElementById("btn_duyet").style.display='inline';	
+			 document.getElementById("btn_duyet").style.display='none';	
 			}
+			else if(d==0&& d1==0)
+			{
+				document.getElementById("btn_boduyet").style.display='none';	
+			 document.getElementById("btn_duyet").style.display='inline';	
+				
+			}
+			
 			
 			
             var source =

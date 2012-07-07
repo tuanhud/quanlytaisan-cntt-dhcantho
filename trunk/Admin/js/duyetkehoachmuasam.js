@@ -37,18 +37,13 @@ var _admin;
 									alert("Đã duyệt rồi!")
 								else if(n==1) 
 								{
-									alert("Đã duyệt."),
-									fillcombo2('get_list_nam.php',document.frm_duyetkhms.cbo_nam);
-	        fillcombo('get_list_donvi2.php',document.frm_duyetkhms.cbo_chondonvi);
-			//taobang();
-			$('form[name="frm_duyetkhms"] select[name="cbo_nam"]').change(function()
-	{		
-			
-			fillcombo2bien('get_list_makhms.php',document.frm_duyetkhms.cbo_chondonvi,document.frm_duyetkhms.cbo_nam,document.frm_duyetkhms.cbo_makhms);
+									alert("Đã duyệt.")
+									
 	       //document.frm_duyetkhms.refesh;
 		   taobangtaisan(document.frm_duyetkhms.cbo_makhms);
+		   taobangtaisan(document.frm_duyetkhms.cbo_makhms);
 			
-		});
+		
 								}
 								else if(n==2)
 								{
@@ -83,16 +78,9 @@ var _admin;
 								else if(n==1) 
 								{
 									alert("Thành công!")
-									fillcombo2('get_list_nam.php',document.frm_duyetkhms.cbo_nam);
-	        fillcombo('get_list_donvi2.php',document.frm_duyetkhms.cbo_chondonvi);
-			//taobang();
-			$('form[name="frm_duyetkhms"] select[name="cbo_nam"]').change(function()
-	{		
-			
-			fillcombo2bien('get_list_makhms.php',document.frm_duyetkhms.cbo_chondonvi,document.frm_duyetkhms.cbo_nam,document.frm_duyetkhms.cbo_makhms);
-	
-			
-		});
+									taobangtaisan(document.frm_duyetkhms.cbo_makhms);
+									taobangtaisan(document.frm_duyetkhms.cbo_makhms);
+									
 								}
 								else if(n==2)
 								{
