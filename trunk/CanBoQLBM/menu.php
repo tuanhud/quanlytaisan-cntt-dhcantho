@@ -19,8 +19,8 @@
                     </li>
                      <li><img style='float: left; margin-right: 5px;' src='../images/baocao.png' />Report
                         <ul style='width: 250px;'>
-                             <li><a href="#">In danh sách yêu cầu thiết bị đã duyệt</a></li>
-                             <li><a href="#">In danh sách yêu cầu thiết bị chưa duyệt</a></li>
+                             <li><a href="report-yeucaugvdaduyet.php">In danh sách yêu cầu thiết bị khoa đã duyệt</a></li>
+                             <li><a href="report-yeucaugvchuaduyet.php">In danh sách yêu cầu thiết bị khoa chưa duyệt</a></li>
                              <li><a href="report-yeucaugv.php">In yêu cầu thiết bị của giảng viên</a></li>                                    
                         </ul>
                     </li>

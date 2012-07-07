@@ -154,7 +154,7 @@ function taobangvpp ()
 				alert("Bạn chưa chọn VPP cho phiếu!");
 			}
 			else{			        // synchronize with the server - send update command
-				var data1="nam=" +$("#cbo_namthem").val() + "&quy=" + $("#cbo_quythem").val()+ "&donvi=" + $("#cbo_donvithem").val();
+				var data1="nam=" +$("#cbo_namthem").val() + "&quy=" + $("#cbo_quythem").val();
 				$.ajax
 					({
 						dataType: 'json',

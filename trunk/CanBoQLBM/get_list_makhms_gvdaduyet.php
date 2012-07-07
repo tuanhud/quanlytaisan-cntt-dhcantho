@@ -8,14 +8,16 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT nam FROM `nam`');
+					$db->setQuery('select makhms,mscb from kehoachmuasam where mscb="'.$_POST['id'].'" and duyetBM=1 and duyetKhoa=1');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";
 					$xml.="<row>";
-					
 							$xml.="<column>";
-							$xml.="-Chọn năm-";							
+							$xml.="-Chọn mã kế hoạch mua sắm-";							
+							$xml.="</column>";
+							$xml.="<column>";
+							$xml.='-Chọn mã kế hoạch mua sắm-';							
 							$xml.="</column>";
 					$xml.="</row>";
 					while($row=mysql_fetch_array($result,MYSQL_NUM))
