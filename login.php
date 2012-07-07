@@ -81,6 +81,10 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 					         $dvpp="DUYETVPP";
 					         session_register("dvpp");
 				             }
+							 if($row['MaQuyen']=="DUYETKHMSBM"){
+					         $dkhms="DUYETKHMSBM";
+					         session_register("dkhmsbm");
+				             }
 				
 			             }
 			          }
@@ -117,6 +121,56 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 			        //dua quyen vao session
 			           $maquyen="CBQLBM";
 			           session_register("maquyen");
+					   $sql = "Select MaQuyen from coquyen where MSCB = '".$msclb."'";
+			         $db->setQuery($sql);
+			
+			         $result = $db->fetchAll();
+			
+			         if(mysql_num_rows($result)){
+			             while($row = mysql_fetch_array($result)){
+				             if($row['MaQuyen']=="THEMKK"){
+					            $tkk="THEMKK";
+					            session_register("tkk");
+				              }
+				             if($row['MaQuyen']=="THEMKHMS"){
+					         $tkhms="THEMKHMS";
+					         session_register("tkhms");
+				             }
+				             if($row['MaQuyen']=="SUAKHMS"){
+					         $skhms="SUAKHMS";
+					         session_register("skhms");
+				             }
+				             if($row['MaQuyen']=="SUAKK"){
+					         $skk="SUAKK";
+					         session_register("skk");
+				             }
+				             if($row['MaQuyen']=="THEMVPP"){
+					         $tvpp="THEMVPP";
+					         session_register("tvpp");
+				             }
+				             if($row['MaQuyen']=="SUAVPP"){
+					         $svpp="SUAVPP";
+					         session_register("svpp");
+				             }
+				             if($row['MaQuyen']=="DUYETKK"){
+					         $dkk="DUYETKK";
+					         session_register("dkk");
+				             }
+				             if($row['MaQuyen']=="DUYETKHMS"){
+					         $dkhms="DUYETKHMS";
+					         session_register("dkhms");
+				             }
+				             if($row['MaQuyen']=="DUYETVPP"){
+					         $dvpp="DUYETVPP";
+					         session_register("dvpp");
+				             }
+							 if($row['MaQuyen']=="DUYETKHMSBM"){
+					         $dkhms="DUYETKHMSBM";
+					         session_register("dkhmsbm");
+				             }
+				
+			             }
+			          }
 			           echo "<script language=javascript>window.location = 'CanBoQLBM/main.php';</script>"; 
 			           exit;
 				}
