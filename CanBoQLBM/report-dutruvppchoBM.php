@@ -92,6 +92,7 @@
 		}
 	}
         </script>
+<title>Report VPP_BM</title>
 </head>
 <body style='background: #fff url(../images/background.png) left top scroll repeat-x;'>
 	<!--begin header-->
