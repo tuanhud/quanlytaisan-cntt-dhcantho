@@ -15,7 +15,7 @@
 <head>
 <link rel="shortcut icon" href="http://www.cit.ctu.edu.vn/images/favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <title>.:: Admin</title>
+ <title>.:: Cán bộ quản lý bộ môn</title>
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
     <link rel="stylesheet" href="../styles/site.css" media="screen" />

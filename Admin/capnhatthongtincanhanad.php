@@ -15,18 +15,6 @@
 <head>
 <link rel="shortcut icon" href="http://www.cit.ctu.edu.vn/images/favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<<<<<<< .mine
-<title>Cán bộ quản lý bộ môn</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-<script type="text/javascript" src="../js/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../js/yui-min_3.5.js"></script>
-<script type="text/javascript" src="../js/ajax.js"></script>
-<script type="text/javascript" src="../js/date.js"></script>
-<script type="text/javascript" src="capnhatcanhan.js"></script>
-<script type="text/javascript">	
-	function thoat() {
-		if (confirm('Bạn có thật sự muốn thoát không ?' )) {
-=======
  <title>.:: Admin</title>
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
     <link rel="stylesheet" href="../jqwidgets/styles/jqx.classic.css" media="screen" />
@@ -68,16 +56,16 @@
     <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../scripts/initwidgets.js"></script>
     <script type="text/javascript" src="../scripts/gettheme.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
-    <script type="text/javascript" src="js/fill.js"></script>
+    <script type="text/javascript" src="../js/ajax.js"></script>
+    <script type="text/javascript" src="../js/fill.js"></script>
     <script type="text/javascript" src="capnhatcanhan.js"></script>
-    <script type="text/javascript" src="js/date.js"></script>
+    <script type="text/javascript" src="../js/date.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             initmenu();
-			init_date_input(document.frm_suattcanhan.cbo_ngaysinh,document.frm_suattcanhan.cbo_thangsinh,document.frm_suattcanhan.cbo_namsinh);	
+			init_date_input(document.frm_suattcanhan.cbo_ngaysinh,document.frm_suattcanhan.cbo_thangsinh,document.frm_suattcanhan.cbo_namsinh);
+			get_info_thongtin('get_info_thongtin.php',document.frm_suattcanhan);	
 	
-    get_info_thongtin('get_info_thongtin.php',document.frm_suattcanhan);	
             $("#parentTable").height(1600);	
             setTimeout(function()
             {
@@ -94,7 +82,6 @@
 			//chuc nang thoat
 		function thoat() {
 		if (confirm('Ban có thật sự muốn thoát không?' )) {
->>>>>>> .r167
 			document.location = '../logout.php';
 			return;
 		}
@@ -117,59 +104,6 @@
 			$msclb =$_SESSION['msclb'];
 			session_register("msclb") ;
 			?>
-<<<<<<< .mine
-    	</font>
-    </div>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-   <tbody><tr>
-     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-       <tbody><tr>
-         <td class="tl_header">&nbsp;</td>
-         <td class="tc_header">&nbsp;</td>
-         <td class="tr_header">&nbsp;</td>
-       </tr>
-       <tr>
-         <td class="cl_header">&nbsp;</td>
-         <td class="cm_header">
-         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-         <tbody>
-           <tr>            
-             <td class="tittle_header"><img src="../images/ctulogo1.gif"></td>             
-           </tr>
-         </tbody>
-         </table>
-         </td>
-         <td class="cr_header">&nbsp;</td>
-       </tr>       
-     </tbody></table></td>
-   </tr>
- </tbody></table>
-    </td>    
-  </tr>
-  <!--Kết thúc của HEADER--> 
-  <!--Bắt đàu của MAINPAGE-->
-  <tr>
-	<td height="50%" valign="middle">
-    	<table align="center" border="0" cellpadding="0" cellspacing="0" width="752">      
-	    <tbody>
-        <tr height="10">        
-	   	<td align="center" colspan="3">
-        <?php
-		include_once('node-menunav-3ad.php');
-		?> 
-        </td>
-	    <!--<td align="center" >&nbsp;</td>
-	    <td align="center">&nbsp;</td>-->
-	    </tr>
-        <tr>
-        <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
-        <td align="center" >&nbsp;</td>
-        </tr>                        
-      <tr>
-      <!--BẮT ĐẦU LEFT MAIN INFO-->
-      <td align="center" width="100%"><table width="500" border="0" cellpadding="0" cellspacing="0">
-=======
 </font>) </font></div>
     <div class="rc-all" style='margin-right: auto; margin-left: auto; border: 1px solid #d2d2d2; width: 1000px; height: 100%; margin-top: 40px; margin-bottom: 20px; background: #fff;'>
        <table class="rc-all" id="demostable" style="margin: 0 auto; table-layout: fixed; width: 100%; min-height: 100%; height: auto; height: 100%; border-collapse: collapse; background: #EEEEEE;">
@@ -196,7 +130,6 @@
                                           <tr>       
                                               <td align="center" width="44%" valign="middle">
                                              <table width="500" border="0" cellpadding="0" cellspacing="0">
->>>>>>> .r167
         <tbody>
           <tr class="main_1">
             <td width="161" align="left"><img height="25" src="../images/giaodienchung/tbl_left.gif" width="10" border="0"></td>
@@ -278,38 +211,6 @@
             </form></td>
           </tr>
         </tbody>
-<<<<<<< .mine
-      </table></td>
-      <!--KẾT THÚC LEFT MAIN INFO-->            
-      </tr>   
-    </tbody></table></td>
-  </tr>
-  <!--Kết thúc của MAINPAGE-->
-  <!--Bắt đàu của FOOTER-->
-  <tr>
-    <td valign="bottom">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tbody><tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="cl_footer">&nbsp;</td>
-    <td class="cm_footer"><div align="right" class="copy"><!--Copyright © 2008 by <a href="http://www.cuscsoft.com" target="_blank" class="white"><strong>CUSC</strong></a>--></div></td>
-    <td class="cr_footer">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="bl_footer">&nbsp;</td>
-    <td class="bc_footer">&nbsp;</td>
-    <td class="br_footer">&nbsp;</td>
-  </tr>
-</tbody></table>
-</td>
-  </tr>
-  <!--Kết thúc của FOOTER-->
-</tbody></table>
-=======
       </table>
                                                  
                                                  <!--het noi dung-->
@@ -336,6 +237,5 @@
     <!--begin footer-->
    		 <?php include_once('../footer.php');?> 
     <!--end footer-->
->>>>>>> .r167
 </body>
 </html>
