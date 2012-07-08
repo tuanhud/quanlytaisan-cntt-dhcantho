@@ -26,7 +26,9 @@ var _admin;
 					{	
 						return $.ajax
 						({
+							
 							url:"./duyetkehoachms.php",
+							
 							type:"POST",
 							//dataType:"html",
 							data:$("#frm_duyetkhms").serialize(),

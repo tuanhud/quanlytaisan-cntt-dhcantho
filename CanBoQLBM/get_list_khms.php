@@ -8,7 +8,7 @@
 	//{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('Select a.MaTaiSan,TenTaiSan,TenDonViTinh,Soluong,DonGiaMuaSam,ThuyetMinhSuDung,DuyetBM,DuyetKhoa from thuockhms a, taisan b, kehoachmuasam c, thuocdonvimuasam d, nammuasam e where a.MaTaiSan= b.MaTaiSan and a.MaKHMS=c.MaKHMS and c.MaKHMS=d.MaKHMS and c.MaKHMS=e.MaKHMS and a.MaKHMS="'.$_POST['id'].'"');
+					$db->setQuery('Select a.MaTaiSan,TenTaiSan,TenDonViTinh,Soluong,DonGiaMuaSam,ThuyetMinhSuDung,DuyetBM,DuyetKhoa,SoTien from thuockhms a, taisan b, kehoachmuasam c, thuocdonvimuasam d, nammuasam e, sotiencap f where a.MaTaiSan= b.MaTaiSan and a.MaKHMS=c.MaKHMS and c.MaKHMS=d.MaKHMS and c.MaKHMS=e.MaKHMS and d.MSDV=f.MSDV and a.MaKHMS="'.$_POST['id'].'"');
 					$result=$db->fetchAll();
 					$xml="";
 					$xml.="<table>";

@@ -187,13 +187,24 @@
 					</label></td>
 			</tr>               
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2"><div style="margin-top: 10px;" id="jqthem"></div></td>
+                <td colspan="2" height="22" align="center" class="level_1_2"><div style="margin-top: 10px;" id="jqthem"></div>
+                <span> <strong>Tổng thành tiền:</strong></span> <span id="tongtienduyet"></span>
+                            </span> <span><strong>VNĐ</strong></span> | 
+                            <label for="textfield"></label>
+                            <input type="hidden" name="tiencon" id="tiencon" />
+                            <input type="hidden" name="tiencon1" id="tiencon1" />
+                            <span> <strong>Tiền bộ môn còn lại:</strong></span> <div id="tienconlai"></div>
+                            </span> <span><strong>VNĐ</strong></span></td>
               </tr>
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_2">
                  
-                <input name="btn_duyet" type="button" class="button_1" id="btn_duyet" value="Duyệt">
-                   <input name="btn_boduyet" type="button" class="button_1" id="btn_boduyet" value="Bỏ duyệt" /></td>
+                  <blockquote>
+                    <p>
+                      <input name="btn_duyet" type="button" class="button_1" id="btn_duyet" value="Duyệt">
+                      <input name="btn_boduyet" type="button" class="button_1" id="btn_boduyet" value="Bỏ duyệt" />
+                    </p>
+                  </blockquote></td>
              
 			  </tr>
               <tr>
