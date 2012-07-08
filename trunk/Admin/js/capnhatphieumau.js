@@ -121,11 +121,12 @@ function get_info_phieumausua(filephp,frm)
 	http.onreadystatechange = function() {
 		if(http.readyState == 4 && http.status == 200) 
 		{				
-				var x=http.responseXML.getElementsByTagName('row');							
-				frm.txt_ghichusua.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;
-			    frm.cbo_ngaysua.value=x[0].getElementsByTagName('column')[2].firstChild.nodeValue;
-				frm.cbo_thangsua.value=x[0].getElementsByTagName('column')[3].firstChild.nodeValue;
-				frm.cbo_namsua.value=x[0].getElementsByTagName('column')[4].firstChild.nodeValue;
+				var x=http.responseXML.getElementsByTagName('row');	
+				frm.txt_tenphieumaumoi.value=x[0].getElementsByTagName('column')[1].firstChild.nodeValue;						
+				frm.txt_ghichusua.value=x[0].getElementsByTagName('column')[2].firstChild.nodeValue;
+			    frm.cbo_ngaysua.value=x[0].getElementsByTagName('column')[3].firstChild.nodeValue;
+				frm.cbo_thangsua.value=x[0].getElementsByTagName('column')[4].firstChild.nodeValue;
+				frm.cbo_namsua.value=x[0].getElementsByTagName('column')[5].firstChild.nodeValue;
 				
 		}
 	}
