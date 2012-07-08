@@ -5,11 +5,15 @@ function taobangtaisan (combo)
 			var data3 = {};
 			var theme = '';
 			var d=0;
+			var d1;
+			var tiencap=0;
+			var tienconlai=0;
+			var tienconlai1;
 			var madonvi= '';
 			var tendonvi= '';
 			var mataisan= '';
 			var id=combo.value;
-		
+		    var tongtien = 0;
 			
 			http=GetXmlHttpObject();
 			var params ="id="+id;
@@ -32,6 +36,7 @@ function taobangtaisan (combo)
 						
 						row["DonGiaMuaSam"] = x[i].getElementsByTagName('RESULT')[4].firstChild.nodeValue;
 						row["ThanhTien"] = x[i].getElementsByTagName('RESULT')[3].firstChild.nodeValue*x[i].getElementsByTagName('RESULT')[4].firstChild.nodeValue;
+						tongtien=tongtien+row["ThanhTien"];
 						row["ThuyetMinhSuDung"] = x[i].getElementsByTagName('RESULT')[5].firstChild.nodeValue;
 						if(x[i].getElementsByTagName('RESULT')[6].firstChild.nodeValue==1){
 						row["DuyetBM"] = "Đã duyệt";
@@ -48,21 +53,33 @@ function taobangtaisan (combo)
 						
 						 d = x[i].getElementsByTagName('RESULT')[6].firstChild.nodeValue;
 						 d1 = x[i].getElementsByTagName('RESULT')[7].firstChild.nodeValue;
+						 tiencap = x[i].getElementsByTagName('RESULT')[8].firstChild.nodeValue;
 						 //d = x[i].getElementsByTagName('RESULT')[7].firstChild.nodeValue;
 						data[i] = row;
 					}
 				}
+				
+				
+				
 			}
 			http.send(params);
 			if(d==1&& d1==0){
+				tienconlai=tiencap-tongtien;
+				$("#tienconlai").html(tiencap);
+			document.getElementById('tiencon').value = tienconlai;
 			 document.getElementById("btn_duyet").style.display='inline';	
 			 document.getElementById("btn_boduyet").style.display='none';	
 			 //document.getElementById("btn_boduyet").disabled = 'false';	
 			}
 			else if(d==1&& d1==1)
 			{
+			tienconlai1=tiencap+tongtien;
+			$("#tienconlai").html(tiencap);
+				document.getElementById('tiencon1').value = tienconlai1;
 			//document.getElementById("btn_duyet").disabled = 'true';	
+			
 			 document.getElementById("btn_boduyet").style.display='inline';
+			 
 			 document.getElementById("btn_duyet").style.display='none';	
 			}
 			else if(d==0&& d1==0)
@@ -169,6 +186,9 @@ function taobangtaisan (combo)
 					  
                   ]
             });
+			//$('#detail_vppduyet').jqxGrid({ autoheight: true}); 
+			$("#tongtienduyet").html(tongtien);
+			
 			
 			/*
 		$('#jqxgrid').bind('rowselect', function (event) 

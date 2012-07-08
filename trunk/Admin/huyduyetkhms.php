@@ -7,6 +7,8 @@
 	{
 			include_once('../database.php');
 			$db=new database();	
+			$sql2 = 'update sotiencap set SoTien ="'.$_POST['tiencon1'].'" where MSDV = "'.$_POST['cbo_chondonvi'].'" and Nam = "'.$_POST['cbo_nam'].'"';
+			$db->Execute($sql2);
 			$sql="update `kehoachmuasam`";
 			$sql.="set `DuyetKhoa` = '0'";
 			$sql.="where `MaKHMS` = '".$_POST['cbo_makhms']."'";

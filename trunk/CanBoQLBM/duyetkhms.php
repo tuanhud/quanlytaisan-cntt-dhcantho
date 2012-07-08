@@ -188,7 +188,12 @@
 					</label></td>
 			</tr>               
               <tr>
-                <td colspan="2" height="22" align="center" class="level_1_2"><div style="margin-top: 10px;" id="jqthem"></div></td>
+                <td colspan="2" height="22" align="center" class="level_1_2"><div style="margin-top: 10px;" id="jqthem"></div>
+                <span> <strong>Tổng thành tiền:</strong></span> <span id="tongtienduyet"></span>
+                            </span> <span><strong>VNĐ</strong></span> | 
+                             <span> <strong>Tiền bộ môn còn lại:</strong></span> <span id="tiencap"></span>
+                            </span> <span><strong>VNĐ</strong></span>
+                </td>
               </tr>
               <tr>
                 <td colspan="2" height="22" align="center" class="level_1_2">

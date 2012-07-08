@@ -34,7 +34,7 @@ var _admin;
 							success:function(n)
 							{
 								if(n==0)
-									alert("Đã duyệt rồi!")
+									alert("Vui lòng kế hoạch mua sắm!")
 								else if(n==1) 
 								{
 									alert("Đã duyệt.")

@@ -5,12 +5,12 @@ function taobangtaisan (combo)
 			var data3 = {};
 			var theme = '';
 			var d=0;
+			var d1;
 			var madonvi= '';
 			var tendonvi= '';
 			var mataisan= '';
+			var tongtien = 0;
 			var id=combo.value;
-		
-			
 			http=GetXmlHttpObject();
 			var params ="id="+id;
 			
@@ -32,6 +32,7 @@ function taobangtaisan (combo)
 						
 						row["DonGiaMuaSam"] = x[i].getElementsByTagName('RESULT')[4].firstChild.nodeValue;
 						row["ThanhTien"] = x[i].getElementsByTagName('RESULT')[3].firstChild.nodeValue*x[i].getElementsByTagName('RESULT')[4].firstChild.nodeValue;
+						tongtien=tongtien+row["ThanhTien"];
 						row["ThuyetMinhSuDung"] = x[i].getElementsByTagName('RESULT')[5].firstChild.nodeValue;
 						if(x[i].getElementsByTagName('RESULT')[6].firstChild.nodeValue==1){
 						row["DuyetBM"] = "Đã duyệt";
@@ -48,12 +49,21 @@ function taobangtaisan (combo)
 						
 						 d = x[i].getElementsByTagName('RESULT')[6].firstChild.nodeValue;
 						 d1 = x[i].getElementsByTagName('RESULT')[7].firstChild.nodeValue;
+						 tiencap = x[i].getElementsByTagName('RESULT')[8].firstChild.nodeValue;
 						data[i] = row;
 					}
 				}
 			}
 			http.send(params);
-			if(d==1&& d1==0){
+			if(tiencap<tongtien){
+			  alert("Số tiền chi phải nhỏ hơn hoặc bằng số tiền cấp!");
+			  document.getElementById("btn_boduyet").style.display='none';
+			 document.getElementById("btn_duyet").style.display='none';	
+			
+			}
+			else 
+			{
+				if(d==1&& d1==0){
 			 document.getElementById("btn_duyet").style.display='none';	
 			 document.getElementById("btn_boduyet").style.display='inline';	
 			 //document.getElementById("btn_boduyet").disabled = 'false';	
@@ -70,8 +80,7 @@ function taobangtaisan (combo)
 			 document.getElementById("btn_duyet").style.display='inline';	
 				
 			}
-			
-			
+			}
 			
             var source =
             {
@@ -166,7 +175,8 @@ function taobangtaisan (combo)
 					  { text: 'Khoa duyệt',editable: false, datafield: 'DuyetKhoa', width: 90 },
                   ]
             });
-			
+			$("#tongtienduyet").html(tongtien);
+			$("#tiencap").html(tiencap);
 			/*
 		$('#jqxgrid').bind('rowselect', function (event) 
 		{
