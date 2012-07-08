@@ -77,6 +77,10 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 					         $dkhms="DUYETKHMS";
 					         session_register("dkhms");
 				             }
+							 if($row['MaQuyen']=="LOCKKK"){
+					         $lockkk="LOCKKK";
+					         session_register("lockkk");
+				             }
 				             if($row['MaQuyen']=="DUYETVPP"){
 					         $dvpp="DUYETVPP";
 					         session_register("dvpp");
@@ -144,18 +148,15 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 					         $skk="SUAKK";
 					         session_register("skk");
 				             }
-				             if($row['MaQuyen']=="THEMVPP"){
-					         $tvpp="THEMVPP";
-					         session_register("tvpp");
+				             if($row['MaQuyen']=="PDTVPP"){
+					         $pdtvpp="PDTVPP";
+					         session_register("pdtvpp");
 				             }
 				             if($row['MaQuyen']=="SUAVPP"){
 					         $svpp="SUAVPP";
 					         session_register("svpp");
 				             }
-				             if($row['MaQuyen']=="DUYETKK"){
-					         $dkk="DUYETKK";
-					         session_register("dkk");
-				             }
+				             
 				             if($row['MaQuyen']=="DUYETKHMS"){
 					         $dkhms="DUYETKHMS";
 					         session_register("dkhms");
