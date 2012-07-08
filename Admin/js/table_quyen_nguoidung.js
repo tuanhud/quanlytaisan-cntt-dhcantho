@@ -102,15 +102,15 @@ function createTable_nguoidung(){
 				{name:'canbo', label:'<p align="center">Cán bộ</p>',className:'align-center',
 				children:
 				[
-						{key: "id",label:'Mã cán bộ', sortable: true},
-						{key: "ten",label:"Họ tên", sortable: true},
+						{key: "id",label:'<p align="center">Mã cán bộ</p>', sortable: true},
+						{key: "ten",label:'<p align="center">Họ tên</p>', sortable: true},
 				]},
 				{name:'quyendn', label:'<p align="center">Quyền đăng nhập</p>',className:'align-center',
 				children:
 				[
-				  {name:'ADMIN', label:'ADMIN',formatter:ADMIN,allowHTML:true},
-				  {name:'CBQLBM',label:'CBQLBM',formatter:CBQLBM,allowHTML:true},
-				  {name:'GV',label:'GV',formatter:GV,allowHTML:true},
+				  {name:'ADMIN', label:'<p align="center">ADMIN</p>',formatter:ADMIN,allowHTML:true},
+				  {name:'CBQLBM',label:'<p align="center">CBQLBM</p>',formatter:CBQLBM,allowHTML:true},
+				  {name:'GV',label:'<p align="center">GV</p>',formatter:GV,allowHTML:true},
 				]
 				},
 				{name:'donvi', label:'<p align="center">Quyền Admin</p>',className:'align-center',
