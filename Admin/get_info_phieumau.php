@@ -8,7 +8,7 @@
 	{
 			include_once('../database.php');
 			$db=new database();			
-					$db->setQuery('SELECT MaPhieu, GhiChuPhieu, NgayLap, ThangLap, NamLap FROM phieumau
+					$db->setQuery('SELECT MaPhieu, TenPhieu, GhiChuPhieu, NgayLap, ThangLap, NamLap FROM phieumau
 					where MaPhieu='.$_POST['maphieu'].'');
 					$result=$db->fetchAll();
 					$xml="";
