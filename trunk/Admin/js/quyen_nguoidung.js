@@ -264,11 +264,11 @@ function update_quyen_nguoidung2(frm){
 			var rec = dt.getRecord( item.ancestor() );
 			if ( !item.get('checked') )
 			{
-				capnhat_quyen_nguoidung('xoaquyen_nguoidung.php', frm, rec.get('id'),'ADMIN')
+				capnhat_quyen_nguoidung2('xoaquyen_nguoidung.php', frm, rec.get('id'),'ADMIN')
 			}
 			else
 			{
-				capnhat_quyen_nguoidung('themquyen_nguoidung.php', frm, rec.get('id'),'ADMIN');
+				capnhat_quyen_nguoidung2('themquyen_nguoidung.php', frm, rec.get('id'),'ADMIN');
 			}
 		   	});
 	}

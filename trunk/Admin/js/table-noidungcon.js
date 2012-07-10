@@ -88,7 +88,6 @@ function taobang(){
 			var manoidungcon='';
 			var tennoidungcon='';
 			var ma = $("#cbo_tennoidunglonsua").val();
-			var data=getdata();
 			var theme = '';
 			var params= "manoidung=" + ma;
 			http=GetXmlHttpObject();

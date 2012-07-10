@@ -3,12 +3,12 @@
 	session_start();
 	
 	//kiem tra quyen truoc khi hien thi trang
-	/*if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
+	if($_SESSION['maquyen']!="ADMIN")
 	{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
 	exit;
-	}*/
+	}
 ?>
 <html>
 <head>

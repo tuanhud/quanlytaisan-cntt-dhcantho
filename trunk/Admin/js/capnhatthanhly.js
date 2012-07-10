@@ -97,7 +97,7 @@ var _admin;
 												beforeSend:function(){},
 												success:function(n){
 													if(n==0){
-														alert("Đã có lỗi xảy ra. Vui lòng kiểm tra lại!")	}	
+														alert("Thành công.")	}	
 													else if(n==1){
 														alert("Cập nhật thành công!"),
 														fillcombo('get_list_taisan.php',document.frm_suathanhly.cbo_tentaisanthanhlysua);
@@ -150,7 +150,7 @@ var _admin;
 												beforeSend:function(){},
 												success:function(n){
 													if(n==0)
-														alert("Đã có lỗi xảy ra. Vui lòng kiểm tra lại!")		
+														alert("Thành công.")		
 													else if(n==1){
 														alert("Xóa thành công!"),
 														fillcombo('get_list_taisan.php',document.frm_suathanhly.cbo_tentaisanthanhlysua);

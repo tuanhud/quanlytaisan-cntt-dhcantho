@@ -8,8 +8,8 @@
 	//{
 			include_once('../database.php');
 			$db=new database();
-			$ma=$_POST['manoidung'];
-			$query="SELECT noi_mand, noidung.MaND , TenND FROM noidung, noidungcon where noidungcon.mand=noidung.mand and noidung.mand ='".$ma."'";			
+			//$ma=$_POST['manoidung'];
+			$query="SELECT noi_mand, noidung.MaND , TenND FROM noidung, noidungcon where noidungcon.mand=noidung.mand and noidung.mand ='ND10'";			
 					$db->setQuery($query);
 					$result=$db->fetchAll();
 					$xml="";
@@ -18,11 +18,13 @@
 					{
 						$xml.="<INFO>";
 						$db->setQuery('SELECT TenND FROM noidung where mand='.$row[0].'');
-							$kq=$db->fetchAll();
-							$row2=mysql_fetch_array($kq);
-							$xml.="<RESULT>";
-							$xml.="<![CDATA[".$row2[0]."]]>";
-							$xml.="</RESULT>";
+						$kq=$db->fetchAll();
+						while($row2=mysql_fetch_array($kq,MYSQL_NUM))
+						{
+								$xml.="<RESULT>";
+								$xml.="<![CDATA[".$row2[0]."]]>";
+								$xml.="</RESULT>";
+						}
 						for($i = 0; $i < count($row); $i++) 
 						{							
 							$xml.="<RESULT2>";

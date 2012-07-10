@@ -3,12 +3,12 @@
 	session_start();
 
 	//kiem tra quyen truoc khi hien thi trang
-	/*if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
+	if($_SESSION['maquyen']!="ADMIN")
 	{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
-	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
-	hello exit;
-	}*/
+	echo "<script language=javascript>window.location = '../index.php';</script>"; 
+	exit;
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -283,7 +283,7 @@ function thoat() {
               </tr>
 			  <tr>
 					<td height="22" align="right" class="level_1_2">Chọn file Excel</td>
-					<td width="70%" align="left" class="level_1_2"><input name="file_import" id="file_import" type="file" style="width:100%"><input type="hidden" name="MAX_FILE_SIZE" value="100000"></td>
+					<td width="70%" align="left" class="level_1_2"><input name="file_import" id="file_import" type="file" style="width:100%"><input type="hidden" name="MAX_FILE_SIZE" value="1000000"></td>
 			  </tr>
                <tr>
 					<td height="22" align="right" class="level_1_1">Chọn Sheet cần lưu</td>

@@ -336,6 +336,7 @@ function taobang(makhms)
 					}
 					$('#jqthem').jqxGrid('destroy');
 					alert('Thành công.');
+					window.location.reload(true);
          });
 		//update 
 		$("#jqthem").bind('cellendedit', function (event) 

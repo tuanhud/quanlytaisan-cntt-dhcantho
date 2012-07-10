@@ -166,11 +166,7 @@ function taobangtaisan (combo)
 				editable: true,
 				autoheight: true,
 				pageable: true,
-				virtualmode: true,
-				rendergridrows: function()
-				{
-					  return dataadapter.records;     
-				},
+				
                 columns: [
 					  { text: 'Mã tài sản', editable: false, datafield: 'MaTaiSan', width: 80, cellsalign: 'left' },
 					  { text: 'Tên tài sản', editable: false, datafield: 'TenTaiSan', width: 150, cellsalign: 'left' },

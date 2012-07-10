@@ -143,10 +143,7 @@
            	              <tr>
 					<td align="center" height="300" class="level_1_1" colspan="4" valign="top">
                      <div style="margin-top: 10px;" id="jqthem"></div>
-                            <div id="tienmuasam">
-                            <span> <strong>Tổng thành tiền:</strong></span> <span id="tongtien"></span>
-                            </span> <span><strong>VNĐ</strong></span>
-                            </div>
+                           
                             <div style="margin-top: 30px;">
                                 <div id="cellbegineditevent"></div>
                                 <div style="margin-top: 10px;" id="cellendeditevent"></div>
