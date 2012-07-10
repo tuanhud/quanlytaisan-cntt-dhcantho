@@ -301,15 +301,16 @@ function taocombothem(frm)
 						{
 							http=GetXmlHttpObject();
 							var params = "maphieu="+phieumau;
-							http.open("POST", 'get_info_phieumau.php', false);
+							http.open("POST", 'get_info_phieumau2.php', false);
 							http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 							http.onreadystatechange = function()
 							{
 								if(http.readyState == 4 && http.status == 200) 
 								{
 									frm.ghichu.value=http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue;
-									frm.capnhat.value=http.responseXML.getElementsByTagName('RESULT')[2].firstChild.nodeValue;
-									frm.ngaylap.value=http.responseXML.getElementsByTagName('RESULT')[1].firstChild.nodeValue;
+									frm.capnhat.value=http.responseXML.getElementsByTagName('RESULT')[4].firstChild.nodeValue;
+									var ngay =  http.responseXML.getElementsByTagName('RESULT')[3].firstChild.nodeValue+'-'+http.responseXML.getElementsByTagName('RESULT')[2].firstChild.nodeValue+'-'+http.responseXML.getElementsByTagName('RESULT')[1].firstChild.nodeValue;
+									frm.ngaylap.value=ngay;
 								}
 							}
 							http.send(params);
@@ -451,7 +452,8 @@ function taocombothem(frm)
 						}
 						http.send(params13);
 					}
-					alert(result);
+					alert('Thành công.');
+					window.location.reload(true);
 				}
 				else
 				{

@@ -417,6 +417,7 @@ function taocombosua(frm)
 						http.send(params14);
 					 }
 					alert('Thành công.'); 
+					window.location.reload(true);
 				}
 				else
 				{
@@ -441,6 +442,7 @@ function taocombosua(frm)
 						{
 							//gui lai ma phieu kiem ke
 							alert(http.responseXML.getElementsByTagName('RESULT')[0].firstChild.nodeValue);
+							window.location.reload(true);
 						}
 					}
 					http.send(params);

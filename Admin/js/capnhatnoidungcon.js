@@ -38,7 +38,7 @@ var _admin;
 													else if(n==1){
 														alert("Thêm thành công!"),
 														fillcombo('get_list_noidungcon.php',document.frm_suanoidungcon.cbo_tennoidungcon);
-														fillcombo('get_list_noidungcon.php',document.frm_xoanoidungcon.cbo_tennoidungconxoa);
+														
 														document.frm_themnoidungcon.cbo_tennoidunglon.value=-1;
 														document.frm_themnoidungcon.txt_manoidunglon.value='';
 														document.frm_themnoidungcon.cbo_tennoidungcon.value=-1;
@@ -80,7 +80,7 @@ var _admin;
 													else if(n==1){
 														alert("Cập nhật thành công!"),
 														fillcombo('get_list_noidungcon.php',document.frm_suanoidungcon.cbo_tennoidungcon);
-														fillcombo('get_list_noidungcon.php',document.frm_xoanoidungcon.cbo_tennoidungconxoa);
+														
 														document.frm_suanoidungcon.cbo_tennoidungcon.value=-1;
 														document.frm_suanoidungcon.txt_manoidungcon.value='';
 														document.frm_suanoidungcon.cbo_tennoidunglon.value=-1;

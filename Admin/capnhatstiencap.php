@@ -3,12 +3,12 @@
 	session_start();
 
 	//kiem tra quyen truoc khi hien thi trang
-	/*if(!session_is_registered("maquyen") || $_SESSION['maquyen']!="AD")
+	if($_SESSION['maquyen']!="ADMIN")
 	{
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
-	echo "<script language=javascript>window.location = 'loginUI.php';</script>"; 
-	hello exit;
-	}*/
+	echo "<script language=javascript>window.location = '../index.php';</script>"; 
+	exit;
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -126,7 +126,7 @@
                         	<table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                            		<tbody>                       
                               		 <tr>
-                           
+                           				<td>
                            				 <table style="table-layout: fixed; border-collapse: collapse;" cellspacing="0" cellpadding="0">
                                 <tbody>
                                 
@@ -174,8 +174,7 @@
                <tr>
 					<td height="22" align="right" class="level_1_1">Số tiền cấp:</td>
 					<td width="50%" align="left" class="level_1_1"><label for="txt_sotiencap"></label>
-					  <input type="text" name="txt_sotiencap" id="txt_sotiencap"> 
-					  (triệu đồng)</td>
+					  <input type="text" name="txt_sotiencap" id="txt_sotiencap"></td>
 			</tr>              
               <tr>
               		<td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_them" type="button" class="button_1" id="btn_them" value="Thêm"></td>
@@ -220,7 +219,7 @@
 		               <td height="22" align="right" class="level_1_1">Số tiền cấp:</td>
 		               <td width="50%" align="left" class="level_1_1"><label for="textfield"></label>
 		                 <input type="text" name="txt_sotiencap" id="textfield">
-		                 (triệu đồng)</td>
+		                </td>
 		               </tr>
 		             <tr>
 		               <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_sua" type="button" class="button_1" id="btn_sua" value="Sửa"></td>
@@ -263,8 +262,7 @@
 		             <tr>
 		               <td height="22" align="right" class="level_1_1">Số tiền cấp:</td>
 		               <td width="50%" align="left" class="level_1_1"><label for="textfield"></label>
-		                 <input name="txt_sotiencapxoa" type="text" id="textfield" readonly="readonly">
-		                 (triệu đồng)</td>
+		                 <input name="txt_sotiencapxoa" type="text" id="textfield" readonly="readonly"></td>
 		               </tr>
 		             <tr>
 		               <td colspan="2" height="22" align="center" class="level_1_2"><input name="btn_xoa" type="button" class="button_1" id="btn_xoa" value="Xóa"></td>
