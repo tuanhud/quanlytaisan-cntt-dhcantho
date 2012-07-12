@@ -142,26 +142,7 @@ $(document).ready(function()
                          
               </div>   
     
-	<?php
-	/*$strHtml="";
-	$strHtml .= "<table border='1' cellspacing=1 cellpadding=0>";
-	$strHtml .="<tr  align='center'>";
-	for ($i=1;$i<=$rowsnum;$i++)//hang
-	{	
-		
-		$strHtml .= "<tr bgcolor='#CCCCCC' align='center' >";
-		
-		for ($j=1;$j<=$colsnum;$j++) //cot
-		{	
-				$strHtml .="<td>".$data->val($i,$j)."</td> ";//hang i cot j
-		}
-		$strHtml .="</tr>";
-	}
-	$strHtml .="</tr>";
-	$strHtml .= "</table>";
-	echo $strHtml;
-	echo '</form>';*/
-	?>
+	
     <?php
 		/*----------------------------------------------
 		/* Lưu dữ liệu vào DB

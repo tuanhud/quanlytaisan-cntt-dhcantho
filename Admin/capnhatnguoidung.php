@@ -274,7 +274,7 @@ function thoat() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-            	<form name="frm_importcanbo" id="frm_importcanbo" action="importcanboUI.php" enctype="multipart/form-data" method="post" target="export" onSubmit="return isValid();window.open('', 'export', 'width=1350,height=660,status=yes,resizable=yes,scrollbars=yes')">
+            	<form name="frm_importcanbo" id="frm_importcanbo" action="importcanboUI.php" enctype="multipart/form-data" method="post" target="export" onSubmit="window.open('', 'export', 'width=1350,height=660,status=yes,resizable=yes,scrollbars=yes')">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
@@ -296,7 +296,8 @@ function thoat() {
                     </td>
 			  </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="submit" name="btn_importcanbo" class="button_1" value="Xem trước"></td>
+              		<td colspan="2" height="22" align="center" class="level_1_1"><input type="submit" name="btn_importcanbo" class="button_1" value="Xem trước">
+                     </td>
               </tr>
               </tbody>
            </table>
@@ -317,12 +318,12 @@ function thoat() {
         </tr>
         <tr>
           <td colspan="3" align="left">
-          	<form name="frm_suacanbo" id="frm_suacanbo">
+          	<form name="frm_suacanbo" id="frm_suacanbo" action="danhsachcanbo.php" target="xemds" onSubmit="window.open('', 'xemds', 'width=1350,height=660,status=yes,resizable=yes,scrollbars=yes')">
             <table width="100%" class="border_1" bordercolor="#111111" cellspacing="0" cellpadding="0" align="center" border="0">             		
               <tbody>
               <tr>
               		<td height="22" class="level_1_1"></td>
-                    <td class="level_1_1"></td>
+                    <td class="level_1_1"><input id="btn_xemdanhsach" name="btn_xemdanhsach" type="submit" class="button_1" value="Xem danh sách người dùng" ></td>
               </tr>
               <tr>
               		<td height="22" align="right" class="level_1_1">Chọn mã số cán bộ</td>
@@ -386,7 +387,10 @@ function thoat() {
 					<input name="txt_matkhausua" id="matkhausua" class="txtbox" type="password" style="width:100%" value="">					</td>
 			  </tr>
               <tr>
-              		<td colspan="2" height="22" align="center" class="level_1_2"><input id="btn_suacanbo" name="btn_suacanbo" type="button" class="button_1" value="Lưu" ></td>
+              		<td colspan="2" height="22" align="center" class="level_1_2">
+                    <input id="btn_suacanbo" name="btn_suacanbo" type="button" class="button_1" value="Lưu" >
+                   
+                    </td>
               </tr>
               </tbody>
            </table>
